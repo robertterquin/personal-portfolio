@@ -2,6 +2,8 @@ import { useEffect, useState, useRef } from 'react';
 
 const About = () => {
   const [isVisible, setIsVisible] = useState(false);
+  const [particles, setParticles] = useState([]);
+  const [dataStreams, setDataStreams] = useState([]);
   const sectionRef = useRef(null);
 
   useEffect(() => {
@@ -18,6 +20,28 @@ const About = () => {
       observer.observe(sectionRef.current);
     }
 
+    // Generate particles
+    const generatedParticles = [...Array(20)].map((_, i) => ({
+      id: i,
+      left: Math.random() * 100,
+      top: Math.random() * 100,
+      size: Math.random() * 2 + 1,
+      duration: Math.random() * 30 + 25,
+      delay: Math.random() * 10,
+      opacity: Math.random() * 0.2 + 0.05,
+    }));
+    setParticles(generatedParticles);
+
+    // Generate data streams (vertical lines)
+    const generatedStreams = [...Array(8)].map((_, i) => ({
+      id: i,
+      left: (i + 1) * 12,
+      height: Math.random() * 30 + 20,
+      duration: Math.random() * 4 + 3,
+      delay: Math.random() * 2,
+    }));
+    setDataStreams(generatedStreams);
+
     return () => observer.disconnect();
   }, []);
 
@@ -27,6 +51,69 @@ const About = () => {
       id="about" 
       className="min-h-screen text-white py-32 px-8 md:px-16 lg:px-24 relative flex items-center"
     >
+      {/* Grid Pattern Background */}
+      <div className="absolute inset-0 pointer-events-none z-0">
+        <div className="absolute inset-0 opacity-[0.08]" style={{
+          backgroundImage: `
+            linear-gradient(90deg, transparent 98%, rgba(6, 182, 212, 0.6) 100%),
+            linear-gradient(0deg, transparent 98%, rgba(6, 182, 212, 0.6) 100%)
+          `,
+          backgroundSize: '100px 100px',
+        }}></div>
+      </div>
+
+      {/* Gradient Orbs */}
+      <div className="absolute inset-0 pointer-events-none z-0">
+        <div className="absolute top-20 left-10 w-[350px] h-[350px] bg-gradient-conic from-blue-500/15 via-purple-500/10 to-cyan-500/15 rounded-full blur-[90px] animate-pulse" style={{animationDuration: '8s'}}></div>
+        <div className="absolute bottom-32 right-20 w-[300px] h-[300px] bg-gradient-radial from-purple-500/20 to-transparent rounded-full blur-[70px] animate-pulse" style={{animationDuration: '6s', animationDelay: '2s'}}></div>
+      </div>
+
+      {/* Data Streams (Vertical Lines) */}
+      <div className="absolute inset-0 pointer-events-none z-0 overflow-hidden">
+        {dataStreams.map((stream) => (
+          <div
+            key={stream.id}
+            className="absolute top-0 w-px opacity-20"
+            style={{
+              left: `${stream.left}%`,
+              background: 'linear-gradient(to bottom, transparent, rgba(6, 182, 212, 0.8), transparent)',
+              height: `${stream.height}%`,
+              animation: `slideDown ${stream.duration}s ease-in-out infinite`,
+              animationDelay: `${stream.delay}s`,
+            }}
+          ></div>
+        ))}
+      </div>
+
+      {/* Floating Particles */}
+      <div className="absolute inset-0 pointer-events-none z-0">
+        {particles.map((particle) => (
+          <div
+            key={particle.id}
+            className="absolute rounded-full bg-cyan-400 animate-float"
+            style={{
+              left: `${particle.left}%`,
+              top: `${particle.top}%`,
+              width: `${particle.size}px`,
+              height: `${particle.size}px`,
+              opacity: particle.opacity,
+              animationDuration: `${particle.duration}s`,
+              animationDelay: `${particle.delay}s`,
+            }}
+          ></div>
+        ))}
+      </div>
+
+      {/* Geometric Accent Shapes */}
+      <div className="absolute inset-0 pointer-events-none z-0">
+        <div className="absolute top-1/4 right-10 w-40 h-40 border border-cyan-500/20 rounded-lg rotate-12 animate-spin-slow" style={{animationDuration: '45s'}}></div>
+        <div className="absolute bottom-1/3 left-16 w-32 h-32 border-2 border-dashed border-blue-500/15 rounded-full opacity-50"></div>
+        <div className="absolute top-1/2 right-1/4 w-24 h-24 relative animate-spin-slow" style={{animationDuration: '35s'}}>
+          <div className="absolute inset-3 border-l-2 border-t-2 border-purple-500/20 rounded-tl-xl"></div>
+          <div className="absolute inset-3 border-r-2 border-b-2 border-cyan-500/20 rounded-br-xl"></div>
+        </div>
+      </div>
+
       {/* Content */}
       <div className="relative z-10 max-w-[1600px] mx-auto w-full">
         {/* Main Grid Layout - Asymmetric */}
@@ -36,10 +123,10 @@ const About = () => {
             <span className="text-cyan-400 text-sm uppercase tracking-[0.4em] font-semibold mb-8 block">About</span>
             
             <h2 className="text-6xl md:text-7xl lg:text-8xl xl:text-9xl font-bold leading-[0.95] tracking-tighter">
-              <span className="block text-white mb-2">Crafting</span>
-              <span className="block text-white mb-2">experiences</span>
-              <span className="block text-gray-500 font-light italic mb-2">not just</span>
-              <span className="block text-gray-500 font-light italic">interfaces</span>
+              <span className="block text-white mb-2">Mobile First</span>
+              <span className="block text-white mb-2">Solutions</span>
+              <span className="block text-gray-500 font-light italic mb-2">User</span>
+              <span className="block text-gray-500 font-light italic">Focused</span>
             </h2>
             
             {/* Decorative Element */}
@@ -58,37 +145,21 @@ const About = () => {
             <div className="space-y-8">
               <p className="text-xl md:text-2xl lg:text-3xl text-gray-200 leading-relaxed font-light">
                 Hi, I'm <span className="text-white font-semibold">Robert Terquin Laqui</span>, a{' '}
-                <span className="text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 to-blue-500 font-semibold">Full Stack Developer</span> and{' '}
-                <span className="text-transparent bg-clip-text bg-gradient-to-r from-purple-400 to-pink-400 font-semibold">Problem Solver</span>.
+                <span className="text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 to-blue-500 font-semibold">Mobile Developer</span> with{' '}
+                <span className="text-transparent bg-clip-text bg-gradient-to-r from-purple-400 to-pink-400 font-semibold">2+ years</span> of experience.
               </p>
               
               <p className="text-lg md:text-xl text-gray-400 leading-relaxed">
-                I specialize in creating user-centered applications that seamlessly blend aesthetics 
-                with functionality, turning complex problems into elegant solutions. With expertise in 
-                modern web technologies, I build performant and scalable applications that make an impact.
+                I specialize in building cross-platform mobile apps with <span className="text-cyan-300 font-medium">Flutter</span>, integrated with <span className="text-blue-300 font-medium">Firebase</span> and <span className="text-purple-300 font-medium">Supabase</span>. I deliver secure, scalable, and user-centric applications that combine technical excellence with intuitive design.
               </p>
 
               <p className="text-base md:text-lg text-gray-500 leading-relaxed">
-                Driven by a passion for crafting intuitive digital experiences, I'm constantly exploring 
-                new technologies and pushing the boundaries of what's possible on the web.
+                Passionate about clean code, best practices, and continuously exploring emerging technologies to craft meaningful digital experiences.
               </p>
             </div>
 
             {/* Enhanced Info Pills */}
-            <div className="flex flex-wrap gap-4 pt-6">
-              <div className="group flex items-center gap-3 px-6 py-3 bg-gradient-to-r from-cyan-500/10 to-blue-500/10 border border-cyan-500/30 rounded-full hover:border-cyan-400 transition-all duration-300">
-                <div className="w-2.5 h-2.5 bg-cyan-400 rounded-full group-hover:animate-pulse"></div>
-                <span className="text-base text-gray-200 font-medium">React & Node.js</span>
-              </div>
-              <div className="group flex items-center gap-3 px-6 py-3 bg-gradient-to-r from-purple-500/10 to-pink-500/10 border border-purple-500/30 rounded-full hover:border-purple-400 transition-all duration-300">
-                <div className="w-2.5 h-2.5 bg-purple-400 rounded-full group-hover:animate-pulse"></div>
-                <span className="text-base text-gray-200 font-medium">Philippines</span>
-              </div>
-              <div className="group flex items-center gap-3 px-6 py-3 bg-gradient-to-r from-blue-500/10 to-cyan-500/10 border border-blue-500/30 rounded-full hover:border-blue-400 transition-all duration-300">
-                <div className="w-2.5 h-2.5 bg-blue-400 rounded-full group-hover:animate-pulse"></div>
-                <span className="text-base text-gray-200 font-medium">Open to Work</span>
-              </div>
-            </div>
+           
           </div>
         </div>
       </div>
