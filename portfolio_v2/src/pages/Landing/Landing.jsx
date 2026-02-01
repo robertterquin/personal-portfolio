@@ -163,21 +163,21 @@ const Landing = () => {
       {/* Bottom Section */}
       <div className="flex flex-col sm:flex-row justify-between items-start sm:items-end gap-8 relative z-10">
         {/* Profile Section */}
-        <div className="flex items-center gap-4">
-          <div className="w-16 h-16 rounded-full border-2 border-cyan-500/40 overflow-hidden ring-2 ring-cyan-500/20 bg-slate-800">
+        <div className="flex items-center gap-5">
+          <div className="w-20 h-20 rounded-full border-2 border-cyan-500/40 overflow-hidden ring-2 ring-cyan-500/20 bg-slate-800">
             <img 
               src="/profile.jpg" 
               alt="Robert Terquin Laqui" 
               className="w-full h-full object-cover"
               onError={(e) => {
                 e.target.style.display = 'none';
-                e.target.parentElement.innerHTML = '<div class="w-full h-full bg-gradient-to-br from-slate-800 to-slate-900 flex items-center justify-center"><span class="text-2xl text-cyan-400">RT</span></div>';
+                e.target.parentElement.innerHTML = '<div class="w-full h-full bg-gradient-to-br from-slate-800 to-slate-900 flex items-center justify-center"><span class="text-3xl text-cyan-400">RT</span></div>';
               }}
             />
           </div>
           <div>
-            <h2 className="text-lg font-semibold text-white">Robert Terquin Laqui</h2>
-            <p className="text-sm text-cyan-400">Full Stack Developer</p>
+            <h2 className="text-xl font-semibold text-white">Robert Terquin Laqui</h2>
+            <p className="text-base text-cyan-400">Full Stack Developer</p>
           </div>
         </div>
 
