@@ -34,7 +34,7 @@ const Landing = () => {
               Hello, I'm
             </span>
             <span className="block bg-gradient-to-r from-white to-gray-500 bg-clip-text text-transparent">
-              Your Name
+              Robert Terquin Laqui
             </span>
           </h1>
           <p className="text-lg md:text-xl text-gray-400 mt-4 font-light tracking-wider">
