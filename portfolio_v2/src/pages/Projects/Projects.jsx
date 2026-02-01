@@ -160,18 +160,41 @@ const Projects = () => {
       {/* Content */}
       <div className="relative z-10 max-w-[1600px] mx-auto w-full">
         
-        {/* Header Section - Unique asymmetric layout */}
-        <div className={`flex flex-col lg:flex-row lg:items-end lg:justify-between mb-16 gap-8 transition-all duration-700 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
-          <div className="space-y-4">
-            <span className="text-cyan-400 text-sm uppercase tracking-[0.4em] font-semibold">My Projects</span>
-            <h2 className="text-5xl md:text-6xl lg:text-7xl xl:text-8xl font-bold tracking-tight">
-              <span className="text-white">Selected </span>
-              <span className="text-transparent bg-clip-text bg-gradient-to-r from-purple-400 via-pink-400 to-cyan-400 italic">Work</span>
-            </h2>
+        {/* Header Section - Enhanced layout */}
+        <div className={`mb-20 transition-all duration-700 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
+          {/* Top Label */}
+          <div className="flex items-center gap-3 mb-6">
+            <div className="h-px w-12 bg-gradient-to-r from-cyan-400 to-transparent"></div>
+            <span className="text-cyan-400 text-xs uppercase tracking-[0.3em] font-semibold">Portfolio</span>
           </div>
-          <p className="text-gray-400 text-base md:text-lg max-w-md lg:text-right leading-relaxed">
-           A collection of projects developed as I learn and grow as a developer.
-          </p>
+          
+          {/* Main Title */}
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-16 items-start">
+            <div>
+              <h2 className="text-6xl md:text-7xl lg:text-8xl font-bold tracking-tighter leading-tight mb-4">
+                <span className="text-transparent bg-clip-text bg-gradient-to-r from-cyan-300 via-blue-400 to-purple-400">Crafted</span>
+                <br />
+                <span className="text-white">Projects</span>
+              </h2>
+              <div className="h-1 w-20 bg-gradient-to-r from-pink-500 via-purple-500 to-cyan-500 rounded-full mt-6"></div>
+            </div>
+            
+            <div className="space-y-6 lg:pt-4">
+              <p className="text-gray-300 text-lg leading-relaxed">
+                A showcase of mobile and web applications built with modern technologies. Each project represents growth, learning, and a commitment to quality development.
+              </p>
+              <div className="grid grid-cols-2 gap-4 pt-4">
+                <div className="p-4 rounded-lg border border-gray-800/50 bg-gradient-to-br from-cyan-500/5 to-transparent backdrop-blur-sm hover:border-cyan-500/30 transition-colors">
+                  <div className="text-2xl font-bold text-cyan-400">3</div>
+                  <div className="text-sm text-gray-400">Featured Works</div>
+                </div>
+                <div className="p-4 rounded-lg border border-gray-800/50 bg-gradient-to-br from-purple-500/5 to-transparent backdrop-blur-sm hover:border-purple-500/30 transition-colors">
+                  <div className="text-2xl font-bold text-purple-400">2025</div>
+                  <div className="text-sm text-gray-400">Current Year</div>
+                </div>
+              </div>
+            </div>
+          </div>
         </div>
 
         {/* Featured Project - Large Card */}
