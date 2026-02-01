@@ -120,7 +120,7 @@ const About = () => {
         <div className="grid lg:grid-cols-[1.2fr_1fr] gap-20 lg:gap-32 items-start">
           {/* Left Column - Big Typography */}
           <div className={`space-y-4 transition-all duration-700 ${isVisible ? 'opacity-100 translate-x-0' : 'opacity-0 -translate-x-16'}`}>
-            <span className="text-cyan-400 text-sm uppercase tracking-[0.4em] font-semibold mb-8 block">About</span>
+            <span className="text-cyan-400 text-sm uppercase tracking-[0.4em] font-semibold mb-8 block">About Me</span>
             
             <h2 className="text-6xl md:text-7xl lg:text-8xl xl:text-9xl font-bold leading-[0.95] tracking-tighter">
               <span className="block text-white mb-2">Mobile First</span>
