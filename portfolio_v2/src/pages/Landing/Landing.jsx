@@ -1,8 +1,6 @@
-import { Link } from 'react-router-dom';
-
 const Landing = () => {
   return (
-    <div className="min-h-screen flex flex-col justify-center items-center bg-black text-white p-8 relative overflow-hidden">
+    <section id="home" className="min-h-screen flex flex-col justify-center items-center bg-black text-white p-8 relative overflow-hidden">
       {/* Background Particles */}
       <div className="absolute inset-0 pointer-events-none z-0">
         {[...Array(50)].map((_, i) => (
@@ -45,47 +43,31 @@ const Landing = () => {
         </div>
 
         {/* Description */}
-        <p className="text-gray-400 text-lg max-w-md mx-auto mb-12 leading-relaxed">
+        <p className="text-gray-400 text-lg max-w-md mx-auto mb-16 leading-relaxed">
           I craft digital experiences with clean code and creative design.
         </p>
-
-        {/* CTA Buttons */}
-        <div className="flex flex-col sm:flex-row gap-4 justify-center mb-16">
-          <Link
-            to="/projects"
-            className="px-8 py-4 bg-white text-black font-medium uppercase tracking-wider text-sm border-2 border-white hover:bg-transparent hover:text-white transition-all duration-300"
-          >
-            View My Work
-          </Link>
-          <Link
-            to="/contact"
-            className="px-8 py-4 bg-transparent text-white font-medium uppercase tracking-wider text-sm border-2 border-gray-600 hover:border-white hover:bg-white hover:text-black transition-all duration-300"
-          >
-            Get In Touch
-          </Link>
-        </div>
 
         {/* Navigation Links */}
         <nav className="flex flex-wrap gap-8 justify-center">
           {['About', 'Projects', 'Certification', 'Contact'].map((item) => (
-            <Link
+            <a
               key={item}
-              to={`/${item.toLowerCase()}`}
+              href={`#${item.toLowerCase()}`}
               className="text-gray-500 text-sm uppercase tracking-[0.2em] relative hover:text-white transition-colors duration-300 group"
             >
               {item}
               <span className="absolute bottom-0 left-0 w-0 h-px bg-white group-hover:w-full transition-all duration-300"></span>
-            </Link>
+            </a>
           ))}
         </nav>
       </div>
 
       {/* Scroll Indicator */}
-      <div className="absolute bottom-8 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2 animate-bounce">
+      <a href="#about" className="absolute bottom-8 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2 animate-bounce cursor-pointer">
         <span className="text-xs uppercase tracking-[0.2em] text-gray-600">Scroll</span>
         <div className="w-px h-10 bg-gradient-to-b from-gray-600 to-transparent"></div>
-      </div>
-    </div>
+      </a>
+    </section>
   );
 };
 
