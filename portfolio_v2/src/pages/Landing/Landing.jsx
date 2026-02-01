@@ -1,72 +1,108 @@
+import { useEffect, useState } from 'react';
+
 const Landing = () => {
+  const [particles, setParticles] = useState([]);
+
+  useEffect(() => {
+    // Generate particles only once on mount
+    const generatedParticles = [...Array(40)].map((_, i) => ({
+      id: i,
+      left: Math.random() * 100,
+      top: Math.random() * 100,
+      size: Math.random() * 2 + 1,
+      duration: Math.random() * 25 + 20,
+      delay: Math.random() * 10,
+      opacity: Math.random() * 0.3 + 0.05,
+    }));
+    setParticles(generatedParticles);
+  }, []);
+
   return (
-    <section id="home" className="min-h-screen flex flex-col justify-center items-center bg-black text-white p-8 relative overflow-hidden">
-      {/* Background Particles */}
+    <section id="home" className="min-h-screen flex flex-col justify-between bg-gradient-to-br from-black via-neutral-950 to-neutral-900 text-white p-8 md:p-12 lg:p-16 relative overflow-hidden">
+      {/* Moving Particles */}
       <div className="absolute inset-0 pointer-events-none z-0">
-        {[...Array(50)].map((_, i) => (
+        {particles.map((particle) => (
           <div
-            key={i}
-            className="absolute w-0.5 h-0.5 bg-white rounded-full animate-pulse opacity-20"
+            key={particle.id}
+            className="absolute rounded-full bg-white animate-float"
             style={{
-              left: `${Math.random() * 100}%`,
-              top: `${Math.random() * 100}%`,
-              animationDelay: `${Math.random() * 5}s`,
-              animationDuration: `${2 + Math.random() * 3}s`
+              left: `${particle.left}%`,
+              top: `${particle.top}%`,
+              width: `${particle.size}px`,
+              height: `${particle.size}px`,
+              opacity: particle.opacity,
+              animationDuration: `${particle.duration}s`,
+              animationDelay: `${particle.delay}s`,
             }}
           ></div>
         ))}
       </div>
 
-      <div className="max-w-3xl text-center relative z-10">
-        {/* Image Placeholder */}
-        <div className="mb-8 flex justify-center">
-          <div className="p-1 bg-gradient-to-br from-white via-gray-500 to-white rounded-full">
-            <div className="w-44 h-44 bg-gradient-to-br from-neutral-900 to-black rounded-full flex items-center justify-center border-4 border-black shadow-lg shadow-white/10">
-              <span className="text-6xl grayscale opacity-60">👤</span>
-            </div>
+      {/* Status Badges */}
+      <div className="flex flex-wrap gap-4 relative z-10">
+        <div className="flex items-center gap-2 px-4 py-2 bg-white/5 backdrop-blur-sm border border-white/10 rounded-full">
+          <div className="w-2 h-2 bg-green-500 rounded-full animate-pulse"></div>
+          <span className="text-sm text-gray-300">Available for work</span>
+        </div>
+        <div className="px-4 py-2 bg-white/5 backdrop-blur-sm border border-white/10 rounded-full">
+          <span className="text-sm text-gray-400">Based in Philippines</span>
+        </div>
+      </div>
+
+      {/* Main Content */}
+      <div className="flex-1 flex items-center relative z-10">
+        <div className="max-w-5xl">
+          <h1 className="text-5xl sm:text-6xl md:text-7xl lg:text-8xl xl:text-9xl font-bold leading-tight tracking-tight mb-6">
+            <span className="block text-white">I craft digital</span>
+            <span className="block text-gray-500 font-light">experiences with</span>
+            <span className="block">
+              <span className="text-white">clean </span>
+              <span className="text-transparent bg-clip-text bg-gradient-to-r from-purple-400 to-pink-400 italic font-light">code</span>
+            </span>
+          </h1>
+        </div>
+      </div>
+
+      {/* Bottom Section */}
+      <div className="flex flex-col sm:flex-row justify-between items-start sm:items-end gap-8 relative z-10">
+        {/* Profile Section */}
+        <div className="flex items-center gap-4">
+          <div className="w-16 h-16 rounded-full bg-gradient-to-br from-neutral-800 to-neutral-900 border-2 border-white/20 flex items-center justify-center overflow-hidden">
+            <span className="text-3xl grayscale opacity-60">👤</span>
+          </div>
+          <div>
+            <h2 className="text-lg font-semibold text-white">Robert Terquin Laqui</h2>
+            <p className="text-sm text-gray-400">Full Stack Developer</p>
           </div>
         </div>
 
-        {/* Header */}
-        <div className="mb-8">
-          <h1 className="text-5xl md:text-7xl font-bold leading-tight">
-            <span className="block text-sm md:text-base font-normal text-gray-500 uppercase tracking-[0.3em] mb-2">
-              Hello, I'm
-            </span>
-            <span className="block bg-gradient-to-r from-white to-gray-500 bg-clip-text text-transparent">
-              Robert Terquin Laqui
-            </span>
-          </h1>
-          <p className="text-lg md:text-xl text-gray-400 mt-4 font-light tracking-wider">
-            Full Stack Developer
-          </p>
-        </div>
-
-        {/* Description */}
-        <p className="text-gray-400 text-lg max-w-md mx-auto mb-16 leading-relaxed">
-          I craft digital experiences with clean code and creative design.
-        </p>
-
         {/* Navigation Links */}
-        <nav className="flex flex-wrap gap-8 justify-center">
+        <nav className="flex flex-wrap gap-6 items-center">
           {['About', 'Projects', 'Certification', 'Contact'].map((item) => (
             <a
               key={item}
               href={`#${item.toLowerCase()}`}
-              className="text-gray-500 text-sm uppercase tracking-[0.2em] relative hover:text-white transition-colors duration-300 group"
+              className="text-gray-400 text-sm uppercase tracking-wider hover:text-white transition-colors duration-300"
             >
               {item}
-              <span className="absolute bottom-0 left-0 w-0 h-px bg-white group-hover:w-full transition-all duration-300"></span>
             </a>
           ))}
+          <a
+            href="#about"
+            className="flex items-center gap-2 text-gray-400 text-xs uppercase tracking-widest hover:text-white transition-colors duration-300 group"
+          >
+            <span>Scroll to explore</span>
+            <svg 
+              className="w-4 h-4 transform group-hover:translate-y-1 transition-transform" 
+              fill="none" 
+              stroke="currentColor" 
+              viewBox="0 0 24 24"
+            >
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 14l-7 7m0 0l-7-7m7 7V3" />
+            </svg>
+          </a>
         </nav>
       </div>
-
-      {/* Scroll Indicator */}
-      <a href="#about" className="absolute bottom-8 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2 animate-bounce cursor-pointer">
-        <span className="text-xs uppercase tracking-[0.2em] text-gray-600">Scroll</span>
-        <div className="w-px h-10 bg-gradient-to-b from-gray-600 to-transparent"></div>
-      </a>
     </section>
   );
 };
