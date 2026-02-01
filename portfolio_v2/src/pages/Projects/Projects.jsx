@@ -9,39 +9,51 @@ const Projects = () => {
   const projects = [
     {
       id: 1,
-      title: "Sweet Jewels",
-      tagline: "Turn your cravings into sweet memories!",
-      description: "Cakes & pastries ordering app with beautiful product showcases and seamless ordering flow",
-      type: "Mobile App",
+      title: "ONCOSENSE",
+      tagline: "Cancer awareness starts here",
+      description: "A Flutter-based mobile platform for cancer education, prevention tips, community support, and resources.",
+      type: "Health App",
       year: "2025",
       featured: true,
-      gradient: "from-pink-300 via-purple-200 to-pink-100",
-      accentColor: "text-pink-500",
-      image: null, // Add your image path here
+      gradient: "from-pink-200 via-rose-100 to-pink-50",
+      accentColor: "text-pink-600",
+      screens: [
+        { image: "/oncosense-1.png", label: "Welcome Screen" },
+        { image: "/oncosense-2.png", label: "Dashboard" },
+        { image: "/oncosense-3.png", label: "Journey Tracker" }
+      ]
     },
     {
       id: 2,
-      title: "LabGenius",
-      tagline: "Embark on an adventure!",
-      description: "Game-based learning app for interactive education",
-      type: "EdTech App",
+      title: "Chainly",
+      tagline: "Ride smarter, maintain better",
+      description: "Flutter-based mobile application to help cyclists track bike maintenance, schedule service reminders, and manage maintenance costs for safer rides.",
+      type: "Lifestyle App",
       year: "2025",
       featured: false,
       gradient: "from-cyan-200 via-blue-100 to-teal-100",
       accentColor: "text-cyan-500",
-      image: null,
+      screens: [
+        { image: null, label: "Screen" },
+        { image: null, label: "Main" },
+        { image: null, label: "Screen" }
+      ]
     },
     {
       id: 3,
-      title: "Revu",
-      tagline: "Make your study session more enjoyable",
-      description: "Learning app with smart review features",
-      type: "Learning App",
+      title: "RideTrack",
+      tagline: "Track every ride, reach every goal",
+      description: "Flutter-based mobile application designed to help cyclists track rides, monitor performance goals, and analyze riding statistics for efficient cycling.",
+      type: "Fitness App",
       year: "2025",
       featured: false,
       gradient: "from-blue-200 via-cyan-100 to-blue-100",
       accentColor: "text-blue-500",
-      image: null,
+      screens: [
+        { image: null, label: "Screen" },
+        { image: null, label: "Main" },
+        { image: null, label: "Screen" }
+      ]
     },
   ];
 
@@ -80,35 +92,44 @@ const Projects = () => {
       id="projects" 
       className="min-h-screen text-white py-24 px-8 md:px-16 lg:px-24 relative overflow-hidden"
     >
-      {/* Background Grid Pattern */}
+      {/* Background Grid Pattern - Elegant */}
       <div className="absolute inset-0 pointer-events-none z-0">
-        <div className="absolute inset-0 opacity-[0.06]" style={{
+        <div className="absolute inset-0" style={{
           backgroundImage: `
-            linear-gradient(90deg, transparent 98%, rgba(6, 182, 212, 0.5) 100%),
-            linear-gradient(0deg, transparent 98%, rgba(6, 182, 212, 0.5) 100%)
+            linear-gradient(90deg, transparent 96%, rgba(6, 182, 212, 0.08) 98%, transparent 100%),
+            linear-gradient(0deg, transparent 96%, rgba(6, 182, 212, 0.08) 98%, transparent 100%),
+            linear-gradient(45deg, transparent 95%, rgba(139, 92, 246, 0.04) 96%, transparent 97%)
           `,
-          backgroundSize: '80px 80px',
+          backgroundSize: '120px 120px, 120px 120px, 170px 170px',
         }}></div>
       </div>
 
-      {/* Gradient Orbs */}
-      <div className="absolute inset-0 pointer-events-none z-0">
-        <div className="absolute top-1/4 right-0 w-[400px] h-[400px] bg-gradient-conic from-purple-500/10 via-blue-500/5 to-cyan-500/10 rounded-full blur-[100px] animate-pulse" style={{animationDuration: '10s'}}></div>
-        <div className="absolute bottom-0 left-1/4 w-[350px] h-[350px] bg-gradient-radial from-cyan-500/15 to-transparent rounded-full blur-[80px] animate-pulse" style={{animationDuration: '8s', animationDelay: '3s'}}></div>
+      {/* Elegant Gradient Orbs */}
+      <div className="absolute inset-0 pointer-events-none z-0 overflow-hidden">
+        {/* Primary Orb - Top Right */}
+        <div className="absolute -top-1/3 right-[-10%] w-[600px] h-[600px] bg-gradient-conic from-purple-400/8 via-blue-400/6 via-cyan-400/8 to-purple-400/8 rounded-full blur-[120px] animate-pulse" style={{animationDuration: '15s'}}></div>
+        
+        {/* Secondary Orb - Bottom Left */}
+        <div className="absolute -bottom-1/4 left-[-5%] w-[500px] h-[500px] bg-gradient-radial from-cyan-400/10 via-teal-400/6 to-transparent rounded-full blur-[100px] animate-pulse" style={{animationDuration: '12s', animationDelay: '2s'}}></div>
+        
+        {/* Tertiary Orb - Center */}
+        <div className="absolute top-1/3 left-1/2 -translate-x-1/2 w-[400px] h-[400px] bg-gradient-radial from-pink-300/5 via-purple-300/4 to-transparent rounded-full blur-[90px] animate-pulse" style={{animationDuration: '18s', animationDelay: '4s'}}></div>
       </div>
 
-      {/* Floating Particles */}
+      {/* Elegant Floating Particles */}
       <div className="absolute inset-0 pointer-events-none z-0">
         {particles.map((particle) => (
           <div
             key={particle.id}
-            className="absolute rounded-full bg-purple-400 animate-float"
+            className="absolute rounded-full animate-float"
             style={{
               left: `${particle.left}%`,
               top: `${particle.top}%`,
               width: `${particle.size}px`,
               height: `${particle.size}px`,
-              opacity: particle.opacity,
+              background: particle.id % 3 === 0 ? 'rgba(147, 112, 219, 0.5)' : particle.id % 3 === 1 ? 'rgba(6, 182, 212, 0.4)' : 'rgba(168, 85, 247, 0.45)',
+              opacity: particle.opacity * 0.8,
+              boxShadow: `0 0 ${particle.size * 2}px rgba(147, 112, 219, 0.3)`,
               animationDuration: `${particle.duration}s`,
               animationDelay: `${particle.delay}s`,
             }}
@@ -116,10 +137,24 @@ const Projects = () => {
         ))}
       </div>
 
-      {/* Decorative Lines */}
+      {/* Elegant Decorative Elements */}
       <div className="absolute inset-0 pointer-events-none z-0">
-        <div className="absolute top-20 left-0 w-1/3 h-px bg-gradient-to-r from-transparent via-cyan-500/30 to-transparent"></div>
-        <div className="absolute bottom-32 right-0 w-1/4 h-px bg-gradient-to-l from-transparent via-purple-500/30 to-transparent"></div>
+        {/* Flowing Line Top */}
+        <div className="absolute top-1/4 left-0 w-1/2 h-px bg-gradient-to-r from-transparent via-cyan-400/20 to-transparent blur-sm"></div>
+        
+        {/* Flowing Line Bottom */}
+        <div className="absolute bottom-1/3 right-0 w-2/5 h-px bg-gradient-to-l from-transparent via-purple-400/20 to-transparent blur-sm"></div>
+        
+        {/* Accent Dots - Top */}
+        <div className="absolute top-1/3 left-10 w-1.5 h-1.5 bg-cyan-400/40 rounded-full blur-sm"></div>
+        <div className="absolute top-2/3 right-20 w-1 h-1 bg-purple-400/30 rounded-full blur-sm"></div>
+        
+        {/* Subtle Diagonal Lines */}
+        <div className="absolute top-0 right-1/4 w-64 h-64 pointer-events-none" style={{
+          background: 'linear-gradient(135deg, rgba(6, 182, 212, 0.04) 0%, transparent 70%)',
+          borderRadius: '50%',
+          filter: 'blur(40px)'
+        }}></div>
       </div>
 
       {/* Content */}
@@ -128,14 +163,14 @@ const Projects = () => {
         {/* Header Section - Unique asymmetric layout */}
         <div className={`flex flex-col lg:flex-row lg:items-end lg:justify-between mb-16 gap-8 transition-all duration-700 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
           <div className="space-y-4">
-            <span className="text-cyan-400 text-sm uppercase tracking-[0.4em] font-semibold">Projects</span>
+            <span className="text-cyan-400 text-sm uppercase tracking-[0.4em] font-semibold">My Projects</span>
             <h2 className="text-5xl md:text-6xl lg:text-7xl xl:text-8xl font-bold tracking-tight">
               <span className="text-white">Selected </span>
               <span className="text-transparent bg-clip-text bg-gradient-to-r from-purple-400 via-pink-400 to-cyan-400 italic">Work</span>
             </h2>
           </div>
           <p className="text-gray-400 text-base md:text-lg max-w-md lg:text-right leading-relaxed">
-            A curated collection of projects showcasing my approach to design and problem-solving.
+           A collection of projects developed as I learn and grow as a developer.
           </p>
         </div>
 
@@ -151,7 +186,7 @@ const Projects = () => {
               
               {/* Sparkle Effects */}
               <div className="absolute inset-0 overflow-hidden">
-                {[...Array(8)].map((_, i) => (
+                {[...Array(12)].map((_, i) => (
                   <div 
                     key={i}
                     className="absolute w-1 h-1 bg-white rounded-full animate-pulse"
@@ -165,30 +200,136 @@ const Projects = () => {
                 ))}
               </div>
 
+              {/* Floating Circles Background Effect */}
+              <div className="absolute inset-0 overflow-hidden pointer-events-none">
+                <div className="absolute top-10 right-20 w-32 h-32 bg-pink-400/20 rounded-full blur-2xl"></div>
+                <div className="absolute bottom-20 left-16 w-40 h-40 bg-rose-300/15 rounded-full blur-3xl"></div>
+                <div className="absolute top-1/2 left-1/4 w-24 h-24 bg-pink-300/10 rounded-full blur-xl"></div>
+              </div>
+
               <div className="relative p-8 md:p-12 min-h-[400px] md:min-h-[500px] flex flex-col justify-between">
                 {/* Top Content */}
                 <div className="text-center">
                   <h3 className={`text-3xl md:text-4xl font-bold ${project.accentColor} mb-2`}>{project.title}</h3>
-                  <p className="text-gray-700 text-lg">{project.tagline}</p>
+                  <p className="text-pink-700 text-lg font-medium">{project.tagline}</p>
                 </div>
 
                 {/* Phone Mockups Placeholder */}
                 <div className="flex justify-center items-end gap-4 my-8 flex-1">
-                  <div className="w-24 md:w-32 h-48 md:h-64 bg-gray-900/80 rounded-3xl border-4 border-gray-800 shadow-2xl transform -rotate-6 translate-y-4">
-                    <div className="w-full h-full rounded-2xl bg-gradient-to-b from-gray-800 to-gray-900 flex items-center justify-center">
-                      <span className="text-gray-600 text-xs">Screen 1</span>
+                  {project.screens.map((screen, idx) => (
+                    <div 
+                      key={idx}
+                      className={`rounded-3xl border border-gray-800 shadow-3xl overflow-hidden p-1.5 bg-gray-900 w-36 md:w-48 h-72 md:h-96 ${
+                        idx === 0 ? 'transform -rotate-6 translate-y-4' :
+                        idx === 1 ? 'z-10' :
+                        'transform rotate-6 translate-y-4'
+                      }`}
+                    >
+                      <div className="w-full h-full rounded-[1.1rem] bg-gray-900 flex items-center justify-center overflow-hidden">
+                        {screen.image ? (
+                          <img 
+                            src={screen.image} 
+                            alt={screen.label}
+                            className="w-full h-full object-contain rounded-[1.1rem]"
+                          />
+                        ) : (
+                          <span className="text-gray-600 text-xs">{screen.label}</span>
+                        )}
+                      </div>
                     </div>
-                  </div>
-                  <div className="w-28 md:w-40 h-56 md:h-72 bg-gray-900/90 rounded-3xl border-4 border-gray-800 shadow-2xl z-10">
-                    <div className="w-full h-full rounded-2xl bg-gradient-to-b from-gray-800 to-gray-900 flex items-center justify-center">
-                      <span className="text-gray-600 text-xs">Main Screen</span>
+                  ))}
+                </div>
+
+                {/* Bottom Content */}
+                <div className="flex flex-col md:flex-row md:items-end md:justify-between gap-4">
+                  <div>
+                    <div className="flex items-center gap-3 mb-3">
+                      <span className="px-3 py-1 bg-pink-600/90 text-white text-xs font-medium rounded-full">{project.type}</span>
+                      <span className="text-pink-800 text-sm font-medium">{project.year}</span>
                     </div>
+                    <h4 className="text-2xl md:text-3xl font-bold text-pink-900">{project.title}</h4>
+                    <p className="text-pink-800 text-sm md:text-base mt-1 max-w-md">{project.description}</p>
                   </div>
-                  <div className="w-24 md:w-32 h-48 md:h-64 bg-gray-900/80 rounded-3xl border-4 border-gray-800 shadow-2xl transform rotate-6 translate-y-4">
-                    <div className="w-full h-full rounded-2xl bg-gradient-to-b from-gray-800 to-gray-900 flex items-center justify-center">
-                      <span className="text-gray-600 text-xs">Screen 2</span>
+                  <div className="flex items-center gap-2 text-pink-700 group-hover:text-pink-900 transition-colors">
+                    <span className="text-sm font-medium">View Project</span>
+                    <svg className="w-5 h-5 transform group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
+                    </svg>
+                  </div>
+                </div>
+              </div>
+
+              {/* Hover Overlay */}
+              <div className="absolute inset-0 bg-black/0 group-hover:bg-black/5 transition-colors duration-300"></div>
+            </div>
+          ))}
+        </div>
+
+        {/* Secondary Projects - Full Width Stacked */}
+        <div className={`flex flex-col gap-8 transition-all duration-700 delay-400 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-12'}`}>
+          {projects.filter(p => !p.featured).map((project, index) => (
+            <div 
+              key={project.id}
+              className="group relative rounded-3xl overflow-hidden cursor-pointer"
+              style={{ transitionDelay: `${400 + index * 100}ms` }}
+            >
+              {/* Card Background */}
+              <div className={`absolute inset-0 bg-gradient-to-br ${project.gradient} opacity-90`}></div>
+              
+              {/* Sparkle Effects */}
+              <div className="absolute inset-0 overflow-hidden">
+                {[...Array(10)].map((_, i) => (
+                  <div 
+                    key={i}
+                    className="absolute w-1 h-1 bg-white rounded-full animate-pulse"
+                    style={{
+                      left: `${20 + Math.random() * 60}%`,
+                      top: `${20 + Math.random() * 60}%`,
+                      animationDelay: `${i * 0.3}s`,
+                      opacity: 0.5,
+                    }}
+                  ></div>
+                ))}
+              </div>
+
+              {/* Floating Circles Background Effect */}
+              <div className="absolute inset-0 overflow-hidden pointer-events-none">
+                <div className="absolute top-10 right-20 w-32 h-32 bg-cyan-400/20 rounded-full blur-2xl"></div>
+                <div className="absolute bottom-20 left-16 w-40 h-40 bg-teal-300/15 rounded-full blur-3xl"></div>
+                <div className="absolute top-1/2 left-1/4 w-24 h-24 bg-cyan-300/10 rounded-full blur-xl"></div>
+              </div>
+
+              <div className="relative p-8 md:p-12 min-h-[400px] md:min-h-[500px] flex flex-col justify-between">
+                {/* Top Content */}
+                <div className="text-center">
+                  <h3 className={`text-3xl md:text-4xl font-bold ${project.accentColor} mb-2`}>{project.title}</h3>
+                  <p className="text-gray-700 text-lg font-medium">{project.tagline}</p>
+                </div>
+
+                {/* Phone Mockups Placeholder */}
+                <div className="flex justify-center items-end gap-4 my-8 flex-1">
+                  {project.screens.map((screen, idx) => (
+                    <div 
+                      key={idx}
+                      className={`rounded-3xl border border-gray-800 shadow-2xl overflow-hidden p-0.5 bg-gray-900 w-36 md:w-48 h-72 md:h-96 ${
+                        idx === 0 ? 'transform -rotate-6 translate-y-4' :
+                        idx === 1 ? 'z-10' :
+                        'transform rotate-6 translate-y-4'
+                      }`}
+                    >
+                      <div className="w-full h-full rounded-[1.15rem] bg-gray-900 flex items-center justify-center overflow-hidden">
+                        {screen.image ? (
+                          <img 
+                            src={screen.image} 
+                            alt={screen.label}
+                            className="w-full h-full object-contain rounded-[1.15rem]"
+                          />
+                        ) : (
+                          <span className="text-gray-600 text-xs">{screen.label}</span>
+                        )}
+                      </div>
                     </div>
-                  </div>
+                  ))}
                 </div>
 
                 {/* Bottom Content */}
@@ -204,82 +345,6 @@ const Projects = () => {
                   <div className="flex items-center gap-2 text-gray-700 group-hover:text-gray-900 transition-colors">
                     <span className="text-sm font-medium">View Project</span>
                     <svg className="w-5 h-5 transform group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
-                    </svg>
-                  </div>
-                </div>
-              </div>
-
-              {/* Hover Overlay */}
-              <div className="absolute inset-0 bg-black/0 group-hover:bg-black/5 transition-colors duration-300"></div>
-            </div>
-          ))}
-        </div>
-
-        {/* Secondary Projects - Two Column Grid */}
-        <div className={`grid md:grid-cols-2 gap-6 transition-all duration-700 delay-400 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-12'}`}>
-          {projects.filter(p => !p.featured).map((project, index) => (
-            <div 
-              key={project.id}
-              className="group relative rounded-2xl overflow-hidden cursor-pointer"
-              style={{ transitionDelay: `${400 + index * 100}ms` }}
-            >
-              {/* Card Background */}
-              <div className={`absolute inset-0 bg-gradient-to-br ${project.gradient} opacity-85`}></div>
-              
-              {/* Sparkle Effects */}
-              <div className="absolute inset-0 overflow-hidden">
-                {[...Array(5)].map((_, i) => (
-                  <div 
-                    key={i}
-                    className="absolute w-1 h-1 bg-white rounded-full animate-pulse"
-                    style={{
-                      left: `${20 + Math.random() * 60}%`,
-                      top: `${20 + Math.random() * 60}%`,
-                      animationDelay: `${i * 0.4}s`,
-                      opacity: 0.5,
-                    }}
-                  ></div>
-                ))}
-              </div>
-
-              <div className="relative p-6 md:p-8 min-h-[320px] flex flex-col justify-between">
-                {/* Top Content */}
-                <div className="text-center">
-                  <h3 className={`text-xl md:text-2xl font-bold ${project.accentColor} mb-1`}>{project.title}</h3>
-                  <p className="text-gray-600 text-sm">{project.tagline}</p>
-                </div>
-
-                {/* Phone Mockups Placeholder */}
-                <div className="flex justify-center items-end gap-3 my-6 flex-1">
-                  <div className="w-16 md:w-20 h-32 md:h-40 bg-gray-900/80 rounded-2xl border-2 border-gray-800 shadow-xl transform -rotate-3">
-                    <div className="w-full h-full rounded-xl bg-gradient-to-b from-gray-800 to-gray-900 flex items-center justify-center">
-                      <span className="text-gray-600 text-[10px]">Screen</span>
-                    </div>
-                  </div>
-                  <div className="w-20 md:w-24 h-40 md:h-48 bg-gray-900/90 rounded-2xl border-2 border-gray-800 shadow-xl z-10">
-                    <div className="w-full h-full rounded-xl bg-gradient-to-b from-gray-800 to-gray-900 flex items-center justify-center">
-                      <span className="text-gray-600 text-[10px]">Main</span>
-                    </div>
-                  </div>
-                  <div className="w-16 md:w-20 h-32 md:h-40 bg-gray-900/80 rounded-2xl border-2 border-gray-800 shadow-xl transform rotate-3">
-                    <div className="w-full h-full rounded-xl bg-gradient-to-b from-gray-800 to-gray-900 flex items-center justify-center">
-                      <span className="text-gray-600 text-[10px]">Screen</span>
-                    </div>
-                  </div>
-                </div>
-
-                {/* Bottom Content */}
-                <div className="flex items-end justify-between">
-                  <div>
-                    <div className="flex items-center gap-2 mb-2">
-                      <span className="px-2 py-1 bg-gray-900/80 text-white text-[10px] font-medium rounded-full">{project.type}</span>
-                      <span className="text-gray-600 text-xs">{project.year}</span>
-                    </div>
-                    <h4 className="text-lg md:text-xl font-bold text-gray-900">{project.title}</h4>
-                  </div>
-                  <div className="flex items-center gap-1 text-gray-600 group-hover:text-gray-800 transition-colors">
-                    <svg className="w-4 h-4 transform group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
                     </svg>
                   </div>
