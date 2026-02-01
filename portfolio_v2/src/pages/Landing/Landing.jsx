@@ -43,7 +43,7 @@ const Landing = () => {
   }, []);
 
   return (
-    <section id="home" className="min-h-screen flex flex-col justify-between bg-gradient-to-br from-slate-950 via-gray-900 to-black text-white p-8 md:p-12 lg:p-16 relative overflow-hidden">
+    <section id="home" className="min-h-screen flex flex-col justify-between text-white p-8 md:p-12 lg:p-16 relative">
       {/* Circuit Board Pattern */}
       <div className="absolute inset-0 pointer-events-none z-0">
         <div className="absolute inset-0 opacity-10" style={{
