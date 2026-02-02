@@ -10,56 +10,44 @@ const Certification = () => {
   const certifications = [
     {
       id: 1,
-      title: "Certification Name",
-      issuer: "Issuing Organization",
-      date: "Month Year",
-      credentialId: "XXXX-XXXX-XXXX",
-      icon: "🎓",
+      title: "National Programming Challenge 2024",
+      image: "/certificates/CodeChum.png",
+      icon: "🏆",
       color: "cyan"
     },
     {
       id: 2,
-      title: "Certification Name",
-      issuer: "Issuing Organization",
-      date: "Month Year",
-      credentialId: "XXXX-XXXX-XXXX",
-      icon: "📜",
+      title: "PowerPoint 2019 Associate",
+      image: "/certificates/microsoftppt.jpg",
+      icon: "📊",
       color: "blue"
     },
     {
       id: 3,
-      title: "Certification Name",
-      issuer: "Issuing Organization",
-      date: "Month Year",
-      credentialId: "XXXX-XXXX-XXXX",
-      icon: "🏆",
+      title: "Oracle Java Foundations",
+      image: "/certificates/oracle.jpg",
+      icon: "☕",
       color: "purple"
     },
     {
       id: 4,
-      title: "Certification Name",
-      issuer: "Issuing Organization",
-      date: "Month Year",
-      credentialId: "XXXX-XXXX-XXXX",
-      icon: "⭐",
+      title: "IT Specialist in Databases",
+      image: "/certificates/databasecert.png",
+      icon: "🗄️",
       color: "pink"
     },
     {
       id: 5,
-      title: "Certification Name",
-      issuer: "Issuing Organization",
-      date: "Month Year",
-      credentialId: "XXXX-XXXX-XXXX",
-      icon: "🎯",
+      title: "HackForGov 2025 - CALABARZON",
+      image: "/certificates/hack4gov.jpg",
+      icon: "🚀",
       color: "cyan"
     },
     {
       id: 6,
-      title: "Certification Name",
-      issuer: "Issuing Organization",
-      date: "Month Year",
-      credentialId: "XXXX-XXXX-XXXX",
-      icon: "✨",
+      title: "National Programming Challenge 2025",
+      image: "/certificates/codechum2.jpg",
+      icon: "🥇",
       color: "purple"
     },
   ];
@@ -273,51 +261,27 @@ const Certification = () => {
             return (
               <div
                 key={cert.id}
-                className={`group relative p-6 rounded-2xl border ${colorClasses.border} bg-gradient-to-br ${colorClasses.bg} to-transparent backdrop-blur-sm ${colorClasses.hoverBorder} transition-all duration-300 hover:scale-105 hover:shadow-xl cursor-pointer`}
+                className={`group relative p-6 rounded-2xl border ${colorClasses.border} bg-gradient-to-br ${colorClasses.bg} to-transparent backdrop-blur-sm ${colorClasses.hoverBorder} transition-all duration-300 hover:scale-105 hover:shadow-xl cursor-pointer flex flex-col items-center text-center`}
                 style={{
                   transitionDelay: `${200 + index * 100}ms`
                 }}
               >
-                {/* Certificate Icon */}
-                <div className={`w-16 h-16 rounded-xl ${colorClasses.iconBg} flex items-center justify-center mb-4 ${colorClasses.hoverIconBg} transition-colors text-3xl`}>
-                  {cert.icon}
+                {/* Certificate Image */}
+                <div className="w-full rounded-lg mb-4 overflow-hidden bg-gray-900 p-2">
+                  <img 
+                    src={cert.image} 
+                    alt={cert.title}
+                    className="w-full h-auto object-contain hover:scale-105 transition-transform duration-300"
+                  />
                 </div>
 
                 {/* Certificate Title */}
-                <h3 className="text-xl font-bold text-white mb-2">
+                <h3 className="text-sm font-bold text-white text-center">
                   {cert.title}
                 </h3>
 
-                {/* Issuer */}
-                <p className={`text-sm ${colorClasses.text} font-medium mb-3`}>
-                  {cert.issuer}
-                </p>
-
-                {/* Date */}
-                <div className="flex items-center gap-2 text-gray-400 text-sm mb-3">
-                  <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
-                  </svg>
-                  <span>{cert.date}</span>
-                </div>
-
-                {/* Credential ID */}
-                <div className="pt-3 border-t border-gray-800/50">
-                  <p className="text-xs text-gray-500 mb-1">Credential ID</p>
-                  <p className="text-xs text-gray-400 font-mono">{cert.credentialId}</p>
-                </div>
-
                 {/* Hover Effect Overlay */}
                 <div className="absolute inset-0 bg-gradient-to-br from-white/0 to-white/0 group-hover:from-white/5 group-hover:to-white/0 rounded-2xl transition-all duration-300 pointer-events-none"></div>
-
-                {/* Verification Badge */}
-                <div className="absolute top-4 right-4 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                  <div className={`w-8 h-8 rounded-full ${colorClasses.iconBg} flex items-center justify-center`}>
-                    <svg className={`w-5 h-5 ${colorClasses.text}`} fill="currentColor" viewBox="0 0 20 20">
-                      <path fillRule="evenodd" d="M6.267 3.455a3.066 3.066 0 001.745-.723 3.066 3.066 0 013.976 0 3.066 3.066 0 001.745.723 3.066 3.066 0 012.812 2.812c.051.643.304 1.254.723 1.745a3.066 3.066 0 010 3.976 3.066 3.066 0 00-.723 1.745 3.066 3.066 0 01-2.812 2.812 3.066 3.066 0 00-1.745.723 3.066 3.066 0 01-3.976 0 3.066 3.066 0 00-1.745-.723 3.066 3.066 0 01-2.812-2.812 3.066 3.066 0 00-.723-1.745 3.066 3.066 0 010-3.976 3.066 3.066 0 00.723-1.745 3.066 3.066 0 012.812-2.812zm7.44 5.252a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" />
-                    </svg>
-                  </div>
-                </div>
               </div>
             );
           })}
