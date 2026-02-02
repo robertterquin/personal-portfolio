@@ -92,6 +92,8 @@ const Projects = () => {
       id="projects" 
       className="min-h-screen text-white py-24 px-8 md:px-16 lg:px-24 relative overflow-hidden"
     >
+      {/* Page Transition Line Top */}
+      <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-purple-500/40 to-transparent pointer-events-none z-20"></div>
       {/* Background Grid Pattern - Elegant */}
       <div className="absolute inset-0 pointer-events-none z-0">
         <div className="absolute inset-0" style={{
@@ -392,6 +394,9 @@ const Projects = () => {
           </div>
         </div>
       </div>
+
+      {/* Page Transition Line Bottom */}
+      <div className="absolute bottom-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-purple-500/40 to-transparent pointer-events-none z-20"></div>
     </section>
   );
 };

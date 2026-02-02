@@ -50,8 +50,8 @@ const About = () => {
       ref={sectionRef}
       id="about" 
       className="min-h-screen text-white py-32 px-8 md:px-16 lg:px-24 relative flex items-center"
-    >
-      {/* Grid Pattern Background */}
+    >      {/* Page Transition Line Top */}
+      <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-blue-500/40 to-transparent pointer-events-none"></div>      {/* Grid Pattern Background */}
       <div className="absolute inset-0 pointer-events-none z-0">
         <div className="absolute inset-0 opacity-[0.08]" style={{
           backgroundImage: `
@@ -163,6 +163,9 @@ const About = () => {
           </div>
         </div>
       </div>
+
+      {/* Page Transition Line Bottom */}
+      <div className="absolute bottom-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-blue-500/40 to-transparent pointer-events-none"></div>
     </section>
   );
 };

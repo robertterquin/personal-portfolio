@@ -217,6 +217,9 @@ const Landing = () => {
           </nav>
         </div>
       </div>
+
+      {/* Page Transition Line */}
+      <div className="absolute bottom-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-cyan-500/40 to-transparent pointer-events-none"></div>
     </section>
   );
 };
