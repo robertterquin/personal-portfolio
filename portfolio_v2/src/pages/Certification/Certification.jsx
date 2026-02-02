@@ -165,30 +165,42 @@ const Certification = () => {
               animationDelay: `${shape.delay}s`,
             }}
           >
-            {/* Rotating hexagon outline */}
+            {/* Outer rotating hexagon outline */}
             <div className="absolute inset-0" style={{
               clipPath: 'polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%)',
-              border: `2px solid rgba(139, 92, 246, 0.15)`,
+              border: `2px solid rgba(139, 92, 246, 0.35)`,
               animation: `spin ${shape.duration * 1.3}s linear infinite`,
+              boxShadow: `0 0 20px rgba(139, 92, 246, 0.25)`,
             }}></div>
             
             {/* Inner rotating hexagon */}
             <div className="absolute inset-4" style={{
               clipPath: 'polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%)',
-              border: `1px solid rgba(6, 182, 212, 0.1)`,
+              border: `1.5px solid rgba(6, 182, 212, 0.28)`,
               animation: `spin-reverse ${shape.duration * 1.6}s linear infinite`,
+              boxShadow: `0 0 15px rgba(6, 182, 212, 0.2)`,
+            }}></div>
+
+            {/* Middle accent hexagon */}
+            <div className="absolute inset-2" style={{
+              clipPath: 'polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%)',
+              border: `1px solid rgba(236, 72, 153, 0.15)`,
+              animation: `spin ${shape.duration * 0.8}s linear infinite`,
             }}></div>
             
-            {/* Center accent dot */}
-            <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-1 h-1 bg-purple-400/30 rounded-full blur-sm"></div>
+            {/* Center accent dot with glow */}
+            <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-2 h-2 bg-purple-400/60 rounded-full blur-sm" style={{
+              boxShadow: `0 0 12px rgba(139, 92, 246, 0.8), 0 0 24px rgba(139, 92, 246, 0.4)`
+            }}></div>
           </div>
         ))}
       </div>
 
       {/* Elegant Gradient Orbs */}
       <div className="absolute inset-0 pointer-events-none z-0 overflow-hidden">
-        <div className="absolute -top-1/3 left-1/4 w-[600px] h-[600px] bg-gradient-conic from-purple-400/10 via-blue-400/6 to-cyan-400/10 rounded-full blur-[130px] animate-pulse" style={{animationDuration: '18s'}}></div>
-        <div className="absolute -bottom-1/4 right-1/4 w-[500px] h-[500px] bg-gradient-radial from-pink-400/12 via-purple-400/6 to-transparent rounded-full blur-[110px] animate-pulse" style={{animationDuration: '14s', animationDelay: '3s'}}></div>
+        <div className="absolute -top-1/3 left-1/4 w-[600px] h-[600px] bg-gradient-conic from-purple-400/15 via-blue-400/10 to-cyan-400/15 rounded-full blur-[130px] animate-pulse" style={{animationDuration: '18s'}}></div>
+        <div className="absolute -bottom-1/4 right-1/4 w-[500px] h-[500px] bg-gradient-radial from-pink-400/18 via-purple-400/10 to-transparent rounded-full blur-[110px] animate-pulse" style={{animationDuration: '14s', animationDelay: '3s'}}></div>
+        <div className="absolute top-1/2 right-0 w-[400px] h-[400px] bg-gradient-conic from-cyan-400/8 via-blue-400/5 to-transparent rounded-full blur-[100px] animate-pulse" style={{animationDuration: '20s', animationDelay: '6s'}}></div>
       </div>
 
       {/* Enhanced Floating Particles */}
@@ -202,9 +214,9 @@ const Certification = () => {
               top: `${particle.top}%`,
               width: `${particle.size}px`,
               height: `${particle.size}px`,
-              background: particle.id % 4 === 0 ? 'rgba(139, 92, 246, 0.5)' : particle.id % 4 === 1 ? 'rgba(6, 182, 212, 0.4)' : particle.id % 4 === 2 ? 'rgba(59, 130, 246, 0.45)' : 'rgba(236, 72, 153, 0.35)',
-              opacity: particle.opacity,
-              boxShadow: `0 0 ${particle.size * 2.5}px rgba(139, 92, 246, 0.4)`,
+              background: particle.id % 4 === 0 ? 'rgba(139, 92, 246, 0.7)' : particle.id % 4 === 1 ? 'rgba(6, 182, 212, 0.6)' : particle.id % 4 === 2 ? 'rgba(59, 130, 246, 0.65)' : 'rgba(236, 72, 153, 0.55)',
+              opacity: particle.opacity * 1.2,
+              boxShadow: `0 0 ${particle.size * 3}px ${particle.id % 4 === 0 ? 'rgba(139, 92, 246, 0.6)' : particle.id % 4 === 1 ? 'rgba(6, 182, 212, 0.5)' : particle.id % 4 === 2 ? 'rgba(59, 130, 246, 0.5)' : 'rgba(236, 72, 153, 0.5)'}`,
               animationDuration: `${particle.duration}s`,
               animationDelay: `${particle.delay}s`,
             }}
