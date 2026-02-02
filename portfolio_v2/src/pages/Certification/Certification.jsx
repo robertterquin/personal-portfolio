@@ -53,69 +53,16 @@ const Certification = () => {
   ];
 
   const getColorClasses = (color) => {
-    const colors = {
-      // CodeChum: Purple/Blue with gold accents
-      codechum: {
-        border: 'border-purple-500/40',
-        bg: 'from-purple-600/15',
-        hoverBorder: 'group-hover:border-purple-400/70',
-        text: 'text-purple-300',
-        gradientFrom: 'from-purple-600',
-        gradientTo: 'to-blue-600',
-        accentColor: '#fbbf24',
-      },
-      // Microsoft: Brown/Tan/Gold
-      microsoft: {
-        border: 'border-amber-700/40',
-        bg: 'from-amber-900/15',
-        hoverBorder: 'group-hover:border-amber-600/70',
-        text: 'text-amber-200',
-        gradientFrom: 'from-amber-800',
-        gradientTo: 'to-amber-600',
-        accentColor: '#fcd34d',
-      },
-      // Oracle: Black/White/Red
-      oracle: {
-        border: 'border-red-600/40',
-        bg: 'from-red-950/15',
-        hoverBorder: 'group-hover:border-red-500/70',
-        text: 'text-red-300',
-        gradientFrom: 'from-gray-900',
-        gradientTo: 'to-red-700',
-        accentColor: '#ef4444',
-      },
-      // IT Specialist: Blue with gold accents
-      itspecialist: {
-        border: 'border-blue-600/40',
-        bg: 'from-blue-700/15',
-        hoverBorder: 'group-hover:border-blue-400/70',
-        text: 'text-blue-300',
-        gradientFrom: 'from-blue-700',
-        gradientTo: 'to-blue-600',
-        accentColor: '#fbbf24',
-      },
-      // HackForGov: Brown/Maroon with gold
-      hackforgov: {
-        border: 'border-red-800/40',
-        bg: 'from-red-900/15',
-        hoverBorder: 'group-hover:border-red-700/70',
-        text: 'text-red-200',
-        gradientFrom: 'from-red-900',
-        gradientTo: 'to-amber-700',
-        accentColor: '#fbbf24',
-      },
-      // CodeChum 2025: Purple/Blue with gold
-      codechum2: {
-        border: 'border-purple-500/40',
-        bg: 'from-purple-700/15',
-        hoverBorder: 'group-hover:border-purple-400/70',
-        text: 'text-purple-300',
-        gradientFrom: 'from-purple-700',
-        gradientTo: 'to-blue-700',
-        accentColor: '#fbbf24',
-      },
+    // Unified color scheme - all certificates use the same monochrome + white text style
+    return {
+      border: 'border-gray-700/50',
+      bg: 'from-gray-800/20',
+      hoverBorder: 'group-hover:border-gray-600/80',
+      text: 'text-gray-300',
+      gradientFrom: 'from-gray-800',
+      gradientTo: 'to-gray-700',
+      accentColor: '#ffffff',
     };
-    return colors[color];
   };
 
   useEffect(() => {
