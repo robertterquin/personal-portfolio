@@ -15,7 +15,7 @@ const Projects = () => {
       type: "Health App",
       year: "2025",
       featured: true,
-      gradient: "from-pink-200 via-rose-100 to-pink-50",
+      gradient: "from-pink-100 via-rose-50 to-pink-50",
       accentColor: "text-pink-600",
       screens: [
         { image: "/oncosense-1.png", label: "Welcome Screen" },
@@ -31,12 +31,12 @@ const Projects = () => {
       type: "Lifestyle App",
       year: "2025",
       featured: false,
-      gradient: "from-cyan-200 via-blue-100 to-teal-100",
-      accentColor: "text-cyan-500",
+      gradient: "from-blue-100 via-cyan-50 to-teal-50",
+      accentColor: "text-blue-600",
       screens: [
-        { image: null, label: "Screen" },
-        { image: null, label: "Main" },
-        { image: null, label: "Screen" }
+        { image: "/chainly-1.png", label: "Welcome Screen" },
+        { image: "/chainly-2.png", label: "Dashboard" },
+        { image: "/chainly-3.png", label: "Tracker" }
       ]
     },
     {
@@ -47,8 +47,8 @@ const Projects = () => {
       type: "Fitness App",
       year: "2025",
       featured: false,
-      gradient: "from-blue-200 via-cyan-100 to-blue-100",
-      accentColor: "text-blue-500",
+      gradient: "from-orange-100 via-blue-50 to-cyan-50",
+      accentColor: "text-orange-600",
       screens: [
         { image: "/ridetrack-1.png", label: "Welcome Screen" },
         { image: "/ridetrack-2.png", label: "Dashboard" },
@@ -317,16 +317,16 @@ const Projects = () => {
 
               {/* Floating Circles Background Effect */}
               <div className="absolute inset-0 overflow-hidden pointer-events-none">
-                <div className="absolute top-10 right-20 w-32 h-32 bg-cyan-400/20 rounded-full blur-2xl"></div>
-                <div className="absolute bottom-20 left-16 w-40 h-40 bg-teal-300/15 rounded-full blur-3xl"></div>
-                <div className="absolute top-1/2 left-1/4 w-24 h-24 bg-cyan-300/10 rounded-full blur-xl"></div>
+                <div className={`absolute top-10 right-20 w-32 h-32 rounded-full blur-2xl ${project.id === 2 ? 'bg-blue-400/20' : 'bg-orange-400/20'}`}></div>
+                <div className={`absolute bottom-20 left-16 w-40 h-40 rounded-full blur-3xl ${project.id === 2 ? 'bg-cyan-300/15' : 'bg-orange-300/15'}`}></div>
+                <div className={`absolute top-1/2 left-1/4 w-24 h-24 rounded-full blur-xl ${project.id === 2 ? 'bg-teal-300/10' : 'bg-orange-300/10'}`}></div>
               </div>
 
               <div className="relative p-8 md:p-12 min-h-[400px] md:min-h-[500px] flex flex-col justify-between">
                 {/* Top Content */}
                 <div className="text-center">
                   <h3 className={`text-3xl md:text-4xl font-bold ${project.accentColor} mb-2`}>{project.title}</h3>
-                  <p className="text-gray-700 text-lg font-medium">{project.tagline}</p>
+                  <p className={`text-lg font-medium ${project.id === 2 ? 'text-blue-700' : 'text-orange-700'}`}>{project.tagline}</p>
                 </div>
 
                 {/* Phone Mockups Placeholder */}
@@ -359,13 +359,13 @@ const Projects = () => {
                 <div className="flex flex-col md:flex-row md:items-end md:justify-between gap-4">
                   <div>
                     <div className="flex items-center gap-3 mb-3">
-                      <span className="px-3 py-1 bg-gray-900/80 text-white text-xs font-medium rounded-full">{project.type}</span>
-                      <span className="text-gray-700 text-sm">{project.year}</span>
+                      <span className={`px-3 py-1 ${project.id === 2 ? 'bg-blue-600' : 'bg-orange-600'} text-white text-xs font-medium rounded-full`}>{project.type}</span>
+                      <span className={`text-sm font-medium ${project.id === 2 ? 'text-blue-800' : 'text-orange-800'}`}>{project.year}</span>
                     </div>
-                    <h4 className="text-2xl md:text-3xl font-bold text-gray-900">{project.title}</h4>
-                    <p className="text-gray-700 text-sm md:text-base mt-1 max-w-md">{project.description}</p>
+                    <h4 className={`text-2xl md:text-3xl font-bold ${project.id === 2 ? 'text-blue-900' : 'text-orange-900'}`}>{project.title}</h4>
+                    <p className={`text-sm md:text-base mt-1 max-w-md ${project.id === 2 ? 'text-blue-800' : 'text-orange-800'}`}>{project.description}</p>
                   </div>
-                  <div className="flex items-center gap-2 text-gray-700 group-hover:text-gray-900 transition-colors">
+                  <div className={`flex items-center gap-2 transition-colors ${project.id === 2 ? 'text-blue-700 group-hover:text-blue-900' : 'text-orange-700 group-hover:text-orange-900'}`}>
                     <span className="text-sm font-medium">View Project</span>
                     <svg className="w-5 h-5 transform group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
