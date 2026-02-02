@@ -44,16 +44,40 @@ const Landing = () => {
 
   return (
     <section id="home" className="min-h-screen w-full flex flex-col text-white relative overflow-hidden">
-      {/* Animated Background Grid */}
+      {/* Animated Background - Geometric Shapes */}
       <div className="absolute inset-0 pointer-events-none z-0">
-        <div className="absolute inset-0" style={{
-          backgroundImage: `
-            linear-gradient(90deg, transparent 96%, rgba(6, 182, 212, 0.08) 98%, transparent 100%),
-            linear-gradient(0deg, transparent 96%, rgba(6, 182, 212, 0.08) 98%, transparent 100%),
-            linear-gradient(45deg, transparent 95%, rgba(139, 92, 246, 0.04) 96%, transparent 97%)
-          `,
-          backgroundSize: '120px 120px, 120px 120px, 170px 170px',
-        }}></div>
+        {shapes.map((shape) => (
+          <div
+            key={shape.id}
+            className="absolute"
+            style={{
+              left: `${shape.left}%`,
+              top: `${shape.top}%`,
+              width: `${shape.size}px`,
+              height: `${shape.size}px`,
+              transform: `translate(-50%, -50%) rotate(${shape.rotation}deg)`,
+              animation: `float ${shape.duration}s ease-in-out infinite`,
+              animationDelay: `${shape.delay}s`,
+            }}
+          >
+            {/* Rotating square outline */}
+            <div className="absolute inset-0" style={{
+              border: `2px solid rgba(6, 182, 212, 0.15)`,
+              borderRadius: '20%',
+              animation: `spin ${shape.duration * 1.2}s linear infinite`,
+            }}></div>
+            
+            {/* Inner rotating square */}
+            <div className="absolute inset-2" style={{
+              border: `1px solid rgba(147, 112, 219, 0.1)`,
+              borderRadius: '25%',
+              animation: `spin-reverse ${shape.duration * 1.5}s linear infinite`,
+            }}></div>
+            
+            {/* Center accent dot */}
+            <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-1 h-1 bg-cyan-400/30 rounded-full blur-sm"></div>
+          </div>
+        ))}
       </div>
 
       {/* Elegant Gradient Orbs */}
