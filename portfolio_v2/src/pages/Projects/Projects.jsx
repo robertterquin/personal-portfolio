@@ -189,7 +189,7 @@ const Projects = () => {
                   <div className="text-sm text-gray-400">Featured Works</div>
                 </div>
                 <div className="p-4 rounded-lg border border-gray-800/50 bg-gradient-to-br from-purple-500/5 to-transparent backdrop-blur-sm hover:border-purple-500/30 transition-colors">
-                  <div className="text-2xl font-bold text-purple-400">2025</div>
+                  <div className="text-2xl font-bold text-purple-400">2026</div>
                   <div className="text-sm text-gray-400">Current Year</div>
                 </div>
               </div>
