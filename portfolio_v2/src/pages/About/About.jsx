@@ -140,12 +140,28 @@ const About = () => {
             </div>
           </div>
 
-          {/* Right Column - Description with unique positioning */}
-          <div className={`space-y-10 lg:pt-24 transition-all duration-700 delay-200 ${isVisible ? 'opacity-100 translate-x-0' : 'opacity-0 translate-x-16'}`}>
+          {/* Right Column - Description with Profile Image */}
+          <div className={`space-y-10 transition-all duration-700 delay-200 ${isVisible ? 'opacity-100 translate-x-0' : 'opacity-0 translate-x-16'}`}>
+            {/* Profile Image */}
+            <div className="flex justify-center mb-8">
+              <div className="w-48 h-48 rounded-full border-2 border-cyan-500/50 overflow-hidden ring-2 ring-cyan-500/20 bg-slate-800 flex-shrink-0">
+                <img 
+                  src="/profile.jpg" 
+                  alt="Robert Terquin Laqui" 
+                  className="w-full h-full object-cover"
+                  onError={(e) => {
+                    e.target.style.display = 'none';
+                    e.target.parentElement.innerHTML = '<div class="w-full h-full bg-gradient-to-br from-cyan-500 to-blue-600 flex items-center justify-center"><span class="text-5xl font-bold text-white">RT</span></div>';
+                  }}
+                />
+              </div>
+            </div>
+
+            {/* Description Text */}
             <div className="space-y-8">
               <p className="text-xl md:text-2xl lg:text-3xl text-gray-200 leading-relaxed font-light">
                 Hi, I'm <span className="text-white font-semibold">Robert Terquin Laqui</span>, a{' '}
-                <span className="text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 to-blue-500 font-semibold">Mobile Developer</span> with{' '}
+                <span className="text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 to-blue-500 font-semibold">Full Stack Developer</span> with{' '}
                 <span className="text-transparent bg-clip-text bg-gradient-to-r from-purple-400 to-pink-400 font-semibold">2+ years</span> of experience.
               </p>
               

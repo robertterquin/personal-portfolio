@@ -110,29 +110,7 @@ const Landing = () => {
       {/* Content Container - Full Height */}
       <div className="relative z-10 w-full h-full flex flex-col justify-between p-6 md:p-10 lg:p-16">
         
-        {/* Header with Profile */}
-        <div className="flex items-center justify-between">
-          <div className="flex items-center gap-6">
-            <div className="w-24 h-24 rounded-full border-2 border-cyan-500/50 overflow-hidden ring-2 ring-cyan-500/20 bg-slate-800 flex-shrink-0">
-              <img 
-                src="/profile.jpg" 
-                alt="Robert Terquin Laqui" 
-                className="w-full h-full object-cover"
-                onError={(e) => {
-                  e.target.style.display = 'none';
-                  e.target.parentElement.innerHTML = '<div class="w-full h-full bg-gradient-to-br from-cyan-500 to-blue-600 flex items-center justify-center"><span class="text-4xl font-bold text-white">RT</span></div>';
-                }}
-              />
-            </div>
-            <div>
-              <p className="text-sm text-cyan-400 uppercase tracking-wider font-semibold">Full Stack Developer</p>
-              <h2 className="text-2xl font-bold text-white">Robert Terquin Laqui</h2>
-            </div>
-          </div>
 
-          {/* Status Badge */}
-          
-        </div>
 
         {/* Main Hero Section - Centered */}
         <div className="flex-1 flex flex-col items-center justify-center text-center">

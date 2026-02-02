@@ -13,78 +13,106 @@ const Certification = () => {
       title: "National Programming Challenge 2024",
       image: "/certificates/CodeChum.png",
       icon: "🏆",
-      color: "cyan"
+      color: "codechum"
     },
     {
       id: 2,
       title: "PowerPoint 2019 Associate",
       image: "/certificates/microsoftppt.jpg",
       icon: "📊",
-      color: "blue"
+      color: "microsoft"
     },
     {
       id: 3,
       title: "Oracle Java Foundations",
       image: "/certificates/oracle.jpg",
       icon: "☕",
-      color: "purple"
+      color: "oracle"
     },
     {
       id: 4,
       title: "IT Specialist in Databases",
       image: "/certificates/databasecert.png",
       icon: "🗄️",
-      color: "pink"
+      color: "itspecialist"
     },
     {
       id: 5,
       title: "HackForGov 2025 - CALABARZON",
       image: "/certificates/hack4gov.jpg",
       icon: "🚀",
-      color: "cyan"
+      color: "hackforgov"
     },
     {
       id: 6,
       title: "National Programming Challenge 2025",
       image: "/certificates/codechum2.jpg",
       icon: "🥇",
-      color: "purple"
+      color: "codechum2"
     },
   ];
 
   const getColorClasses = (color) => {
     const colors = {
-      cyan: {
-        border: 'border-cyan-500/30',
-        bg: 'from-cyan-500/10',
-        hoverBorder: 'group-hover:border-cyan-500/60',
-        text: 'text-cyan-400',
-        iconBg: 'bg-cyan-500/20',
-        hoverIconBg: 'group-hover:bg-cyan-500/40',
+      // CodeChum: Purple/Blue with gold accents
+      codechum: {
+        border: 'border-purple-500/40',
+        bg: 'from-purple-600/15',
+        hoverBorder: 'group-hover:border-purple-400/70',
+        text: 'text-purple-300',
+        gradientFrom: 'from-purple-600',
+        gradientTo: 'to-blue-600',
+        accentColor: '#fbbf24',
       },
-      blue: {
-        border: 'border-blue-500/30',
-        bg: 'from-blue-500/10',
-        hoverBorder: 'group-hover:border-blue-500/60',
-        text: 'text-blue-400',
-        iconBg: 'bg-blue-500/20',
-        hoverIconBg: 'group-hover:bg-blue-500/40',
+      // Microsoft: Brown/Tan/Gold
+      microsoft: {
+        border: 'border-amber-700/40',
+        bg: 'from-amber-900/15',
+        hoverBorder: 'group-hover:border-amber-600/70',
+        text: 'text-amber-200',
+        gradientFrom: 'from-amber-800',
+        gradientTo: 'to-amber-600',
+        accentColor: '#fcd34d',
       },
-      purple: {
-        border: 'border-purple-500/30',
-        bg: 'from-purple-500/10',
-        hoverBorder: 'group-hover:border-purple-500/60',
-        text: 'text-purple-400',
-        iconBg: 'bg-purple-500/20',
-        hoverIconBg: 'group-hover:bg-purple-500/40',
+      // Oracle: Black/White/Red
+      oracle: {
+        border: 'border-red-600/40',
+        bg: 'from-red-950/15',
+        hoverBorder: 'group-hover:border-red-500/70',
+        text: 'text-red-300',
+        gradientFrom: 'from-gray-900',
+        gradientTo: 'to-red-700',
+        accentColor: '#ef4444',
       },
-      pink: {
-        border: 'border-pink-500/30',
-        bg: 'from-pink-500/10',
-        hoverBorder: 'group-hover:border-pink-500/60',
-        text: 'text-pink-400',
-        iconBg: 'bg-pink-500/20',
-        hoverIconBg: 'group-hover:bg-pink-500/40',
+      // IT Specialist: Blue with gold accents
+      itspecialist: {
+        border: 'border-blue-600/40',
+        bg: 'from-blue-700/15',
+        hoverBorder: 'group-hover:border-blue-400/70',
+        text: 'text-blue-300',
+        gradientFrom: 'from-blue-700',
+        gradientTo: 'to-blue-600',
+        accentColor: '#fbbf24',
+      },
+      // HackForGov: Brown/Maroon with gold
+      hackforgov: {
+        border: 'border-red-800/40',
+        bg: 'from-red-900/15',
+        hoverBorder: 'group-hover:border-red-700/70',
+        text: 'text-red-200',
+        gradientFrom: 'from-red-900',
+        gradientTo: 'to-amber-700',
+        accentColor: '#fbbf24',
+      },
+      // CodeChum 2025: Purple/Blue with gold
+      codechum2: {
+        border: 'border-purple-500/40',
+        bg: 'from-purple-700/15',
+        hoverBorder: 'group-hover:border-purple-400/70',
+        text: 'text-purple-300',
+        gradientFrom: 'from-purple-700',
+        gradientTo: 'to-blue-700',
+        accentColor: '#fbbf24',
       },
     };
     return colors[color];
@@ -261,27 +289,40 @@ const Certification = () => {
             return (
               <div
                 key={cert.id}
-                className={`group relative p-6 rounded-2xl border ${colorClasses.border} bg-gradient-to-br ${colorClasses.bg} to-transparent backdrop-blur-sm ${colorClasses.hoverBorder} transition-all duration-300 hover:scale-105 hover:shadow-xl cursor-pointer flex flex-col items-center text-center`}
+                className={`group relative overflow-hidden rounded-2xl border ${colorClasses.border} backdrop-blur-sm ${colorClasses.hoverBorder} transition-all duration-300 hover:scale-105 hover:shadow-2xl cursor-pointer`}
                 style={{
-                  transitionDelay: `${200 + index * 100}ms`
+                  transitionDelay: `${200 + index * 100}ms`,
+                  background: `linear-gradient(135deg, ${colorClasses.gradientFrom}10 0%, ${colorClasses.gradientTo}05 100%)`,
+                  boxShadow: `inset 0 1px 2px rgba(255,255,255,0.1), 0 0 20px ${colorClasses.accentColor}0a`,
                 }}
               >
-                {/* Certificate Image */}
-                <div className="w-full rounded-lg mb-4 overflow-hidden bg-gray-900 p-2">
-                  <img 
-                    src={cert.image} 
-                    alt={cert.title}
-                    className="w-full h-auto object-contain hover:scale-105 transition-transform duration-300"
-                  />
+                {/* Gradient Border Effect */}
+                <div className="absolute inset-0 rounded-2xl pointer-events-none" style={{
+                  background: `linear-gradient(135deg, ${colorClasses.accentColor}15 0%, transparent 100%)`,
+                }}></div>
+                
+                <div className="relative p-6 flex flex-col items-center text-center h-full">
+                  {/* Certificate Image */}
+                  <div className="w-full rounded-lg mb-4 overflow-hidden p-2" style={{
+                    background: 'linear-gradient(135deg, rgba(255,255,255,0.05) 0%, rgba(0,0,0,0.05) 100%)',
+                  }}>
+                    <img 
+                      src={cert.image} 
+                      alt={cert.title}
+                      className="w-full h-auto object-contain group-hover:scale-105 transition-transform duration-300"
+                    />
+                  </div>
+
+                  {/* Certificate Title */}
+                  <h3 className="text-sm font-bold text-center group-hover:text-opacity-100 transition-colors" style={{
+                    color: colorClasses.accentColor,
+                  }}>
+                    {cert.title}
+                  </h3>
+
+                  {/* Hover Shimmer Effect */}
+                  <div className="absolute top-0 left-0 w-full h-full bg-gradient-to-r from-transparent via-white/0 to-transparent group-hover:via-white/10 rounded-2xl transition-all duration-500 pointer-events-none"></div>
                 </div>
-
-                {/* Certificate Title */}
-                <h3 className="text-sm font-bold text-white text-center">
-                  {cert.title}
-                </h3>
-
-                {/* Hover Effect Overlay */}
-                <div className="absolute inset-0 bg-gradient-to-br from-white/0 to-white/0 group-hover:from-white/5 group-hover:to-white/0 rounded-2xl transition-all duration-300 pointer-events-none"></div>
               </div>
             );
           })}
