@@ -50,9 +50,9 @@ const Projects = () => {
       gradient: "from-blue-200 via-cyan-100 to-blue-100",
       accentColor: "text-blue-500",
       screens: [
-        { image: null, label: "Screen" },
-        { image: null, label: "Main" },
-        { image: null, label: "Screen" }
+        { image: "/ridetrack-1.png", label: "Welcome Screen" },
+        { image: "/ridetrack-2.png", label: "Dashboard" },
+        { image: "/ridetrack-3.png", label: "Stats Tracker" }
       ]
     },
   ];
@@ -334,18 +334,18 @@ const Projects = () => {
                   {project.screens.map((screen, idx) => (
                     <div 
                       key={idx}
-                      className={`rounded-3xl border border-gray-800 shadow-2xl overflow-hidden p-0.5 bg-gray-900 w-36 md:w-48 h-72 md:h-96 ${
+                      className={`rounded-3xl border border-gray-800 shadow-2xl overflow-hidden p-1.5 bg-gray-900 w-36 md:w-48 h-72 md:h-96 ${
                         idx === 0 ? 'transform -rotate-6 translate-y-4' :
                         idx === 1 ? 'z-10' :
                         'transform rotate-6 translate-y-4'
                       }`}
                     >
-                      <div className="w-full h-full rounded-[1.15rem] bg-gray-900 flex items-center justify-center overflow-hidden">
+                      <div className="w-full h-full rounded-[1.1rem] bg-gray-900 flex items-center justify-center overflow-hidden">
                         {screen.image ? (
                           <img 
                             src={screen.image} 
                             alt={screen.label}
-                            className="w-full h-full object-contain rounded-[1.15rem]"
+                            className="w-full h-full object-contain rounded-[1.1rem]"
                           />
                         ) : (
                           <span className="text-gray-600 text-xs">{screen.label}</span>
