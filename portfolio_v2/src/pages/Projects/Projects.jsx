@@ -18,9 +18,9 @@ const Projects = () => {
       gradient: "from-pink-100 via-rose-50 to-pink-50",
       accentColor: "text-pink-600",
       screens: [
-        { image: "/oncosense-1.png", label: "Welcome Screen" },
-        { image: "/oncosense-2.png", label: "Dashboard" },
-        { image: "/oncosense-3.png", label: "Journey Tracker" }
+        { image: "/projects/oncosense/oncosense-1.png", label: "Welcome Screen" },
+        { image: "/projects/oncosense/oncosense-2.png", label: "Dashboard" },
+        { image: "/projects/oncosense/oncosense-3.png", label: "Journey Tracker" }
       ]
     },
     {
@@ -34,9 +34,9 @@ const Projects = () => {
       gradient: "from-blue-100 via-cyan-50 to-teal-50",
       accentColor: "text-blue-600",
       screens: [
-        { image: "/chainly-1.png", label: "Welcome Screen" },
-        { image: "/chainly-2.png", label: "Dashboard" },
-        { image: "/chainly-3.png", label: "Tracker" }
+        { image: "/projects/chainly/chainly-1.png", label: "Welcome Screen" },
+        { image: "/projects/chainly/chainly-2.png", label: "Dashboard" },
+        { image: "/projects/chainly/chainly-3.png", label: "Tracker" }
       ]
     },
     {
@@ -50,9 +50,9 @@ const Projects = () => {
       gradient: "from-orange-100 via-blue-50 to-cyan-50",
       accentColor: "text-orange-600",
       screens: [
-        { image: "/ridetrack-1.png", label: "Welcome Screen" },
-        { image: "/ridetrack-2.png", label: "Dashboard" },
-        { image: "/ridetrack-3.png", label: "Stats Tracker" }
+        { image: "/projects/ridetrack/ridetrack-1.png", label: "Welcome Screen" },
+        { image: "/projects/ridetrack/ridetrack-2.png", label: "Dashboard" },
+        { image: "/projects/ridetrack/ridetrack-3.png", label: "Stats Tracker" }
       ]
     },
   ];
@@ -270,7 +270,6 @@ const Projects = () => {
                   <div>
                     <div className="flex items-center gap-3 mb-3">
                       <span className="px-3 py-1 bg-pink-600/90 text-white text-xs font-medium rounded-full">{project.type}</span>
-                      <span className="text-pink-800 text-sm font-medium">{project.year}</span>
                     </div>
                     <h4 className="text-2xl md:text-3xl font-bold text-pink-900">{project.title}</h4>
                     <p className="text-pink-800 text-sm md:text-base mt-1 max-w-md">{project.description}</p>
@@ -362,7 +361,6 @@ const Projects = () => {
                   <div>
                     <div className="flex items-center gap-3 mb-3">
                       <span className={`px-3 py-1 ${project.id === 2 ? 'bg-blue-600' : 'bg-orange-600'} text-white text-xs font-medium rounded-full`}>{project.type}</span>
-                      <span className={`text-sm font-medium ${project.id === 2 ? 'text-blue-800' : 'text-orange-800'}`}>{project.year}</span>
                     </div>
                     <h4 className={`text-2xl md:text-3xl font-bold ${project.id === 2 ? 'text-blue-900' : 'text-orange-900'}`}>{project.title}</h4>
                     <p className={`text-sm md:text-base mt-1 max-w-md ${project.id === 2 ? 'text-blue-800' : 'text-orange-800'}`}>{project.description}</p>
