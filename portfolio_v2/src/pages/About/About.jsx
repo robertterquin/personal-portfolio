@@ -162,7 +162,7 @@ const About = () => {
               <p className="text-xl md:text-2xl lg:text-3xl text-gray-200 leading-relaxed font-light">
                 Hi, I'm <span className="text-transparent bg-clip-text bg-gradient-to-r from-mono-950 to-mono-900 font-semibold">Robert Terquin Laqui</span>, a{' '}
                 <span className="text-transparent bg-clip-text bg-gradient-to-r from-mono-800 via-mono-900 to-mono-950 font-semibold">Full Stack Developer</span> with{' '}
-                <span className="text-transparent bg-clip-text bg-gradient-to-r from-mono-700 to-mono-900 font-semibold">2+ years</span> of experience.
+                <span className="text-transparent bg-clip-text bg-gradient-to-r from-mono-700 to-mono-900 font-semibold">3+ years</span> of experience.
               </p>
               
               <p className="text-lg md:text-xl text-gray-400 leading-relaxed">
