@@ -93,14 +93,14 @@ const Projects = () => {
       className="min-h-screen text-white py-24 px-8 md:px-16 lg:px-24 relative overflow-hidden"
     >
       {/* Page Transition Line Top */}
-      <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-purple-500/40 to-transparent pointer-events-none z-20"></div>
+      <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-mono-400/30 to-transparent pointer-events-none z-20"></div>
       {/* Background Grid Pattern - Elegant */}
       <div className="absolute inset-0 pointer-events-none z-0">
         <div className="absolute inset-0" style={{
           backgroundImage: `
-            linear-gradient(90deg, transparent 96%, rgba(6, 182, 212, 0.08) 98%, transparent 100%),
-            linear-gradient(0deg, transparent 96%, rgba(6, 182, 212, 0.08) 98%, transparent 100%),
-            linear-gradient(45deg, transparent 95%, rgba(139, 92, 246, 0.04) 96%, transparent 97%)
+            linear-gradient(90deg, transparent 96%, rgba(163, 163, 163, 0.08) 98%, transparent 100%),
+            linear-gradient(0deg, transparent 96%, rgba(163, 163, 163, 0.08) 98%, transparent 100%),
+            linear-gradient(45deg, transparent 95%, rgba(115, 115, 115, 0.04) 96%, transparent 97%)
           `,
           backgroundSize: '120px 120px, 120px 120px, 170px 170px',
         }}></div>
@@ -109,13 +109,13 @@ const Projects = () => {
       {/* Elegant Gradient Orbs */}
       <div className="absolute inset-0 pointer-events-none z-0 overflow-hidden">
         {/* Primary Orb - Top Right */}
-        <div className="absolute -top-1/3 right-[-10%] w-[600px] h-[600px] bg-gradient-conic from-purple-400/8 via-blue-400/6 via-cyan-400/8 to-purple-400/8 rounded-full blur-[120px] animate-pulse" style={{animationDuration: '15s'}}></div>
+        <div className="absolute -top-1/3 right-[-10%] w-[600px] h-[600px] bg-gradient-conic from-mono-400/06 via-mono-300/04 via-mono-400/06 to-mono-400/06 rounded-full blur-[120px] animate-pulse" style={{animationDuration: '15s'}}></div>
         
         {/* Secondary Orb - Bottom Left */}
-        <div className="absolute -bottom-1/4 left-[-5%] w-[500px] h-[500px] bg-gradient-radial from-cyan-400/10 via-teal-400/6 to-transparent rounded-full blur-[100px] animate-pulse" style={{animationDuration: '12s', animationDelay: '2s'}}></div>
+        <div className="absolute -bottom-1/4 left-[-5%] w-[500px] h-[500px] bg-gradient-radial from-mono-400/08 via-mono-300/04 to-transparent rounded-full blur-[100px] animate-pulse" style={{animationDuration: '12s', animationDelay: '2s'}}></div>
         
         {/* Tertiary Orb - Center */}
-        <div className="absolute top-1/3 left-1/2 -translate-x-1/2 w-[400px] h-[400px] bg-gradient-radial from-pink-300/5 via-purple-300/4 to-transparent rounded-full blur-[90px] animate-pulse" style={{animationDuration: '18s', animationDelay: '4s'}}></div>
+        <div className="absolute top-1/3 left-1/2 -translate-x-1/2 w-[400px] h-[400px] bg-gradient-radial from-mono-300/04 via-mono-300/03 to-transparent rounded-full blur-[90px] animate-pulse" style={{animationDuration: '18s', animationDelay: '4s'}}></div>
       </div>
 
       {/* Elegant Floating Particles */}
@@ -129,9 +129,9 @@ const Projects = () => {
               top: `${particle.top}%`,
               width: `${particle.size}px`,
               height: `${particle.size}px`,
-              background: particle.id % 3 === 0 ? 'rgba(147, 112, 219, 0.5)' : particle.id % 3 === 1 ? 'rgba(6, 182, 212, 0.4)' : 'rgba(168, 85, 247, 0.45)',
+              background: particle.id % 3 === 0 ? 'rgba(163, 163, 163, 0.4)' : particle.id % 3 === 1 ? 'rgba(212, 212, 212, 0.3)' : 'rgba(115, 115, 115, 0.35)',
               opacity: particle.opacity * 0.8,
-              boxShadow: `0 0 ${particle.size * 2}px rgba(147, 112, 219, 0.3)`,
+              boxShadow: `0 0 ${particle.size * 2}px rgba(163, 163, 163, 0.2)`,
               animationDuration: `${particle.duration}s`,
               animationDelay: `${particle.delay}s`,
             }}
@@ -142,18 +142,18 @@ const Projects = () => {
       {/* Elegant Decorative Elements */}
       <div className="absolute inset-0 pointer-events-none z-0">
         {/* Flowing Line Top */}
-        <div className="absolute top-1/4 left-0 w-1/2 h-px bg-gradient-to-r from-transparent via-cyan-400/20 to-transparent blur-sm"></div>
+        <div className="absolute top-1/4 left-0 w-1/2 h-px bg-gradient-to-r from-transparent via-mono-400/15 to-transparent blur-sm"></div>
         
         {/* Flowing Line Bottom */}
-        <div className="absolute bottom-1/3 right-0 w-2/5 h-px bg-gradient-to-l from-transparent via-purple-400/20 to-transparent blur-sm"></div>
+        <div className="absolute bottom-1/3 right-0 w-2/5 h-px bg-gradient-to-l from-transparent via-mono-400/15 to-transparent blur-sm"></div>
         
         {/* Accent Dots - Top */}
-        <div className="absolute top-1/3 left-10 w-1.5 h-1.5 bg-cyan-400/40 rounded-full blur-sm"></div>
-        <div className="absolute top-2/3 right-20 w-1 h-1 bg-purple-400/30 rounded-full blur-sm"></div>
+        <div className="absolute top-1/3 left-10 w-1.5 h-1.5 bg-mono-600/30 rounded-full blur-sm"></div>
+        <div className="absolute top-2/3 right-20 w-1 h-1 bg-mono-500/25 rounded-full blur-sm"></div>
         
         {/* Subtle Diagonal Lines */}
         <div className="absolute top-0 right-1/4 w-64 h-64 pointer-events-none" style={{
-          background: 'linear-gradient(135deg, rgba(6, 182, 212, 0.04) 0%, transparent 70%)',
+          background: 'linear-gradient(135deg, rgba(163, 163, 163, 0.03) 0%, transparent 70%)',
           borderRadius: '50%',
           filter: 'blur(40px)'
         }}></div>
@@ -166,19 +166,19 @@ const Projects = () => {
         <div className={`mb-20 transition-all duration-700 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
           {/* Top Label */}
           <div className="flex items-center gap-3 mb-6">
-            <div className="h-px w-12 bg-gradient-to-r from-cyan-400 to-transparent"></div>
-            <span className="text-cyan-400 text-xs uppercase tracking-[0.3em] font-semibold">Portfolio</span>
+            <div className="h-px w-12 bg-gradient-to-r from-mono-600 to-transparent"></div>
+            <span className="text-mono-700 text-xs uppercase tracking-[0.3em] font-semibold">Portfolio</span>
           </div>
           
           {/* Main Title */}
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-16 items-start">
             <div>
               <h2 className="text-6xl md:text-7xl lg:text-8xl font-bold tracking-tighter leading-tight mb-4">
-                <span className="text-transparent bg-clip-text bg-gradient-to-r from-cyan-300 via-blue-400 to-purple-400">Crafted</span>
+                <span className="text-transparent bg-clip-text bg-gradient-to-r from-mono-600 via-mono-800 to-mono-950 animate-gradient">Crafted</span>
                 <br />
-                <span className="text-white">Projects</span>
+                <span className="text-transparent bg-clip-text bg-gradient-to-r from-mono-950 to-mono-800">Projects</span>
               </h2>
-              <div className="h-1 w-20 bg-gradient-to-r from-pink-500 via-purple-500 to-cyan-500 rounded-full mt-6"></div>
+              <div className="h-1 w-20 bg-gradient-to-r from-mono-500 via-mono-600 to-mono-700 rounded-full mt-6"></div>
             </div>
             
             <div className="space-y-6 lg:pt-4">
@@ -186,12 +186,12 @@ const Projects = () => {
                 A showcase of mobile and web applications built with modern technologies. Each project represents growth, learning, and a commitment to quality development.
               </p>
               <div className="grid grid-cols-2 gap-4 pt-4">
-                <div className="p-4 rounded-lg border border-gray-800/50 bg-gradient-to-br from-cyan-500/5 to-transparent backdrop-blur-sm hover:border-cyan-500/30 transition-colors">
-                  <div className="text-2xl font-bold text-cyan-400">3</div>
+                <div className="p-4 rounded-lg border border-gray-800/50 bg-gradient-to-br from-mono-200/05 to-transparent backdrop-blur-sm hover:border-mono-400/30 transition-colors">
+                  <div className="text-2xl font-bold text-mono-700">3</div>
                   <div className="text-sm text-gray-400">Featured Works</div>
                 </div>
-                <div className="p-4 rounded-lg border border-gray-800/50 bg-gradient-to-br from-purple-500/5 to-transparent backdrop-blur-sm hover:border-purple-500/30 transition-colors">
-                  <div className="text-2xl font-bold text-purple-400">2026</div>
+                <div className="p-4 rounded-lg border border-gray-800/50 bg-gradient-to-br from-mono-200/05 to-transparent backdrop-blur-sm hover:border-mono-400/30 transition-colors">
+                  <div className="text-2xl font-bold text-mono-700">2026</div>
                   <div className="text-sm text-gray-400">Current Year</div>
                 </div>
               </div>
@@ -384,9 +384,9 @@ const Projects = () => {
         <div className={`mt-16 text-center transition-all duration-700 delay-600 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
           <div className="inline-flex items-center gap-4 px-8 py-4 border border-gray-800 rounded-full">
             <div className="flex gap-1">
-              <div className="w-2 h-2 bg-cyan-400 rounded-full animate-pulse"></div>
-              <div className="w-2 h-2 bg-purple-400 rounded-full animate-pulse" style={{animationDelay: '0.2s'}}></div>
-              <div className="w-2 h-2 bg-pink-400 rounded-full animate-pulse" style={{animationDelay: '0.4s'}}></div>
+              <div className="w-2 h-2 bg-mono-600 rounded-full animate-pulse"></div>
+              <div className="w-2 h-2 bg-mono-700 rounded-full animate-pulse" style={{animationDelay: '0.2s'}}></div>
+              <div className="w-2 h-2 bg-mono-800 rounded-full animate-pulse" style={{animationDelay: '0.4s'}}></div>
             </div>
             <span className="text-gray-400 text-sm">More projects coming soon</span>
           </div>
@@ -394,7 +394,7 @@ const Projects = () => {
       </div>
 
       {/* Page Transition Line Bottom */}
-      <div className="absolute bottom-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-purple-500/40 to-transparent pointer-events-none z-20"></div>
+      <div className="absolute bottom-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-mono-400/30 to-transparent pointer-events-none z-20"></div>
     </section>
   );
 };

@@ -51,12 +51,12 @@ const About = () => {
       id="about" 
       className="min-h-screen text-white py-32 px-8 md:px-16 lg:px-24 relative flex items-center"
     >      {/* Page Transition Line Top */}
-      <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-blue-500/40 to-transparent pointer-events-none"></div>      {/* Grid Pattern Background */}
+      <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-mono-400/30 to-transparent pointer-events-none"></div>      {/* Grid Pattern Background */}
       <div className="absolute inset-0 pointer-events-none z-0">
         <div className="absolute inset-0 opacity-[0.08]" style={{
           backgroundImage: `
-            linear-gradient(90deg, transparent 98%, rgba(6, 182, 212, 0.6) 100%),
-            linear-gradient(0deg, transparent 98%, rgba(6, 182, 212, 0.6) 100%)
+            linear-gradient(90deg, transparent 98%, rgba(163, 163, 163, 0.6) 100%),
+            linear-gradient(0deg, transparent 98%, rgba(163, 163, 163, 0.6) 100%)
           `,
           backgroundSize: '100px 100px',
         }}></div>
@@ -64,8 +64,8 @@ const About = () => {
 
       {/* Gradient Orbs */}
       <div className="absolute inset-0 pointer-events-none z-0">
-        <div className="absolute top-20 left-10 w-[350px] h-[350px] bg-gradient-conic from-blue-500/15 via-purple-500/10 to-cyan-500/15 rounded-full blur-[90px] animate-pulse" style={{animationDuration: '8s'}}></div>
-        <div className="absolute bottom-32 right-20 w-[300px] h-[300px] bg-gradient-radial from-purple-500/20 to-transparent rounded-full blur-[70px] animate-pulse" style={{animationDuration: '6s', animationDelay: '2s'}}></div>
+        <div className="absolute top-20 left-10 w-[350px] h-[350px] bg-gradient-conic from-mono-300/10 via-mono-400/06 to-mono-300/10 rounded-full blur-[90px] animate-pulse" style={{animationDuration: '8s'}}></div>
+        <div className="absolute bottom-32 right-20 w-[300px] h-[300px] bg-gradient-radial from-mono-400/12 to-transparent rounded-full blur-[70px] animate-pulse" style={{animationDuration: '6s', animationDelay: '2s'}}></div>
       </div>
 
       {/* Data Streams (Vertical Lines) */}
@@ -76,7 +76,7 @@ const About = () => {
             className="absolute top-0 w-px opacity-20"
             style={{
               left: `${stream.left}%`,
-              background: 'linear-gradient(to bottom, transparent, rgba(6, 182, 212, 0.8), transparent)',
+              background: 'linear-gradient(to bottom, transparent, rgba(163, 163, 163, 0.5), transparent)',
               height: `${stream.height}%`,
               animation: `slideDown ${stream.duration}s ease-in-out infinite`,
               animationDelay: `${stream.delay}s`,
@@ -90,7 +90,7 @@ const About = () => {
         {particles.map((particle) => (
           <div
             key={particle.id}
-            className="absolute rounded-full bg-cyan-400 animate-float"
+            className="absolute rounded-full bg-mono-600 animate-float"
             style={{
               left: `${particle.left}%`,
               top: `${particle.top}%`,
@@ -106,11 +106,11 @@ const About = () => {
 
       {/* Geometric Accent Shapes */}
       <div className="absolute inset-0 pointer-events-none z-0">
-        <div className="absolute top-1/4 right-10 w-40 h-40 border border-cyan-500/20 rounded-lg rotate-12 animate-spin-slow" style={{animationDuration: '45s'}}></div>
-        <div className="absolute bottom-1/3 left-16 w-32 h-32 border-2 border-dashed border-blue-500/15 rounded-full opacity-50"></div>
+        <div className="absolute top-1/4 right-10 w-40 h-40 border border-mono-300/15 rounded-lg rotate-12 animate-spin-slow" style={{animationDuration: '45s'}}></div>
+        <div className="absolute bottom-1/3 left-16 w-32 h-32 border-2 border-dashed border-mono-300/10 rounded-full opacity-50"></div>
         <div className="absolute top-1/2 right-1/4 w-24 h-24 relative animate-spin-slow" style={{animationDuration: '35s'}}>
-          <div className="absolute inset-3 border-l-2 border-t-2 border-purple-500/20 rounded-tl-xl"></div>
-          <div className="absolute inset-3 border-r-2 border-b-2 border-cyan-500/20 rounded-br-xl"></div>
+          <div className="absolute inset-3 border-l-2 border-t-2 border-mono-400/15 rounded-tl-xl"></div>
+          <div className="absolute inset-3 border-r-2 border-b-2 border-mono-300/15 rounded-br-xl"></div>
         </div>
       </div>
 
@@ -120,22 +120,22 @@ const About = () => {
         <div className="grid lg:grid-cols-[1.2fr_1fr] gap-20 lg:gap-32 items-start">
           {/* Left Column - Big Typography */}
           <div className={`space-y-4 transition-all duration-700 ${isVisible ? 'opacity-100 translate-x-0' : 'opacity-0 -translate-x-16'}`}>
-            <span className="text-cyan-400 text-sm uppercase tracking-[0.4em] font-semibold mb-8 block">About Me</span>
+            <span className="text-mono-700 text-sm uppercase tracking-[0.4em] font-semibold mb-8 block">About Me</span>
             
             <h2 className="text-6xl md:text-7xl lg:text-8xl xl:text-9xl font-bold leading-[0.95] tracking-tighter">
-              <span className="block text-white mb-2">Mobile First</span>
-              <span className="block text-white mb-2">Solutions</span>
-              <span className="block text-gray-500 font-light italic mb-2">User</span>
-              <span className="block text-gray-500 font-light italic">Focused</span>
+              <span className="block text-transparent bg-clip-text bg-gradient-to-r from-mono-950 via-mono-900 to-mono-800 mb-2">Mobile First</span>
+              <span className="block text-transparent bg-clip-text bg-gradient-to-r from-mono-900 to-mono-700 mb-2">Solutions</span>
+              <span className="block text-transparent bg-clip-text bg-gradient-to-r from-mono-600 to-mono-500 font-light italic mb-2">User</span>
+              <span className="block text-transparent bg-clip-text bg-gradient-to-r from-mono-500 to-mono-400 font-light italic">Focused</span>
             </h2>
             
             {/* Decorative Element */}
             <div className="flex items-center gap-6 pt-12">
-              <div className="w-24 h-1 bg-gradient-to-r from-cyan-400 to-purple-500"></div>
+              <div className="w-24 h-1 bg-gradient-to-r from-mono-600 to-mono-800"></div>
               <div className="flex gap-3">
-                <div className="w-3 h-3 rounded-full bg-cyan-400"></div>
-                <div className="w-3 h-3 rounded-full bg-purple-400"></div>
-                <div className="w-3 h-3 rounded-full bg-blue-400"></div>
+                <div className="w-3 h-3 rounded-full bg-mono-600"></div>
+                <div className="w-3 h-3 rounded-full bg-mono-700"></div>
+                <div className="w-3 h-3 rounded-full bg-mono-800"></div>
               </div>
             </div>
           </div>
@@ -144,7 +144,7 @@ const About = () => {
           <div className={`space-y-10 transition-all duration-700 delay-200 ${isVisible ? 'opacity-100 translate-x-0' : 'opacity-0 translate-x-16'}`}>
             {/* Profile Image */}
             <div className="flex justify-center mb-8">
-              <div className="w-48 h-48 rounded-full border-2 border-cyan-500/50 overflow-hidden ring-2 ring-cyan-500/20 bg-slate-800 flex-shrink-0">
+              <div className="w-48 h-48 rounded-full border-2 border-mono-400/50 overflow-hidden ring-2 ring-mono-400/20 bg-mono-100 flex-shrink-0">
                 <img 
                   src="/profile.jpg" 
                   alt="Robert Terquin Laqui" 
@@ -160,13 +160,13 @@ const About = () => {
             {/* Description Text */}
             <div className="space-y-8">
               <p className="text-xl md:text-2xl lg:text-3xl text-gray-200 leading-relaxed font-light">
-                Hi, I'm <span className="text-white font-semibold">Robert Terquin Laqui</span>, a{' '}
-                <span className="text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 to-blue-500 font-semibold">Full Stack Developer</span> with{' '}
-                <span className="text-transparent bg-clip-text bg-gradient-to-r from-purple-400 to-pink-400 font-semibold">2+ years</span> of experience.
+                Hi, I'm <span className="text-transparent bg-clip-text bg-gradient-to-r from-mono-950 to-mono-900 font-semibold">Robert Terquin Laqui</span>, a{' '}
+                <span className="text-transparent bg-clip-text bg-gradient-to-r from-mono-800 via-mono-900 to-mono-950 font-semibold">Full Stack Developer</span> with{' '}
+                <span className="text-transparent bg-clip-text bg-gradient-to-r from-mono-700 to-mono-900 font-semibold">2+ years</span> of experience.
               </p>
               
               <p className="text-lg md:text-xl text-gray-400 leading-relaxed">
-                I specialize in building cross-platform mobile apps with <span className="text-cyan-300 font-medium">Flutter</span>, integrated with <span className="text-blue-300 font-medium">Firebase</span> and <span className="text-purple-300 font-medium">Supabase</span>. I deliver secure, scalable, and user-centric applications that combine technical excellence with intuitive design.
+                I specialize in building cross-platform mobile apps with <span className="text-transparent bg-clip-text bg-gradient-to-r from-mono-800 to-mono-950 font-medium">Flutter</span>, integrated with <span className="text-transparent bg-clip-text bg-gradient-to-r from-mono-800 to-mono-950 font-medium">Firebase</span> and <span className="text-transparent bg-clip-text bg-gradient-to-r from-mono-800 to-mono-950 font-medium">Supabase</span>. I deliver secure, scalable, and user-centric applications that combine technical excellence with intuitive design.
               </p>
 
               <p className="text-base md:text-lg text-gray-500 leading-relaxed">
@@ -181,7 +181,7 @@ const About = () => {
       </div>
 
       {/* Page Transition Line Bottom */}
-      <div className="absolute bottom-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-blue-500/40 to-transparent pointer-events-none"></div>
+      <div className="absolute bottom-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-mono-400/30 to-transparent pointer-events-none"></div>
     </section>
   );
 };

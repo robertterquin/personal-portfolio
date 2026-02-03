@@ -113,7 +113,7 @@ const Certification = () => {
       className="min-h-screen text-white py-32 px-8 md:px-16 lg:px-24 relative overflow-hidden"
     >
       {/* Page Transition Line Top */}
-      <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-purple-500/40 to-transparent pointer-events-none z-20"></div>
+      <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-mono-400/30 to-transparent pointer-events-none z-20"></div>
       {/* Animated Background - Hexagonal Shapes */}
       <div className="absolute inset-0 pointer-events-none z-0">
         {shapes.map((shape) => (
@@ -133,29 +133,29 @@ const Certification = () => {
             {/* Outer rotating hexagon outline */}
             <div className="absolute inset-0" style={{
               clipPath: 'polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%)',
-              border: `2px solid rgba(139, 92, 246, 0.35)`,
+              border: `2px solid rgba(163, 163, 163, 0.25)`,
               animation: `spin ${shape.duration * 1.3}s linear infinite`,
-              boxShadow: `0 0 20px rgba(139, 92, 246, 0.25)`,
+              boxShadow: `0 0 20px rgba(163, 163, 163, 0.15)`,
             }}></div>
             
             {/* Inner rotating hexagon */}
             <div className="absolute inset-4" style={{
               clipPath: 'polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%)',
-              border: `1.5px solid rgba(6, 182, 212, 0.28)`,
+              border: `1.5px solid rgba(212, 212, 212, 0.2)`,
               animation: `spin-reverse ${shape.duration * 1.6}s linear infinite`,
-              boxShadow: `0 0 15px rgba(6, 182, 212, 0.2)`,
+              boxShadow: `0 0 15px rgba(212, 212, 212, 0.12)`,
             }}></div>
 
             {/* Middle accent hexagon */}
             <div className="absolute inset-2" style={{
               clipPath: 'polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%)',
-              border: `1px solid rgba(236, 72, 153, 0.15)`,
+              border: `1px solid rgba(115, 115, 115, 0.12)`,
               animation: `spin ${shape.duration * 0.8}s linear infinite`,
             }}></div>
             
             {/* Center accent dot with glow */}
-            <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-2 h-2 bg-purple-400/60 rounded-full blur-sm" style={{
-              boxShadow: `0 0 12px rgba(139, 92, 246, 0.8), 0 0 24px rgba(139, 92, 246, 0.4)`
+            <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-2 h-2 bg-mono-600/40 rounded-full blur-sm" style={{
+              boxShadow: `0 0 12px rgba(163, 163, 163, 0.5), 0 0 24px rgba(163, 163, 163, 0.25)`
             }}></div>
           </div>
         ))}
@@ -163,9 +163,9 @@ const Certification = () => {
 
       {/* Elegant Gradient Orbs */}
       <div className="absolute inset-0 pointer-events-none z-0 overflow-hidden">
-        <div className="absolute -top-1/3 left-1/4 w-[600px] h-[600px] bg-gradient-conic from-purple-400/15 via-blue-400/10 to-cyan-400/15 rounded-full blur-[130px] animate-pulse" style={{animationDuration: '18s'}}></div>
-        <div className="absolute -bottom-1/4 right-1/4 w-[500px] h-[500px] bg-gradient-radial from-pink-400/18 via-purple-400/10 to-transparent rounded-full blur-[110px] animate-pulse" style={{animationDuration: '14s', animationDelay: '3s'}}></div>
-        <div className="absolute top-1/2 right-0 w-[400px] h-[400px] bg-gradient-conic from-cyan-400/8 via-blue-400/5 to-transparent rounded-full blur-[100px] animate-pulse" style={{animationDuration: '20s', animationDelay: '6s'}}></div>
+        <div className="absolute -top-1/3 left-1/4 w-[600px] h-[600px] bg-gradient-conic from-mono-400/10 via-mono-300/06 to-mono-400/10 rounded-full blur-[130px] animate-pulse" style={{animationDuration: '18s'}}></div>
+        <div className="absolute -bottom-1/4 right-1/4 w-[500px] h-[500px] bg-gradient-radial from-mono-300/12 via-mono-400/08 to-transparent rounded-full blur-[110px] animate-pulse" style={{animationDuration: '14s', animationDelay: '3s'}}></div>
+        <div className="absolute top-1/2 right-0 w-[400px] h-[400px] bg-gradient-conic from-mono-400/06 via-mono-300/04 to-transparent rounded-full blur-[100px] animate-pulse" style={{animationDuration: '20s', animationDelay: '6s'}}></div>
       </div>
 
       {/* Enhanced Floating Particles */}
@@ -179,9 +179,9 @@ const Certification = () => {
               top: `${particle.top}%`,
               width: `${particle.size}px`,
               height: `${particle.size}px`,
-              background: particle.id % 4 === 0 ? 'rgba(139, 92, 246, 0.7)' : particle.id % 4 === 1 ? 'rgba(6, 182, 212, 0.6)' : particle.id % 4 === 2 ? 'rgba(59, 130, 246, 0.65)' : 'rgba(236, 72, 153, 0.55)',
+              background: particle.id % 4 === 0 ? 'rgba(163, 163, 163, 0.5)' : particle.id % 4 === 1 ? 'rgba(212, 212, 212, 0.45)' : particle.id % 4 === 2 ? 'rgba(115, 115, 115, 0.5)' : 'rgba(82, 82, 82, 0.4)',
               opacity: particle.opacity * 1.2,
-              boxShadow: `0 0 ${particle.size * 3}px ${particle.id % 4 === 0 ? 'rgba(139, 92, 246, 0.6)' : particle.id % 4 === 1 ? 'rgba(6, 182, 212, 0.5)' : particle.id % 4 === 2 ? 'rgba(59, 130, 246, 0.5)' : 'rgba(236, 72, 153, 0.5)'}`,
+              boxShadow: `0 0 ${particle.size * 3}px ${particle.id % 4 === 0 ? 'rgba(163, 163, 163, 0.4)' : particle.id % 4 === 1 ? 'rgba(212, 212, 212, 0.35)' : particle.id % 4 === 2 ? 'rgba(115, 115, 115, 0.35)' : 'rgba(82, 82, 82, 0.3)'}`,
               animationDuration: `${particle.duration}s`,
               animationDelay: `${particle.delay}s`,
             }}
@@ -196,19 +196,19 @@ const Certification = () => {
         <div className={`mb-20 transition-all duration-700 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
           {/* Top Label */}
           <div className="flex items-center gap-3 mb-6">
-            <div className="h-px w-12 bg-gradient-to-r from-purple-400 to-transparent"></div>
-            <span className="text-purple-400 text-xs uppercase tracking-[0.3em] font-semibold">Credentials</span>
+            <div className="h-px w-12 bg-gradient-to-r from-mono-600 to-transparent"></div>
+            <span className="text-mono-700 text-xs uppercase tracking-[0.3em] font-semibold">Credentials</span>
           </div>
           
           {/* Main Title */}
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-16 items-start">
             <div>
               <h2 className="text-6xl md:text-7xl lg:text-8xl font-bold tracking-tighter leading-tight mb-4">
-                <span className="text-transparent bg-clip-text bg-gradient-to-r from-purple-300 via-pink-400 to-cyan-400">Certified</span>
+                <span className="text-transparent bg-clip-text bg-gradient-to-r from-mono-600 via-mono-800 to-mono-950 animate-gradient">Certified</span>
                 <br />
-                <span className="text-white">Excellence</span>
+                <span className="text-transparent bg-clip-text bg-gradient-to-r from-mono-950 to-mono-800">Excellence</span>
               </h2>
-              <div className="h-1 w-20 bg-gradient-to-r from-purple-500 via-pink-500 to-cyan-500 rounded-full mt-6"></div>
+              <div className="h-1 w-20 bg-gradient-to-r from-mono-500 via-mono-600 to-mono-700 rounded-full mt-6"></div>
             </div>
             
             <div className="space-y-6 lg:pt-4">
@@ -216,12 +216,12 @@ const Certification = () => {
                 Professional certifications demonstrating expertise and commitment to continuous learning in software development and technology.
               </p>
               <div className="grid grid-cols-2 gap-4 pt-4">
-                <div className="p-4 rounded-lg border border-gray-800/50 bg-gradient-to-br from-purple-500/5 to-transparent backdrop-blur-sm hover:border-purple-500/30 transition-colors">
-                  <div className="text-2xl font-bold text-purple-400">6</div>
+                <div className="p-4 rounded-lg border border-gray-800/50 bg-gradient-to-br from-mono-200/05 to-transparent backdrop-blur-sm hover:border-mono-400/30 transition-colors">
+                  <div className="text-2xl font-bold text-mono-700">6</div>
                   <div className="text-sm text-gray-400">Certifications</div>
                 </div>
-                <div className="p-4 rounded-lg border border-gray-800/50 bg-gradient-to-br from-cyan-500/5 to-transparent backdrop-blur-sm hover:border-cyan-500/30 transition-colors">
-                  <div className="text-2xl font-bold text-cyan-400">2026</div>
+                <div className="p-4 rounded-lg border border-gray-800/50 bg-gradient-to-br from-mono-200/05 to-transparent backdrop-blur-sm hover:border-mono-400/30 transition-colors">
+                  <div className="text-2xl font-bold text-mono-700">2026</div>
                   <div className="text-sm text-gray-400">Up to Date</div>
                 </div>
               </div>
@@ -280,16 +280,16 @@ const Certification = () => {
           <div className="inline-flex flex-col items-center gap-4">
             <p className="text-gray-400 text-sm">Continuously expanding knowledge and expertise</p>
             <div className="flex gap-2">
-              <div className="w-2 h-2 bg-purple-400 rounded-full animate-pulse"></div>
-              <div className="w-2 h-2 bg-cyan-400 rounded-full animate-pulse" style={{animationDelay: '0.2s'}}></div>
-              <div className="w-2 h-2 bg-pink-400 rounded-full animate-pulse" style={{animationDelay: '0.4s'}}></div>
+              <div className="w-2 h-2 bg-mono-600 rounded-full animate-pulse"></div>
+              <div className="w-2 h-2 bg-mono-700 rounded-full animate-pulse" style={{animationDelay: '0.2s'}}></div>
+              <div className="w-2 h-2 bg-mono-800 rounded-full animate-pulse" style={{animationDelay: '0.4s'}}></div>
             </div>
           </div>
         </div>
       </div>
 
       {/* Page Transition Line Bottom */}
-      <div className="absolute bottom-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-purple-500/40 to-transparent pointer-events-none z-20"></div>
+      <div className="absolute bottom-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-mono-400/30 to-transparent pointer-events-none z-20"></div>
     </section>
   );
 };

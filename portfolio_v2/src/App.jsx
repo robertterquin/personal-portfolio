@@ -6,7 +6,7 @@ import Contact from './pages/Contact/Contact';
 
 function App() {
   return (
-    <div className="scroll-smooth bg-gradient-to-br from-slate-950 via-gray-900 to-black">
+    <div className="scroll-smooth bg-gradient-to-br from-mono-50 via-mono-100 to-mono-0">
       <Landing />
       <About />
       <Projects />
