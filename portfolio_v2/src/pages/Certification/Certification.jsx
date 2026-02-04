@@ -50,6 +50,13 @@ const Certification = () => {
       icon: "🥇",
       color: "codechum2"
     },
+    {
+      id: 7,
+      title: "HTML and CSS Specialist",
+      image: "/certificates/html_css.png",
+      icon: "🌐",
+      color: "htmlcss"
+    },
   ];
 
   const getColorClasses = (color) => {
@@ -217,7 +224,7 @@ const Certification = () => {
               </p>
               <div className="grid grid-cols-2 gap-4 pt-4">
                 <div className="p-4 rounded-lg border border-gray-800/50 bg-gradient-to-br from-mono-200/05 to-transparent backdrop-blur-sm hover:border-mono-400/30 transition-colors">
-                  <div className="text-2xl font-bold text-mono-700">6</div>
+                  <div className="text-2xl font-bold text-mono-700">7</div>
                   <div className="text-sm text-gray-400">Certifications</div>
                 </div>
                 <div className="p-4 rounded-lg border border-gray-800/50 bg-gradient-to-br from-mono-200/05 to-transparent backdrop-blur-sm hover:border-mono-400/30 transition-colors">
