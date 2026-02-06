@@ -142,21 +142,6 @@ const About = () => {
 
           {/* Right Column - Description with Profile Image */}
           <div className={`space-y-10 transition-all duration-700 delay-200 ${isVisible ? 'opacity-100 translate-x-0' : 'opacity-0 translate-x-16'}`}>
-            {/* Profile Image */}
-            <div className="flex justify-center mb-8">
-              <div className="w-48 h-48 rounded-full border-2 border-mono-400/50 overflow-hidden ring-2 ring-mono-400/20 bg-mono-100 flex-shrink-0">
-                <img 
-                  src="/profile.jpg" 
-                  alt="Robert Terquin Laqui" 
-                  className="w-full h-full object-cover"
-                  onError={(e) => {
-                    e.target.style.display = 'none';
-                    e.target.parentElement.innerHTML = '<div class="w-full h-full bg-gradient-to-br from-cyan-500 to-blue-600 flex items-center justify-center"><span class="text-5xl font-bold text-white">RT</span></div>';
-                  }}
-                />
-              </div>
-            </div>
-
             {/* Description Text */}
             <div className="space-y-8">
               <p className="text-xl md:text-2xl lg:text-3xl text-gray-200 leading-relaxed font-light">

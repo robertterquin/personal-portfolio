@@ -1,198 +1,164 @@
 import { useEffect, useState } from 'react';
 
 const Landing = () => {
-  const [particles, setParticles] = useState([]);
-  const [shapes, setShapes] = useState([]);
-  const [codeRain, setCodeRain] = useState([]);
+  const [flowingLines, setFlowingLines] = useState([]);
 
   useEffect(() => {
-    // Generate particles only once on mount
-    const generatedParticles = [...Array(30)].map((_, i) => ({
+    // Generate flowing curved lines for background
+    const generatedLines = [...Array(12)].map((_, i) => ({
       id: i,
-      left: Math.random() * 100,
-      top: Math.random() * 100,
-      size: Math.random() * 2 + 1,
-      duration: Math.random() * 25 + 20,
-      delay: Math.random() * 10,
-      opacity: Math.random() * 0.3 + 0.05,
-    }));
-    setParticles(generatedParticles);
-
-    // Generate geometric shapes
-    const generatedShapes = [...Array(6)].map((_, i) => ({
-      id: i,
-      left: Math.random() * 100,
-      top: Math.random() * 100,
-      size: Math.random() * 150 + 80,
-      rotation: Math.random() * 360,
-      duration: Math.random() * 40 + 30,
+      path: generateCurvePath(i),
+      duration: Math.random() * 20 + 15,
       delay: Math.random() * 5,
     }));
-    setShapes(generatedShapes);
-
-    // Generate code rain effect
-    const codeSymbols = ['<', '>', '{', '}', '(', ')', '[', ']', '=', ';', '/', '*', '+', '-', '0', '1'];
-    const generatedCodeRain = [...Array(25)].map((_, i) => ({
-      id: i,
-      left: Math.random() * 100,
-      symbol: codeSymbols[Math.floor(Math.random() * codeSymbols.length)],
-      duration: Math.random() * 15 + 10,
-      delay: Math.random() * 8,
-    }));
-    setCodeRain(generatedCodeRain);
+    setFlowingLines(generatedLines);
   }, []);
 
+  const generateCurvePath = (index) => {
+    const startX = Math.random() * 100;
+    const startY = Math.random() * 100;
+    const curves = [];
+    let currentX = startX;
+    let currentY = startY;
+    
+    for (let i = 0; i < 3; i++) {
+      const controlX1 = currentX + (Math.random() * 40 - 20);
+      const controlY1 = currentY + (Math.random() * 40 - 20);
+      const controlX2 = currentX + (Math.random() * 40 - 20);
+      const controlY2 = currentY + (Math.random() * 40 - 20);
+      const endX = currentX + (Math.random() * 30 - 15);
+      const endY = currentY + (Math.random() * 30 - 15);
+      
+      curves.push(`C ${controlX1} ${controlY1}, ${controlX2} ${controlY2}, ${endX} ${endY}`);
+      currentX = endX;
+      currentY = endY;
+    }
+    
+    return `M ${startX} ${startY} ${curves.join(' ')}`;
+  };
+
   return (
-    <section id="home" className="min-h-screen w-full flex flex-col text-white relative overflow-hidden">
-      {/* Animated Background - Geometric Shapes */}
+    <section id="home" className="min-h-screen w-full text-white relative overflow-hidden">
+      {/* Grid Pattern Background */}
       <div className="absolute inset-0 pointer-events-none z-0">
-        {shapes.map((shape) => (
-          <div
-            key={shape.id}
-            className="absolute"
-            style={{
-              left: `${shape.left}%`,
-              top: `${shape.top}%`,
-              width: `${shape.size}px`,
-              height: `${shape.size}px`,
-              transform: `translate(-50%, -50%) rotate(${shape.rotation}deg)`,
-              animation: `float ${shape.duration}s ease-in-out infinite`,
-              animationDelay: `${shape.delay}s`,
-            }}
-          >
-            {/* Rotating square outline */}
-            <div className="absolute inset-0" style={{
-              border: `2px solid rgba(255, 255, 255, 0.08)`,
-              borderRadius: '20%',
-              animation: `spin ${shape.duration * 1.2}s linear infinite`,
-            }}></div>
-            
-            {/* Inner rotating square */}
-            <div className="absolute inset-2" style={{
-              border: `1px solid rgba(163, 163, 163, 0.06)`,
-              borderRadius: '25%',
-              animation: `spin-reverse ${shape.duration * 1.5}s linear infinite`,
-            }}></div>
-            
-            {/* Center accent dot */}
-            <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-1 h-1 bg-mono-600/20 rounded-full blur-sm"></div>
-          </div>
-        ))}
+        <div className="absolute inset-0 opacity-[0.05]" style={{
+          backgroundImage: `
+            linear-gradient(90deg, transparent 98%, rgba(163, 163, 163, 0.6) 100%),
+            linear-gradient(0deg, transparent 98%, rgba(163, 163, 163, 0.6) 100%)
+          `,
+          backgroundSize: '80px 80px',
+        }}></div>
       </div>
 
-      {/* Elegant Gradient Orbs */}
-      <div className="absolute inset-0 pointer-events-none z-0 overflow-hidden">
-        <div className="absolute -top-1/2 -right-1/4 w-[800px] h-[800px] bg-gradient-conic from-mono-300/06 via-mono-400/04 to-mono-300/06 rounded-full blur-[150px] animate-pulse" style={{animationDuration: '20s'}}></div>
-        <div className="absolute -bottom-1/3 -left-1/4 w-[700px] h-[700px] bg-gradient-radial from-mono-400/08 via-mono-300/04 to-transparent rounded-full blur-[120px] animate-pulse" style={{animationDuration: '15s', animationDelay: '3s'}}></div>
-      </div>
-
-      {/* Elegant Floating Particles */}
+      {/* Gradient Orbs */}
       <div className="absolute inset-0 pointer-events-none z-0">
-        {particles.map((particle) => (
-          <div
-            key={particle.id}
-            className="absolute rounded-full animate-float"
-            style={{
-              left: `${particle.left}%`,
-              top: `${particle.top}%`,
-              width: `${particle.size}px`,
-              height: `${particle.size}px`,
-              background: particle.id % 3 === 0 ? 'rgba(212, 212, 212, 0.3)' : particle.id % 3 === 1 ? 'rgba(163, 163, 163, 0.35)' : 'rgba(115, 115, 115, 0.3)',
-              opacity: particle.opacity * 0.8,
-              boxShadow: `0 0 ${particle.size * 2}px rgba(163, 163, 163, 0.2)`,
-              animationDuration: `${particle.duration}s`,
-              animationDelay: `${particle.delay}s`,
-            }}
-          ></div>
-        ))}
+        <div className="absolute top-1/4 left-1/4 w-[500px] h-[500px] bg-gradient-conic from-mono-300/15 via-mono-400/10 to-mono-300/15 rounded-full blur-[120px] animate-pulse" style={{animationDuration: '10s'}}></div>
+        <div className="absolute bottom-1/4 right-1/4 w-[400px] h-[400px] bg-gradient-radial from-mono-400/15 to-transparent rounded-full blur-[100px] animate-pulse" style={{animationDuration: '8s', animationDelay: '3s'}}></div>
+        <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-[350px] h-[350px] bg-gradient-radial from-mono-300/10 to-transparent rounded-full blur-[90px] animate-pulse" style={{animationDuration: '12s', animationDelay: '1s'}}></div>
       </div>
 
-      {/* Content Container - Full Height */}
-      <div className="relative z-10 w-full h-full flex flex-col justify-between p-6 md:p-10 lg:p-16">
-        
+      {/* Flowing Line Patterns Background */}
+      <svg className="absolute inset-0 w-full h-full pointer-events-none opacity-20" style={{ zIndex: 0 }}>
+        {flowingLines.map((line) => (
+          <path
+            key={line.id}
+            d={line.path}
+            stroke="rgba(163, 163, 163, 0.15)"
+            strokeWidth="1.5"
+            fill="none"
+            className="animate-pulse"
+            style={{
+              animationDuration: `${line.duration}s`,
+              animationDelay: `${line.delay}s`,
+            }}
+          />
+        ))}
+      </svg>
 
+      {/* Geometric Accent Shapes */}
+      <div className="absolute inset-0 pointer-events-none z-0">
+        <div className="absolute top-20 right-20 w-32 h-32 border border-mono-300/10 rounded-lg rotate-12 animate-spin-slow" style={{animationDuration: '50s'}}></div>
+        <div className="absolute bottom-32 left-20 w-24 h-24 border-2 border-dashed border-mono-300/8 rounded-full opacity-50 animate-spin-slow" style={{animationDuration: '40s'}}></div>
+        <div className="absolute top-1/3 left-10 w-20 h-20 relative animate-spin-slow" style={{animationDuration: '45s'}}>
+          <div className="absolute inset-2 border-l-2 border-t-2 border-mono-400/10 rounded-tl-xl"></div>
+          <div className="absolute inset-2 border-r-2 border-b-2 border-mono-300/10 rounded-br-xl"></div>
+        </div>
+      </div>
 
-        {/* Main Hero Section - Centered */}
-        <div className="flex-1 flex flex-col items-center justify-center text-center">
-          {/* Headline */}
-          <div className="mb-12 max-w-5xl">
-            <h1 className="text-7xl md:text-8xl lg:text-9xl font-bold leading-tight tracking-tighter mb-8 px-4">
-              <span className="block text-transparent bg-clip-text bg-gradient-to-r from-mono-950 via-mono-800 to-mono-700 mb-4">Building elegant</span>
-              <span className="text-transparent bg-clip-text bg-gradient-to-r from-mono-700 via-mono-900 to-mono-950 block animate-gradient">digital solutions</span>
-            </h1>
-            <p className="text-xl md:text-2xl text-gray-300 max-w-3xl mx-auto leading-relaxed mb-4 px-4">
-              Crafting innovative mobile applications and scalable backend solutions that transform ideas into reality. From concept to production, I build products that matter.
-            </p>
-          </div>
-
-          {/* Feature Cards - Wider Layout */}
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6 w-full max-w-5xl px-4">
-            <div className="p-6 rounded-xl border border-mono-200/40 bg-gradient-to-br from-mono-100/80 to-transparent backdrop-blur-sm hover:border-mono-300/70 transition-all group cursor-pointer">
-              <div className="flex flex-col items-center text-center gap-3">
-                <div className="w-12 h-12 rounded-lg bg-mono-200/60 flex items-center justify-center flex-shrink-0 group-hover:bg-mono-300/80 transition-colors text-xl">
-                  📱
-                </div>
-                <div>
-                  <p className="text-base font-semibold text-white">Cross-Platform</p>
-                  <p className="text-sm text-mono-600">Flutter Development</p>
-                </div>
-              </div>
-            </div>
-
-            <div className="p-6 rounded-xl border border-mono-200/40 bg-gradient-to-br from-mono-100/80 to-transparent backdrop-blur-sm hover:border-mono-300/70 transition-all group cursor-pointer">
-              <div className="flex flex-col items-center text-center gap-3">
-                <div className="w-12 h-12 rounded-lg bg-mono-200/60 flex items-center justify-center flex-shrink-0 group-hover:bg-mono-300/80 transition-colors text-xl">
-                  🛠️
-                </div>
-                <div>
-                  <p className="text-base font-semibold text-white">Cloud Services</p>
-                  <p className="text-sm text-mono-600">Firebase & Supabase</p>
-                </div>
-              </div>
-            </div>
-
-            <div className="p-6 rounded-xl border border-mono-200/40 bg-gradient-to-br from-mono-100/80 to-transparent backdrop-blur-sm hover:border-mono-300/70 transition-all group cursor-pointer">
-              <div className="flex flex-col items-center text-center gap-3">
-                <div className="w-12 h-12 rounded-lg bg-mono-200/60 flex items-center justify-center flex-shrink-0 group-hover:bg-mono-300/80 transition-colors text-xl">
-                  ✨
-                </div>
-                <div>
-                  <p className="text-base font-semibold text-white">User-Centric</p>
-                  <p className="text-sm text-mono-600">Intuitive Design</p>
-                </div>
-              </div>
-            </div>
+      {/* Top Navigation */}
+      <nav className="relative z-20 flex items-center justify-between px-8 md:px-16 py-6">
+        {/* Logo */}
+        <div className="flex items-center">
+          <div className="w-10 h-10 bg-mono-900 rounded-lg flex items-center justify-center text-2xl font-bold text-white transform -skew-y-6">
+            ⚡
           </div>
         </div>
 
-        {/* Bottom Navigation */}
-        <div className="flex flex-col md:flex-row justify-end items-center gap-6 pt-8 border-t border-gray-800/50">
-
-          <nav className="flex flex-wrap gap-8 justify-center items-center">
-            {['About', 'Projects', 'Certification', 'Contact'].map((item) => (
-              <a
-                key={item}
-                href={`#${item.toLowerCase()}`}
-                className="text-sm text-mono-700 hover:text-mono-900 transition-colors uppercase tracking-wider font-medium"
-              >
-                {item}
-              </a>
-            ))}
+        {/* Navigation Links */}
+        <div className="hidden md:flex gap-8 text-sm">
+          {['About', 'Projects', 'Certification', 'Contact'].map((item) => (
             <a
-              href="#projects"
-              className="flex items-center gap-2 text-mono-700 hover:text-mono-900 transition-colors text-xs uppercase tracking-widest font-medium ml-4 pl-8 border-l border-mono-400/30 group"
+              key={item}
+              href={`#${item.toLowerCase()}`}
+              className="text-gray-300 hover:text-white transition-colors"
             >
-              <span>Explore</span>
-              <svg 
-                className="w-4 h-4 transform group-hover:translate-y-1 transition-transform" 
-                fill="none" 
-                stroke="currentColor" 
-                viewBox="0 0 24 24"
-              >
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M19 14l-7 7m0 0l-7-7m7 7V3" />
-              </svg>
+              {item}
             </a>
-          </nav>
+          ))}
+        </div>
+      </nav>
+
+      {/* Main Content */}
+      <div className="relative z-10 container mx-auto px-8 md:px-16 py-12 md:py-20 flex items-center min-h-[calc(100vh-200px)]">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20 items-center w-full max-w-7xl mx-auto">
+          
+          {/* Left Side - Text Content */}
+          <div className="space-y-8">
+            <h1 className="text-5xl md:text-6xl lg:text-7xl font-bold leading-tight">
+              Where Concepts<br />
+              Become <span className="text-transparent bg-clip-text bg-gradient-to-r from-white to-gray-400">Code</span>
+            </h1>
+
+            <p className="text-gray-400 text-lg max-w-md leading-relaxed">
+              Transforming your vision into scalable, high-performance applications. Specializing in full-stack development with a focus on clean code and exceptional user experiences.
+            </p>
+          </div>
+
+          {/* Right Side - Profile Image with Service Tags */}
+          <div className="relative flex justify-center lg:justify-end">
+            {/* Profile Circle */}
+            <div className="relative">
+              <div className="w-64 h-64 md:w-80 md:h-80 lg:w-96 lg:h-96 rounded-full overflow-hidden border-8 border-mono-300 relative">
+                <img 
+                  src="/profile.jpg" 
+                  alt="Robert Terquin Laqui" 
+                  className="w-full h-full object-cover"
+                  onError={(e) => {
+                    e.target.style.display = 'none';
+                    e.target.parentElement.innerHTML = '<div class="w-full h-full bg-gradient-to-br from-mono-200 to-mono-400 flex items-center justify-center"><span class="text-7xl font-bold text-white">RT</span></div>';
+                  }}
+                />
+              </div>
+
+              {/* Service Tags */}
+              <div className="absolute -top-4 right-8 md:right-12 px-4 py-2 bg-white text-black rounded-full text-xs md:text-sm font-medium shadow-lg">
+                Full Stack Developer
+              </div>
+              
+              <div className="absolute top-1/4 -left-4 md:-left-8 px-4 py-2 bg-white text-black rounded-full text-xs md:text-sm font-medium shadow-lg">
+                Flutter Expert
+              </div>
+              
+              <div className="absolute bottom-1/4 -right-4 md:-right-8 px-4 py-2 bg-white text-black rounded-full text-xs md:text-sm font-medium shadow-lg">
+                Firebase & Supabase
+              </div>
+              
+              <div className="absolute -bottom-4 left-1/4 px-4 py-2 bg-white text-black rounded-full text-xs md:text-sm font-medium shadow-lg">
+                3+ Years Experience
+              </div>
+            </div>
+          </div>
+
         </div>
       </div>
 
