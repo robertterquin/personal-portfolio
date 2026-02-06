@@ -39,50 +39,93 @@ const Landing = () => {
 
   return (
     <section id="home" className="min-h-screen w-full text-white relative overflow-hidden">
-      {/* Grid Pattern Background */}
-      <div className="absolute inset-0 pointer-events-none z-0">
-        <div className="absolute inset-0 opacity-[0.05]" style={{
-          backgroundImage: `
-            linear-gradient(90deg, transparent 98%, rgba(163, 163, 163, 0.6) 100%),
-            linear-gradient(0deg, transparent 98%, rgba(163, 163, 163, 0.6) 100%)
-          `,
-          backgroundSize: '80px 80px',
+      {/* Diagonal Stripe Pattern */}
+      <div className="absolute inset-0 pointer-events-none z-0 opacity-[0.03]">
+        <div className="absolute inset-0" style={{
+          backgroundImage: `repeating-linear-gradient(
+            45deg,
+            rgba(163, 163, 163, 0.5) 0px,
+            rgba(163, 163, 163, 0.5) 2px,
+            transparent 2px,
+            transparent 60px
+          )`,
         }}></div>
       </div>
 
-      {/* Gradient Orbs */}
-      <div className="absolute inset-0 pointer-events-none z-0">
-        <div className="absolute top-1/4 left-1/4 w-[500px] h-[500px] bg-gradient-conic from-mono-300/15 via-mono-400/10 to-mono-300/15 rounded-full blur-[120px] animate-pulse" style={{animationDuration: '10s'}}></div>
-        <div className="absolute bottom-1/4 right-1/4 w-[400px] h-[400px] bg-gradient-radial from-mono-400/15 to-transparent rounded-full blur-[100px] animate-pulse" style={{animationDuration: '8s', animationDelay: '3s'}}></div>
-        <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-[350px] h-[350px] bg-gradient-radial from-mono-300/10 to-transparent rounded-full blur-[90px] animate-pulse" style={{animationDuration: '12s', animationDelay: '1s'}}></div>
+      {/* Radial Burst Pattern from Center */}
+      <div className="absolute inset-0 pointer-events-none z-0 opacity-[0.08]">
+        <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-full h-full" style={{
+          background: `
+            radial-gradient(circle at center, transparent 0%, transparent 40%, rgba(163, 163, 163, 0.1) 70%, transparent 100%),
+            conic-gradient(from 0deg at 50% 50%, 
+              transparent 0deg, 
+              rgba(163, 163, 163, 0.15) 45deg, 
+              transparent 90deg,
+              transparent 90deg,
+              rgba(163, 163, 163, 0.15) 135deg,
+              transparent 180deg,
+              transparent 180deg,
+              rgba(163, 163, 163, 0.15) 225deg,
+              transparent 270deg,
+              transparent 270deg,
+              rgba(163, 163, 163, 0.15) 315deg,
+              transparent 360deg
+            )
+          `,
+        }}></div>
       </div>
 
-      {/* Flowing Line Patterns Background */}
-      <svg className="absolute inset-0 w-full h-full pointer-events-none opacity-20" style={{ zIndex: 0 }}>
-        {flowingLines.map((line) => (
-          <path
-            key={line.id}
-            d={line.path}
-            stroke="rgba(163, 163, 163, 0.15)"
-            strokeWidth="1.5"
-            fill="none"
-            className="animate-pulse"
-            style={{
-              animationDuration: `${line.duration}s`,
-              animationDelay: `${line.delay}s`,
-            }}
-          />
-        ))}
-      </svg>
-
-      {/* Geometric Accent Shapes */}
+      {/* Multiple Layered Gradient Meshes */}
       <div className="absolute inset-0 pointer-events-none z-0">
-        <div className="absolute top-20 right-20 w-32 h-32 border border-mono-300/10 rounded-lg rotate-12 animate-spin-slow" style={{animationDuration: '50s'}}></div>
-        <div className="absolute bottom-32 left-20 w-24 h-24 border-2 border-dashed border-mono-300/8 rounded-full opacity-50 animate-spin-slow" style={{animationDuration: '40s'}}></div>
-        <div className="absolute top-1/3 left-10 w-20 h-20 relative animate-spin-slow" style={{animationDuration: '45s'}}>
-          <div className="absolute inset-2 border-l-2 border-t-2 border-mono-400/10 rounded-tl-xl"></div>
-          <div className="absolute inset-2 border-r-2 border-b-2 border-mono-300/10 rounded-br-xl"></div>
+        <div className="absolute top-10 left-10 w-[600px] h-[600px] rounded-full blur-[150px] animate-pulse opacity-20" 
+          style={{
+            background: 'radial-gradient(circle, rgba(163, 163, 163, 0.4) 0%, transparent 70%)',
+            animationDuration: '15s'
+          }}></div>
+        <div className="absolute bottom-20 right-20 w-[500px] h-[500px] rounded-full blur-[140px] animate-pulse opacity-20" 
+          style={{
+            background: 'radial-gradient(circle, rgba(163, 163, 163, 0.5) 0%, transparent 70%)',
+            animationDuration: '12s',
+            animationDelay: '3s'
+          }}></div>
+        <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-[450px] h-[450px] rounded-full blur-[130px] animate-pulse opacity-15" 
+          style={{
+            background: 'radial-gradient(circle, rgba(163, 163, 163, 0.6) 0%, transparent 70%)',
+            animationDuration: '18s',
+            animationDelay: '6s'
+          }}></div>
+      </div>
+
+      {/* Hexagonal Grid Pattern */}
+      <div className="absolute inset-0 pointer-events-none z-0 opacity-[0.04]">
+        <svg width="100%" height="100%" xmlns="http://www.w3.org/2000/svg">
+          <defs>
+            <pattern id="hexagons" width="100" height="87" patternUnits="userSpaceOnUse" patternTransform="scale(1.5)">
+              <polygon points="50,0 100,25 100,75 50,100 0,75 0,25" fill="none" stroke="rgba(163, 163, 163, 0.5)" strokeWidth="1"/>
+            </pattern>
+          </defs>
+          <rect width="100%" height="100%" fill="url(#hexagons)" />
+        </svg>
+      </div>
+
+      {/* Animated Geometric Accents */}
+      <div className="absolute inset-0 pointer-events-none z-0">
+        <div className="absolute top-1/4 right-1/4 w-40 h-40 border-2 border-mono-300/10 rotate-45 animate-spin-slow" style={{animationDuration: '60s'}}></div>
+        <div className="absolute bottom-1/3 left-1/4 w-32 h-32 border border-mono-300/8 rounded-full animate-spin-slow" style={{animationDuration: '50s'}}></div>
+        <div className="absolute top-1/2 left-1/3 w-28 h-28 border-2 border-dashed border-mono-400/10 rotate-12 animate-spin-slow" style={{animationDuration: '55s'}}></div>
+        <div className="absolute bottom-1/4 right-1/3 w-36 h-36 relative animate-spin-slow" style={{animationDuration: '65s'}}>
+          <div className="absolute inset-4 border-l-2 border-t-2 border-mono-400/12 rounded-tl-2xl rotate-45"></div>
+          <div className="absolute inset-4 border-r-2 border-b-2 border-mono-300/12 rounded-br-2xl rotate-45"></div>
         </div>
+      </div>
+
+      {/* Flowing Code-like Elements */}
+      <div className="absolute inset-0 pointer-events-none z-0 opacity-[0.03] font-mono text-xs overflow-hidden">
+        <div className="absolute top-10 left-20 animate-float" style={{animationDuration: '25s'}}>{'{ } [ ] < >'}</div>
+        <div className="absolute top-1/4 right-32 animate-float" style={{animationDuration: '30s', animationDelay: '5s'}}>{'=> () =>'}</div>
+        <div className="absolute bottom-1/3 left-1/4 animate-float" style={{animationDuration: '28s', animationDelay: '8s'}}>{'/* */ //'}</div>
+        <div className="absolute top-1/2 right-1/4 animate-float" style={{animationDuration: '32s', animationDelay: '3s'}}>{'</> <>'}</div>
+        <div className="absolute bottom-1/4 left-1/3 animate-float" style={{animationDuration: '27s', animationDelay: '10s'}}>{'() => {}'}</div>
       </div>
 
       {/* Top Navigation */}
