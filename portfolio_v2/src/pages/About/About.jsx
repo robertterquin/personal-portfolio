@@ -141,7 +141,7 @@ const About = () => {
           </div>
 
           {/* Right Column - Description with Profile Image */}
-          <div className={`space-y-10 transition-all duration-700 delay-200 ${isVisible ? 'opacity-100 translate-x-0' : 'opacity-0 translate-x-16'}`}>
+          <div className={`space-y-10 text-center pt-20 transition-all duration-700 delay-200 ${isVisible ? 'opacity-100 translate-x-0' : 'opacity-0 translate-x-16'}`}>
             {/* Description Text */}
             <div className="space-y-8">
               <p className="text-xl md:text-2xl lg:text-3xl text-gray-200 leading-relaxed font-light">

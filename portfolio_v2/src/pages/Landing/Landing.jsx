@@ -157,12 +157,16 @@ const Landing = () => {
           
           {/* Left Side - Text Content */}
           <div className="space-y-8 text-center lg:text-left">
-            <h1 className="text-5xl md:text-6xl lg:text-7xl font-bold leading-tight">
+            <h1 className="text-5xl md:text-6xl lg:text-7xl font-black leading-tight tracking-tighter" style={{
+              textShadow: '0 10px 30px rgba(255, 255, 255, 0.1), 0 4px 12px rgba(163, 163, 163, 0.2)'
+            }}>
               Where Concepts<br />
-              Become <span className="text-transparent bg-clip-text bg-gradient-to-r from-white to-gray-400">Code</span>
+              Become <span className="text-transparent bg-clip-text bg-gradient-to-r from-white via-gray-200 to-gray-300">Code</span>
             </h1>
 
-            <p className="text-gray-400 text-lg leading-relaxed">
+            <p className="text-gray-300 text-lg leading-relaxed font-medium" style={{
+              textShadow: '0 2px 8px rgba(0, 0, 0, 0.3)'
+            }}>
               Transforming your vision into scalable, high-performance applications. Specializing in full-stack development with a focus on clean code and exceptional user experiences.
             </p>
           </div>
