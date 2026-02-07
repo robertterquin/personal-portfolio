@@ -152,23 +152,23 @@ const Landing = () => {
       </nav>
 
       {/* Main Content */}
-      <div className="relative z-10 container mx-auto px-8 md:px-16 py-12 md:py-20 flex items-center min-h-[calc(100vh-200px)]">
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20 items-center w-full max-w-7xl mx-auto">
+      <div className="relative z-10 container mx-auto px-8 md:px-16 py-12 md:py-20 flex items-center justify-center min-h-[calc(100vh-200px)]">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20 items-center w-full max-w-6xl">
           
           {/* Left Side - Text Content */}
-          <div className="space-y-8">
+          <div className="space-y-8 text-center lg:text-left">
             <h1 className="text-5xl md:text-6xl lg:text-7xl font-bold leading-tight">
               Where Concepts<br />
               Become <span className="text-transparent bg-clip-text bg-gradient-to-r from-white to-gray-400">Code</span>
             </h1>
 
-            <p className="text-gray-400 text-lg max-w-md leading-relaxed">
+            <p className="text-gray-400 text-lg leading-relaxed">
               Transforming your vision into scalable, high-performance applications. Specializing in full-stack development with a focus on clean code and exceptional user experiences.
             </p>
           </div>
 
           {/* Right Side - Profile Image with Service Tags */}
-          <div className="relative flex justify-center lg:justify-end">
+          <div className="relative flex justify-center">
             {/* Profile Circle */}
             <div className="relative">
               <div className="w-64 h-64 md:w-80 md:h-80 lg:w-96 lg:h-96 rounded-full overflow-hidden border-8 border-mono-300 relative">
