@@ -63,8 +63,8 @@ const Projects = () => {
       type: "Business Tool",
       year: "2025",
       featured: false,
-      gradient: "from-purple-100 via-indigo-50 to-purple-50",
-      accentColor: "text-purple-600",
+      gradient: "from-purple-200 via-violet-100 to-fuchsia-100",
+      accentColor: "text-fuchsia-600",
       screens: [
         { image: "/projects/bizbot/bizbot-1.png", label: "Dashboard" },
         { image: "/projects/bizbot/bizbot-2.png", label: "Workflow Builder" },
@@ -334,16 +334,16 @@ const Projects = () => {
 
               {/* Floating Circles Background Effect */}
               <div className="absolute inset-0 overflow-hidden pointer-events-none">
-                <div className={`absolute top-10 right-20 w-32 h-32 rounded-full blur-2xl ${project.id === 2 ? 'bg-blue-400/20' : project.id === 4 ? 'bg-purple-400/20' : 'bg-orange-400/20'}`}></div>
-                <div className={`absolute bottom-20 left-16 w-40 h-40 rounded-full blur-3xl ${project.id === 2 ? 'bg-cyan-300/15' : project.id === 4 ? 'bg-indigo-300/15' : 'bg-orange-300/15'}`}></div>
-                <div className={`absolute top-1/2 left-1/4 w-24 h-24 rounded-full blur-xl ${project.id === 2 ? 'bg-teal-300/10' : project.id === 4 ? 'bg-purple-300/10' : 'bg-orange-300/10'}`}></div>
+                <div className={`absolute top-10 right-20 w-32 h-32 rounded-full blur-2xl ${project.id === 2 ? 'bg-blue-400/20' : project.id === 4 ? 'bg-fuchsia-400/20' : 'bg-orange-400/20'}`}></div>
+                <div className={`absolute bottom-20 left-16 w-40 h-40 rounded-full blur-3xl ${project.id === 2 ? 'bg-cyan-300/15' : project.id === 4 ? 'bg-fuchsia-300/15' : 'bg-orange-300/15'}`}></div>
+                <div className={`absolute top-1/2 left-1/4 w-24 h-24 rounded-full blur-xl ${project.id === 2 ? 'bg-teal-300/10' : project.id === 4 ? 'bg-fuchsia-300/10' : 'bg-orange-300/10'}`}></div>
               </div>
 
               <div className="relative p-8 md:p-12 min-h-[400px] md:min-h-[500px] flex flex-col justify-between">
                 {/* Top Content */}
                 <div className="text-center">
                   <h3 className={`text-3xl md:text-4xl font-bold ${project.accentColor} mb-2`}>{project.title}</h3>
-                  <p className={`text-lg font-medium ${project.id === 2 ? 'text-blue-700' : project.id === 4 ? 'text-purple-700' : 'text-orange-700'}`}>{project.tagline}</p>
+                  <p className={`text-lg font-medium ${project.id === 2 ? 'text-blue-700' : project.id === 4 ? 'text-fuchsia-700' : 'text-orange-700'}`}>{project.tagline}</p>
                 </div>
 
                 {/* Phone Mockups Placeholder */}
@@ -376,12 +376,12 @@ const Projects = () => {
                 <div className="flex flex-col md:flex-row md:items-end md:justify-between gap-4">
                   <div>
                     <div className="flex items-center gap-3 mb-3">
-                      <span className={`px-3 py-1 ${project.id === 2 ? 'bg-blue-600' : project.id === 4 ? 'bg-purple-600' : 'bg-orange-600'} text-white text-xs font-medium rounded-full`}>{project.type}</span>
+                      <span className={`px-3 py-1 ${project.id === 2 ? 'bg-blue-600' : project.id === 4 ? 'bg-fuchsia-600' : 'bg-orange-600'} text-white text-xs font-medium rounded-full`}>{project.type}</span>
                     </div>
-                    <h4 className={`text-2xl md:text-3xl font-bold ${project.id === 2 ? 'text-blue-900' : project.id === 4 ? 'text-purple-900' : 'text-orange-900'}`}>{project.title}</h4>
-                    <p className={`text-sm md:text-base mt-1 max-w-md ${project.id === 2 ? 'text-blue-800' : project.id === 4 ? 'text-purple-800' : 'text-orange-800'}`}>{project.description}</p>
+                    <h4 className={`text-2xl md:text-3xl font-bold ${project.id === 2 ? 'text-blue-900' : project.id === 4 ? 'text-fuchsia-900' : 'text-orange-900'}`}>{project.title}</h4>
+                    <p className={`text-sm md:text-base mt-1 max-w-md ${project.id === 2 ? 'text-blue-800' : project.id === 4 ? 'text-fuchsia-800' : 'text-orange-800'}`}>{project.description}</p>
                   </div>
-                  <div className={`flex items-center gap-2 transition-colors ${project.id === 2 ? 'text-blue-700 group-hover:text-blue-900' : project.id === 4 ? 'text-purple-700 group-hover:text-purple-900' : 'text-orange-700 group-hover:text-orange-900'}`}>
+                  <div className={`flex items-center gap-2 transition-colors ${project.id === 2 ? 'text-blue-700 group-hover:text-blue-900' : project.id === 4 ? 'text-fuchsia-700 group-hover:text-fuchsia-900' : 'text-orange-700 group-hover:text-orange-900'}`}>
                     <span className="text-sm font-medium">View Project</span>
                     <svg className="w-5 h-5 transform group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
