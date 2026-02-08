@@ -51,8 +51,8 @@ const Contact = () => {
       });
       
       if (response.ok) {
-        // Show success modal
-        setShowSuccess(true);
+        // Show success message
+        setSubmitMessage('✓ Message sent successfully! I\'ll get back to you soon.');
         // Reset form on success
         setFormData({
           name: '',
@@ -61,8 +61,8 @@ const Contact = () => {
           message: '',
           website: ''
         });
-        // Auto close modal after 3 seconds
-        setTimeout(() => setShowSuccess(false), 3000);
+        // Auto clear message after 5 seconds
+        setTimeout(() => setSubmitMessage(''), 5000);
       } else {
         setSubmitMessage('Failed to send message. Please try again.');
       }
@@ -356,31 +356,7 @@ const Contact = () => {
               </div>
             </form>
 
-            {/* Success Modal */}
-            {showSuccess && (
-              <div className="fixed inset-0 flex items-center justify-center z-50 p-4">
-                <div className="absolute inset-0 bg-black/50 backdrop-blur-sm" onClick={() => setShowSuccess(false)}></div>
-                <div className="relative bg-gradient-to-br from-gray-800 to-gray-900 rounded-2xl border border-gray-700 p-8 max-w-sm w-full shadow-2xl animate-in fade-in zoom-in-95 duration-300">
-                  <div className="flex flex-col items-center text-center gap-4">
-                    <div className="w-16 h-16 bg-green-500/20 rounded-full flex items-center justify-center">
-                      <svg className="w-8 h-8 text-green-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
-                      </svg>
-                    </div>
-                    <div>
-                      <h3 className="text-xl font-bold text-white mb-2">Message Sent! 🎉</h3>
-                      <p className="text-gray-400 text-sm">Thank you for reaching out. I'll get back to you as soon as possible.</p>
-                    </div>
-                    <button
-                      onClick={() => setShowSuccess(false)}
-                      className="w-full mt-4 px-4 py-2 bg-mono-600 hover:bg-mono-700 text-white rounded-lg font-medium transition-colors"
-                    >
-                      Close
-                    </button>
-                  </div>
-                </div>
-              </div>
-            )}
+
 
             {/* Social Links */}
             <div className={`mt-16 transition-all duration-700 delay-400 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
