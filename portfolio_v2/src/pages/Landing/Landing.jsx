@@ -130,24 +130,8 @@ const Landing = () => {
 
       {/* Top Navigation */}
       <nav className="relative z-20 flex items-center justify-between px-8 md:px-16 py-6">
-        {/* Logo */}
-        <div className="flex items-center">
-          <div className="w-10 h-10 bg-mono-900 rounded-lg flex items-center justify-center text-2xl font-bold text-white transform -skew-y-6">
-            ⚡
-          </div>
-        </div>
-
         {/* Navigation Links */}
         <div className="hidden md:flex gap-8 text-sm">
-          {['About', 'Projects', 'Certification', 'Contact'].map((item) => (
-            <a
-              key={item}
-              href={`#${item.toLowerCase()}`}
-              className="text-gray-300 hover:text-white transition-colors"
-            >
-              {item}
-            </a>
-          ))}
         </div>
       </nav>
 
@@ -169,6 +153,17 @@ const Landing = () => {
             }}>
               Transforming your vision into scalable, high-performance applications. Specializing in full-stack development with a focus on clean code and exceptional user experiences.
             </p>
+            <div className="flex flex-col sm:flex-row gap-4 pt-4">
+              <a href="#projects" className="group inline-flex items-center justify-center gap-2 px-8 py-4 bg-gradient-to-r from-mono-600 to-mono-800 rounded-xl font-semibold text-white hover:scale-105 transition-transform duration-300 shadow-lg hover:shadow-xl">
+                View My Work
+                <svg className="w-5 h-5 transform group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 7l5 5m0 0l-5 5m5-5H6" />
+                </svg>
+              </a>
+              <a href="#contact" className="inline-flex items-center justify-center gap-2 px-8 py-4 border-2 border-mono-600 rounded-xl font-semibold text-mono-300 hover:bg-mono-900/30 transition-all duration-300">
+                Get in Touch
+              </a>
+            </div>
           </div>
 
           {/* Right Side - Profile Image with Service Tags */}
