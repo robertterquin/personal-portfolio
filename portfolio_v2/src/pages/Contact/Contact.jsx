@@ -4,6 +4,8 @@ const Contact = () => {
   const [isVisible, setIsVisible] = useState(false);
   const [particles, setParticles] = useState([]);
   const [shapes, setShapes] = useState([]);
+  const [isLoading, setIsLoading] = useState(false);
+  const [submitMessage, setSubmitMessage] = useState('');
   const [formData, setFormData] = useState({
     name: '',
     email: '',
@@ -19,10 +21,45 @@ const Contact = () => {
     });
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    // Form submission logic will go here
-    console.log('Form submitted:', formData);
+    setIsLoading(true);
+    setSubmitMessage('');
+    
+    try {
+      const formDataObj = new FormData();
+      formDataObj.append('name', formData.name);
+      formDataObj.append('email', formData.email);
+      formDataObj.append('subject', formData.subject);
+      formDataObj.append('message', formData.message);
+      
+      const response = await fetch('https://formspree.io/f/xreagjdj', {
+        method: 'POST',
+        body: formDataObj,
+        headers: {
+          'Accept': 'application/json'
+        }
+      });
+      
+      if (response.ok) {
+        // Reset form on success
+        setFormData({
+          name: '',
+          email: '',
+          subject: '',
+          message: ''
+        });
+        setSubmitMessage('Message sent successfully!');
+        setTimeout(() => setSubmitMessage(''), 5000);
+      } else {
+        setSubmitMessage('Failed to send message. Please try again.');
+      }
+    } catch (error) {
+      console.error('Error sending message:', error);
+      setSubmitMessage('Error sending message. Please try again.');
+    } finally {
+      setIsLoading(false);
+    }
   };
 
   useEffect(() => {
@@ -273,19 +310,25 @@ const Contact = () => {
               </div>
 
               {/* Submit Button */}
-              <div className="flex justify-center pt-4">
+              <div className="flex flex-col items-center gap-4 pt-4">
                 <button
                   type="submit"
-                  className="group relative px-8 py-4 bg-gradient-to-r from-mono-600 to-mono-800 rounded-xl font-semibold text-white overflow-hidden transition-all duration-300 hover:scale-105 hover:shadow-xl hover:shadow-mono-600/30"
+                  disabled={isLoading}
+                  className="group relative px-8 py-4 bg-gradient-to-r from-mono-600 to-mono-800 rounded-xl font-semibold text-white overflow-hidden transition-all duration-300 hover:scale-105 hover:shadow-xl hover:shadow-mono-600/30 disabled:opacity-50 disabled:cursor-not-allowed"
                 >
                   <span className="relative z-10 flex items-center gap-2">
-                    Send Message
+                    {isLoading ? 'Sending...' : 'Send Message'}
                     <svg className="w-5 h-5 transform group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M14 5l7 7m0 0l-7 7m7-7H3" />
                     </svg>
                   </span>
                   <div className="absolute inset-0 bg-gradient-to-r from-mono-700 to-mono-950 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
                 </button>
+                {submitMessage && (
+                  <p className={`text-sm ${submitMessage.includes('successfully') ? 'text-green-400' : 'text-red-400'}`}>
+                    {submitMessage}
+                  </p>
+                )}
               </div>
             </form>
 
