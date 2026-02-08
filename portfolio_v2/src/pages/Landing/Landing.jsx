@@ -77,18 +77,18 @@ const Landing = () => {
 
       {/* Multiple Layered Gradient Meshes */}
       <div className="absolute inset-0 pointer-events-none z-0">
-        <div className="absolute top-10 left-10 w-[600px] h-[600px] rounded-full blur-[150px] animate-pulse opacity-20" 
+        <div className="absolute top-10 left-10 w-[650px] h-[650px] rounded-full blur-[150px] animate-pulse opacity-20" 
           style={{
             background: 'radial-gradient(circle, rgba(163, 163, 163, 0.4) 0%, transparent 70%)',
             animationDuration: '15s'
           }}></div>
-        <div className="absolute bottom-20 right-20 w-[500px] h-[500px] rounded-full blur-[140px] animate-pulse opacity-20" 
+        <div className="absolute bottom-20 right-20 w-[550px] h-[550px] rounded-full blur-[140px] animate-pulse opacity-20" 
           style={{
             background: 'radial-gradient(circle, rgba(163, 163, 163, 0.5) 0%, transparent 70%)',
             animationDuration: '12s',
             animationDelay: '3s'
           }}></div>
-        <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-[450px] h-[450px] rounded-full blur-[130px] animate-pulse opacity-15" 
+        <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-[500px] h-[500px] rounded-full blur-[130px] animate-pulse opacity-15" 
           style={{
             background: 'radial-gradient(circle, rgba(163, 163, 163, 0.6) 0%, transparent 70%)',
             animationDuration: '18s',
@@ -110,10 +110,10 @@ const Landing = () => {
 
       {/* Animated Geometric Accents */}
       <div className="absolute inset-0 pointer-events-none z-0">
-        <div className="absolute top-1/4 right-1/4 w-40 h-40 border-2 border-mono-300/10 rotate-45 animate-spin-slow" style={{animationDuration: '60s'}}></div>
-        <div className="absolute bottom-1/3 left-1/4 w-32 h-32 border border-mono-300/8 rounded-full animate-spin-slow" style={{animationDuration: '50s'}}></div>
-        <div className="absolute top-1/2 left-1/3 w-28 h-28 border-2 border-dashed border-mono-400/10 rotate-12 animate-spin-slow" style={{animationDuration: '55s'}}></div>
-        <div className="absolute bottom-1/4 right-1/3 w-36 h-36 relative animate-spin-slow" style={{animationDuration: '65s'}}>
+        <div className="absolute top-1/4 right-1/4 w-48 h-48 border-2 border-mono-300/10 rotate-45 animate-spin-slow" style={{animationDuration: '60s'}}></div>
+        <div className="absolute bottom-1/3 left-1/4 w-40 h-40 border border-mono-300/8 rounded-full animate-spin-slow" style={{animationDuration: '50s'}}></div>
+        <div className="absolute top-1/2 left-1/3 w-32 h-32 border-2 border-dashed border-mono-400/10 rotate-12 animate-spin-slow" style={{animationDuration: '55s'}}></div>
+        <div className="absolute bottom-1/4 right-1/3 w-44 h-44 relative animate-spin-slow" style={{animationDuration: '65s'}}>
           <div className="absolute inset-4 border-l-2 border-t-2 border-mono-400/12 rounded-tl-2xl rotate-45"></div>
           <div className="absolute inset-4 border-r-2 border-b-2 border-mono-300/12 rounded-br-2xl rotate-45"></div>
         </div>
@@ -141,26 +141,26 @@ const Landing = () => {
           
           {/* Left Side - Text Content */}
           <div className="space-y-8 text-center lg:text-left">
-            <h1 className="text-5xl md:text-6xl lg:text-7xl font-black leading-tight tracking-tighter" style={{
+            <h1 className="text-5xl md:text-7xl lg:text-8xl font-black leading-tight tracking-tighter" style={{
               textShadow: '0 10px 30px rgba(255, 255, 255, 0.1), 0 4px 12px rgba(163, 163, 163, 0.2)'
             }}>
               Where Concepts<br />
               Become <span className="text-transparent bg-clip-text bg-gradient-to-r from-white via-gray-200 to-gray-300">Code</span>
             </h1>
 
-            <p className="text-gray-300 text-lg leading-relaxed font-medium" style={{
+            <p className="text-gray-300 text-xl md:text-2xl leading-relaxed font-medium" style={{
               textShadow: '0 2px 8px rgba(0, 0, 0, 0.3)'
             }}>
               Transforming your vision into scalable, high-performance applications. Specializing in full-stack development with a focus on clean code and exceptional user experiences.
             </p>
-            <div className="flex flex-col sm:flex-row gap-4 pt-4">
-              <a href="#projects" className="group inline-flex items-center justify-center gap-2 px-8 py-4 bg-gradient-to-r from-mono-600 to-mono-800 rounded-xl font-semibold text-white hover:scale-105 transition-transform duration-300 shadow-lg hover:shadow-xl">
+            <div className="flex flex-col sm:flex-row gap-4 pt-6">
+              <a href="#projects" className="group inline-flex items-center justify-center gap-2 px-9 py-4 bg-gradient-to-r from-mono-600 to-mono-800 rounded-xl font-semibold text-white hover:scale-105 transition-transform duration-300 shadow-lg hover:shadow-xl">
                 View My Work
                 <svg className="w-5 h-5 transform group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 7l5 5m0 0l-5 5m5-5H6" />
                 </svg>
               </a>
-              <a href="#contact" className="inline-flex items-center justify-center gap-2 px-8 py-4 border-2 border-mono-600 rounded-xl font-semibold text-mono-300 hover:bg-mono-900/30 transition-all duration-300">
+              <a href="#contact" className="inline-flex items-center justify-center gap-2 px-9 py-4 border-2 border-mono-600 rounded-xl font-semibold text-mono-300 hover:bg-mono-900/30 transition-all duration-300">
                 Get in Touch
               </a>
             </div>
@@ -170,7 +170,7 @@ const Landing = () => {
           <div className="relative flex justify-center">
             {/* Profile Circle */}
             <div className="relative">
-              <div className="w-64 h-64 md:w-80 md:h-80 lg:w-96 lg:h-96 rounded-full overflow-hidden border-8 border-mono-300 relative">
+              <div className="w-80 h-80 md:w-96 md:h-96 lg:w-[28rem] lg:h-[28rem] rounded-full overflow-hidden border-8 border-mono-300 relative">
                 <img 
                   src="/profile.jpg" 
                   alt="Robert Terquin Laqui" 

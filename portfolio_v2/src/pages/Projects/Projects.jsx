@@ -59,7 +59,7 @@ const Projects = () => {
       id: 4,
       title: "BizBot",
       tagline: "Automate business workflows effortlessly",
-      description: "An intelligent automation platform designed to streamline business processes, enhance productivity, and reduce manual tasks through intelligent workflow management.",
+      description: "Flutter-based mobile application designed to help customers browse bakery treats, personalize cakes with AI recommendations, request quotations, and track orders from checkout to delivery.",
       type: "Business Tool",
       year: "2025",
       featured: false,
