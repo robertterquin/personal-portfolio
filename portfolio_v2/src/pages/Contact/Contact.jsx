@@ -1,4 +1,5 @@
 import { useEffect, useState, useRef } from 'react';
+import emailjs from '@emailjs/browser';
 
 const Contact = () => {
   const [isVisible, setIsVisible] = useState(false);
@@ -15,6 +16,7 @@ const Contact = () => {
     website: '' // honeypot field
   });
   const sectionRef = useRef(null);
+  const formRef = useRef(null);
 
   const handleChange = (e) => {
     setFormData({
@@ -26,7 +28,6 @@ const Contact = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     
-    // Honeypot check
     if (formData.website) {
       console.log('Spam detected');
       return;
@@ -36,39 +37,26 @@ const Contact = () => {
     setSubmitMessage('');
     
     try {
-      const formDataObj = new FormData();
-      formDataObj.append('name', formData.name);
-      formDataObj.append('email', formData.email);
-      formDataObj.append('subject', formData.subject);
-      formDataObj.append('message', formData.message);
-      
-      const response = await fetch('https://formspree.io/f/xreagjdj', {
-        method: 'POST',
-        body: formDataObj,
-        headers: {
-          'Accept': 'application/json'
-        }
-      });
-      
-      if (response.ok) {
-        // Show success message
-        setSubmitMessage('✓ Message sent successfully! I\'ll get back to you soon.');
-        // Reset form on success
-        setFormData({
-          name: '',
-          email: '',
-          subject: '',
-          message: '',
-          website: ''
-        });
-        // Auto clear message after 5 seconds
-        setTimeout(() => setSubmitMessage(''), 5000);
-      } else {
-        setSubmitMessage('Failed to send message. Please try again.');
-      }
+      const result = await emailjs.send(
+        'service_u4yc234',
+        'template_s2q26pk',
+        {
+          name: formData.name,
+          email: formData.email,
+          subject: formData.subject,
+          message: formData.message,
+          time: new Date().toLocaleString(),
+        },
+        'DPmOCAQCmCV49E2IM'
+      );
+      console.log('EmailJS success:', result);
+      setSubmitMessage('✓ Message sent successfully! I\'ll get back to you soon.');
+      setFormData({ name: '', email: '', subject: '', message: '', website: '' });
+      setTimeout(() => setSubmitMessage(''), 5000);
     } catch (error) {
-      console.error('Error sending message:', error);
-      setSubmitMessage('Error sending message. Please try again.');
+      console.error('EmailJS error status:', error.status);
+      console.error('EmailJS error text:', error.text);
+      setSubmitMessage(`Error: ${error.text || 'Failed to send message. Please try again.'}`);
     } finally {
       setIsLoading(false);
     }
@@ -256,7 +244,7 @@ const Contact = () => {
         {/* Contact Form */}
         <div className={`transition-all duration-700 delay-200 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-12'}`}>
           <div className="max-w-3xl mx-auto">
-            <form onSubmit={handleSubmit} className="space-y-6">
+            <form ref={formRef} onSubmit={handleSubmit} className="space-y-6">
               {/* Honeypot Field (Hidden) */}
               <input
                 type="text"
