@@ -91,7 +91,7 @@ const Projects = () => {
     <section 
       ref={sectionRef}
       id="projects" 
-      className="min-h-screen text-white py-16 sm:py-20 md:py-24 px-4 sm:px-6 md:px-8 lg:px-16 relative overflow-hidden"
+      className="page-shell page-shell--projects min-h-screen text-white py-16 sm:py-20 md:py-24 px-4 sm:px-6 md:px-8 lg:px-16 relative overflow-hidden"
     >
       {/* Page Transition Line Top */}
       <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-mono-400/30 to-transparent pointer-events-none z-20"></div>
@@ -174,7 +174,7 @@ const Projects = () => {
           {/* Top Label */}
           <div className="flex items-center gap-3 mb-6">
             <div className="h-px w-12 bg-gradient-to-r from-mono-600 to-transparent"></div>
-            <span className="text-mono-700 text-xs uppercase tracking-[0.3em] font-semibold">Portfolio</span>
+            <span className="font-mono text-mono-700 text-xs uppercase tracking-[0.3em] font-semibold">Portfolio</span>
           </div>
           
           {/* Main Title */}

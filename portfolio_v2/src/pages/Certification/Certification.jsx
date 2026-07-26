@@ -118,7 +118,7 @@ const Certification = () => {
     <section 
       ref={sectionRef}
       id="certification" 
-      className="min-h-screen text-white py-32 px-8 md:px-16 lg:px-24 relative overflow-hidden"
+      className="page-shell page-shell--certification min-h-screen text-white py-32 px-8 md:px-16 lg:px-24 relative overflow-hidden"
     >
       {/* Page Transition Line Top */}
       <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-mono-400/30 to-transparent pointer-events-none z-20"></div>
@@ -211,7 +211,7 @@ const Certification = () => {
           {/* Top Label */}
           <div className="flex items-center gap-3 mb-6">
             <div className="h-px w-12 bg-gradient-to-r from-mono-600 to-transparent"></div>
-            <span className="text-mono-700 text-xs uppercase tracking-[0.3em] font-semibold">Credentials</span>
+            <span className="font-mono text-mono-700 text-xs uppercase tracking-[0.3em] font-semibold">Credentials</span>
           </div>
           
           {/* Main Title */}

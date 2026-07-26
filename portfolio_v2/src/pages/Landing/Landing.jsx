@@ -39,7 +39,7 @@ const Landing = () => {
   };
 
   return (
-    <section id="home" className="min-h-screen w-full text-white relative overflow-hidden">
+    <section id="home" className="page-shell page-shell--home min-h-screen w-full text-white relative overflow-hidden">
       {/* Diagonal Stripe Pattern */}
       <div className="absolute inset-0 pointer-events-none z-0 opacity-[0.03]">
         <div className="absolute inset-0" style={{

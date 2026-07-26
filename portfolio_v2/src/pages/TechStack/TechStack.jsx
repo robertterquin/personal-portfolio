@@ -90,7 +90,7 @@ const TechStack = () => {
     <section
       ref={sectionRef}
       id="tech-stack"
-      className="relative min-h-screen overflow-hidden px-4 py-16 text-white sm:px-6 sm:py-20 md:px-16 md:py-24 lg:px-24"
+      className="page-shell page-shell--stack relative min-h-screen overflow-hidden px-4 py-16 text-white sm:px-6 sm:py-20 md:px-16 md:py-24 lg:px-24"
     >
       <div className="absolute inset-0 pointer-events-none">
         <div
@@ -110,7 +110,7 @@ const TechStack = () => {
           <div>
             <div className="mb-6 flex items-center gap-3">
               <div className="h-px w-12 bg-gradient-to-r from-cyan-300 to-transparent"></div>
-              <span className="text-xs font-semibold uppercase tracking-[0.3em] text-mono-700">Toolkit</span>
+              <span className="font-mono text-xs font-semibold uppercase tracking-[0.3em] text-mono-700">Toolkit</span>
             </div>
             <h2 className="text-6xl font-bold leading-tight tracking-tighter md:text-7xl lg:text-8xl">
               <span className="text-transparent bg-clip-text bg-gradient-to-r from-cyan-200 via-mono-900 to-white">Tech</span>
