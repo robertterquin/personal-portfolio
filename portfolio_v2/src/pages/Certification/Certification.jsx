@@ -79,9 +79,9 @@ const Certification = () => {
   const getColorClasses = () => {
     // Unified color scheme - all certificates use the same monochrome + white text style
     return {
-      border: 'border-gray-700/50',
-      bg: 'from-gray-800/20',
-      hoverBorder: 'group-hover:border-gray-600/80',
+      border: 'border-gray-800/70',
+      bg: 'bg-black/25',
+      hoverBorder: 'group-hover:border-gray-500/70',
       text: 'text-gray-300',
       gradientFrom: 'from-gray-800',
       gradientTo: 'to-gray-700',
@@ -233,11 +233,11 @@ const Certification = () => {
             return (
               <Motion.div
                 key={cert.id}
-                className={`group relative overflow-hidden rounded-2xl border ${colorClasses.border} backdrop-blur-sm ${colorClasses.hoverBorder} transition-all duration-300 hover:scale-105 hover:shadow-2xl cursor-pointer`}
+                className={`group relative overflow-hidden rounded-2xl border ${colorClasses.border} ${colorClasses.bg} backdrop-blur-sm ${colorClasses.hoverBorder} transition-all duration-300 hover:scale-105 hover:bg-black/40 hover:shadow-2xl cursor-pointer`}
                 style={{
                   transitionDelay: `${200 + index * 100}ms`,
-                  background: `linear-gradient(135deg, ${colorClasses.gradientFrom}10 0%, ${colorClasses.gradientTo}05 100%)`,
-                  boxShadow: `inset 0 1px 2px rgba(255,255,255,0.1), 0 0 20px ${colorClasses.accentColor}0a`,
+                  background: 'rgba(0, 0, 0, 0.25)',
+                  boxShadow: 'inset 0 1px 0 rgba(255, 255, 255, 0.04)',
                 }}
                 initial={{ opacity: 0, y: 24 }}
                 whileInView={{ opacity: 1, y: 0 }}
@@ -247,7 +247,7 @@ const Certification = () => {
               >
                 {/* Gradient Border Effect */}
                 <div className="absolute inset-0 rounded-2xl pointer-events-none" style={{
-                  background: `linear-gradient(135deg, ${colorClasses.accentColor}15 0%, transparent 100%)`,
+                  background: 'rgba(255, 255, 255, 0.03)',
                 }}></div>
                 
                 <div className="relative p-6 flex flex-col items-center text-center h-full">
