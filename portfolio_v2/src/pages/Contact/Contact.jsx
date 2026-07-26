@@ -1,5 +1,6 @@
 import { useEffect, useState, useRef } from 'react';
 import emailjs from '@emailjs/browser';
+import { motion } from 'motion/react';
 
 const Contact = () => {
   const [isVisible, setIsVisible] = useState(false);
@@ -190,7 +191,13 @@ const Contact = () => {
       <div className="relative z-10 max-w-[1400px] mx-auto w-full">
         
         {/* Header Section */}
-        <div className={`mb-20 transition-all duration-700 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
+        <motion.div
+          className={`mb-20 transition-all duration-700 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}
+          initial={{ opacity: 0, y: 28 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, amount: 0.2 }}
+          transition={{ duration: 0.7, ease: 'easeOut' }}
+        >
           {/* Top Label */}
           <div className="flex items-center gap-3 mb-6">
             <div className="h-px w-12 bg-gradient-to-r from-mono-600 to-transparent"></div>
@@ -239,10 +246,16 @@ const Contact = () => {
               </div>
             </div>
           </div>
-        </div>
+        </motion.div>
 
         {/* Contact Form */}
-        <div className={`transition-all duration-700 delay-200 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-12'}`}>
+        <motion.div
+          className={`transition-all duration-700 delay-200 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-12'}`}
+          initial={{ opacity: 0, y: 36 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, amount: 0.1 }}
+          transition={{ duration: 0.75, delay: 0.1, ease: 'easeOut' }}
+        >
           <div className="max-w-3xl mx-auto">
             <form ref={formRef} onSubmit={handleSubmit} className="space-y-6">
               {/* Honeypot Field (Hidden) */}
@@ -347,7 +360,13 @@ const Contact = () => {
 
 
             {/* Social Links */}
-            <div className={`mt-16 transition-all duration-700 delay-400 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
+            <motion.div
+              className={`mt-16 transition-all duration-700 delay-400 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, amount: 0.25 }}
+              transition={{ duration: 0.6, delay: 0.15, ease: 'easeOut' }}
+            >
               <div className="text-center mb-6">
                 <p className="text-gray-400 text-sm">Or connect with me on</p>
               </div>
@@ -363,12 +382,18 @@ const Contact = () => {
                   </svg>
                 </a>
               </div>
-            </div>
+            </motion.div>
           </div>
-        </div>
+        </motion.div>
 
         {/* Bottom CTA */}
-        <div className={`mt-16 text-center transition-all duration-700 delay-600 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
+        <motion.div
+          className={`mt-16 text-center transition-all duration-700 delay-600 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, amount: 0.4 }}
+          transition={{ duration: 0.6, ease: 'easeOut' }}
+        >
           <div className="inline-flex flex-col items-center gap-4">
             <p className="text-gray-400 text-sm">Looking forward to hearing from you</p>
             <div className="flex gap-2">
@@ -377,7 +402,7 @@ const Contact = () => {
               <div className="w-2 h-2 bg-mono-800 rounded-full animate-pulse" style={{animationDelay: '0.4s'}}></div>
             </div>
           </div>
-        </div>
+        </motion.div>
       </div>
 
       {/* Page Transition Line Bottom */}

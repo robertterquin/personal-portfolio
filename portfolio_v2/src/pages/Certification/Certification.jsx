@@ -1,4 +1,5 @@
 import { useEffect, useState, useRef } from 'react';
+import { motion } from 'motion/react';
 
 const Certification = () => {
   const [isVisible, setIsVisible] = useState(false);
@@ -200,7 +201,13 @@ const Certification = () => {
       <div className="relative z-10 max-w-[1400px] mx-auto w-full">
         
         {/* Header Section */}
-        <div className={`mb-20 transition-all duration-700 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
+        <motion.div
+          className={`mb-20 transition-all duration-700 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}
+          initial={{ opacity: 0, y: 28 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, amount: 0.2 }}
+          transition={{ duration: 0.7, ease: 'easeOut' }}
+        >
           {/* Top Label */}
           <div className="flex items-center gap-3 mb-6">
             <div className="h-px w-12 bg-gradient-to-r from-mono-600 to-transparent"></div>
@@ -234,14 +241,20 @@ const Certification = () => {
               </div>
             </div>
           </div>
-        </div>
+        </motion.div>
 
         {/* Certifications Grid */}
-        <div className={`grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 transition-all duration-700 delay-200 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-12'}`}>
+        <motion.div
+          className={`grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 transition-all duration-700 delay-200 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-12'}`}
+          initial={{ opacity: 0, y: 32 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, amount: 0.1 }}
+          transition={{ duration: 0.75, delay: 0.1, ease: 'easeOut' }}
+        >
           {certifications.map((cert, index) => {
             const colorClasses = getColorClasses(cert.color);
             return (
-              <div
+              <motion.div
                 key={cert.id}
                 className={`group relative overflow-hidden rounded-2xl border ${colorClasses.border} backdrop-blur-sm ${colorClasses.hoverBorder} transition-all duration-300 hover:scale-105 hover:shadow-2xl cursor-pointer`}
                 style={{
@@ -249,6 +262,11 @@ const Certification = () => {
                   background: `linear-gradient(135deg, ${colorClasses.gradientFrom}10 0%, ${colorClasses.gradientTo}05 100%)`,
                   boxShadow: `inset 0 1px 2px rgba(255,255,255,0.1), 0 0 20px ${colorClasses.accentColor}0a`,
                 }}
+                initial={{ opacity: 0, y: 24 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true, amount: 0.1 }}
+                whileHover={{ y: -6, scale: 1.03 }}
+                transition={{ duration: 0.35, delay: index * 0.08, ease: 'easeOut' }}
               >
                 {/* Gradient Border Effect */}
                 <div className="absolute inset-0 rounded-2xl pointer-events-none" style={{
@@ -277,13 +295,19 @@ const Certification = () => {
                   {/* Hover Shimmer Effect */}
                   <div className="absolute top-0 left-0 w-full h-full bg-gradient-to-r from-transparent via-white/0 to-transparent group-hover:via-white/10 rounded-2xl transition-all duration-500 pointer-events-none"></div>
                 </div>
-              </div>
+              </motion.div>
             );
           })}
-        </div>
+        </motion.div>
 
         {/* Bottom CTA */}
-        <div className={`mt-16 text-center transition-all duration-700 delay-600 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
+        <motion.div
+          className={`mt-16 text-center transition-all duration-700 delay-600 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, amount: 0.4 }}
+          transition={{ duration: 0.6, ease: 'easeOut' }}
+        >
           <div className="inline-flex flex-col items-center gap-4">
             <p className="text-gray-400 text-sm">Continuously expanding knowledge and expertise</p>
             <div className="flex gap-2">
@@ -292,7 +316,7 @@ const Certification = () => {
               <div className="w-2 h-2 bg-mono-800 rounded-full animate-pulse" style={{animationDelay: '0.4s'}}></div>
             </div>
           </div>
-        </div>
+        </motion.div>
       </div>
 
       {/* Page Transition Line Bottom */}

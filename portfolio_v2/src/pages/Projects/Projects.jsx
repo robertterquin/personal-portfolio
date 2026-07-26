@@ -1,4 +1,5 @@
 import { useEffect, useState, useRef } from 'react';
+import { motion } from 'motion/react';
 
 const Projects = () => {
   const [isVisible, setIsVisible] = useState(false);
@@ -163,7 +164,13 @@ const Projects = () => {
       <div className="relative z-10 max-w-[1600px] mx-auto w-full">
         
         {/* Header Section - Enhanced layout */}
-        <div className={`mb-20 transition-all duration-700 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
+        <motion.div
+          className={`mb-20 transition-all duration-700 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}
+          initial={{ opacity: 0, y: 28 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, amount: 0.2 }}
+          transition={{ duration: 0.7, ease: 'easeOut' }}
+        >
           {/* Top Label */}
           <div className="flex items-center gap-3 mb-6">
             <div className="h-px w-12 bg-gradient-to-r from-mono-600 to-transparent"></div>
@@ -197,14 +204,22 @@ const Projects = () => {
               </div>
             </div>
           </div>
-        </div>
+        </motion.div>
 
         {/* Featured Project - Large Card */}
-        <div className={`mb-8 transition-all duration-700 delay-200 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-12'}`}>
+        <motion.div
+          className={`mb-8 transition-all duration-700 delay-200 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-12'}`}
+          initial={{ opacity: 0, y: 36 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, amount: 0.15 }}
+          transition={{ duration: 0.75, delay: 0.1, ease: 'easeOut' }}
+        >
           {projects.filter(p => p.featured).map((project) => (
-            <div 
+            <motion.div 
               key={project.id}
               className="group relative mx-auto w-full max-w-[1400px] rounded-2xl border-2 border-white/25 bg-gray-950 p-2 shadow-[0_24px_70px_rgba(0,0,0,0.45)] ring-4 ring-gray-950/80 overflow-hidden cursor-pointer transition-all duration-300 hover:-translate-y-1 hover:border-gray-400/80 hover:shadow-[0_30px_85px_rgba(255,255,255,0.12)]"
+              whileHover={{ y: -6, scale: 1.01 }}
+              transition={{ duration: 0.3, ease: 'easeOut' }}
             >
               {/* Card Background */}
               <div className="absolute inset-0 bg-gradient-to-br from-gray-900 via-gray-950 to-black opacity-95"></div>
@@ -243,17 +258,28 @@ const Projects = () => {
 
               {/* Hover Overlay */}
               <div className="absolute inset-0 bg-black/0 group-hover:bg-black/5 transition-colors duration-300"></div>
-            </div>
+            </motion.div>
           ))}
-        </div>
+        </motion.div>
 
         {/* Secondary Projects - Full Width Stacked */}
-        <div className={`flex flex-col gap-8 transition-all duration-700 delay-400 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-12'}`}>
+        <motion.div
+          className={`flex flex-col gap-8 transition-all duration-700 delay-400 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-12'}`}
+          initial={{ opacity: 0, y: 36 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, amount: 0.1 }}
+          transition={{ duration: 0.75, delay: 0.15, ease: 'easeOut' }}
+        >
           {projects.filter(p => !p.featured).map((project, index) => (
-            <div 
+            <motion.div 
               key={project.id}
               className="group relative mx-auto w-full max-w-[1400px] rounded-2xl border-2 border-white/25 bg-gray-950 p-2 shadow-[0_24px_70px_rgba(0,0,0,0.45)] ring-4 ring-gray-950/80 overflow-hidden cursor-pointer transition-all duration-300 hover:-translate-y-1 hover:border-gray-400/80 hover:shadow-[0_30px_85px_rgba(255,255,255,0.12)]"
               style={{ transitionDelay: `${400 + index * 100}ms` }}
+              initial={{ opacity: 0, y: 24 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, amount: 0.1 }}
+              whileHover={{ y: -6, scale: 1.01 }}
+              transition={{ duration: 0.35, delay: index * 0.08, ease: 'easeOut' }}
             >
               {/* Card Background */}
               <div className="absolute inset-0 bg-gradient-to-br from-gray-900 via-gray-950 to-black opacity-95"></div>
@@ -292,12 +318,18 @@ const Projects = () => {
 
               {/* Hover Overlay */}
               <div className="absolute inset-0 bg-black/0 group-hover:bg-black/5 transition-colors duration-300"></div>
-            </div>
+            </motion.div>
           ))}
-        </div>
+        </motion.div>
 
         {/* More Projects Coming Section */}
-        <div className={`mt-16 text-center transition-all duration-700 delay-600 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
+        <motion.div
+          className={`mt-16 text-center transition-all duration-700 delay-600 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, amount: 0.4 }}
+          transition={{ duration: 0.6, ease: 'easeOut' }}
+        >
           <div className="inline-flex items-center gap-4 px-8 py-4 border border-gray-800 rounded-full">
             <div className="flex gap-1">
               <div className="w-2 h-2 bg-mono-600 rounded-full animate-pulse"></div>
@@ -306,7 +338,7 @@ const Projects = () => {
             </div>
             <span className="text-gray-400 text-sm">More projects coming soon</span>
           </div>
-        </div>
+        </motion.div>
       </div>
 
       {/* Page Transition Line Bottom */}

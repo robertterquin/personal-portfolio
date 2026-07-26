@@ -1,4 +1,5 @@
 import { useEffect, useState } from 'react';
+import { motion } from 'motion/react';
 
 const Landing = () => {
   const [flowingLines, setFlowingLines] = useState([]);
@@ -140,7 +141,13 @@ const Landing = () => {
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20 items-center w-full max-w-6xl">
           
           {/* Left Side - Profile Image with Service Tags */}
-          <div className="relative flex justify-center lg:justify-start">
+          <motion.div
+            className="relative flex justify-center lg:justify-start"
+            initial={{ opacity: 0, x: -40 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true, amount: 0.25 }}
+            transition={{ duration: 0.8, ease: 'easeOut' }}
+          >
             {/* Profile Circle */}
             <div className="relative">
               <div className="w-80 h-80 md:w-96 md:h-96 lg:w-[28rem] lg:h-[28rem] rounded-full overflow-hidden border-8 border-mono-300 relative">
@@ -172,10 +179,16 @@ const Landing = () => {
                 3+ Years Experience
               </div>
             </div>
-          </div>
+          </motion.div>
 
           {/* Right Side - Text Content */}
-          <div className="space-y-8 text-center lg:text-left">
+          <motion.div
+            className="space-y-8 text-center lg:text-left"
+            initial={{ opacity: 0, x: 40 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true, amount: 0.25 }}
+            transition={{ duration: 0.8, delay: 0.15, ease: 'easeOut' }}
+          >
             <h1 className="text-5xl md:text-7xl lg:text-8xl font-black leading-tight tracking-tighter" style={{
               textShadow: '0 10px 30px rgba(255, 255, 255, 0.1), 0 4px 12px rgba(163, 163, 163, 0.2)'
             }}>
@@ -199,7 +212,7 @@ const Landing = () => {
                 Get in Touch
               </a>
             </div>
-          </div>
+          </motion.div>
 
         </div>
       </div>
