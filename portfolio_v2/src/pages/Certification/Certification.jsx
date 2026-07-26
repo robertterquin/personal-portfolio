@@ -207,31 +207,16 @@ const Certification = () => {
           </div>
           
           {/* Main Title */}
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-16 items-start">
+          <div className="grid grid-cols-1 items-start">
             <div>
               <h2 className="text-6xl md:text-7xl lg:text-8xl font-bold tracking-tighter leading-tight mb-4">
                 <span className="text-transparent bg-clip-text bg-linear-to-r from-mono-600 via-mono-800 to-mono-950 animate-gradient">Certified</span>
-                <br />
+                <br className="lg:hidden" />
                 <span className="text-transparent bg-clip-text bg-linear-to-r from-mono-950 to-mono-800">Excellence</span>
               </h2>
               <div className="h-1 w-20 bg-linear-to-r from-mono-500 via-mono-600 to-mono-700 rounded-full mt-6"></div>
             </div>
             
-            <div className="space-y-6 lg:pt-4">
-              <p className="text-gray-300 text-lg leading-relaxed">
-                Professional certifications demonstrating expertise and commitment to continuous learning in software development and technology.
-              </p>
-              <div className="grid grid-cols-2 gap-4 pt-4">
-                <div className="p-4 rounded-lg border border-gray-800/50 bg-linear-to-br from-mono-200/05 to-transparent backdrop-blur-sm hover:border-mono-400/30 transition-colors">
-                  <div className="text-2xl font-bold text-mono-700">7</div>
-                  <div className="text-sm text-gray-400">Certifications</div>
-                </div>
-                <div className="p-4 rounded-lg border border-gray-800/50 bg-linear-to-br from-mono-200/05 to-transparent backdrop-blur-sm hover:border-mono-400/30 transition-colors">
-                  <div className="text-2xl font-bold text-mono-700">2026</div>
-                  <div className="text-sm text-gray-400">Up to Date</div>
-                </div>
-              </div>
-            </div>
           </div>
         </Motion.div>
 

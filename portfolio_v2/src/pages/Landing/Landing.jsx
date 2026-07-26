@@ -131,16 +131,13 @@ const Landing = () => {
               </div>
               
               <div className="absolute top-1/4 -left-4 md:-left-8 px-4 py-2 bg-white text-black rounded-full text-xs md:text-sm font-medium shadow-lg">
-                Flutter Expert
+                Cycling
               </div>
-              
+               
               <div className="absolute bottom-1/4 -right-4 md:-right-8 px-4 py-2 bg-white text-black rounded-full text-xs md:text-sm font-medium shadow-lg">
-                Firebase & Supabase
+                Running
               </div>
               
-              <div className="absolute -bottom-4 left-1/4 px-4 py-2 bg-white text-black rounded-full text-xs md:text-sm font-medium shadow-lg">
-                3+ Years Experience
-              </div>
             </div>
           </Motion.div>
 
@@ -161,7 +158,7 @@ const Landing = () => {
 
             <div className="border-l border-mono-600/50 pl-5 text-left text-sm leading-relaxed text-gray-400 md:text-base">
               <p>
-                I&apos;m Robert Terquin Laqui, a full-stack developer with 3+ years of experience building cross-platform mobile and web applications. I specialize in Flutter, React, Node.js, Firebase, and Supabase, turning ideas into secure, scalable products with thoughtful interfaces and reliable integrations.
+                I&apos;m Robert Terquin Laqui, a full-stack developer building cross-platform mobile and web applications. I specialize in Flutter, React, Node.js, Firebase, and Supabase, turning ideas into secure, scalable products with thoughtful interfaces and reliable integrations.
               </p>
               <p className="mt-4">
                 I&apos;m always learning through practical projects and refining how I build. I care about clean architecture, accessible interactions, and creating software that feels clear, useful, and human.

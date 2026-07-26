@@ -230,7 +230,7 @@ const Contact = () => {
                     </svg>
                     <div>
                       <div className="text-xs text-gray-500">Location</div>
-                      <div className="text-sm text-gray-300">Bacoor City, Cavite</div>
+                      <div className="text-sm text-gray-300">Philippines</div>
                     </div>
                   </div>
                 </div>

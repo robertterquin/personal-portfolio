@@ -83,7 +83,6 @@ const categories = [
 const TechStack = () => {
   const [isVisible, setIsVisible] = useState(false);
   const sectionRef = useRef(null);
-  const techCount = categories.reduce((total, category) => total + category.items.length, 0);
 
   useEffect(() => {
     const observer = new IntersectionObserver(
@@ -117,7 +116,7 @@ const TechStack = () => {
       </div>
 
       <div className="relative z-10 mx-auto w-full max-w-400">
-        <div className={`mb-14 grid grid-cols-1 gap-8 transition-all duration-700 lg:grid-cols-[1fr_1.1fr] lg:gap-16 ${isVisible ? 'translate-y-0 opacity-100' : 'translate-y-8 opacity-0'}`}>
+        <div className={`mb-14 grid grid-cols-1 gap-8 transition-all duration-700 ${isVisible ? 'translate-y-0 opacity-100' : 'translate-y-8 opacity-0'}`}>
           <div>
             <div className="mb-6 flex items-center gap-3">
               <div className="h-px w-12 bg-linear-to-r from-cyan-300 to-transparent"></div>
@@ -125,27 +124,12 @@ const TechStack = () => {
             </div>
             <h2 className="text-6xl font-bold leading-tight tracking-tighter md:text-7xl lg:text-8xl">
               <span className="text-transparent bg-clip-text bg-linear-to-r from-cyan-200 via-mono-900 to-white">Tech</span>
-              <br />
+              <br className="lg:hidden" />
               <span className="text-transparent bg-clip-text bg-linear-to-r from-white to-mono-600">Stack</span>
             </h2>
             <div className="mt-6 h-1 w-20 rounded-full bg-linear-to-r from-cyan-300 via-mono-600 to-violet-300"></div>
           </div>
 
-          <div className="space-y-6 lg:pt-4">
-            <p className="max-w-2xl text-lg leading-relaxed text-gray-300">
-              A growing toolkit for building thoughtful mobile, web, and backend experiences. Each technology reflects a part of how I learn, design, and ship.
-            </p>
-            <div className="grid max-w-lg grid-cols-2 gap-4">
-              <div className="border border-gray-800/70 bg-black/20 p-4 backdrop-blur-sm">
-                <div className="text-2xl font-bold text-cyan-200">{techCount}</div>
-                <div className="text-sm text-gray-400">Technologies</div>
-              </div>
-              <div className="border border-gray-800/70 bg-black/20 p-4 backdrop-blur-sm">
-                <div className="text-2xl font-bold text-violet-200">{categories.length}</div>
-                <div className="text-sm text-gray-400">Focus Areas</div>
-              </div>
-            </div>
-          </div>
         </div>
 
         <div className="grid grid-cols-1 gap-6 md:grid-cols-2 xl:grid-cols-3">
