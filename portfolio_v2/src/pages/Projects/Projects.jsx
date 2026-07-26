@@ -179,7 +179,7 @@ const Projects = () => {
         >
           {/* Top Label */}
           <div className="flex items-center gap-3 mb-6">
-            <div className="h-px w-12 bg-linear-to-r from-mono-600 to-transparent"></div>
+            <div className="h-px w-12 bg-linear-to-r from-cyan-300 to-transparent"></div>
             <span className="font-mono text-mono-700 text-xs uppercase tracking-[0.3em] font-semibold">Portfolio</span>
           </div>
           
@@ -207,7 +207,7 @@ const Projects = () => {
 
         {/* Mobile Project Gallery */}
         <Motion.div
-          className={`mx-auto grid w-full max-w-320 grid-cols-1 gap-6 transition-all duration-700 delay-200 sm:grid-cols-2 lg:gap-8 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-12'}`}
+          className={`mx-auto grid w-full max-w-7xl grid-cols-1 gap-6 transition-all duration-700 delay-200 sm:grid-cols-2 lg:gap-8 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-12'}`}
           initial={{ opacity: 0, y: 36 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, amount: 0.1 }}
@@ -216,7 +216,7 @@ const Projects = () => {
           {mobileProjects.map((project, index) => (
             <Motion.div
               key={project.id}
-              className="group relative min-w-0 overflow-hidden rounded-xl border border-gray-800/70 bg-black/25 p-3 shadow-[0_16px_40px_rgba(0,0,0,0.35)] ring-2 ring-gray-950/70 cursor-pointer transition-all duration-300 hover:-translate-y-1 hover:border-gray-500/70 hover:bg-black/40 hover:shadow-[0_20px_50px_rgba(255,255,255,0.1)] sm:p-4"
+              className="group relative min-w-0 overflow-hidden rounded-xl border border-neutral-700/70 bg-neutral-900/80 p-3 shadow-[inset_0_1px_0_rgba(255,255,255,0.04)] ring-2 ring-gray-950/70 cursor-pointer transition-all duration-300 hover:-translate-y-1 hover:border-neutral-400/80 hover:bg-neutral-900/95 hover:shadow-[0_20px_50px_rgba(255,255,255,0.1)] sm:p-4"
               style={{ transitionDelay: `${200 + index * 80}ms` }}
               initial={{ opacity: 0, y: 24 }}
               whileInView={{ opacity: 1, y: 0 }}
@@ -225,7 +225,7 @@ const Projects = () => {
               transition={{ duration: 0.3, ease: 'easeOut' }}
             >
               {/* Card Background */}
-              <div className="absolute inset-0 bg-black/25"></div>
+              <div className="absolute inset-0 bg-gray-950/25"></div>
               
               {/* Sparkle Effects */}
               <div className="absolute inset-0 overflow-hidden">
@@ -243,7 +243,7 @@ const Projects = () => {
                 ))}
               </div>
 
-              <div className="relative flex aspect-[16/10] items-center justify-center">
+              <div className="relative flex aspect-16/10 items-center justify-center">
                 <div className="flex h-full w-full items-center justify-center overflow-hidden rounded-lg border border-gray-900/20 bg-black/10 p-2 transition-transform duration-500 ease-out group-hover:scale-[1.015] sm:p-3">
                   <img
                     src={project.preview}
@@ -282,7 +282,7 @@ const Projects = () => {
           </div>
           <div className="grid grid-cols-1 gap-6 sm:grid-cols-2">
             {webPlaceholders.map((project) => (
-              <div key={project.id} className="flex min-h-40 flex-col justify-between border border-dashed border-gray-800/70 bg-black/25 p-6">
+              <div key={project.id} className="flex min-h-40 flex-col justify-between border border-dashed border-neutral-700/70 bg-neutral-900/80 p-6 shadow-[inset_0_1px_0_rgba(255,255,255,0.04)] hover:border-neutral-400/80">
                 <div className="flex items-center justify-between gap-4">
                   <span className="font-mono text-xs uppercase tracking-[0.2em] text-gray-600">In progress</span>
                   <span className="text-xs text-gray-600">Web</span>

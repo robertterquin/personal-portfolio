@@ -77,9 +77,11 @@ const Landing = () => {
         <div className="absolute top-1/4 right-1/4 w-48 h-48 border-2 border-mono-300/10 rotate-45 animate-spin-slow" style={{animationDuration: '60s'}}></div>
         <div className="absolute bottom-1/3 left-1/4 w-40 h-40 border border-mono-300/8 rounded-full animate-spin-slow" style={{animationDuration: '50s'}}></div>
         <div className="absolute top-1/2 left-1/3 w-32 h-32 border-2 border-dashed border-mono-400/10 rotate-12 animate-spin-slow" style={{animationDuration: '55s'}}></div>
-        <div className="absolute bottom-1/4 right-1/3 w-44 h-44 relative animate-spin-slow" style={{animationDuration: '65s'}}>
-          <div className="absolute inset-4 border-l-2 border-t-2 border-mono-400/12 rounded-tl-2xl rotate-45"></div>
-          <div className="absolute inset-4 border-r-2 border-b-2 border-mono-300/12 rounded-br-2xl rotate-45"></div>
+        <div className="absolute bottom-1/4 right-1/3 w-44 h-44 animate-spin-slow" style={{animationDuration: '65s'}}>
+          <div className="relative h-full w-full">
+            <div className="absolute inset-4 border-l-2 border-t-2 border-mono-400/12 rounded-tl-2xl rotate-45"></div>
+            <div className="absolute inset-4 border-r-2 border-b-2 border-mono-300/12 rounded-br-2xl rotate-45"></div>
+          </div>
         </div>
       </div>
 
@@ -113,7 +115,7 @@ const Landing = () => {
           >
             {/* Profile Circle */}
             <div className="relative">
-              <div className="w-80 h-80 md:w-96 md:h-96 lg:w-112 lg:h-112 rounded-full overflow-hidden border-8 border-mono-300 relative">
+              <div className="w-80 h-80 md:w-96 md:h-96 lg:w-md lg:h-md rounded-full overflow-hidden border-8 border-mono-300 relative">
                 <img 
                   src="/profile.jpg" 
                   alt="Robert Terquin Laqui" 

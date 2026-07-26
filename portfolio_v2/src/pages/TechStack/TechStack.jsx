@@ -136,7 +136,7 @@ const TechStack = () => {
           {categories.map((category, categoryIndex) => (
             <Motion.div
               key={category.title}
-              className={`group border border-gray-800/70 bg-black/25 p-5 backdrop-blur-sm transition-colors duration-300 hover:border-gray-500/70 hover:bg-black/40 sm:p-6 ${categoryIndex === 0 ? 'md:col-span-2 xl:col-span-2' : ''}`}
+              className={`group border border-neutral-700/70 bg-neutral-900/80 p-5 shadow-[inset_0_1px_0_rgba(255,255,255,0.04)] backdrop-blur-sm transition-colors duration-300 hover:border-neutral-400/80 hover:bg-neutral-900/95 sm:p-6 ${categoryIndex === 0 ? 'md:col-span-2 xl:col-span-2' : ''}`}
               initial={{ opacity: 0, y: 28 }}
               whileInView={{ opacity: 1, y: 0 }}
               whileHover={{ y: -4 }}
@@ -155,7 +155,7 @@ const TechStack = () => {
                 {category.items.map((item) => (
                   <Motion.div
                     key={item.name}
-                    className="group/tech flex min-w-0 items-center gap-3 border border-gray-800/70 bg-gray-950/50 p-3 transition-all hover:border-gray-600 hover:bg-gray-900/80"
+                    className="group/tech flex min-w-0 items-center gap-3 border border-neutral-700/70 bg-neutral-900/80 p-3 shadow-[inset_0_1px_0_rgba(255,255,255,0.04)] transition-all hover:border-neutral-400/80 hover:bg-neutral-900/95"
                     whileHover={{ y: -3, scale: 1.015 }}
                     transition={{ duration: 0.2, ease: 'easeOut' }}
                   >

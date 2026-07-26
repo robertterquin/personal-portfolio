@@ -79,9 +79,9 @@ const Certification = () => {
   const getColorClasses = () => {
     // Unified color scheme - all certificates use the same monochrome + white text style
     return {
-      border: 'border-gray-800/70',
-      bg: 'bg-black/25',
-      hoverBorder: 'group-hover:border-gray-500/70',
+      border: 'border-neutral-700/70',
+      bg: 'bg-neutral-900/80',
+      hoverBorder: 'group-hover:border-neutral-400/80',
       text: 'text-gray-300',
       gradientFrom: 'from-gray-800',
       gradientTo: 'to-gray-700',
@@ -202,7 +202,7 @@ const Certification = () => {
         >
           {/* Top Label */}
           <div className="flex items-center gap-3 mb-6">
-            <div className="h-px w-12 bg-linear-to-r from-mono-600 to-transparent"></div>
+            <div className="h-px w-12 bg-linear-to-r from-cyan-300 to-transparent"></div>
             <span className="font-mono text-mono-700 text-xs uppercase tracking-[0.3em] font-semibold">Credentials</span>
           </div>
           
@@ -236,7 +236,7 @@ const Certification = () => {
                 className={`group relative overflow-hidden rounded-2xl border ${colorClasses.border} ${colorClasses.bg} backdrop-blur-sm ${colorClasses.hoverBorder} transition-all duration-300 hover:scale-105 hover:bg-black/40 hover:shadow-2xl cursor-pointer`}
                 style={{
                   transitionDelay: `${200 + index * 100}ms`,
-                  background: 'rgba(0, 0, 0, 0.25)',
+                  background: 'rgba(23, 23, 23, 0.8)',
                   boxShadow: 'inset 0 1px 0 rgba(255, 255, 255, 0.04)',
                 }}
                 initial={{ opacity: 0, y: 24 }}
@@ -247,7 +247,7 @@ const Certification = () => {
               >
                 {/* Gradient Border Effect */}
                 <div className="absolute inset-0 rounded-2xl pointer-events-none" style={{
-                  background: 'rgba(255, 255, 255, 0.03)',
+                  background: 'rgba(255, 255, 255, 0.05)',
                 }}></div>
                 
                 <div className="relative p-6 flex flex-col items-center text-center h-full">
