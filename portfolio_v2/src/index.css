@@ -47,7 +47,7 @@ h6 {
 }
 
 .portfolio-canvas {
-  background: linear-gradient(180deg, #0c0f11 0%, #171c21 48%, #0c0f11 100%);
+  background: linear-gradient(135deg, #0c0f11 0%, #171c21 48%, #0c0f11 100%);
   background-attachment: fixed;
   background-repeat: no-repeat;
   background-size: cover;

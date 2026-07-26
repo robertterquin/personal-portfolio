@@ -189,18 +189,21 @@ const Landing = () => {
             viewport={{ once: true, amount: 0.25 }}
             transition={{ duration: 0.8, delay: 0.15, ease: 'easeOut' }}
           >
-            <h1 className="text-5xl md:text-7xl lg:text-8xl font-black leading-tight tracking-tighter" style={{
+            <h1 className="text-4xl font-black leading-tight tracking-tighter sm:text-5xl md:text-6xl lg:text-7xl" style={{
               textShadow: '0 10px 30px rgba(255, 255, 255, 0.1), 0 4px 12px rgba(163, 163, 163, 0.2)'
             }}>
               Where Concepts<br />
               Become <span className="text-transparent bg-clip-text bg-gradient-to-r from-white via-gray-200 to-gray-300">Code</span>
             </h1>
 
-            <p className="text-gray-300 text-xl md:text-2xl leading-relaxed font-medium" style={{
-              textShadow: '0 2px 8px rgba(0, 0, 0, 0.3)'
-            }}>
-              Transforming your vision into scalable, high-performance applications. Specializing in full-stack development with a focus on clean code and exceptional user experiences.
-            </p>
+            <div className="border-l border-mono-600/50 pl-5 text-left text-sm leading-relaxed text-gray-400 md:text-base">
+              <p>
+                I&apos;m Robert Terquin Laqui, a full-stack developer with 3+ years of experience building cross-platform mobile and web applications. I specialize in Flutter, React, Node.js, Firebase, and Supabase, turning ideas into secure, scalable products with thoughtful interfaces and reliable integrations.
+              </p>
+              <p className="mt-4">
+                I&apos;m always learning through practical projects and refining how I build. I care about clean architecture, accessible interactions, and creating software that feels clear, useful, and human.
+              </p>
+            </div>
             <div className="flex flex-col sm:flex-row gap-4 pt-6">
               <a href="#projects" className="group inline-flex items-center justify-center gap-2 px-9 py-4 bg-gradient-to-r from-mono-600 to-mono-800 rounded-xl font-semibold text-white hover:scale-105 transition-transform duration-300 shadow-lg hover:shadow-xl">
                 View My Work
