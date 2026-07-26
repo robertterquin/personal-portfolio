@@ -1,43 +1,6 @@
-import { useEffect, useState } from 'react';
-import { motion } from 'motion/react';
+import { motion as Motion } from 'motion/react';
 
 const Landing = () => {
-  const [flowingLines, setFlowingLines] = useState([]);
-
-  useEffect(() => {
-    // Generate flowing curved lines for background
-    const generatedLines = [...Array(12)].map((_, i) => ({
-      id: i,
-      path: generateCurvePath(i),
-      duration: Math.random() * 20 + 15,
-      delay: Math.random() * 5,
-    }));
-    setFlowingLines(generatedLines);
-  }, []);
-
-  const generateCurvePath = (index) => {
-    const startX = Math.random() * 100;
-    const startY = Math.random() * 100;
-    const curves = [];
-    let currentX = startX;
-    let currentY = startY;
-    
-    for (let i = 0; i < 3; i++) {
-      const controlX1 = currentX + (Math.random() * 40 - 20);
-      const controlY1 = currentY + (Math.random() * 40 - 20);
-      const controlX2 = currentX + (Math.random() * 40 - 20);
-      const controlY2 = currentY + (Math.random() * 40 - 20);
-      const endX = currentX + (Math.random() * 30 - 15);
-      const endY = currentY + (Math.random() * 30 - 15);
-      
-      curves.push(`C ${controlX1} ${controlY1}, ${controlX2} ${controlY2}, ${endX} ${endY}`);
-      currentX = endX;
-      currentY = endY;
-    }
-    
-    return `M ${startX} ${startY} ${curves.join(' ')}`;
-  };
-
   return (
     <section id="home" className="page-shell page-shell--home min-h-screen w-full text-white relative overflow-hidden">
       {/* Diagonal Stripe Pattern */}
@@ -78,18 +41,18 @@ const Landing = () => {
 
       {/* Multiple Layered Gradient Meshes */}
       <div className="absolute inset-0 pointer-events-none z-0">
-        <div className="absolute top-10 left-10 w-[650px] h-[650px] rounded-full blur-[150px] animate-pulse opacity-20" 
+        <div className="absolute top-10 left-10 w-162.5 h-162.5 rounded-full blur-[150px] animate-pulse opacity-20" 
           style={{
             background: 'radial-gradient(circle, rgba(163, 163, 163, 0.4) 0%, transparent 70%)',
             animationDuration: '15s'
           }}></div>
-        <div className="absolute bottom-20 right-20 w-[550px] h-[550px] rounded-full blur-[140px] animate-pulse opacity-20" 
+        <div className="absolute bottom-20 right-20 w-137.5 h-137.5 rounded-full blur-[140px] animate-pulse opacity-20" 
           style={{
             background: 'radial-gradient(circle, rgba(163, 163, 163, 0.5) 0%, transparent 70%)',
             animationDuration: '12s',
             animationDelay: '3s'
           }}></div>
-        <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-[500px] h-[500px] rounded-full blur-[130px] animate-pulse opacity-15" 
+        <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-125 h-125 rounded-full blur-[130px] animate-pulse opacity-15" 
           style={{
             background: 'radial-gradient(circle, rgba(163, 163, 163, 0.6) 0%, transparent 70%)',
             animationDuration: '18s',
@@ -141,7 +104,7 @@ const Landing = () => {
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20 items-center w-full max-w-6xl">
           
           {/* Left Side - Profile Image with Service Tags */}
-          <motion.div
+          <Motion.div
             className="relative flex justify-center lg:justify-start"
             initial={{ opacity: 0, x: -40 }}
             whileInView={{ opacity: 1, x: 0 }}
@@ -150,14 +113,14 @@ const Landing = () => {
           >
             {/* Profile Circle */}
             <div className="relative">
-              <div className="w-80 h-80 md:w-96 md:h-96 lg:w-[28rem] lg:h-[28rem] rounded-full overflow-hidden border-8 border-mono-300 relative">
+              <div className="w-80 h-80 md:w-96 md:h-96 lg:w-112 lg:h-112 rounded-full overflow-hidden border-8 border-mono-300 relative">
                 <img 
                   src="/profile.jpg" 
                   alt="Robert Terquin Laqui" 
                   className="w-full h-full object-cover"
                   onError={(e) => {
                     e.target.style.display = 'none';
-                    e.target.parentElement.innerHTML = '<div class="w-full h-full bg-gradient-to-br from-mono-200 to-mono-400 flex items-center justify-center"><span class="text-7xl font-bold text-white">RT</span></div>';
+                    e.target.parentElement.innerHTML = '<div class="w-full h-full bg-linear-to-br from-mono-200 to-mono-400 flex items-center justify-center"><span class="text-7xl font-bold text-white">RT</span></div>';
                   }}
                 />
               </div>
@@ -179,10 +142,10 @@ const Landing = () => {
                 3+ Years Experience
               </div>
             </div>
-          </motion.div>
+          </Motion.div>
 
           {/* Right Side - Text Content */}
-          <motion.div
+          <Motion.div
             className="space-y-8 text-center lg:text-left"
             initial={{ opacity: 0, x: 40 }}
             whileInView={{ opacity: 1, x: 0 }}
@@ -193,7 +156,7 @@ const Landing = () => {
               textShadow: '0 10px 30px rgba(255, 255, 255, 0.1), 0 4px 12px rgba(163, 163, 163, 0.2)'
             }}>
               Where Concepts<br />
-              Become <span className="text-transparent bg-clip-text bg-gradient-to-r from-white via-gray-200 to-gray-300">Code</span>
+              Become <span className="text-transparent bg-clip-text bg-linear-to-r from-white via-gray-200 to-gray-300">Code</span>
             </h1>
 
             <div className="border-l border-mono-600/50 pl-5 text-left text-sm leading-relaxed text-gray-400 md:text-base">
@@ -205,7 +168,7 @@ const Landing = () => {
               </p>
             </div>
             <div className="flex flex-col sm:flex-row gap-4 pt-6">
-              <a href="#projects" className="group inline-flex items-center justify-center gap-2 px-9 py-4 bg-gradient-to-r from-mono-600 to-mono-800 rounded-xl font-semibold text-white hover:scale-105 transition-transform duration-300 shadow-lg hover:shadow-xl">
+              <a href="#projects" className="group inline-flex items-center justify-center gap-2 px-9 py-4 bg-linear-to-r from-mono-600 to-mono-800 rounded-xl font-semibold text-white hover:scale-105 transition-transform duration-300 shadow-lg hover:shadow-xl">
                 View My Work
                 <svg className="w-5 h-5 transform group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 7l5 5m0 0l-5 5m5-5H6" />
@@ -215,13 +178,13 @@ const Landing = () => {
                 Get in Touch
               </a>
             </div>
-          </motion.div>
+          </Motion.div>
 
         </div>
       </div>
 
       {/* Page Transition Line */}
-      <div className="absolute bottom-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-mono-400/30 to-transparent pointer-events-none"></div>
+      <div className="absolute bottom-0 left-0 right-0 h-px bg-linear-to-r from-transparent via-mono-400/30 to-transparent pointer-events-none"></div>
     </section>
   );
 };

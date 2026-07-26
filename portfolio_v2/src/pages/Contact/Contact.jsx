@@ -1,14 +1,29 @@
 import { useEffect, useState, useRef } from 'react';
 import emailjs from '@emailjs/browser';
-import { motion } from 'motion/react';
+import { motion as Motion } from 'motion/react';
 
 const Contact = () => {
   const [isVisible, setIsVisible] = useState(false);
-  const [particles, setParticles] = useState([]);
-  const [shapes, setShapes] = useState([]);
+  const [particles] = useState(() => [...Array(30)].map((_, i) => ({
+    id: i,
+    left: Math.random() * 100,
+    top: Math.random() * 100,
+    size: Math.random() * 2 + 1,
+    duration: Math.random() * 25 + 20,
+    delay: Math.random() * 10,
+    opacity: Math.random() * 0.25 + 0.05,
+  })));
+  const [shapes] = useState(() => [...Array(7)].map((_, i) => ({
+    id: i,
+    left: Math.random() * 100,
+    top: Math.random() * 100,
+    size: Math.random() * 140 + 70,
+    rotation: Math.random() * 360,
+    duration: Math.random() * 38 + 28,
+    delay: Math.random() * 5,
+  })));
   const [isLoading, setIsLoading] = useState(false);
   const [submitMessage, setSubmitMessage] = useState('');
-  const [showSuccess, setShowSuccess] = useState(false);
   const [formData, setFormData] = useState({
     name: '',
     email: '',
@@ -77,30 +92,6 @@ const Contact = () => {
       observer.observe(sectionRef.current);
     }
 
-    // Generate particles
-    const generatedParticles = [...Array(30)].map((_, i) => ({
-      id: i,
-      left: Math.random() * 100,
-      top: Math.random() * 100,
-      size: Math.random() * 2 + 1,
-      duration: Math.random() * 25 + 20,
-      delay: Math.random() * 10,
-      opacity: Math.random() * 0.25 + 0.05,
-    }));
-    setParticles(generatedParticles);
-
-    // Generate diamond/rhombus shapes
-    const generatedShapes = [...Array(7)].map((_, i) => ({
-      id: i,
-      left: Math.random() * 100,
-      top: Math.random() * 100,
-      size: Math.random() * 140 + 70,
-      rotation: Math.random() * 360,
-      duration: Math.random() * 38 + 28,
-      delay: Math.random() * 5,
-    }));
-    setShapes(generatedShapes);
-
     return () => observer.disconnect();
   }, []);
 
@@ -111,7 +102,7 @@ const Contact = () => {
       className="page-shell page-shell--contact min-h-screen text-white py-32 px-8 md:px-16 lg:px-24 relative overflow-hidden"
     >
       {/* Page Transition Line Top */}
-      <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-mono-400/30 to-transparent pointer-events-none z-20"></div>
+      <div className="absolute top-0 left-0 right-0 h-px bg-linear-to-r from-transparent via-mono-400/30 to-transparent pointer-events-none z-20"></div>
       {/* Animated Background - Diamond/Rhombus Shapes */}
       <div className="absolute inset-0 pointer-events-none z-0">
         {shapes.map((shape) => (
@@ -161,9 +152,9 @@ const Contact = () => {
 
       {/* Elegant Gradient Orbs */}
       <div className="absolute inset-0 pointer-events-none z-0 overflow-hidden">
-        <div className="absolute -top-1/3 right-1/4 w-[600px] h-[600px] bg-gradient-conic from-mono-400/10 via-mono-300/06 to-mono-400/10 rounded-full blur-[130px] animate-pulse" style={{animationDuration: '18s'}}></div>
-        <div className="absolute -bottom-1/4 left-1/4 w-[500px] h-[500px] bg-gradient-radial from-mono-400/12 via-mono-300/08 to-transparent rounded-full blur-[110px] animate-pulse" style={{animationDuration: '14s', animationDelay: '3s'}}></div>
-        <div className="absolute top-1/2 left-0 w-[400px] h-[400px] bg-gradient-conic from-mono-300/06 via-mono-400/04 to-transparent rounded-full blur-[100px] animate-pulse" style={{animationDuration: '20s', animationDelay: '6s'}}></div>
+        <div className="absolute -top-1/3 right-1/4 w-150 h-150 bg-conic from-mono-400/10 via-mono-300/06 to-mono-400/10 rounded-full blur-[130px] animate-pulse" style={{animationDuration: '18s'}}></div>
+        <div className="absolute -bottom-1/4 left-1/4 w-125 h-125 bg-radial from-mono-400/12 via-mono-300/08 to-transparent rounded-full blur-[110px] animate-pulse" style={{animationDuration: '14s', animationDelay: '3s'}}></div>
+        <div className="absolute top-1/2 left-0 w-100 h-100 bg-conic from-mono-300/06 via-mono-400/04 to-transparent rounded-full blur-[100px] animate-pulse" style={{animationDuration: '20s', animationDelay: '6s'}}></div>
       </div>
 
       {/* Enhanced Floating Particles */}
@@ -188,10 +179,10 @@ const Contact = () => {
       </div>
 
       {/* Content */}
-      <div className="relative z-10 max-w-[1400px] mx-auto w-full">
+      <div className="relative z-10 max-w-350 mx-auto w-full">
         
         {/* Header Section */}
-        <motion.div
+        <Motion.div
           className={`mb-20 transition-all duration-700 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}
           initial={{ opacity: 0, y: 28 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -200,7 +191,7 @@ const Contact = () => {
         >
           {/* Top Label */}
           <div className="flex items-center gap-3 mb-6">
-            <div className="h-px w-12 bg-gradient-to-r from-mono-600 to-transparent"></div>
+            <div className="h-px w-12 bg-linear-to-r from-mono-600 to-transparent"></div>
             <span className="font-mono text-mono-700 text-xs uppercase tracking-[0.3em] font-semibold">Get In Touch</span>
           </div>
           
@@ -208,11 +199,11 @@ const Contact = () => {
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-16 items-start">
             <div>
               <h2 className="text-6xl md:text-7xl lg:text-8xl font-bold tracking-tighter leading-tight mb-4">
-                <span className="text-transparent bg-clip-text bg-gradient-to-r from-mono-600 via-mono-800 to-mono-950 animate-gradient">Let's</span>
+                <span className="text-transparent bg-clip-text bg-linear-to-r from-mono-600 via-mono-800 to-mono-950 animate-gradient">Let's</span>
                 <br />
-                <span className="text-transparent bg-clip-text bg-gradient-to-r from-mono-950 to-mono-800">Connect</span>
+                <span className="text-transparent bg-clip-text bg-linear-to-r from-mono-950 to-mono-800">Connect</span>
               </h2>
-              <div className="h-1 w-20 bg-gradient-to-r from-mono-500 via-mono-600 to-mono-700 rounded-full mt-6"></div>
+              <div className="h-1 w-20 bg-linear-to-r from-mono-500 via-mono-600 to-mono-700 rounded-full mt-6"></div>
             </div>
             
             <div className="space-y-6 lg:pt-4">
@@ -220,7 +211,7 @@ const Contact = () => {
                 Have a project in mind or just want to chat? Feel free to reach out. I'm always open to discussing new opportunities and collaborations.
               </p>
               <div className="grid grid-cols-1 gap-4 pt-4">
-                <div className="p-4 rounded-lg border border-gray-800/50 bg-gradient-to-br from-mono-200/05 to-transparent backdrop-blur-sm hover:border-mono-400/30 transition-colors">
+                <div className="p-4 rounded-lg border border-gray-800/50 bg-linear-to-br from-mono-200/05 to-transparent backdrop-blur-sm hover:border-mono-400/30 transition-colors">
                   <div className="flex items-center gap-3">
                     <svg className="w-5 h-5 text-mono-700" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
@@ -231,7 +222,7 @@ const Contact = () => {
                     </div>
                   </div>
                 </div>
-                <div className="p-4 rounded-lg border border-gray-800/50 bg-gradient-to-br from-mono-200/05 to-transparent backdrop-blur-sm hover:border-mono-400/30 transition-colors">
+                <div className="p-4 rounded-lg border border-gray-800/50 bg-linear-to-br from-mono-200/05 to-transparent backdrop-blur-sm hover:border-mono-400/30 transition-colors">
                   <div className="flex items-center gap-3">
                     <svg className="w-5 h-5 text-mono-700" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
@@ -246,10 +237,10 @@ const Contact = () => {
               </div>
             </div>
           </div>
-        </motion.div>
+        </Motion.div>
 
         {/* Contact Form */}
-        <motion.div
+        <Motion.div
           className={`transition-all duration-700 delay-200 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-12'}`}
           initial={{ opacity: 0, y: 36 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -339,7 +330,7 @@ const Contact = () => {
                 <button
                   type="submit"
                   disabled={isLoading}
-                  className="group relative px-8 py-4 bg-gradient-to-r from-mono-600 to-mono-800 rounded-xl font-semibold text-white overflow-hidden transition-all duration-300 hover:scale-105 hover:shadow-xl hover:shadow-mono-600/30 disabled:opacity-50 disabled:cursor-not-allowed"
+                  className="group relative px-8 py-4 bg-linear-to-r from-mono-600 to-mono-800 rounded-xl font-semibold text-white overflow-hidden transition-all duration-300 hover:scale-105 hover:shadow-xl hover:shadow-mono-600/30 disabled:opacity-50 disabled:cursor-not-allowed"
                 >
                   <span className="relative z-10 flex items-center gap-2">
                     {isLoading ? 'Sending...' : 'Send Message'}
@@ -347,7 +338,7 @@ const Contact = () => {
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M14 5l7 7m0 0l-7 7m7-7H3" />
                     </svg>
                   </span>
-                  <div className="absolute inset-0 bg-gradient-to-r from-mono-700 to-mono-950 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+                  <div className="absolute inset-0 bg-linear-to-r from-mono-700 to-mono-950 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
                 </button>
                 {submitMessage && (
                   <p className={`text-sm ${submitMessage.includes('successfully') ? 'text-green-400' : 'text-red-400'}`}>
@@ -360,7 +351,7 @@ const Contact = () => {
 
 
             {/* Social Links */}
-            <motion.div
+            <Motion.div
               className={`mt-16 transition-all duration-700 delay-400 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
@@ -382,12 +373,12 @@ const Contact = () => {
                   </svg>
                 </a>
               </div>
-            </motion.div>
+            </Motion.div>
           </div>
-        </motion.div>
+        </Motion.div>
 
         {/* Bottom CTA */}
-        <motion.div
+        <Motion.div
           className={`mt-16 text-center transition-all duration-700 delay-600 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -402,11 +393,11 @@ const Contact = () => {
               <div className="w-2 h-2 bg-mono-800 rounded-full animate-pulse" style={{animationDelay: '0.4s'}}></div>
             </div>
           </div>
-        </motion.div>
+        </Motion.div>
       </div>
 
       {/* Page Transition Line Bottom */}
-      <div className="absolute bottom-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-mono-400/30 to-transparent pointer-events-none z-20"></div>
+      <div className="absolute bottom-0 left-0 right-0 h-px bg-linear-to-r from-transparent via-mono-400/30 to-transparent pointer-events-none z-20"></div>
     </section>
   );
 };

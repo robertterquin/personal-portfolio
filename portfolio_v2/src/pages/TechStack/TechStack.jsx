@@ -1,5 +1,5 @@
 import { useEffect, useRef, useState } from 'react';
-import { motion } from 'motion/react';
+import { motion as Motion } from 'motion/react';
 
 const logoBase = 'https://robertterquinlaqui.vercel.app/images/';
 
@@ -116,19 +116,19 @@ const TechStack = () => {
         ></div>
       </div>
 
-      <div className="relative z-10 mx-auto w-full max-w-[1600px]">
+      <div className="relative z-10 mx-auto w-full max-w-400">
         <div className={`mb-14 grid grid-cols-1 gap-8 transition-all duration-700 lg:grid-cols-[1fr_1.1fr] lg:gap-16 ${isVisible ? 'translate-y-0 opacity-100' : 'translate-y-8 opacity-0'}`}>
           <div>
             <div className="mb-6 flex items-center gap-3">
-              <div className="h-px w-12 bg-gradient-to-r from-cyan-300 to-transparent"></div>
+              <div className="h-px w-12 bg-linear-to-r from-cyan-300 to-transparent"></div>
               <span className="font-mono text-xs font-semibold uppercase tracking-[0.3em] text-mono-700">Toolkit</span>
             </div>
             <h2 className="text-6xl font-bold leading-tight tracking-tighter md:text-7xl lg:text-8xl">
-              <span className="text-transparent bg-clip-text bg-gradient-to-r from-cyan-200 via-mono-900 to-white">Tech</span>
+              <span className="text-transparent bg-clip-text bg-linear-to-r from-cyan-200 via-mono-900 to-white">Tech</span>
               <br />
-              <span className="text-transparent bg-clip-text bg-gradient-to-r from-white to-mono-600">Stack</span>
+              <span className="text-transparent bg-clip-text bg-linear-to-r from-white to-mono-600">Stack</span>
             </h2>
-            <div className="mt-6 h-1 w-20 rounded-full bg-gradient-to-r from-cyan-300 via-mono-600 to-violet-300"></div>
+            <div className="mt-6 h-1 w-20 rounded-full bg-linear-to-r from-cyan-300 via-mono-600 to-violet-300"></div>
           </div>
 
           <div className="space-y-6 lg:pt-4">
@@ -150,7 +150,7 @@ const TechStack = () => {
 
         <div className="grid grid-cols-1 gap-6 md:grid-cols-2 xl:grid-cols-3">
           {categories.map((category, categoryIndex) => (
-            <motion.div
+            <Motion.div
               key={category.title}
               className={`group border border-gray-800/70 bg-black/25 p-5 backdrop-blur-sm transition-colors duration-300 hover:border-gray-500/70 hover:bg-black/40 sm:p-6 ${categoryIndex === 0 ? 'md:col-span-2 xl:col-span-2' : ''}`}
               initial={{ opacity: 0, y: 28 }}
@@ -169,7 +169,7 @@ const TechStack = () => {
 
               <div className="grid grid-cols-1 gap-3 sm:grid-cols-2">
                 {category.items.map((item) => (
-                  <motion.div
+                  <Motion.div
                     key={item.name}
                     className="group/tech flex min-w-0 items-center gap-3 border border-gray-800/70 bg-gray-950/50 p-3 transition-all hover:border-gray-600 hover:bg-gray-900/80"
                     whileHover={{ y: -3, scale: 1.015 }}
@@ -185,10 +185,10 @@ const TechStack = () => {
                     <div className="min-w-0">
                       <div className="truncate font-medium text-gray-100">{item.name}</div>
                     </div>
-                  </motion.div>
+                  </Motion.div>
                 ))}
               </div>
-            </motion.div>
+            </Motion.div>
           ))}
         </div>
       </div>

@@ -1,9 +1,17 @@
 import { useEffect, useState, useRef } from 'react';
-import { motion } from 'motion/react';
+import { motion as Motion } from 'motion/react';
 
 const Projects = () => {
   const [isVisible, setIsVisible] = useState(false);
-  const [particles, setParticles] = useState([]);
+  const [particles] = useState(() => [...Array(15)].map((_, i) => ({
+    id: i,
+    left: Math.random() * 100,
+    top: Math.random() * 100,
+    size: Math.random() * 2 + 1,
+    duration: Math.random() * 30 + 25,
+    delay: Math.random() * 10,
+    opacity: Math.random() * 0.15 + 0.05,
+  })));
   const sectionRef = useRef(null);
 
   // Placeholder projects - ready for future content
@@ -82,18 +90,6 @@ const Projects = () => {
       observer.observe(sectionRef.current);
     }
 
-    // Generate particles
-    const generatedParticles = [...Array(15)].map((_, i) => ({
-      id: i,
-      left: Math.random() * 100,
-      top: Math.random() * 100,
-      size: Math.random() * 2 + 1,
-      duration: Math.random() * 30 + 25,
-      delay: Math.random() * 10,
-      opacity: Math.random() * 0.15 + 0.05,
-    }));
-    setParticles(generatedParticles);
-
     return () => observer.disconnect();
   }, []);
 
@@ -104,7 +100,7 @@ const Projects = () => {
       className="page-shell page-shell--projects min-h-screen text-white py-16 sm:py-20 md:py-24 px-4 sm:px-6 md:px-8 lg:px-16 relative overflow-hidden"
     >
       {/* Page Transition Line Top */}
-      <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-mono-400/30 to-transparent pointer-events-none z-20"></div>
+      <div className="absolute top-0 left-0 right-0 h-px bg-linear-to-r from-transparent via-mono-400/30 to-transparent pointer-events-none z-20"></div>
       {/* Background Grid Pattern - Elegant */}
       <div className="absolute inset-0 pointer-events-none z-0">
         <div className="absolute inset-0" style={{
@@ -120,13 +116,13 @@ const Projects = () => {
       {/* Elegant Gradient Orbs */}
       <div className="absolute inset-0 pointer-events-none z-0 overflow-hidden">
         {/* Primary Orb - Top Right */}
-        <div className="absolute -top-1/3 right-[-10%] w-[600px] h-[600px] bg-gradient-conic from-mono-400/06 via-mono-300/04 via-mono-400/06 to-mono-400/06 rounded-full blur-[120px] animate-pulse" style={{animationDuration: '15s'}}></div>
+        <div className="absolute -top-1/3 right-[-10%] w-150 h-150 bg-conic from-mono-400/06 via-mono-300/04 via-mono-400/06 to-mono-400/06 rounded-full blur-[120px] animate-pulse" style={{animationDuration: '15s'}}></div>
         
         {/* Secondary Orb - Bottom Left */}
-        <div className="absolute -bottom-1/4 left-[-5%] w-[500px] h-[500px] bg-gradient-radial from-mono-400/08 via-mono-300/04 to-transparent rounded-full blur-[100px] animate-pulse" style={{animationDuration: '12s', animationDelay: '2s'}}></div>
+        <div className="absolute -bottom-1/4 left-[-5%] w-125 h-125 bg-radial from-mono-400/08 via-mono-300/04 to-transparent rounded-full blur-[100px] animate-pulse" style={{animationDuration: '12s', animationDelay: '2s'}}></div>
         
         {/* Tertiary Orb - Center */}
-        <div className="absolute top-1/3 left-1/2 -translate-x-1/2 w-[400px] h-[400px] bg-gradient-radial from-mono-300/04 via-mono-300/03 to-transparent rounded-full blur-[90px] animate-pulse" style={{animationDuration: '18s', animationDelay: '4s'}}></div>
+        <div className="absolute top-1/3 left-1/2 -translate-x-1/2 w-100 h-100 bg-radial from-mono-300/04 via-mono-300/03 to-transparent rounded-full blur-[90px] animate-pulse" style={{animationDuration: '18s', animationDelay: '4s'}}></div>
       </div>
 
       {/* Elegant Floating Particles */}
@@ -153,10 +149,10 @@ const Projects = () => {
       {/* Elegant Decorative Elements */}
       <div className="absolute inset-0 pointer-events-none z-0">
         {/* Flowing Line Top */}
-        <div className="absolute top-1/4 left-0 w-1/2 h-px bg-gradient-to-r from-transparent via-mono-400/15 to-transparent blur-sm"></div>
+        <div className="absolute top-1/4 left-0 w-1/2 h-px bg-linear-to-r from-transparent via-mono-400/15 to-transparent blur-sm"></div>
         
         {/* Flowing Line Bottom */}
-        <div className="absolute bottom-1/3 right-0 w-2/5 h-px bg-gradient-to-l from-transparent via-mono-400/15 to-transparent blur-sm"></div>
+        <div className="absolute bottom-1/3 right-0 w-2/5 h-px bg-linear-to-l from-transparent via-mono-400/15 to-transparent blur-sm"></div>
         
         {/* Accent Dots - Top */}
         <div className="absolute top-1/3 left-10 w-1.5 h-1.5 bg-mono-600/30 rounded-full blur-sm"></div>
@@ -171,10 +167,10 @@ const Projects = () => {
       </div>
 
       {/* Content */}
-      <div className="relative z-10 max-w-[1600px] mx-auto w-full">
+      <div className="relative z-10 max-w-400 mx-auto w-full">
         
         {/* Header Section - Enhanced layout */}
-        <motion.div
+        <Motion.div
           className={`mb-20 transition-all duration-700 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}
           initial={{ opacity: 0, y: 28 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -183,7 +179,7 @@ const Projects = () => {
         >
           {/* Top Label */}
           <div className="flex items-center gap-3 mb-6">
-            <div className="h-px w-12 bg-gradient-to-r from-mono-600 to-transparent"></div>
+            <div className="h-px w-12 bg-linear-to-r from-mono-600 to-transparent"></div>
             <span className="font-mono text-mono-700 text-xs uppercase tracking-[0.3em] font-semibold">Portfolio</span>
           </div>
           
@@ -191,11 +187,11 @@ const Projects = () => {
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-16 items-start">
             <div>
               <h2 className="text-6xl md:text-7xl lg:text-8xl font-bold tracking-tighter leading-tight mb-4">
-                <span className="text-transparent bg-clip-text bg-gradient-to-r from-mono-600 via-mono-800 to-mono-950 animate-gradient">Crafted</span>
+                <span className="text-transparent bg-clip-text bg-linear-to-r from-mono-600 via-mono-800 to-mono-950 animate-gradient">Crafted</span>
                 <br />
-                <span className="text-transparent bg-clip-text bg-gradient-to-r from-mono-950 to-mono-800">Projects</span>
+                <span className="text-transparent bg-clip-text bg-linear-to-r from-mono-950 to-mono-800">Projects</span>
               </h2>
-              <div className="h-1 w-20 bg-gradient-to-r from-mono-500 via-mono-600 to-mono-700 rounded-full mt-6"></div>
+              <div className="h-1 w-20 bg-linear-to-r from-mono-500 via-mono-600 to-mono-700 rounded-full mt-6"></div>
             </div>
             
             <div className="space-y-6 lg:pt-4">
@@ -203,18 +199,18 @@ const Projects = () => {
                 A showcase of mobile and web applications built with modern technologies. Each project represents growth, learning, and a commitment to quality development.
               </p>
               <div className="grid grid-cols-2 gap-4 pt-4">
-                <div className="p-4 rounded-lg border border-gray-800/50 bg-gradient-to-br from-mono-200/05 to-transparent backdrop-blur-sm hover:border-mono-400/30 transition-colors">
+                <div className="p-4 rounded-lg border border-gray-800/50 bg-linear-to-br from-mono-200/05 to-transparent backdrop-blur-sm hover:border-mono-400/30 transition-colors">
                   <div className="text-2xl font-bold text-mono-700">4</div>
                   <div className="text-sm text-gray-400">Featured Works</div>
                 </div>
-                <div className="p-4 rounded-lg border border-gray-800/50 bg-gradient-to-br from-mono-200/05 to-transparent backdrop-blur-sm hover:border-mono-400/30 transition-colors">
+                <div className="p-4 rounded-lg border border-gray-800/50 bg-linear-to-br from-mono-200/05 to-transparent backdrop-blur-sm hover:border-mono-400/30 transition-colors">
                   <div className="text-2xl font-bold text-mono-700">2026</div>
                   <div className="text-sm text-gray-400">Current Year</div>
                 </div>
               </div>
             </div>
           </div>
-        </motion.div>
+        </Motion.div>
 
         <div className="mb-5 flex items-end justify-between gap-4 border-b border-white/10 pb-3">
           <div>
@@ -225,15 +221,15 @@ const Projects = () => {
         </div>
 
         {/* Mobile Project Gallery */}
-        <motion.div
-          className={`mx-auto grid w-full max-w-[1280px] grid-cols-1 gap-6 transition-all duration-700 delay-200 sm:grid-cols-2 lg:gap-8 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-12'}`}
+        <Motion.div
+          className={`mx-auto grid w-full max-w-320 grid-cols-1 gap-6 transition-all duration-700 delay-200 sm:grid-cols-2 lg:gap-8 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-12'}`}
           initial={{ opacity: 0, y: 36 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, amount: 0.1 }}
           transition={{ duration: 0.75, delay: 0.1, ease: 'easeOut' }}
         >
           {mobileProjects.map((project, index) => (
-            <motion.div 
+            <Motion.div
               key={project.id}
               className="group relative min-w-0 overflow-hidden rounded-xl border border-white/20 bg-gray-950 p-3 shadow-[0_16px_40px_rgba(0,0,0,0.35)] ring-2 ring-gray-950/70 cursor-pointer transition-all duration-300 hover:-translate-y-1 hover:border-gray-400/80 hover:shadow-[0_20px_50px_rgba(255,255,255,0.1)] sm:p-4"
               style={{ transitionDelay: `${200 + index * 80}ms` }}
@@ -244,7 +240,7 @@ const Projects = () => {
               transition={{ duration: 0.3, ease: 'easeOut' }}
             >
               {/* Card Background */}
-              <div className="absolute inset-0 bg-gradient-to-br from-gray-900 via-gray-950 to-black opacity-95"></div>
+              <div className="absolute inset-0 bg-linear-to-br from-gray-900 via-gray-950 to-black opacity-95"></div>
               
               {/* Sparkle Effects */}
               <div className="absolute inset-0 overflow-hidden">
@@ -280,12 +276,12 @@ const Projects = () => {
 
               {/* Hover Overlay */}
               <div className="absolute inset-0 bg-black/0 group-hover:bg-black/5 transition-colors duration-300"></div>
-            </motion.div>
+            </Motion.div>
           ))}
-        </motion.div>
+        </Motion.div>
 
         {/* Web Projects Section */}
-        <motion.div
+        <Motion.div
           className={`mt-14 transition-all duration-700 delay-600 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -310,11 +306,11 @@ const Projects = () => {
               </div>
             ))}
           </div>
-        </motion.div>
+        </Motion.div>
       </div>
 
       {/* Page Transition Line Bottom */}
-      <div className="absolute bottom-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-mono-400/30 to-transparent pointer-events-none z-20"></div>
+      <div className="absolute bottom-0 left-0 right-0 h-px bg-linear-to-r from-transparent via-mono-400/30 to-transparent pointer-events-none z-20"></div>
     </section>
   );
 };

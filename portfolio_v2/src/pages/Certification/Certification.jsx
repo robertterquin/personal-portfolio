@@ -1,10 +1,26 @@
 import { useEffect, useState, useRef } from 'react';
-import { motion } from 'motion/react';
+import { motion as Motion } from 'motion/react';
 
 const Certification = () => {
   const [isVisible, setIsVisible] = useState(false);
-  const [particles, setParticles] = useState([]);
-  const [shapes, setShapes] = useState([]);
+  const [particles] = useState(() => [...Array(25)].map((_, i) => ({
+    id: i,
+    left: Math.random() * 100,
+    top: Math.random() * 100,
+    size: Math.random() * 2 + 1,
+    duration: Math.random() * 25 + 20,
+    delay: Math.random() * 10,
+    opacity: Math.random() * 0.2 + 0.05,
+  })));
+  const [shapes] = useState(() => [...Array(8)].map((_, i) => ({
+    id: i,
+    left: Math.random() * 100,
+    top: Math.random() * 100,
+    size: Math.random() * 120 + 60,
+    rotation: Math.random() * 360,
+    duration: Math.random() * 35 + 25,
+    delay: Math.random() * 6,
+  })));
   const sectionRef = useRef(null);
 
   // Placeholder certifications
@@ -60,7 +76,7 @@ const Certification = () => {
     },
   ];
 
-  const getColorClasses = (color) => {
+  const getColorClasses = () => {
     // Unified color scheme - all certificates use the same monochrome + white text style
     return {
       border: 'border-gray-700/50',
@@ -87,30 +103,6 @@ const Certification = () => {
       observer.observe(sectionRef.current);
     }
 
-    // Generate particles
-    const generatedParticles = [...Array(25)].map((_, i) => ({
-      id: i,
-      left: Math.random() * 100,
-      top: Math.random() * 100,
-      size: Math.random() * 2 + 1,
-      duration: Math.random() * 25 + 20,
-      delay: Math.random() * 10,
-      opacity: Math.random() * 0.2 + 0.05,
-    }));
-    setParticles(generatedParticles);
-
-    // Generate hexagonal shapes
-    const generatedShapes = [...Array(8)].map((_, i) => ({
-      id: i,
-      left: Math.random() * 100,
-      top: Math.random() * 100,
-      size: Math.random() * 120 + 60,
-      rotation: Math.random() * 360,
-      duration: Math.random() * 35 + 25,
-      delay: Math.random() * 6,
-    }));
-    setShapes(generatedShapes);
-
     return () => observer.disconnect();
   }, []);
 
@@ -121,7 +113,7 @@ const Certification = () => {
       className="page-shell page-shell--certification min-h-screen text-white py-32 px-8 md:px-16 lg:px-24 relative overflow-hidden"
     >
       {/* Page Transition Line Top */}
-      <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-mono-400/30 to-transparent pointer-events-none z-20"></div>
+      <div className="absolute top-0 left-0 right-0 h-px bg-linear-to-r from-transparent via-mono-400/30 to-transparent pointer-events-none z-20"></div>
       {/* Animated Background - Hexagonal Shapes */}
       <div className="absolute inset-0 pointer-events-none z-0">
         {shapes.map((shape) => (
@@ -171,9 +163,9 @@ const Certification = () => {
 
       {/* Elegant Gradient Orbs */}
       <div className="absolute inset-0 pointer-events-none z-0 overflow-hidden">
-        <div className="absolute -top-1/3 left-1/4 w-[600px] h-[600px] bg-gradient-conic from-mono-400/10 via-mono-300/06 to-mono-400/10 rounded-full blur-[130px] animate-pulse" style={{animationDuration: '18s'}}></div>
-        <div className="absolute -bottom-1/4 right-1/4 w-[500px] h-[500px] bg-gradient-radial from-mono-300/12 via-mono-400/08 to-transparent rounded-full blur-[110px] animate-pulse" style={{animationDuration: '14s', animationDelay: '3s'}}></div>
-        <div className="absolute top-1/2 right-0 w-[400px] h-[400px] bg-gradient-conic from-mono-400/06 via-mono-300/04 to-transparent rounded-full blur-[100px] animate-pulse" style={{animationDuration: '20s', animationDelay: '6s'}}></div>
+        <div className="absolute -top-1/3 left-1/4 w-150 h-150 bg-conic from-mono-400/10 via-mono-300/06 to-mono-400/10 rounded-full blur-[130px] animate-pulse" style={{animationDuration: '18s'}}></div>
+        <div className="absolute -bottom-1/4 right-1/4 w-125 h-125 bg-radial from-mono-300/12 via-mono-400/08 to-transparent rounded-full blur-[110px] animate-pulse" style={{animationDuration: '14s', animationDelay: '3s'}}></div>
+        <div className="absolute top-1/2 right-0 w-100 h-100 bg-conic from-mono-400/06 via-mono-300/04 to-transparent rounded-full blur-[100px] animate-pulse" style={{animationDuration: '20s', animationDelay: '6s'}}></div>
       </div>
 
       {/* Enhanced Floating Particles */}
@@ -198,10 +190,10 @@ const Certification = () => {
       </div>
 
       {/* Content */}
-      <div className="relative z-10 max-w-[1400px] mx-auto w-full">
+      <div className="relative z-10 max-w-350 mx-auto w-full">
         
         {/* Header Section */}
-        <motion.div
+        <Motion.div
           className={`mb-20 transition-all duration-700 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}
           initial={{ opacity: 0, y: 28 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -210,7 +202,7 @@ const Certification = () => {
         >
           {/* Top Label */}
           <div className="flex items-center gap-3 mb-6">
-            <div className="h-px w-12 bg-gradient-to-r from-mono-600 to-transparent"></div>
+            <div className="h-px w-12 bg-linear-to-r from-mono-600 to-transparent"></div>
             <span className="font-mono text-mono-700 text-xs uppercase tracking-[0.3em] font-semibold">Credentials</span>
           </div>
           
@@ -218,11 +210,11 @@ const Certification = () => {
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-16 items-start">
             <div>
               <h2 className="text-6xl md:text-7xl lg:text-8xl font-bold tracking-tighter leading-tight mb-4">
-                <span className="text-transparent bg-clip-text bg-gradient-to-r from-mono-600 via-mono-800 to-mono-950 animate-gradient">Certified</span>
+                <span className="text-transparent bg-clip-text bg-linear-to-r from-mono-600 via-mono-800 to-mono-950 animate-gradient">Certified</span>
                 <br />
-                <span className="text-transparent bg-clip-text bg-gradient-to-r from-mono-950 to-mono-800">Excellence</span>
+                <span className="text-transparent bg-clip-text bg-linear-to-r from-mono-950 to-mono-800">Excellence</span>
               </h2>
-              <div className="h-1 w-20 bg-gradient-to-r from-mono-500 via-mono-600 to-mono-700 rounded-full mt-6"></div>
+              <div className="h-1 w-20 bg-linear-to-r from-mono-500 via-mono-600 to-mono-700 rounded-full mt-6"></div>
             </div>
             
             <div className="space-y-6 lg:pt-4">
@@ -230,21 +222,21 @@ const Certification = () => {
                 Professional certifications demonstrating expertise and commitment to continuous learning in software development and technology.
               </p>
               <div className="grid grid-cols-2 gap-4 pt-4">
-                <div className="p-4 rounded-lg border border-gray-800/50 bg-gradient-to-br from-mono-200/05 to-transparent backdrop-blur-sm hover:border-mono-400/30 transition-colors">
+                <div className="p-4 rounded-lg border border-gray-800/50 bg-linear-to-br from-mono-200/05 to-transparent backdrop-blur-sm hover:border-mono-400/30 transition-colors">
                   <div className="text-2xl font-bold text-mono-700">7</div>
                   <div className="text-sm text-gray-400">Certifications</div>
                 </div>
-                <div className="p-4 rounded-lg border border-gray-800/50 bg-gradient-to-br from-mono-200/05 to-transparent backdrop-blur-sm hover:border-mono-400/30 transition-colors">
+                <div className="p-4 rounded-lg border border-gray-800/50 bg-linear-to-br from-mono-200/05 to-transparent backdrop-blur-sm hover:border-mono-400/30 transition-colors">
                   <div className="text-2xl font-bold text-mono-700">2026</div>
                   <div className="text-sm text-gray-400">Up to Date</div>
                 </div>
               </div>
             </div>
           </div>
-        </motion.div>
+        </Motion.div>
 
         {/* Certifications Grid */}
-        <motion.div
+        <Motion.div
           className={`grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 transition-all duration-700 delay-200 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-12'}`}
           initial={{ opacity: 0, y: 32 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -252,9 +244,9 @@ const Certification = () => {
           transition={{ duration: 0.75, delay: 0.1, ease: 'easeOut' }}
         >
           {certifications.map((cert, index) => {
-            const colorClasses = getColorClasses(cert.color);
+            const colorClasses = getColorClasses();
             return (
-              <motion.div
+              <Motion.div
                 key={cert.id}
                 className={`group relative overflow-hidden rounded-2xl border ${colorClasses.border} backdrop-blur-sm ${colorClasses.hoverBorder} transition-all duration-300 hover:scale-105 hover:shadow-2xl cursor-pointer`}
                 style={{
@@ -293,15 +285,15 @@ const Certification = () => {
                   </h3>
 
                   {/* Hover Shimmer Effect */}
-                  <div className="absolute top-0 left-0 w-full h-full bg-gradient-to-r from-transparent via-white/0 to-transparent group-hover:via-white/10 rounded-2xl transition-all duration-500 pointer-events-none"></div>
+                  <div className="absolute top-0 left-0 w-full h-full bg-linear-to-r from-transparent via-white/0 to-transparent group-hover:via-white/10 rounded-2xl transition-all duration-500 pointer-events-none"></div>
                 </div>
-              </motion.div>
+              </Motion.div>
             );
           })}
-        </motion.div>
+        </Motion.div>
 
         {/* Bottom CTA */}
-        <motion.div
+        <Motion.div
           className={`mt-16 text-center transition-all duration-700 delay-600 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -316,11 +308,11 @@ const Certification = () => {
               <div className="w-2 h-2 bg-mono-800 rounded-full animate-pulse" style={{animationDelay: '0.4s'}}></div>
             </div>
           </div>
-        </motion.div>
+        </Motion.div>
       </div>
 
       {/* Page Transition Line Bottom */}
-      <div className="absolute bottom-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-mono-400/30 to-transparent pointer-events-none z-20"></div>
+      <div className="absolute bottom-0 left-0 right-0 h-px bg-linear-to-r from-transparent via-mono-400/30 to-transparent pointer-events-none z-20"></div>
     </section>
   );
 };
