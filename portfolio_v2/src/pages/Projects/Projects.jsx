@@ -244,7 +244,7 @@ const Projects = () => {
               </div>
 
               <div className="relative flex items-center justify-center">
-                <div className="flex w-full items-center justify-center overflow-hidden border border-neutral-700/70 bg-neutral-950/50 p-4 transition-transform duration-500 ease-out group-hover:scale-[1.015]">
+                <div className="flex w-full items-center justify-center overflow-hidden border border-neutral-700/70 bg-neutral-950/50 p-2 transition-transform duration-500 ease-out group-hover:scale-[1.015]">
                   <img
                     src={project.preview}
                     alt={`${project.title} app showcase`}
