@@ -47,24 +47,23 @@ h6 {
 }
 
 .page-shell {
+  isolation: isolate;
+  background-color: #101214;
+  background-image: none;
   position: relative;
 }
 
 .page-shell + .page-shell {
-  border-top: 2px solid rgba(255, 255, 255, 0.5);
-  position: relative;
+  border-top: 1px solid rgba(255, 255, 255, 0.35);
 }
 
-.page-shell + .page-shell::before {
-  background: rgba(255, 255, 255, 0.14);
-  content: '';
-  height: 6px;
-  left: 0;
-  pointer-events: none;
-  position: absolute;
-  right: 0;
-  top: -4px;
-  z-index: 100;
+/* Let each page use the controlled surface above instead of stacking its old decorative layers. */
+#home > .absolute,
+#tech-stack > .absolute,
+#projects > .absolute,
+#certification > .absolute,
+#contact > .absolute {
+  display: none;
 }
 
 /* Custom Animations */
