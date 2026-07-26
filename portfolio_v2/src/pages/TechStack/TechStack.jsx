@@ -9,13 +9,22 @@ const categories = [
     description: 'The foundations I use to shape reliable digital experiences.',
     accent: 'text-cyan-300',
     items: [
-      { name: 'HTML5', level: 'Advanced', image: 'html-5.png' },
-      { name: 'CSS3', level: 'Advanced', image: 'css-3.png' },
       { name: 'JavaScript', level: 'Intermediate', image: 'java-script.png' },
+      { name: 'TypeScript', level: 'Learning', image: 'https://cdn.simpleicons.org/typescript/3178C6' },
       { name: 'Java', level: 'Advanced', image: 'java.png' },
       { name: 'C', level: 'Intermediate', image: 'letter-c.png' },
       { name: 'Python', level: 'Intermediate', image: 'python.png' },
       { name: 'Dart', level: 'Learning', image: 'dart.png' },
+    ],
+  },
+  {
+    title: 'Frontend Development',
+    description: 'Responsive interfaces and component systems for the web.',
+    accent: 'text-blue-300',
+    items: [
+      { name: 'HTML5', level: 'Advanced', image: 'html-5.png' },
+      { name: 'CSS3', level: 'Advanced', image: 'css-3.png' },
+      { name: 'React', level: 'Learning', image: 'https://cdn.simpleicons.org/react/61DAFB' },
     ],
   },
   {
@@ -44,6 +53,7 @@ const categories = [
     accent: 'text-sky-300',
     items: [
       { name: 'Flutter', level: 'Learning', image: 'flutter.png' },
+      { name: 'React Native', level: 'Learning', image: 'https://cdn.simpleicons.org/react/61DAFB' },
     ],
   },
   {
@@ -64,6 +74,7 @@ const categories = [
     description: 'Platforms I use to bring projects from code to the web.',
     accent: 'text-rose-300',
     items: [
+      { name: 'Vercel', level: 'Learning', image: 'https://cdn.simpleicons.org/vercel/FFFFFF' },
       { name: 'Render', level: 'Learning', image: 'render.webp' },
     ],
   },
@@ -166,14 +177,13 @@ const TechStack = () => {
                   >
                     <div className="flex h-10 w-10 shrink-0 items-center justify-center border border-gray-700/80 bg-white/5 p-2">
                       <img
-                        src={`${logoBase}${item.image}`}
+                        src={item.image.startsWith('http') ? item.image : `${logoBase}${item.image}`}
                         alt={`${item.name} logo`}
                         className="h-full w-full object-contain transition-transform duration-300 group-hover/tech:scale-110"
                       />
                     </div>
                     <div className="min-w-0">
                       <div className="truncate font-medium text-gray-100">{item.name}</div>
-                      <div className="text-xs text-gray-500">{item.level}</div>
                     </div>
                   </motion.div>
                 ))}
