@@ -220,7 +220,7 @@ const Contact = () => {
                     </svg>
                     <div>
                       <div className="text-xs text-gray-500">Email</div>
-                      <div className="text-sm text-gray-300">terquinlaqui@gmail.com</div>
+                      <div className="text-sm text-gray-300">business.treevor@gmail.com</div>
                     </div>
                   </div>
                 </div>

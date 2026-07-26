@@ -17,11 +17,7 @@ const Projects = () => {
       featured: true,
       gradient: "from-pink-100 via-rose-50 to-pink-50",
       accentColor: "text-pink-600",
-      screens: [
-        { image: "/projects/oncosense/oncosense-1.png", label: "Welcome Screen" },
-        { image: "/projects/oncosense/oncosense-2.png", label: "Dashboard" },
-        { image: "/projects/oncosense/oncosense-3.png", label: "Journey Tracker" }
-      ]
+      preview: "/projects/oncosense-showcase.png"
     },
     {
       id: 2,
@@ -33,11 +29,7 @@ const Projects = () => {
       featured: false,
       gradient: "from-blue-100 via-cyan-50 to-teal-50",
       accentColor: "text-blue-600",
-      screens: [
-        { image: "/projects/chainly/chainly-1.png", label: "Welcome Screen" },
-        { image: "/projects/chainly/chainly-2.png", label: "Dashboard" },
-        { image: "/projects/chainly/chainly-3.png", label: "Tracker" }
-      ]
+      preview: "/projects/chainly-showcase.png"
     },
     {
       id: 3,
@@ -49,27 +41,19 @@ const Projects = () => {
       featured: false,
       gradient: "from-orange-100 via-blue-50 to-cyan-50",
       accentColor: "text-orange-600",
-      screens: [
-        { image: "/projects/ridetrack/ridetrack-1.png", label: "Welcome Screen" },
-        { image: "/projects/ridetrack/ridetrack-2.png", label: "Dashboard" },
-        { image: "/projects/ridetrack/ridetrack-3.png", label: "Stats Tracker" }
-      ]
+      preview: "/projects/ridetrack-showcase.png"
     },
     {
       id: 4,
-      title: "BizBot",
-      tagline: "Automate business workflows effortlessly",
-      description: "Flutter-based mobile application designed to help customers browse bakery treats, personalize cakes with AI recommendations, request quotations, and track orders from checkout to delivery.",
-      type: "Business Tool",
-      year: "2025",
+      title: "Spendly",
+      tagline: "Budget smarter, live simpler",
+      description: "A budget tracking app designed to help people monitor spending, manage accounts, and make better financial decisions.",
+      type: "Budget App",
+      year: "2026",
       featured: false,
-      gradient: "from-pink-100 via-rose-50 to-pink-50",
-      accentColor: "text-pink-600",
-      screens: [
-        { image: "/projects/bizbot/bizbot-1.png", label: "Dashboard" },
-        { image: "/projects/bizbot/bizbot-2.png", label: "Workflow Builder" },
-        { image: "/projects/bizbot/bizbot-3.png", label: "Analytics" }
-      ]
+      gradient: "from-slate-100 via-blue-50 to-cyan-50",
+      accentColor: "text-blue-600",
+      preview: "/projects/spendly.png"
     },
   ];
 
@@ -106,7 +90,7 @@ const Projects = () => {
     <section 
       ref={sectionRef}
       id="projects" 
-      className="min-h-screen text-white py-24 px-8 md:px-16 lg:px-24 relative overflow-hidden"
+      className="min-h-screen text-white py-16 sm:py-20 md:py-24 px-4 sm:px-6 md:px-16 lg:px-24 relative overflow-hidden"
     >
       {/* Page Transition Line Top */}
       <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-mono-400/30 to-transparent pointer-events-none z-20"></div>
@@ -220,7 +204,7 @@ const Projects = () => {
           {projects.filter(p => p.featured).map((project) => (
             <div 
               key={project.id}
-              className="group relative rounded-3xl overflow-hidden cursor-pointer"
+              className="group relative mx-auto w-full max-w-6xl rounded-2xl border-2 border-white/35 bg-gray-950 p-2 shadow-[0_24px_70px_rgba(0,0,0,0.45)] ring-4 ring-gray-950/80 overflow-hidden cursor-pointer transition-all duration-300 hover:-translate-y-1 hover:border-pink-300/80 hover:shadow-[0_30px_85px_rgba(236,72,153,0.2)]"
             >
               {/* Card Background */}
               <div className={`absolute inset-0 bg-gradient-to-br ${project.gradient} opacity-90`}></div>
@@ -248,55 +232,20 @@ const Projects = () => {
                 <div className="absolute top-1/2 left-1/4 w-24 h-24 bg-pink-300/10 rounded-full blur-xl"></div>
               </div>
 
-              <div className="relative p-8 md:p-12 min-h-[400px] md:min-h-[500px] flex flex-col justify-between">
-                {/* Top Content */}
-                <div className="text-center">
-                  <h3 className={`text-3xl md:text-4xl font-bold ${project.accentColor} mb-2`}>{project.title}</h3>
-                  <p className="text-pink-700 text-lg font-medium">{project.tagline}</p>
+              <div className="relative p-2 sm:p-3 md:p-4 flex items-center justify-center">
+                <div className="w-full overflow-hidden rounded-xl border border-gray-900/20 bg-black/10 transition-transform duration-500 ease-out group-hover:scale-[1.015]">
+                  <img
+                    src={project.preview}
+                    alt={`${project.title} app showcase`}
+                    className="block w-full max-w-full h-auto object-contain transition-transform duration-500 ease-out group-hover:scale-[1.02]"
+                  />
                 </div>
+              </div>
 
-                {/* Phone Mockups Placeholder */}
-                <div className="flex justify-center items-end gap-4 my-8 flex-1">
-                  {project.screens.map((screen, idx) => (
-                    <div 
-                      key={idx}
-                      className={`rounded-3xl border border-gray-800 shadow-3xl overflow-hidden p-1.5 bg-gray-900 w-36 md:w-48 h-72 md:h-96 ${
-                        idx === 0 ? 'transform -rotate-6 translate-y-4' :
-                        idx === 1 ? 'z-10' :
-                        'transform rotate-6 translate-y-4'
-                      }`}
-                    >
-                      <div className="w-full h-full rounded-[1.1rem] bg-gray-900 flex items-center justify-center overflow-hidden">
-                        {screen.image ? (
-                          <img 
-                            src={screen.image} 
-                            alt={screen.label}
-                            className="w-full h-full object-contain rounded-[1.1rem]"
-                          />
-                        ) : (
-                          <span className="text-gray-600 text-xs">{screen.label}</span>
-                        )}
-                      </div>
-                    </div>
-                  ))}
-                </div>
-
-                {/* Bottom Content */}
-                <div className="flex flex-col md:flex-row md:items-end md:justify-between gap-4">
-                  <div>
-                    <div className="flex items-center gap-3 mb-3">
-                      <span className="px-3 py-1 bg-pink-600/90 text-white text-xs font-medium rounded-full">{project.type}</span>
-                    </div>
-                    <h4 className="text-2xl md:text-3xl font-bold text-pink-900">{project.title}</h4>
-                    <p className="text-pink-800 text-sm md:text-base mt-1 max-w-md">{project.description}</p>
-                  </div>
-                  <div className="flex items-center gap-2 text-pink-700 group-hover:text-pink-900 transition-colors">
-                    <span className="text-sm font-medium">View Project</span>
-                    <svg className="w-5 h-5 transform group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
-                    </svg>
-                  </div>
-                </div>
+              <div className="pointer-events-none absolute bottom-5 right-5 flex h-10 w-10 translate-y-2 items-center justify-center rounded-full bg-gray-950/90 text-white opacity-0 shadow-lg transition-all duration-300 group-hover:translate-y-0 group-hover:opacity-100">
+                <svg className="h-5 w-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 12h14m-6-6 6 6-6 6" />
+                </svg>
               </div>
 
               {/* Hover Overlay */}
@@ -310,7 +259,7 @@ const Projects = () => {
           {projects.filter(p => !p.featured).map((project, index) => (
             <div 
               key={project.id}
-              className="group relative rounded-3xl overflow-hidden cursor-pointer"
+              className={`group relative mx-auto w-full max-w-6xl rounded-2xl border-2 border-white/35 bg-gray-950 p-2 shadow-[0_24px_70px_rgba(0,0,0,0.45)] ring-4 ring-gray-950/80 overflow-hidden cursor-pointer transition-all duration-300 hover:-translate-y-1 hover:shadow-[0_30px_85px_rgba(59,130,246,0.18)] ${project.id === 2 || project.id === 4 ? 'hover:border-blue-300/80' : 'hover:border-orange-300/80'}`}
               style={{ transitionDelay: `${400 + index * 100}ms` }}
             >
               {/* Card Background */}
@@ -339,55 +288,20 @@ const Projects = () => {
                 <div className={`absolute top-1/2 left-1/4 w-24 h-24 rounded-full blur-xl ${project.id === 2 ? 'bg-teal-300/10' : project.id === 4 ? 'bg-pink-300/10' : 'bg-orange-300/10'}`}></div>
               </div>
 
-              <div className="relative p-8 md:p-12 min-h-[400px] md:min-h-[500px] flex flex-col justify-between">
-                {/* Top Content */}
-                <div className="text-center">
-                  <h3 className={`text-3xl md:text-4xl font-bold ${project.accentColor} mb-2`}>{project.title}</h3>
-                  <p className={`text-lg font-medium ${project.id === 2 ? 'text-blue-700' : project.id === 4 ? 'text-pink-700' : 'text-orange-700'}`}>{project.tagline}</p>
+              <div className="relative p-2 sm:p-3 md:p-4 flex items-center justify-center">
+                <div className="w-full overflow-hidden rounded-xl border border-gray-900/20 bg-black/10 transition-transform duration-500 ease-out group-hover:scale-[1.015]">
+                  <img
+                    src={project.preview}
+                    alt={`${project.title} app showcase`}
+                    className="block w-full max-w-full h-auto object-contain transition-transform duration-500 ease-out group-hover:scale-[1.02]"
+                  />
                 </div>
+              </div>
 
-                {/* Phone Mockups Placeholder */}
-                <div className="flex justify-center items-end gap-4 my-8 flex-1">
-                  {project.screens.map((screen, idx) => (
-                    <div 
-                      key={idx}
-                      className={`rounded-3xl border border-gray-800 shadow-2xl overflow-hidden p-1.5 bg-gray-900 w-36 md:w-48 h-72 md:h-96 ${
-                        idx === 0 ? 'transform -rotate-6 translate-y-4' :
-                        idx === 1 ? 'z-10' :
-                        'transform rotate-6 translate-y-4'
-                      }`}
-                    >
-                      <div className="w-full h-full rounded-[1.1rem] bg-gray-900 flex items-center justify-center overflow-hidden">
-                        {screen.image ? (
-                          <img 
-                            src={screen.image} 
-                            alt={screen.label}
-                            className="w-full h-full object-contain rounded-[1.1rem]"
-                          />
-                        ) : (
-                          <span className="text-gray-600 text-xs">{screen.label}</span>
-                        )}
-                      </div>
-                    </div>
-                  ))}
-                </div>
-
-                {/* Bottom Content */}
-                <div className="flex flex-col md:flex-row md:items-end md:justify-between gap-4">
-                  <div>
-                    <div className="flex items-center gap-3 mb-3">
-                      <span className={`px-3 py-1 ${project.id === 2 ? 'bg-blue-600' : project.id === 4 ? 'bg-pink-600' : 'bg-orange-600'} text-white text-xs font-medium rounded-full`}>{project.type}</span>
-                    </div>
-                    <h4 className={`text-2xl md:text-3xl font-bold ${project.id === 2 ? 'text-blue-900' : project.id === 4 ? 'text-pink-900' : 'text-orange-900'}`}>{project.title}</h4>
-                    <p className={`text-sm md:text-base mt-1 max-w-md ${project.id === 2 ? 'text-blue-800' : project.id === 4 ? 'text-pink-800' : 'text-orange-800'}`}>{project.description}</p>
-                  </div>
-                  <div className={`flex items-center gap-2 transition-colors ${project.id === 2 ? 'text-blue-700 group-hover:text-blue-900' : project.id === 4 ? 'text-pink-700 group-hover:text-pink-900' : 'text-orange-700 group-hover:text-orange-900'}`}>
-                    <span className="text-sm font-medium">View Project</span>
-                    <svg className="w-5 h-5 transform group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
-                    </svg>
-                  </div>
-                </div>
+              <div className="pointer-events-none absolute bottom-5 right-5 flex h-10 w-10 translate-y-2 items-center justify-center rounded-full bg-gray-950/90 text-white opacity-0 shadow-lg transition-all duration-300 group-hover:translate-y-0 group-hover:opacity-100">
+                <svg className="h-5 w-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 12h14m-6-6 6 6-6 6" />
+                </svg>
               </div>
 
               {/* Hover Overlay */}
