@@ -216,12 +216,12 @@ const Projects = () => {
           {mobileProjects.map((project, index) => (
             <Motion.div
               key={project.id}
-              className="group relative min-w-0 overflow-hidden rounded-xl border border-neutral-700/70 bg-neutral-900/80 p-3 shadow-[inset_0_1px_0_rgba(255,255,255,0.04)] ring-2 ring-gray-950/70 cursor-pointer transition-all duration-300 hover:-translate-y-1 hover:border-neutral-400/80 hover:bg-neutral-900/95 hover:shadow-[0_20px_50px_rgba(255,255,255,0.1)] sm:p-4"
+              className="group relative min-w-0 overflow-hidden border border-neutral-700/70 bg-neutral-900/80 p-4 shadow-[inset_0_1px_0_rgba(255,255,255,0.04)] cursor-pointer transition-colors duration-300 hover:border-neutral-400/80 hover:bg-neutral-900/95"
               style={{ transitionDelay: `${200 + index * 80}ms` }}
               initial={{ opacity: 0, y: 24 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, amount: 0.1 }}
-              whileHover={{ y: -5, scale: 1.01 }}
+              whileHover={{ y: -3, scale: 1.015 }}
               transition={{ duration: 0.3, ease: 'easeOut' }}
             >
               {/* Card Background */}
@@ -243,12 +243,12 @@ const Projects = () => {
                 ))}
               </div>
 
-              <div className="relative flex aspect-16/10 items-center justify-center">
-                <div className="flex h-full w-full items-center justify-center overflow-hidden rounded-lg border border-gray-900/20 bg-black/10 p-2 transition-transform duration-500 ease-out group-hover:scale-[1.015] sm:p-3">
+              <div className="relative flex items-center justify-center">
+                <div className="flex w-full items-center justify-center overflow-hidden border border-neutral-700/70 bg-neutral-950/50 p-4 transition-transform duration-500 ease-out group-hover:scale-[1.015]">
                   <img
                     src={project.preview}
                     alt={`${project.title} app showcase`}
-                    className="block h-full w-full max-w-full object-contain transition-transform duration-500 ease-out group-hover:scale-[1.02]"
+                    className="block h-auto w-full max-w-full object-contain transition-transform duration-500 ease-out group-hover:scale-[1.02]"
                   />
                 </div>
               </div>

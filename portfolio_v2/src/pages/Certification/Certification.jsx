@@ -233,27 +233,18 @@ const Certification = () => {
             return (
               <Motion.div
                 key={cert.id}
-                className={`group relative overflow-hidden rounded-2xl border ${colorClasses.border} ${colorClasses.bg} backdrop-blur-sm ${colorClasses.hoverBorder} transition-all duration-300 hover:scale-105 hover:bg-black/40 hover:shadow-2xl cursor-pointer`}
-                style={{
-                  transitionDelay: `${200 + index * 100}ms`,
-                  background: 'rgba(23, 23, 23, 0.8)',
-                  boxShadow: 'inset 0 1px 0 rgba(255, 255, 255, 0.04)',
-                }}
+                className={`group relative overflow-hidden border ${colorClasses.border} ${colorClasses.bg} shadow-[inset_0_1px_0_rgba(255,255,255,0.04)] backdrop-blur-sm ${colorClasses.hoverBorder} transition-colors duration-300 hover:bg-neutral-900/95 cursor-pointer`}
+                style={{ transitionDelay: `${200 + index * 100}ms` }}
                 initial={{ opacity: 0, y: 24 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true, amount: 0.1 }}
-                whileHover={{ y: -6, scale: 1.03 }}
-                transition={{ duration: 0.35, delay: index * 0.08, ease: 'easeOut' }}
+                whileHover={{ y: -3, scale: 1.015 }}
+                transition={{ duration: 0.2, delay: index * 0.08, ease: 'easeOut' }}
               >
-                {/* Gradient Border Effect */}
-                <div className="absolute inset-0 rounded-2xl pointer-events-none" style={{
-                  background: 'rgba(255, 255, 255, 0.05)',
-                }}></div>
-                
                 <div className="relative p-6 flex flex-col items-center text-center h-full">
                   {/* Certificate Image */}
-                  <div className="w-full rounded-lg mb-4 overflow-hidden p-2" style={{
-                    background: 'linear-gradient(135deg, rgba(255,255,255,0.05) 0%, rgba(0,0,0,0.05) 100%)',
+                  <div className="mb-4 w-full overflow-hidden border border-neutral-700/70 bg-neutral-950/50 p-2" style={{
+                    background: 'rgba(10, 10, 10, 0.5)',
                   }}>
                     <img 
                       src={cert.image} 
@@ -270,7 +261,7 @@ const Certification = () => {
                   </h3>
 
                   {/* Hover Shimmer Effect */}
-                  <div className="absolute top-0 left-0 w-full h-full bg-linear-to-r from-transparent via-white/0 to-transparent group-hover:via-white/10 rounded-2xl transition-all duration-500 pointer-events-none"></div>
+                  <div className="absolute top-0 left-0 w-full h-full bg-linear-to-r from-transparent via-white/0 to-transparent group-hover:via-white/10 transition-all duration-500 pointer-events-none"></div>
                 </div>
               </Motion.div>
             );
