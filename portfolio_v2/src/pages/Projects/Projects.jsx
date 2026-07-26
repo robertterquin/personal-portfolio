@@ -14,6 +14,7 @@ const Projects = () => {
       tagline: "Cancer awareness starts here",
       description: "A Flutter-based mobile platform for cancer education, prevention tips, community support, and resources.",
       type: "Health App",
+      platform: "mobile",
       year: "2025",
       featured: true,
       gradient: "from-pink-100 via-rose-50 to-pink-50",
@@ -26,6 +27,7 @@ const Projects = () => {
       tagline: "Ride smarter, maintain better",
       description: "Flutter-based mobile application to help cyclists track bike maintenance, schedule service reminders, and manage maintenance costs for safer rides.",
       type: "Lifestyle App",
+      platform: "mobile",
       year: "2025",
       featured: false,
       gradient: "from-blue-100 via-cyan-50 to-teal-50",
@@ -38,6 +40,7 @@ const Projects = () => {
       tagline: "Track every ride, reach every goal",
       description: "Flutter-based mobile application designed to help cyclists track rides, monitor performance goals, and analyze riding statistics for efficient cycling.",
       type: "Fitness App",
+      platform: "mobile",
       year: "2025",
       featured: false,
       gradient: "from-orange-100 via-blue-50 to-cyan-50",
@@ -50,12 +53,19 @@ const Projects = () => {
       tagline: "Budget smarter, live simpler",
       description: "A budget tracking app designed to help people monitor spending, manage accounts, and make better financial decisions.",
       type: "Budget App",
+      platform: "mobile",
       year: "2026",
       featured: false,
       gradient: "from-slate-100 via-blue-50 to-cyan-50",
       accentColor: "text-blue-600",
       preview: "/projects/spendly.png"
     },
+  ];
+
+  const mobileProjects = projects.filter((project) => project.platform === 'mobile');
+  const webPlaceholders = [
+    { id: 'web-placeholder-1', label: 'Web Project 01' },
+    { id: 'web-placeholder-2', label: 'Web Project 02' },
   ];
 
   useEffect(() => {
@@ -206,7 +216,15 @@ const Projects = () => {
           </div>
         </motion.div>
 
-        {/* Project Gallery */}
+        <div className="mb-5 flex items-end justify-between gap-4 border-b border-white/10 pb-3">
+          <div>
+            <p className="font-mono text-xs font-semibold uppercase tracking-[0.25em] text-mono-600">01</p>
+            <h3 className="mt-2 text-2xl font-semibold text-white md:text-3xl">Mobile Applications</h3>
+          </div>
+          <span className="font-mono text-sm text-gray-500">{String(mobileProjects.length).padStart(2, '0')} projects</span>
+        </div>
+
+        {/* Mobile Project Gallery */}
         <motion.div
           className={`mx-auto grid w-full max-w-[1280px] grid-cols-1 gap-6 transition-all duration-700 delay-200 sm:grid-cols-2 lg:gap-8 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-12'}`}
           initial={{ opacity: 0, y: 36 }}
@@ -214,7 +232,7 @@ const Projects = () => {
           viewport={{ once: true, amount: 0.1 }}
           transition={{ duration: 0.75, delay: 0.1, ease: 'easeOut' }}
         >
-          {projects.map((project, index) => (
+          {mobileProjects.map((project, index) => (
             <motion.div 
               key={project.id}
               className="group relative min-w-0 overflow-hidden rounded-xl border border-white/20 bg-gray-950 p-3 shadow-[0_16px_40px_rgba(0,0,0,0.35)] ring-2 ring-gray-950/70 cursor-pointer transition-all duration-300 hover:-translate-y-1 hover:border-gray-400/80 hover:shadow-[0_20px_50px_rgba(255,255,255,0.1)] sm:p-4"
@@ -266,21 +284,31 @@ const Projects = () => {
           ))}
         </motion.div>
 
-        {/* More Projects Coming Section */}
+        {/* Web Projects Section */}
         <motion.div
-          className={`mt-16 text-center transition-all duration-700 delay-600 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}
+          className={`mt-14 transition-all duration-700 delay-600 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, amount: 0.4 }}
           transition={{ duration: 0.6, ease: 'easeOut' }}
         >
-          <div className="inline-flex items-center gap-4 px-8 py-4 border border-gray-800 rounded-full">
-            <div className="flex gap-1">
-              <div className="w-2 h-2 bg-mono-600 rounded-full animate-pulse"></div>
-              <div className="w-2 h-2 bg-mono-700 rounded-full animate-pulse" style={{animationDelay: '0.2s'}}></div>
-              <div className="w-2 h-2 bg-mono-800 rounded-full animate-pulse" style={{animationDelay: '0.4s'}}></div>
+          <div className="mb-5 flex items-end justify-between gap-4 border-b border-white/10 pb-3">
+            <div>
+              <p className="font-mono text-xs font-semibold uppercase tracking-[0.25em] text-mono-600">02</p>
+              <h3 className="mt-2 text-2xl font-semibold text-white md:text-3xl">Web Applications</h3>
             </div>
-            <span className="text-gray-400 text-sm">More projects coming soon</span>
+            <span className="font-mono text-sm text-gray-500">02 placeholders</span>
+          </div>
+          <div className="grid grid-cols-1 gap-6 sm:grid-cols-2">
+            {webPlaceholders.map((project) => (
+              <div key={project.id} className="flex min-h-40 flex-col justify-between border border-dashed border-gray-700/80 bg-black/10 p-6">
+                <div className="flex items-center justify-between gap-4">
+                  <span className="font-mono text-xs uppercase tracking-[0.2em] text-gray-600">In progress</span>
+                  <span className="text-xs text-gray-600">Web</span>
+                </div>
+                <h4 className="mt-8 text-xl font-medium text-gray-300">{project.label}</h4>
+              </div>
+            ))}
           </div>
         </motion.div>
       </div>
