@@ -206,19 +206,23 @@ const Projects = () => {
           </div>
         </motion.div>
 
-        {/* Featured Project - Large Card */}
+        {/* Project Gallery */}
         <motion.div
-          className={`mb-8 transition-all duration-700 delay-200 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-12'}`}
+          className={`mx-auto grid w-full max-w-[1280px] grid-cols-1 gap-6 transition-all duration-700 delay-200 sm:grid-cols-2 lg:gap-8 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-12'}`}
           initial={{ opacity: 0, y: 36 }}
           whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, amount: 0.15 }}
+          viewport={{ once: true, amount: 0.1 }}
           transition={{ duration: 0.75, delay: 0.1, ease: 'easeOut' }}
         >
-          {projects.filter(p => p.featured).map((project) => (
+          {projects.map((project, index) => (
             <motion.div 
               key={project.id}
-              className="group relative mx-auto w-full max-w-[1400px] rounded-2xl border-2 border-white/25 bg-gray-950 p-2 shadow-[0_24px_70px_rgba(0,0,0,0.45)] ring-4 ring-gray-950/80 overflow-hidden cursor-pointer transition-all duration-300 hover:-translate-y-1 hover:border-gray-400/80 hover:shadow-[0_30px_85px_rgba(255,255,255,0.12)]"
-              whileHover={{ y: -6, scale: 1.01 }}
+              className="group relative min-w-0 overflow-hidden rounded-xl border border-white/20 bg-gray-950 p-3 shadow-[0_16px_40px_rgba(0,0,0,0.35)] ring-2 ring-gray-950/70 cursor-pointer transition-all duration-300 hover:-translate-y-1 hover:border-gray-400/80 hover:shadow-[0_20px_50px_rgba(255,255,255,0.1)] sm:p-4"
+              style={{ transitionDelay: `${200 + index * 80}ms` }}
+              initial={{ opacity: 0, y: 24 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, amount: 0.1 }}
+              whileHover={{ y: -5, scale: 1.01 }}
               transition={{ duration: 0.3, ease: 'easeOut' }}
             >
               {/* Card Background */}
@@ -240,77 +244,17 @@ const Projects = () => {
                 ))}
               </div>
 
-              <div className="relative p-2 sm:p-3 md:p-4 flex items-center justify-center">
-                <div className="w-full overflow-hidden rounded-xl border border-gray-900/20 bg-black/10 transition-transform duration-500 ease-out group-hover:scale-[1.015]">
+              <div className="relative flex aspect-[16/10] items-center justify-center">
+                <div className="flex h-full w-full items-center justify-center overflow-hidden rounded-lg border border-gray-900/20 bg-black/10 p-2 transition-transform duration-500 ease-out group-hover:scale-[1.015] sm:p-3">
                   <img
                     src={project.preview}
                     alt={`${project.title} app showcase`}
-                    className="block w-full max-w-full h-auto object-contain transition-transform duration-500 ease-out group-hover:scale-[1.02]"
+                    className="block h-full w-full max-w-full object-contain transition-transform duration-500 ease-out group-hover:scale-[1.02]"
                   />
                 </div>
               </div>
 
-              <div className="pointer-events-none absolute bottom-5 right-5 flex h-10 w-10 translate-y-2 items-center justify-center rounded-full bg-gray-950/90 text-white opacity-0 shadow-lg transition-all duration-300 group-hover:translate-y-0 group-hover:opacity-100">
-                <svg className="h-5 w-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 12h14m-6-6 6 6-6 6" />
-                </svg>
-              </div>
-
-              {/* Hover Overlay */}
-              <div className="absolute inset-0 bg-black/0 group-hover:bg-black/5 transition-colors duration-300"></div>
-            </motion.div>
-          ))}
-        </motion.div>
-
-        {/* Secondary Projects - Full Width Stacked */}
-        <motion.div
-          className={`flex flex-col gap-8 transition-all duration-700 delay-400 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-12'}`}
-          initial={{ opacity: 0, y: 36 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, amount: 0.1 }}
-          transition={{ duration: 0.75, delay: 0.15, ease: 'easeOut' }}
-        >
-          {projects.filter(p => !p.featured).map((project, index) => (
-            <motion.div 
-              key={project.id}
-              className="group relative mx-auto w-full max-w-[1400px] rounded-2xl border-2 border-white/25 bg-gray-950 p-2 shadow-[0_24px_70px_rgba(0,0,0,0.45)] ring-4 ring-gray-950/80 overflow-hidden cursor-pointer transition-all duration-300 hover:-translate-y-1 hover:border-gray-400/80 hover:shadow-[0_30px_85px_rgba(255,255,255,0.12)]"
-              style={{ transitionDelay: `${400 + index * 100}ms` }}
-              initial={{ opacity: 0, y: 24 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, amount: 0.1 }}
-              whileHover={{ y: -6, scale: 1.01 }}
-              transition={{ duration: 0.35, delay: index * 0.08, ease: 'easeOut' }}
-            >
-              {/* Card Background */}
-              <div className="absolute inset-0 bg-gradient-to-br from-gray-900 via-gray-950 to-black opacity-95"></div>
-              
-              {/* Sparkle Effects */}
-              <div className="absolute inset-0 overflow-hidden">
-                {[...Array(10)].map((_, i) => (
-                  <div 
-                    key={i}
-                    className="absolute w-1 h-1 bg-white rounded-full animate-pulse"
-                    style={{
-                      left: `${20 + Math.random() * 60}%`,
-                      top: `${20 + Math.random() * 60}%`,
-                      animationDelay: `${i * 0.3}s`,
-                      opacity: 0.5,
-                    }}
-                  ></div>
-                ))}
-              </div>
-
-              <div className="relative p-2 sm:p-3 md:p-4 flex items-center justify-center">
-                <div className="w-full overflow-hidden rounded-xl border border-gray-900/20 bg-black/10 transition-transform duration-500 ease-out group-hover:scale-[1.015]">
-                  <img
-                    src={project.preview}
-                    alt={`${project.title} app showcase`}
-                    className="block w-full max-w-full h-auto object-contain transition-transform duration-500 ease-out group-hover:scale-[1.02]"
-                  />
-                </div>
-              </div>
-
-              <div className="pointer-events-none absolute bottom-5 right-5 flex h-10 w-10 translate-y-2 items-center justify-center rounded-full bg-gray-950/90 text-white opacity-0 shadow-lg transition-all duration-300 group-hover:translate-y-0 group-hover:opacity-100">
+              <div className="pointer-events-none absolute bottom-4 right-4 flex h-9 w-9 translate-y-2 items-center justify-center rounded-full bg-gray-950/90 text-white opacity-0 shadow-lg transition-all duration-300 group-hover:translate-y-0 group-hover:opacity-100">
                 <svg className="h-5 w-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 12h14m-6-6 6 6-6 6" />
                 </svg>

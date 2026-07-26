@@ -46,9 +46,16 @@ h6 {
   @apply w-full;
 }
 
+.portfolio-canvas {
+  background: linear-gradient(180deg, #0c0f11 0%, #171c21 48%, #0c0f11 100%);
+  background-attachment: fixed;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
 .page-shell {
   isolation: isolate;
-  background-color: #101214;
+  background-color: transparent;
   background-image: none;
   position: relative;
 }
