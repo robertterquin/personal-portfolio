@@ -7,7 +7,7 @@ const categories = [
   {
     title: 'Programming Languages',
     description: 'The foundations I use to shape reliable digital experiences.',
-    accent: 'text-cyan-300',
+    accent: 'text-mono-700',
     items: [
       { name: 'JavaScript', level: 'Intermediate', image: 'java-script.png' },
       { name: 'TypeScript', level: 'Learning', image: 'https://cdn.simpleicons.org/typescript/3178C6' },
@@ -20,7 +20,7 @@ const categories = [
   {
     title: 'Frontend Development',
     description: 'Responsive interfaces and component systems for the web.',
-    accent: 'text-blue-300',
+    accent: 'text-mono-700',
     items: [
       { name: 'HTML5', level: 'Advanced', image: 'html-5.png' },
       { name: 'CSS3', level: 'Advanced', image: 'css-3.png' },
@@ -30,7 +30,7 @@ const categories = [
   {
     title: 'Backend Development',
     description: 'Services and APIs that keep applications connected.',
-    accent: 'text-emerald-300',
+    accent: 'text-mono-700',
     items: [
       { name: 'Node.js', level: 'Learning', image: 'nodejs.png' },
       { name: 'Express.js', level: 'Learning', image: 'express.png' },
@@ -39,7 +39,7 @@ const categories = [
   {
     title: 'Databases',
     description: 'Data platforms for structured, scalable products.',
-    accent: 'text-amber-300',
+    accent: 'text-mono-700',
     items: [
       { name: 'MySQL', level: 'Intermediate', image: 'mysql.png' },
       { name: 'Supabase', level: 'Learning', image: 'supabase.webp' },
@@ -50,7 +50,7 @@ const categories = [
   {
     title: 'Mobile Development',
     description: 'Cross-platform interfaces built for everyday use.',
-    accent: 'text-sky-300',
+    accent: 'text-mono-700',
     items: [
       { name: 'Flutter', level: 'Learning', image: 'flutter.png' },
       { name: 'React Native', level: 'Learning', image: 'https://cdn.simpleicons.org/react/61DAFB' },
@@ -59,7 +59,7 @@ const categories = [
   {
     title: 'Development Tools & IDEs',
     description: 'The tools that support my build, test, and delivery workflow.',
-    accent: 'text-violet-300',
+    accent: 'text-mono-700',
     items: [
       { name: 'Git', level: 'Intermediate', image: 'social.png' },
       { name: 'GitHub', level: 'Advanced', image: 'github.png' },
@@ -72,7 +72,7 @@ const categories = [
   {
     title: 'Cloud & Deployment',
     description: 'Platforms I use to bring projects from code to the web.',
-    accent: 'text-rose-300',
+    accent: 'text-mono-700',
     items: [
       { name: 'Vercel', level: 'Learning', image: 'https://cdn.simpleicons.org/vercel/FFFFFF' },
       { name: 'Render', level: 'Learning', image: 'render.webp' },
@@ -123,11 +123,11 @@ const TechStack = () => {
               <span className="font-mono text-xs font-semibold uppercase tracking-[0.3em] text-mono-700">Toolkit</span>
             </div>
             <h2 className="text-6xl font-bold leading-tight tracking-tighter md:text-7xl lg:text-8xl">
-              <span className="text-transparent bg-clip-text bg-linear-to-r from-cyan-200 via-mono-900 to-white">Tech</span>
+              <span className="text-transparent bg-clip-text bg-linear-to-r from-mono-800 via-mono-900 to-white">Tech</span>
               <br className="lg:hidden" />
               <span className="text-transparent bg-clip-text bg-linear-to-r from-white to-mono-600">Stack</span>
             </h2>
-            <div className="mt-6 h-1 w-20 rounded-full bg-linear-to-r from-cyan-300 via-mono-600 to-violet-300"></div>
+            <div className="mt-6 h-1 w-20 rounded-full bg-linear-to-r from-mono-500 via-mono-700 to-mono-900"></div>
           </div>
 
         </div>

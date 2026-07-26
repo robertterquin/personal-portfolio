@@ -274,7 +274,7 @@ const Contact = () => {
                     value={formData.name}
                     onChange={handleChange}
                     required
-                    className="w-full px-4 py-3 bg-gray-900/50 border border-gray-800 rounded-xl text-white placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-cyan-500/50 focus:border-cyan-500/50 transition-all backdrop-blur-sm"
+                    className="w-full rounded-xl border border-gray-600/70 bg-gray-900/80 px-4 py-3 text-white placeholder-gray-400 shadow-[inset_0_1px_0_rgba(255,255,255,0.04)] transition-all backdrop-blur-sm focus:border-cyan-300/80 focus:outline-none focus:ring-2 focus:ring-cyan-300/30"
                   />
                 </div>
                 <div>
@@ -288,7 +288,7 @@ const Contact = () => {
                     value={formData.email}
                     onChange={handleChange}
                     required
-                    className="w-full px-4 py-3 bg-gray-900/50 border border-gray-800 rounded-xl text-white placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-cyan-500/50 focus:border-cyan-500/50 transition-all backdrop-blur-sm"
+                    className="w-full rounded-xl border border-gray-600/70 bg-gray-900/80 px-4 py-3 text-white placeholder-gray-400 shadow-[inset_0_1px_0_rgba(255,255,255,0.04)] transition-all backdrop-blur-sm focus:border-cyan-300/80 focus:outline-none focus:ring-2 focus:ring-cyan-300/30"
                   />
                 </div>
               </div>
@@ -305,7 +305,7 @@ const Contact = () => {
                   value={formData.subject}
                   onChange={handleChange}
                   required
-                  className="w-full px-4 py-3 bg-gray-900/50 border border-gray-800 rounded-xl text-white placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-cyan-500/50 focus:border-cyan-500/50 transition-all backdrop-blur-sm"
+                  className="w-full rounded-xl border border-gray-600/70 bg-gray-900/80 px-4 py-3 text-white placeholder-gray-400 shadow-[inset_0_1px_0_rgba(255,255,255,0.04)] transition-all backdrop-blur-sm focus:border-cyan-300/80 focus:outline-none focus:ring-2 focus:ring-cyan-300/30"
                 />
               </div>
 
@@ -321,7 +321,7 @@ const Contact = () => {
                   onChange={handleChange}
                   required
                   rows={6}
-                  className="w-full px-4 py-3 bg-gray-900/50 border border-gray-800 rounded-xl text-white placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-cyan-500/50 focus:border-cyan-500/50 transition-all backdrop-blur-sm resize-none"
+                  className="w-full resize-none rounded-xl border border-gray-600/70 bg-gray-900/80 px-4 py-3 text-white placeholder-gray-400 shadow-[inset_0_1px_0_rgba(255,255,255,0.04)] transition-all backdrop-blur-sm focus:border-cyan-300/80 focus:outline-none focus:ring-2 focus:ring-cyan-300/30"
                 ></textarea>
               </div>
 
