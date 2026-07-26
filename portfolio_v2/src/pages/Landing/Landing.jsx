@@ -139,35 +139,8 @@ const Landing = () => {
       <div className="relative z-10 container mx-auto px-8 md:px-16 py-12 md:py-20 flex items-center justify-center min-h-[calc(100vh-200px)]">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20 items-center w-full max-w-6xl">
           
-          {/* Left Side - Text Content */}
-          <div className="space-y-8 text-center lg:text-left">
-            <h1 className="text-5xl md:text-7xl lg:text-8xl font-black leading-tight tracking-tighter" style={{
-              textShadow: '0 10px 30px rgba(255, 255, 255, 0.1), 0 4px 12px rgba(163, 163, 163, 0.2)'
-            }}>
-              Where Concepts<br />
-              Become <span className="text-transparent bg-clip-text bg-gradient-to-r from-white via-gray-200 to-gray-300">Code</span>
-            </h1>
-
-            <p className="text-gray-300 text-xl md:text-2xl leading-relaxed font-medium" style={{
-              textShadow: '0 2px 8px rgba(0, 0, 0, 0.3)'
-            }}>
-              Transforming your vision into scalable, high-performance applications. Specializing in full-stack development with a focus on clean code and exceptional user experiences.
-            </p>
-            <div className="flex flex-col sm:flex-row gap-4 pt-6">
-              <a href="#projects" className="group inline-flex items-center justify-center gap-2 px-9 py-4 bg-gradient-to-r from-mono-600 to-mono-800 rounded-xl font-semibold text-white hover:scale-105 transition-transform duration-300 shadow-lg hover:shadow-xl">
-                View My Work
-                <svg className="w-5 h-5 transform group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 7l5 5m0 0l-5 5m5-5H6" />
-                </svg>
-              </a>
-              <a href="#contact" className="inline-flex items-center justify-center gap-2 px-9 py-4 border-2 border-mono-600 rounded-xl font-semibold text-mono-300 hover:bg-mono-900/30 transition-all duration-300">
-                Get in Touch
-              </a>
-            </div>
-          </div>
-
-          {/* Right Side - Profile Image with Service Tags */}
-          <div className="relative flex justify-center">
+          {/* Left Side - Profile Image with Service Tags */}
+          <div className="relative flex justify-center lg:justify-start">
             {/* Profile Circle */}
             <div className="relative">
               <div className="w-80 h-80 md:w-96 md:h-96 lg:w-[28rem] lg:h-[28rem] rounded-full overflow-hidden border-8 border-mono-300 relative">
@@ -198,6 +171,33 @@ const Landing = () => {
               <div className="absolute -bottom-4 left-1/4 px-4 py-2 bg-white text-black rounded-full text-xs md:text-sm font-medium shadow-lg">
                 3+ Years Experience
               </div>
+            </div>
+          </div>
+
+          {/* Right Side - Text Content */}
+          <div className="space-y-8 text-center lg:text-left">
+            <h1 className="text-5xl md:text-7xl lg:text-8xl font-black leading-tight tracking-tighter" style={{
+              textShadow: '0 10px 30px rgba(255, 255, 255, 0.1), 0 4px 12px rgba(163, 163, 163, 0.2)'
+            }}>
+              Where Concepts<br />
+              Become <span className="text-transparent bg-clip-text bg-gradient-to-r from-white via-gray-200 to-gray-300">Code</span>
+            </h1>
+
+            <p className="text-gray-300 text-xl md:text-2xl leading-relaxed font-medium" style={{
+              textShadow: '0 2px 8px rgba(0, 0, 0, 0.3)'
+            }}>
+              Transforming your vision into scalable, high-performance applications. Specializing in full-stack development with a focus on clean code and exceptional user experiences.
+            </p>
+            <div className="flex flex-col sm:flex-row gap-4 pt-6">
+              <a href="#projects" className="group inline-flex items-center justify-center gap-2 px-9 py-4 bg-gradient-to-r from-mono-600 to-mono-800 rounded-xl font-semibold text-white hover:scale-105 transition-transform duration-300 shadow-lg hover:shadow-xl">
+                View My Work
+                <svg className="w-5 h-5 transform group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 7l5 5m0 0l-5 5m5-5H6" />
+                </svg>
+              </a>
+              <a href="#contact" className="inline-flex items-center justify-center gap-2 px-9 py-4 border-2 border-mono-600 rounded-xl font-semibold text-mono-300 hover:bg-mono-900/30 transition-all duration-300">
+                Get in Touch
+              </a>
             </div>
           </div>
 
