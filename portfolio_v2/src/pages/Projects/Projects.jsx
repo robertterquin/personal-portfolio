@@ -90,7 +90,7 @@ const Projects = () => {
     <section 
       ref={sectionRef}
       id="projects" 
-      className="min-h-screen text-white py-16 sm:py-20 md:py-24 px-4 sm:px-6 md:px-16 lg:px-24 relative overflow-hidden"
+      className="min-h-screen text-white py-16 sm:py-20 md:py-24 px-4 sm:px-6 md:px-8 lg:px-16 relative overflow-hidden"
     >
       {/* Page Transition Line Top */}
       <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-mono-400/30 to-transparent pointer-events-none z-20"></div>
@@ -204,10 +204,10 @@ const Projects = () => {
           {projects.filter(p => p.featured).map((project) => (
             <div 
               key={project.id}
-              className="group relative mx-auto w-full max-w-6xl rounded-2xl border-2 border-white/35 bg-gray-950 p-2 shadow-[0_24px_70px_rgba(0,0,0,0.45)] ring-4 ring-gray-950/80 overflow-hidden cursor-pointer transition-all duration-300 hover:-translate-y-1 hover:border-pink-300/80 hover:shadow-[0_30px_85px_rgba(236,72,153,0.2)]"
+              className="group relative mx-auto w-full max-w-[1400px] rounded-2xl border-2 border-white/25 bg-gray-950 p-2 shadow-[0_24px_70px_rgba(0,0,0,0.45)] ring-4 ring-gray-950/80 overflow-hidden cursor-pointer transition-all duration-300 hover:-translate-y-1 hover:border-gray-400/80 hover:shadow-[0_30px_85px_rgba(255,255,255,0.12)]"
             >
               {/* Card Background */}
-              <div className={`absolute inset-0 bg-gradient-to-br ${project.gradient} opacity-90`}></div>
+              <div className="absolute inset-0 bg-gradient-to-br from-gray-900 via-gray-950 to-black opacity-95"></div>
               
               {/* Sparkle Effects */}
               <div className="absolute inset-0 overflow-hidden">
@@ -223,13 +223,6 @@ const Projects = () => {
                     }}
                   ></div>
                 ))}
-              </div>
-
-              {/* Floating Circles Background Effect */}
-              <div className="absolute inset-0 overflow-hidden pointer-events-none">
-                <div className="absolute top-10 right-20 w-32 h-32 bg-pink-400/20 rounded-full blur-2xl"></div>
-                <div className="absolute bottom-20 left-16 w-40 h-40 bg-rose-300/15 rounded-full blur-3xl"></div>
-                <div className="absolute top-1/2 left-1/4 w-24 h-24 bg-pink-300/10 rounded-full blur-xl"></div>
               </div>
 
               <div className="relative p-2 sm:p-3 md:p-4 flex items-center justify-center">
@@ -259,11 +252,11 @@ const Projects = () => {
           {projects.filter(p => !p.featured).map((project, index) => (
             <div 
               key={project.id}
-              className={`group relative mx-auto w-full max-w-6xl rounded-2xl border-2 border-white/35 bg-gray-950 p-2 shadow-[0_24px_70px_rgba(0,0,0,0.45)] ring-4 ring-gray-950/80 overflow-hidden cursor-pointer transition-all duration-300 hover:-translate-y-1 hover:shadow-[0_30px_85px_rgba(59,130,246,0.18)] ${project.id === 2 || project.id === 4 ? 'hover:border-blue-300/80' : 'hover:border-orange-300/80'}`}
+              className="group relative mx-auto w-full max-w-[1400px] rounded-2xl border-2 border-white/25 bg-gray-950 p-2 shadow-[0_24px_70px_rgba(0,0,0,0.45)] ring-4 ring-gray-950/80 overflow-hidden cursor-pointer transition-all duration-300 hover:-translate-y-1 hover:border-gray-400/80 hover:shadow-[0_30px_85px_rgba(255,255,255,0.12)]"
               style={{ transitionDelay: `${400 + index * 100}ms` }}
             >
               {/* Card Background */}
-              <div className={`absolute inset-0 bg-gradient-to-br ${project.gradient} opacity-90`}></div>
+              <div className="absolute inset-0 bg-gradient-to-br from-gray-900 via-gray-950 to-black opacity-95"></div>
               
               {/* Sparkle Effects */}
               <div className="absolute inset-0 overflow-hidden">
@@ -279,13 +272,6 @@ const Projects = () => {
                     }}
                   ></div>
                 ))}
-              </div>
-
-              {/* Floating Circles Background Effect */}
-              <div className="absolute inset-0 overflow-hidden pointer-events-none">
-                <div className={`absolute top-10 right-20 w-32 h-32 rounded-full blur-2xl ${project.id === 2 ? 'bg-blue-400/20' : project.id === 4 ? 'bg-pink-400/20' : 'bg-orange-400/20'}`}></div>
-                <div className={`absolute bottom-20 left-16 w-40 h-40 rounded-full blur-3xl ${project.id === 2 ? 'bg-cyan-300/15' : project.id === 4 ? 'bg-rose-300/15' : 'bg-orange-300/15'}`}></div>
-                <div className={`absolute top-1/2 left-1/4 w-24 h-24 rounded-full blur-xl ${project.id === 2 ? 'bg-teal-300/10' : project.id === 4 ? 'bg-pink-300/10' : 'bg-orange-300/10'}`}></div>
               </div>
 
               <div className="relative p-2 sm:p-3 md:p-4 flex items-center justify-center">

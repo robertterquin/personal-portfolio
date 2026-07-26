@@ -1,4 +1,5 @@
 import { useEffect, useRef, useState } from 'react';
+import { motion } from 'motion/react';
 
 const logoBase = 'https://robertterquinlaqui.vercel.app/images/';
 
@@ -138,10 +139,14 @@ const TechStack = () => {
 
         <div className="grid grid-cols-1 gap-6 md:grid-cols-2 xl:grid-cols-3">
           {categories.map((category, categoryIndex) => (
-            <div
+            <motion.div
               key={category.title}
-              className={`group border border-gray-800/70 bg-black/25 p-5 backdrop-blur-sm transition-all duration-700 hover:-translate-y-1 hover:border-gray-500/70 hover:bg-black/40 sm:p-6 ${categoryIndex === 0 ? 'md:col-span-2 xl:col-span-2' : ''} ${isVisible ? 'translate-y-0 opacity-100' : 'translate-y-8 opacity-0'}`}
-              style={{ transitionDelay: `${150 + categoryIndex * 80}ms` }}
+              className={`group border border-gray-800/70 bg-black/25 p-5 backdrop-blur-sm transition-colors duration-300 hover:border-gray-500/70 hover:bg-black/40 sm:p-6 ${categoryIndex === 0 ? 'md:col-span-2 xl:col-span-2' : ''}`}
+              initial={{ opacity: 0, y: 28 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              whileHover={{ y: -4 }}
+              viewport={{ once: true, amount: 0.2 }}
+              transition={{ duration: 0.6, delay: categoryIndex * 0.08, ease: 'easeOut' }}
             >
               <div className="mb-5 flex items-start justify-between gap-4">
                 <div>
@@ -153,9 +158,11 @@ const TechStack = () => {
 
               <div className="grid grid-cols-1 gap-3 sm:grid-cols-2">
                 {category.items.map((item) => (
-                  <div
+                  <motion.div
                     key={item.name}
                     className="group/tech flex min-w-0 items-center gap-3 border border-gray-800/70 bg-gray-950/50 p-3 transition-all hover:border-gray-600 hover:bg-gray-900/80"
+                    whileHover={{ y: -3, scale: 1.015 }}
+                    transition={{ duration: 0.2, ease: 'easeOut' }}
                   >
                     <div className="flex h-10 w-10 shrink-0 items-center justify-center border border-gray-700/80 bg-white/5 p-2">
                       <img
@@ -168,10 +175,10 @@ const TechStack = () => {
                       <div className="truncate font-medium text-gray-100">{item.name}</div>
                       <div className="text-xs text-gray-500">{item.level}</div>
                     </div>
-                  </div>
+                  </motion.div>
                 ))}
               </div>
-            </div>
+            </motion.div>
           ))}
         </div>
       </div>
