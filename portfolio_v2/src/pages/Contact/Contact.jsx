@@ -191,7 +191,7 @@ const Contact = () => {
         >
           {/* Top Label */}
           <div className="flex items-center gap-3 mb-6">
-            <div className="h-px w-12 bg-linear-to-r from-cyan-300 to-transparent"></div>
+            <div className="h-px w-12 bg-linear-to-r from-mono-600 to-transparent"></div>
             <span className="font-mono text-mono-700 text-xs uppercase tracking-[0.3em] font-semibold">Get In Touch</span>
           </div>
           
@@ -274,7 +274,7 @@ const Contact = () => {
                     value={formData.name}
                     onChange={handleChange}
                     required
-                    className="w-full rounded-xl border border-gray-600/70 bg-gray-900/80 px-4 py-3 text-white placeholder-gray-400 shadow-[inset_0_1px_0_rgba(255,255,255,0.04)] transition-all backdrop-blur-sm focus:border-cyan-300/80 focus:outline-none focus:ring-2 focus:ring-cyan-300/30"
+                    className="w-full rounded-xl border border-gray-600/70 bg-gray-900/80 px-4 py-3 text-white placeholder-gray-400 shadow-[inset_0_1px_0_rgba(255,255,255,0.04)] transition-all backdrop-blur-sm focus:border-mono-400/80 focus:outline-none focus:ring-2 focus:ring-mono-500/30"
                   />
                 </div>
                 <div>
@@ -288,7 +288,7 @@ const Contact = () => {
                     value={formData.email}
                     onChange={handleChange}
                     required
-                    className="w-full rounded-xl border border-gray-600/70 bg-gray-900/80 px-4 py-3 text-white placeholder-gray-400 shadow-[inset_0_1px_0_rgba(255,255,255,0.04)] transition-all backdrop-blur-sm focus:border-cyan-300/80 focus:outline-none focus:ring-2 focus:ring-cyan-300/30"
+                    className="w-full rounded-xl border border-gray-600/70 bg-gray-900/80 px-4 py-3 text-white placeholder-gray-400 shadow-[inset_0_1px_0_rgba(255,255,255,0.04)] transition-all backdrop-blur-sm focus:border-mono-400/80 focus:outline-none focus:ring-2 focus:ring-mono-500/30"
                   />
                 </div>
               </div>
@@ -305,7 +305,7 @@ const Contact = () => {
                   value={formData.subject}
                   onChange={handleChange}
                   required
-                  className="w-full rounded-xl border border-gray-600/70 bg-gray-900/80 px-4 py-3 text-white placeholder-gray-400 shadow-[inset_0_1px_0_rgba(255,255,255,0.04)] transition-all backdrop-blur-sm focus:border-cyan-300/80 focus:outline-none focus:ring-2 focus:ring-cyan-300/30"
+                  className="w-full rounded-xl border border-gray-600/70 bg-gray-900/80 px-4 py-3 text-white placeholder-gray-400 shadow-[inset_0_1px_0_rgba(255,255,255,0.04)] transition-all backdrop-blur-sm focus:border-mono-400/80 focus:outline-none focus:ring-2 focus:ring-mono-500/30"
                 />
               </div>
 
@@ -321,7 +321,7 @@ const Contact = () => {
                   onChange={handleChange}
                   required
                   rows={6}
-                  className="w-full resize-none rounded-xl border border-gray-600/70 bg-gray-900/80 px-4 py-3 text-white placeholder-gray-400 shadow-[inset_0_1px_0_rgba(255,255,255,0.04)] transition-all backdrop-blur-sm focus:border-cyan-300/80 focus:outline-none focus:ring-2 focus:ring-cyan-300/30"
+                  className="w-full resize-none rounded-xl border border-gray-600/70 bg-gray-900/80 px-4 py-3 text-white placeholder-gray-400 shadow-[inset_0_1px_0_rgba(255,255,255,0.04)] transition-all backdrop-blur-sm focus:border-mono-400/80 focus:outline-none focus:ring-2 focus:ring-mono-500/30"
                 ></textarea>
               </div>
 

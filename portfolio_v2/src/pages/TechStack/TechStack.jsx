@@ -11,6 +11,8 @@ const categories = [
     items: [
       { name: 'JavaScript', level: 'Intermediate', image: 'java-script.png' },
       { name: 'TypeScript', level: 'Learning', image: 'https://cdn.simpleicons.org/typescript/3178C6' },
+      { name: 'Objective-C', level: 'Learning', image: 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/objectivec/objectivec-plain.svg' },
+      { name: 'Swift', level: 'Learning', image: 'https://cdn.simpleicons.org/swift/F05138' },
       { name: 'Java', level: 'Advanced', image: 'java.png' },
       { name: 'C', level: 'Intermediate', image: 'letter-c.png' },
       { name: 'Python', level: 'Intermediate', image: 'python.png' },
@@ -119,7 +121,7 @@ const TechStack = () => {
         <div className={`mb-14 grid grid-cols-1 gap-8 transition-all duration-700 ${isVisible ? 'translate-y-0 opacity-100' : 'translate-y-8 opacity-0'}`}>
           <div>
             <div className="mb-6 flex items-center gap-3">
-              <div className="h-px w-12 bg-linear-to-r from-cyan-300 to-transparent"></div>
+              <div className="h-px w-12 bg-linear-to-r from-mono-600 to-transparent"></div>
               <span className="font-mono text-xs font-semibold uppercase tracking-[0.3em] text-mono-700">Toolkit</span>
             </div>
             <h2 className="text-6xl font-bold leading-tight tracking-tighter md:text-7xl lg:text-8xl">

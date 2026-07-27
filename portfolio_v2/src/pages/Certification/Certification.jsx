@@ -202,7 +202,7 @@ const Certification = () => {
         >
           {/* Top Label */}
           <div className="flex items-center gap-3 mb-6">
-            <div className="h-px w-12 bg-linear-to-r from-cyan-300 to-transparent"></div>
+            <div className="h-px w-12 bg-linear-to-r from-mono-600 to-transparent"></div>
             <span className="font-mono text-mono-700 text-xs uppercase tracking-[0.3em] font-semibold">Credentials</span>
           </div>
           
