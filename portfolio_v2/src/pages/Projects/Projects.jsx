@@ -30,11 +30,8 @@ const Projects = () => {
       accentColor: "text-pink-600",
       summary: "A wellness platform that helps people learn about cancer prevention, track their health, and build supportive daily habits.",
       purpose: "Make reliable cancer-awareness resources easier to understand and turn into practical daily actions.",
-      role: "Product design and cross-platform mobile development",
       features: ["Daily health guidance", "Awareness and prevention content", "Health check-ins", "Treatment tracking"],
-      technologies: ["Flutter", "Firebase", "Supabase"],
-      liveUrl: "",
-      sourceUrl: "",
+      technologies: ["Flutter", "Supabase"],
       preview: "/projects/oncosense-showcase.png"
     },
     {
@@ -50,11 +47,8 @@ const Projects = () => {
       accentColor: "text-blue-600",
       summary: "A maintenance companion that helps cyclists keep their bikes reliable through reminders, service records, and usage tracking.",
       purpose: "Replace scattered maintenance notes with a clear system for knowing what a bike needs and when it needs it.",
-      role: "Product design and cross-platform mobile development",
       features: ["Maintenance reminders", "Service history", "Bike condition tracking", "Usage-based schedules"],
-      technologies: ["Flutter", "Firebase", "Supabase"],
-      liveUrl: "",
-      sourceUrl: "",
+      technologies: ["Flutter", "Supabase"],
       preview: "/projects/chainly-showcase.png"
     },
     {
@@ -70,11 +64,8 @@ const Projects = () => {
       accentColor: "text-orange-600",
       summary: "A cycling companion for tracking rides, monitoring progress, and turning everyday activity into measurable goals.",
       purpose: "Give cyclists a simple way to understand their riding habits and stay motivated toward weekly targets.",
-      role: "Product design and cross-platform mobile development",
       features: ["Ride tracking", "Weekly goals", "Progress summaries", "Recent ride history"],
-      technologies: ["Flutter", "Firebase", "Supabase"],
-      liveUrl: "",
-      sourceUrl: "",
+      technologies: ["Flutter", "Supabase"],
       preview: "/projects/ridetrack-showcase.png"
     },
     {
@@ -90,11 +81,8 @@ const Projects = () => {
       accentColor: "text-blue-600",
       summary: "A personal finance companion for monitoring spending, organizing accounts, and making clearer day-to-day budget decisions.",
       purpose: "Bring balances, transactions, and spending insights into one focused mobile experience.",
-      role: "Product design and cross-platform mobile development",
       features: ["Balance overview", "Spending breakdowns", "Account management", "AI budget assistant"],
-      technologies: ["Flutter", "Firebase", "Supabase"],
-      liveUrl: "",
-      sourceUrl: "",
+      technologies: ["Flutter", "Supabase"],
       preview: "/projects/spendly-showcase.png"
     },
   ];
@@ -107,20 +95,16 @@ const Projects = () => {
       image: '/projects/hunch-showcase.png',
       summary: 'An AI-powered safety checker for evaluating OJT and internship opportunities.',
       purpose: 'Help students inspect job and internship listings for warning signs before sharing information or accepting an opportunity.',
-      role: 'Product design and web application development',
       features: ['Listing analysis', 'Scam signal detection', 'Evidence-based results', 'Safety checklist'],
       technologies: ['React', 'TypeScript', 'AI integration'],
       liveUrl: '',
-      sourceUrl: '',
     },
     {
       id: 'web-placeholder-2',
       label: 'Web Project 02',
       summary: 'A new web experience is currently in progress.',
-      role: 'Web application development',
       technologies: ['React', 'TypeScript'],
       liveUrl: '',
-      sourceUrl: '',
     },
   ];
 
@@ -282,6 +266,8 @@ const Projects = () => {
                 </div>
               </div>
 
+              <h4 className="mt-6 text-xl font-medium text-gray-200">{project.title}</h4>
+
               <button
                 type="button"
                 onClick={() => setExpandedProject(expandedProject === project.id ? null : project.id)}
@@ -301,10 +287,8 @@ const Projects = () => {
                   transition={{ duration: 0.25, ease: 'easeOut' }}
                   className="mt-6 overflow-hidden border-t border-neutral-700/70 pt-5"
                 >
-                  <h4 className="text-xl font-medium text-gray-200">{project.title}</h4>
                   <p className="mt-3 text-sm leading-relaxed text-gray-400">{project.summary}</p>
                   <p className="mt-3 text-sm leading-relaxed text-gray-500"><span className="text-gray-300">Purpose:</span> {project.purpose}</p>
-                  <p className="mt-3 text-sm text-gray-500"><span className="text-gray-300">Role:</span> {project.role}</p>
                   <div className="mt-4">
                     <p className="font-mono text-xs uppercase tracking-[0.2em] text-gray-500">Key features</p>
                     <ul className="mt-3 grid gap-2 text-sm text-gray-400 sm:grid-cols-2">
@@ -322,24 +306,6 @@ const Projects = () => {
                         {technology}
                       </span>
                     ))}
-                  </div>
-                  <div className="mt-5 flex flex-wrap gap-3">
-                    {project.liveUrl ? (
-                      <a href={project.liveUrl} target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-2 bg-neutral-200 px-3 py-2 text-sm font-medium text-neutral-900 transition-colors hover:bg-white">
-                        Live Demo
-                        <span aria-hidden="true">↗</span>
-                      </a>
-                    ) : (
-                      <span className="border border-neutral-800 px-3 py-2 text-sm text-gray-600">Live Demo coming soon</span>
-                    )}
-                    {project.sourceUrl ? (
-                      <a href={project.sourceUrl} target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-2 border border-neutral-600 px-3 py-2 text-sm text-gray-300 transition-colors hover:border-neutral-300 hover:text-white">
-                        Source Code
-                        <span aria-hidden="true">↗</span>
-                      </a>
-                    ) : (
-                      <span className="border border-neutral-800 px-3 py-2 text-sm text-gray-600">Source Code coming soon</span>
-                    )}
                   </div>
                 </Motion.div>
               )}
@@ -411,7 +377,6 @@ const Projects = () => {
                     {project.purpose && (
                       <p className="mt-3 text-sm leading-relaxed text-gray-500"><span className="text-gray-300">Purpose:</span> {project.purpose}</p>
                     )}
-                    <p className="mt-3 text-sm text-gray-500"><span className="text-gray-300">Role:</span> {project.role}</p>
                     {project.features && (
                       <div className="mt-4">
                         <p className="font-mono text-xs uppercase tracking-[0.2em] text-gray-500">Key features</p>
@@ -440,14 +405,6 @@ const Projects = () => {
                         </a>
                       ) : (
                         <span className="border border-neutral-800 px-3 py-2 text-sm text-gray-600">Live Demo coming soon</span>
-                      )}
-                      {project.sourceUrl ? (
-                        <a href={project.sourceUrl} target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-2 border border-neutral-600 px-3 py-2 text-sm text-gray-300 transition-colors hover:border-neutral-300 hover:text-white">
-                          Source Code
-                          <span aria-hidden="true">↗</span>
-                        </a>
-                      ) : (
-                        <span className="border border-neutral-800 px-3 py-2 text-sm text-gray-600">Source Code coming soon</span>
                       )}
                     </div>
                   </Motion.div>
