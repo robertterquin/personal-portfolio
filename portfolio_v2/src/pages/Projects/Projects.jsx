@@ -11,8 +11,9 @@ const Projects = () => {
     duration: Math.random() * 30 + 25,
     delay: Math.random() * 10,
     opacity: Math.random() * 0.15 + 0.05,
-  })));
+  }))); 
   const sectionRef = useRef(null);
+  const [expandedProject, setExpandedProject] = useState(null);
 
   // Placeholder projects - ready for future content
   const projects = [
@@ -27,6 +28,13 @@ const Projects = () => {
       featured: true,
       gradient: "from-pink-100 via-rose-50 to-pink-50",
       accentColor: "text-pink-600",
+      summary: "A wellness platform that helps people learn about cancer prevention, track their health, and build supportive daily habits.",
+      purpose: "Make reliable cancer-awareness resources easier to understand and turn into practical daily actions.",
+      role: "Product design and cross-platform mobile development",
+      features: ["Daily health guidance", "Awareness and prevention content", "Health check-ins", "Treatment tracking"],
+      technologies: ["Flutter", "Firebase", "Supabase"],
+      liveUrl: "",
+      sourceUrl: "",
       preview: "/projects/oncosense-showcase.png"
     },
     {
@@ -40,6 +48,13 @@ const Projects = () => {
       featured: false,
       gradient: "from-blue-100 via-cyan-50 to-teal-50",
       accentColor: "text-blue-600",
+      summary: "A maintenance companion that helps cyclists keep their bikes reliable through reminders, service records, and usage tracking.",
+      purpose: "Replace scattered maintenance notes with a clear system for knowing what a bike needs and when it needs it.",
+      role: "Product design and cross-platform mobile development",
+      features: ["Maintenance reminders", "Service history", "Bike condition tracking", "Usage-based schedules"],
+      technologies: ["Flutter", "Firebase", "Supabase"],
+      liveUrl: "",
+      sourceUrl: "",
       preview: "/projects/chainly-showcase.png"
     },
     {
@@ -53,6 +68,13 @@ const Projects = () => {
       featured: false,
       gradient: "from-orange-100 via-blue-50 to-cyan-50",
       accentColor: "text-orange-600",
+      summary: "A cycling companion for tracking rides, monitoring progress, and turning everyday activity into measurable goals.",
+      purpose: "Give cyclists a simple way to understand their riding habits and stay motivated toward weekly targets.",
+      role: "Product design and cross-platform mobile development",
+      features: ["Ride tracking", "Weekly goals", "Progress summaries", "Recent ride history"],
+      technologies: ["Flutter", "Firebase", "Supabase"],
+      liveUrl: "",
+      sourceUrl: "",
       preview: "/projects/ridetrack-showcase.png"
     },
     {
@@ -66,14 +88,40 @@ const Projects = () => {
       featured: false,
       gradient: "from-slate-100 via-blue-50 to-cyan-50",
       accentColor: "text-blue-600",
+      summary: "A personal finance companion for monitoring spending, organizing accounts, and making clearer day-to-day budget decisions.",
+      purpose: "Bring balances, transactions, and spending insights into one focused mobile experience.",
+      role: "Product design and cross-platform mobile development",
+      features: ["Balance overview", "Spending breakdowns", "Account management", "AI budget assistant"],
+      technologies: ["Flutter", "Firebase", "Supabase"],
+      liveUrl: "",
+      sourceUrl: "",
       preview: "/projects/spendly-showcase.png"
     },
   ];
 
   const mobileProjects = projects.filter((project) => project.platform === 'mobile');
   const webPlaceholders = [
-    { id: 'web-placeholder-1', label: 'Hunch', image: '/projects/hunch-showcase.png' },
-    { id: 'web-placeholder-2', label: 'Web Project 02' },
+    {
+      id: 'web-placeholder-1',
+      label: 'Hunch',
+      image: '/projects/hunch-showcase.png',
+      summary: 'An AI-powered safety checker for evaluating OJT and internship opportunities.',
+      purpose: 'Help students inspect job and internship listings for warning signs before sharing information or accepting an opportunity.',
+      role: 'Product design and web application development',
+      features: ['Listing analysis', 'Scam signal detection', 'Evidence-based results', 'Safety checklist'],
+      technologies: ['React', 'TypeScript', 'AI integration'],
+      liveUrl: '',
+      sourceUrl: '',
+    },
+    {
+      id: 'web-placeholder-2',
+      label: 'Web Project 02',
+      summary: 'A new web experience is currently in progress.',
+      role: 'Web application development',
+      technologies: ['React', 'TypeScript'],
+      liveUrl: '',
+      sourceUrl: '',
+    },
   ];
 
   useEffect(() => {
@@ -214,7 +262,7 @@ const Projects = () => {
           transition={{ duration: 0.75, delay: 0.1, ease: 'easeOut' }}
         >
           {mobileProjects.map((project, index) => (
-            <Motion.div
+            <Motion.article
               key={project.id}
               className="group relative min-w-0 overflow-hidden border border-dashed border-neutral-700/70 bg-neutral-900/80 p-6 shadow-[inset_0_1px_0_rgba(255,255,255,0.04)] transition-colors duration-300 hover:border-neutral-400/80 hover:bg-neutral-900/95"
               style={{ transitionDelay: `${200 + index * 80}ms` }}
@@ -234,7 +282,68 @@ const Projects = () => {
                 </div>
               </div>
 
-            </Motion.div>
+              <button
+                type="button"
+                onClick={() => setExpandedProject(expandedProject === project.id ? null : project.id)}
+                aria-expanded={expandedProject === project.id}
+                className="mt-6 inline-flex items-center gap-2 border border-neutral-700/70 px-3 py-2 text-sm text-gray-300 transition-colors hover:border-neutral-400 hover:text-white"
+              >
+                {expandedProject === project.id ? 'Hide case study' : 'View case study'}
+                <svg className={`h-4 w-4 transition-transform ${expandedProject === project.id ? 'rotate-180' : ''}`} fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
+                </svg>
+              </button>
+
+              {expandedProject === project.id && (
+                <Motion.div
+                  initial={{ opacity: 0, height: 0 }}
+                  animate={{ opacity: 1, height: 'auto' }}
+                  transition={{ duration: 0.25, ease: 'easeOut' }}
+                  className="mt-6 overflow-hidden border-t border-neutral-700/70 pt-5"
+                >
+                  <h4 className="text-xl font-medium text-gray-200">{project.title}</h4>
+                  <p className="mt-3 text-sm leading-relaxed text-gray-400">{project.summary}</p>
+                  <p className="mt-3 text-sm leading-relaxed text-gray-500"><span className="text-gray-300">Purpose:</span> {project.purpose}</p>
+                  <p className="mt-3 text-sm text-gray-500"><span className="text-gray-300">Role:</span> {project.role}</p>
+                  <div className="mt-4">
+                    <p className="font-mono text-xs uppercase tracking-[0.2em] text-gray-500">Key features</p>
+                    <ul className="mt-3 grid gap-2 text-sm text-gray-400 sm:grid-cols-2">
+                      {project.features.map((feature) => (
+                        <li key={feature} className="flex items-start gap-2">
+                          <span className="mt-2 h-1 w-1 shrink-0 bg-mono-600" aria-hidden="true"></span>
+                          {feature}
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
+                  <div className="mt-4 flex flex-wrap gap-2">
+                    {project.technologies.map((technology) => (
+                      <span key={technology} className="border border-neutral-700/70 px-2 py-1 font-mono text-xs text-gray-400">
+                        {technology}
+                      </span>
+                    ))}
+                  </div>
+                  <div className="mt-5 flex flex-wrap gap-3">
+                    {project.liveUrl ? (
+                      <a href={project.liveUrl} target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-2 bg-neutral-200 px-3 py-2 text-sm font-medium text-neutral-900 transition-colors hover:bg-white">
+                        Live Demo
+                        <span aria-hidden="true">↗</span>
+                      </a>
+                    ) : (
+                      <span className="border border-neutral-800 px-3 py-2 text-sm text-gray-600">Live Demo coming soon</span>
+                    )}
+                    {project.sourceUrl ? (
+                      <a href={project.sourceUrl} target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-2 border border-neutral-600 px-3 py-2 text-sm text-gray-300 transition-colors hover:border-neutral-300 hover:text-white">
+                        Source Code
+                        <span aria-hidden="true">↗</span>
+                      </a>
+                    ) : (
+                      <span className="border border-neutral-800 px-3 py-2 text-sm text-gray-600">Source Code coming soon</span>
+                    )}
+                  </div>
+                </Motion.div>
+              )}
+            </Motion.article>
           ))}
         </Motion.div>
 
@@ -254,24 +363,98 @@ const Projects = () => {
             <span className="font-mono text-sm text-gray-500">02 placeholders</span>
           </div>
           <div className="grid grid-cols-1 gap-6 sm:grid-cols-2">
-            {webPlaceholders.map((project) => (
-              <div key={project.id} className="flex min-h-40 flex-col justify-between border border-dashed border-neutral-700/70 bg-neutral-900/80 p-6 shadow-[inset_0_1px_0_rgba(255,255,255,0.04)] hover:border-neutral-400/80">
+            {webPlaceholders.map((project) => {
+              const isExpanded = expandedProject === project.id;
+
+              return (
+              <Motion.article
+                key={project.id}
+                className="group flex min-h-40 flex-col justify-between border border-dashed border-neutral-700/70 bg-neutral-900/80 p-6 shadow-[inset_0_1px_0_rgba(255,255,255,0.04)] transition-colors hover:border-neutral-400/80 hover:bg-neutral-900/95"
+                whileHover={{ y: -3 }}
+                transition={{ duration: 0.2, ease: 'easeOut' }}
+              >
                 {project.image && (
                   <div className="mb-6 overflow-hidden border border-neutral-700/70 bg-neutral-950/50 p-2">
                     <img src={project.image} alt={`${project.label} web project showcase`} className="block h-auto w-full object-contain" />
                   </div>
                 )}
-                {!project.image && (
-                  <>
-                    <div className="flex items-center justify-between gap-4">
+                <div className="flex items-start justify-between gap-4">
+                  <div>
+                    {!project.image && (
                       <span className="font-mono text-xs uppercase tracking-[0.2em] text-gray-600">In progress</span>
-                      <span className="text-xs text-gray-600">Web</span>
+                    )}
+                    <h4 className={`${project.image ? '' : 'mt-8'} text-xl font-medium text-gray-200`}>{project.label}</h4>
+                  </div>
+                  <span className="shrink-0 text-xs text-gray-600">Web</span>
+                </div>
+
+                <button
+                  type="button"
+                  onClick={() => setExpandedProject(isExpanded ? null : project.id)}
+                  aria-expanded={isExpanded}
+                  className="mt-6 inline-flex items-center gap-2 self-start border border-neutral-700/70 px-3 py-2 text-sm text-gray-300 transition-colors hover:border-neutral-400 hover:text-white"
+                >
+                  {isExpanded ? 'Hide case study' : 'View case study'}
+                  <svg className={`h-4 w-4 transition-transform ${isExpanded ? 'rotate-180' : ''}`} fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
+                  </svg>
+                </button>
+
+                {isExpanded && (
+                  <Motion.div
+                    initial={{ opacity: 0, height: 0 }}
+                    animate={{ opacity: 1, height: 'auto' }}
+                    transition={{ duration: 0.25, ease: 'easeOut' }}
+                    className="mt-6 overflow-hidden border-t border-neutral-700/70 pt-5"
+                  >
+                    <p className="text-sm leading-relaxed text-gray-400">{project.summary}</p>
+                    {project.purpose && (
+                      <p className="mt-3 text-sm leading-relaxed text-gray-500"><span className="text-gray-300">Purpose:</span> {project.purpose}</p>
+                    )}
+                    <p className="mt-3 text-sm text-gray-500"><span className="text-gray-300">Role:</span> {project.role}</p>
+                    {project.features && (
+                      <div className="mt-4">
+                        <p className="font-mono text-xs uppercase tracking-[0.2em] text-gray-500">Key features</p>
+                        <ul className="mt-3 grid gap-2 text-sm text-gray-400 sm:grid-cols-2">
+                          {project.features.map((feature) => (
+                            <li key={feature} className="flex items-start gap-2">
+                              <span className="mt-2 h-1 w-1 shrink-0 bg-mono-600" aria-hidden="true"></span>
+                              {feature}
+                            </li>
+                          ))}
+                        </ul>
+                      </div>
+                    )}
+                    <div className="mt-4 flex flex-wrap gap-2">
+                      {project.technologies.map((technology) => (
+                        <span key={technology} className="border border-neutral-700/70 px-2 py-1 font-mono text-xs text-gray-400">
+                          {technology}
+                        </span>
+                      ))}
                     </div>
-                    <h4 className="mt-8 text-xl font-medium text-gray-300">{project.label}</h4>
-                  </>
+                    <div className="mt-5 flex flex-wrap gap-3">
+                      {project.liveUrl ? (
+                        <a href={project.liveUrl} target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-2 bg-neutral-200 px-3 py-2 text-sm font-medium text-neutral-900 transition-colors hover:bg-white">
+                          Live Demo
+                          <span aria-hidden="true">↗</span>
+                        </a>
+                      ) : (
+                        <span className="border border-neutral-800 px-3 py-2 text-sm text-gray-600">Live Demo coming soon</span>
+                      )}
+                      {project.sourceUrl ? (
+                        <a href={project.sourceUrl} target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-2 border border-neutral-600 px-3 py-2 text-sm text-gray-300 transition-colors hover:border-neutral-300 hover:text-white">
+                          Source Code
+                          <span aria-hidden="true">↗</span>
+                        </a>
+                      ) : (
+                        <span className="border border-neutral-800 px-3 py-2 text-sm text-gray-600">Source Code coming soon</span>
+                      )}
+                    </div>
+                  </Motion.div>
                 )}
-              </div>
-            ))}
+              </Motion.article>
+              );
+            })}
           </div>
         </Motion.div>
       </div>
