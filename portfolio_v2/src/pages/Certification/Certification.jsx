@@ -240,7 +240,7 @@ const Certification = () => {
             return (
               <Motion.div
                 key={cert.id}
-                className={`group relative overflow-hidden border ${colorClasses.border} ${colorClasses.bg} shadow-[inset_0_1px_0_rgba(255,255,255,0.04)] backdrop-blur-sm ${colorClasses.hoverBorder} transition-colors duration-300 hover:bg-neutral-900/95 cursor-pointer`}
+                className="group relative min-w-0 overflow-hidden border border-dashed border-neutral-700/70 bg-neutral-900/80 p-6 shadow-[inset_0_1px_0_rgba(255,255,255,0.04)] backdrop-blur-sm transition-colors duration-300 hover:border-neutral-400/80 hover:bg-neutral-900/95"
                 style={{ transitionDelay: `${200 + index * 100}ms` }}
                 initial={{ opacity: 0, y: 24 }}
                 whileInView={{ opacity: 1, y: 0 }}
@@ -248,7 +248,7 @@ const Certification = () => {
                 whileHover={{ y: -3, scale: 1.015 }}
                 transition={{ duration: 0.2, delay: index * 0.08, ease: 'easeOut' }}
               >
-                <div className="relative p-6 flex flex-col items-center text-center h-full">
+                <div className="relative flex h-full flex-col items-center text-center">
                   {/* Certificate Image */}
                   <div className="mb-4 w-full overflow-hidden border border-neutral-700/70 bg-neutral-950/50 p-2" style={{
                     background: 'rgba(10, 10, 10, 0.5)',
