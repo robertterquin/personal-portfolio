@@ -96,6 +96,17 @@ const Certification = () => {
     };
   };
 
+  const certificateOrder = {
+    'HackForGov 2025 - CALABARZON': 0,
+    'PowerPoint 2019 Associate': 1,
+    'Oracle Java Foundations': 2,
+    'IT Specialist in Databases': 3,
+    'HTML and CSS Specialist': 4,
+    'Cybersecurity Specialist': 5,
+    'National Programming Challenge 2024': 99,
+    'National Programming Challenge 2025': 99,
+  };
+
   useEffect(() => {
     const observer = new IntersectionObserver(
       ([entry]) => {
@@ -241,7 +252,10 @@ const Certification = () => {
               <Motion.div
                 key={cert.id}
                 className="group relative min-w-0 overflow-hidden border border-dashed border-neutral-700/70 bg-neutral-900/80 p-6 shadow-[inset_0_1px_0_rgba(255,255,255,0.04)] backdrop-blur-sm transition-colors duration-300 hover:border-neutral-400/80 hover:bg-neutral-900/95"
-                style={{ transitionDelay: `${200 + index * 100}ms` }}
+                style={{
+                  transitionDelay: `${200 + index * 100}ms`,
+                  order: certificateOrder[cert.title] ?? index,
+                }}
                 initial={{ opacity: 0, y: 24 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true, amount: 0.1 }}
