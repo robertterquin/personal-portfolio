@@ -211,7 +211,7 @@ const Contact = () => {
                 Have a project in mind or just want to chat? Feel free to reach out. I'm always open to discussing new opportunities and collaborations.
               </p>
               <div className="grid grid-cols-1 gap-4 pt-4">
-                <div className="p-4 rounded-lg border border-gray-800/50 bg-linear-to-br from-mono-200/05 to-transparent backdrop-blur-sm hover:border-mono-400/30 transition-colors">
+                <div className="p-4 rounded-lg border border-neutral-700/70 bg-neutral-900/80 shadow-[inset_0_1px_0_rgba(255,255,255,0.04)] backdrop-blur-sm transition-colors hover:border-neutral-400/80 hover:bg-neutral-900/95">
                   <div className="flex items-center gap-3">
                     <svg className="w-5 h-5 text-mono-700" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
@@ -222,7 +222,7 @@ const Contact = () => {
                     </div>
                   </div>
                 </div>
-                <div className="p-4 rounded-lg border border-gray-800/50 bg-linear-to-br from-mono-200/05 to-transparent backdrop-blur-sm hover:border-mono-400/30 transition-colors">
+                <div className="p-4 rounded-lg border border-neutral-700/70 bg-neutral-900/80 shadow-[inset_0_1px_0_rgba(255,255,255,0.04)] backdrop-blur-sm transition-colors hover:border-neutral-400/80 hover:bg-neutral-900/95">
                   <div className="flex items-center gap-3">
                     <svg className="w-5 h-5 text-mono-700" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
