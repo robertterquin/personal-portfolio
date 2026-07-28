@@ -28,51 +28,58 @@ const Certification = () => {
     {
       id: 1,
       title: "National Programming Challenge 2024",
-      image: "/certificates/CodeChum.png",
+      image: "/certificates/codechum-2024.png",
       icon: "🏆",
       color: "codechum"
     },
     {
       id: 2,
       title: "PowerPoint 2019 Associate",
-      image: "/certificates/microsoftppt.jpg",
+      image: "/certificates/microsoft-powerpoint-2019.jpg",
       icon: "📊",
       color: "microsoft"
     },
     {
       id: 3,
       title: "Oracle Java Foundations",
-      image: "/certificates/oracle.jpg",
+      image: "/certificates/oracle-java-foundations.jpg",
       icon: "☕",
       color: "oracle"
     },
     {
       id: 4,
       title: "IT Specialist in Databases",
-      image: "/certificates/databasecert.png",
+      image: "/certificates/it-specialist-databases.png",
       icon: "🗄️",
       color: "itspecialist"
     },
     {
       id: 5,
       title: "HackForGov 2025 - CALABARZON",
-      image: "/certificates/hack4gov.jpg",
+      image: "/certificates/hackforgov-2025.jpg",
       icon: "🚀",
       color: "hackforgov"
     },
     {
       id: 6,
       title: "National Programming Challenge 2025",
-      image: "/certificates/codechum2.jpg",
+      image: "/certificates/codechum-2025.jpg",
       icon: "🥇",
-      color: "codechum2"
+      color: "codechum-2025"
     },
     {
       id: 7,
       title: "HTML and CSS Specialist",
-      image: "/certificates/html_css.png",
+      image: "/certificates/html-css-specialist.png",
       icon: "🌐",
       color: "htmlcss"
+    },
+    {
+      id: 8,
+      title: "Cybersecurity Specialist",
+      image: "/certificates/cybersecurity-specialist.png",
+      icon: "🔒",
+      color: "cybersecurity"
     },
   ];
 

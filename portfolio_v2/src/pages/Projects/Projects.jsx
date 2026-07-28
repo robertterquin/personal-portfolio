@@ -66,13 +66,13 @@ const Projects = () => {
       featured: false,
       gradient: "from-slate-100 via-blue-50 to-cyan-50",
       accentColor: "text-blue-600",
-      preview: "/projects/spendly.png"
+      preview: "/projects/spendly-showcase.png"
     },
   ];
 
   const mobileProjects = projects.filter((project) => project.platform === 'mobile');
   const webPlaceholders = [
-    { id: 'web-placeholder-1', label: 'Web Project 01' },
+    { id: 'web-placeholder-1', label: 'Hunch', image: '/projects/hunch-showcase.png' },
     { id: 'web-placeholder-2', label: 'Web Project 02' },
   ];
 
@@ -216,7 +216,7 @@ const Projects = () => {
           {mobileProjects.map((project, index) => (
             <Motion.div
               key={project.id}
-              className="group relative min-w-0 overflow-hidden border border-neutral-700/70 bg-neutral-900/80 p-4 shadow-[inset_0_1px_0_rgba(255,255,255,0.04)] cursor-pointer transition-colors duration-300 hover:border-neutral-400/80 hover:bg-neutral-900/95"
+              className="group relative min-w-0 overflow-hidden border border-dashed border-neutral-700/70 bg-neutral-900/80 p-6 shadow-[inset_0_1px_0_rgba(255,255,255,0.04)] transition-colors duration-300 hover:border-neutral-400/80 hover:bg-neutral-900/95"
               style={{ transitionDelay: `${200 + index * 80}ms` }}
               initial={{ opacity: 0, y: 24 }}
               whileInView={{ opacity: 1, y: 0 }}
@@ -224,25 +224,6 @@ const Projects = () => {
               whileHover={{ y: -3, scale: 1.015 }}
               transition={{ duration: 0.3, ease: 'easeOut' }}
             >
-              {/* Card Background */}
-              <div className="absolute inset-0 bg-gray-950/25"></div>
-              
-              {/* Sparkle Effects */}
-              <div className="absolute inset-0 overflow-hidden">
-                {[...Array(12)].map((_, i) => (
-                  <div 
-                    key={i}
-                    className="absolute w-1 h-1 bg-white rounded-full animate-pulse"
-                    style={{
-                      left: `${20 + Math.random() * 60}%`,
-                      top: `${20 + Math.random() * 60}%`,
-                      animationDelay: `${i * 0.3}s`,
-                      opacity: 0.6,
-                    }}
-                  ></div>
-                ))}
-              </div>
-
               <div className="relative flex items-center justify-center">
                 <div className="flex w-full items-center justify-center overflow-hidden border border-neutral-700/70 bg-neutral-950/50 p-2 transition-transform duration-500 ease-out group-hover:scale-[1.015]">
                   <img
@@ -253,14 +234,6 @@ const Projects = () => {
                 </div>
               </div>
 
-              <div className="pointer-events-none absolute bottom-4 right-4 flex h-9 w-9 translate-y-2 items-center justify-center rounded-full bg-gray-950/90 text-white opacity-0 shadow-lg transition-all duration-300 group-hover:translate-y-0 group-hover:opacity-100">
-                <svg className="h-5 w-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 12h14m-6-6 6 6-6 6" />
-                </svg>
-              </div>
-
-              {/* Hover Overlay */}
-              <div className="absolute inset-0 bg-black/0 group-hover:bg-black/5 transition-colors duration-300"></div>
             </Motion.div>
           ))}
         </Motion.div>
@@ -283,11 +256,20 @@ const Projects = () => {
           <div className="grid grid-cols-1 gap-6 sm:grid-cols-2">
             {webPlaceholders.map((project) => (
               <div key={project.id} className="flex min-h-40 flex-col justify-between border border-dashed border-neutral-700/70 bg-neutral-900/80 p-6 shadow-[inset_0_1px_0_rgba(255,255,255,0.04)] hover:border-neutral-400/80">
-                <div className="flex items-center justify-between gap-4">
-                  <span className="font-mono text-xs uppercase tracking-[0.2em] text-gray-600">In progress</span>
-                  <span className="text-xs text-gray-600">Web</span>
-                </div>
-                <h4 className="mt-8 text-xl font-medium text-gray-300">{project.label}</h4>
+                {project.image && (
+                  <div className="mb-6 overflow-hidden border border-neutral-700/70 bg-neutral-950/50 p-2">
+                    <img src={project.image} alt={`${project.label} web project showcase`} className="block h-auto w-full object-contain" />
+                  </div>
+                )}
+                {!project.image && (
+                  <>
+                    <div className="flex items-center justify-between gap-4">
+                      <span className="font-mono text-xs uppercase tracking-[0.2em] text-gray-600">In progress</span>
+                      <span className="text-xs text-gray-600">Web</span>
+                    </div>
+                    <h4 className="mt-8 text-xl font-medium text-gray-300">{project.label}</h4>
+                  </>
+                )}
               </div>
             ))}
           </div>
