@@ -97,7 +97,7 @@ const Projects = () => {
       purpose: 'Help students inspect job and internship listings for warning signs before sharing information or accepting an opportunity.',
       features: ['Listing analysis', 'Scam signal detection', 'Evidence-based results', 'Safety checklist'],
       technologies: ['React', 'TypeScript', 'AI integration'],
-      liveUrl: '',
+      liveUrl: 'https://hunchh.vercel.app/',
     },
     {
       id: 'web-placeholder-2',
