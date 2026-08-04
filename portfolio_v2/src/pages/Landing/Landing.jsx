@@ -115,7 +115,7 @@ const Landing = () => {
           >
             {/* Profile Circle */}
             <div className="relative">
-              <div className="w-80 h-80 md:w-96 md:h-96 lg:w-md lg:h-md rounded-full overflow-hidden border-8 border-mono-300 relative">
+              <div className="aspect-square w-80 overflow-hidden rounded-full border-8 border-mono-300 relative md:w-96 lg:w-md">
                 <img 
                   src="/profile.jpg" 
                   alt="Robert Terquin Laqui" 
