@@ -119,7 +119,7 @@ const Landing = () => {
                 <img 
                   src="/profile.jpg" 
                   alt="Robert Terquin Laqui" 
-                  className="w-full h-full object-cover"
+                  className="h-full w-full rounded-full object-cover"
                   onError={(e) => {
                     e.target.style.display = 'none';
                     e.target.parentElement.innerHTML = '<div class="w-full h-full bg-linear-to-br from-mono-200 to-mono-400 flex items-center justify-center"><span class="text-7xl font-bold text-white">RT</span></div>';
