@@ -107,7 +107,7 @@ const Projects = () => {
       purpose: 'Make everyday meal planning easier by combining available ingredients, preferences, and practical cooking guidance.',
       features: ['Ingredient-based meal suggestions', 'Preference-aware recommendations', 'Filipino meal guidance', 'AI cooking assistant'],
       technologies: ['React', 'TypeScript', 'AI integration'],
-      liveUrl: '',
+      liveUrl: 'https://hapagg.vercel.app/',
     },
   ];
 
