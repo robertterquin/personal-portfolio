@@ -101,9 +101,12 @@ const Projects = () => {
     },
     {
       id: 'web-placeholder-2',
-      label: 'Web Project 02',
-      summary: 'A new web experience is currently in progress.',
-      technologies: ['React', 'TypeScript'],
+      label: 'Hapag',
+      image: '/projects/hapag-showcase.png',
+      summary: 'An AI-powered Filipino meal assistant that helps people decide what to cook from the ingredients they have.',
+      purpose: 'Make everyday meal planning easier by combining available ingredients, preferences, and practical cooking guidance.',
+      features: ['Ingredient-based meal suggestions', 'Preference-aware recommendations', 'Filipino meal guidance', 'AI cooking assistant'],
+      technologies: ['React', 'TypeScript', 'AI integration'],
       liveUrl: '',
     },
   ];
@@ -326,7 +329,7 @@ const Projects = () => {
               <p className="font-mono text-xs font-semibold uppercase tracking-[0.25em] text-mono-600">02</p>
               <h3 className="mt-2 text-2xl font-semibold text-white md:text-3xl">Web Applications</h3>
             </div>
-            <span className="font-mono text-sm text-gray-500">02 placeholders</span>
+            <span className="font-mono text-sm text-gray-500">02 projects</span>
           </div>
           <div className="grid grid-cols-1 gap-6 sm:grid-cols-2">
             {webPlaceholders.map((project) => {
