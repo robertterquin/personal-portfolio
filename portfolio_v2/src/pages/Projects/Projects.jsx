@@ -251,7 +251,7 @@ const Projects = () => {
           {mobileProjects.map((project, index) => (
             <Motion.article
               key={project.id}
-              className="group relative min-w-0 overflow-hidden border border-dashed border-neutral-700/70 bg-neutral-900/80 p-6 shadow-[inset_0_1px_0_rgba(255,255,255,0.04)] transition-colors duration-300 hover:border-neutral-400/80 hover:bg-neutral-900/95"
+              className="group relative h-fit w-full min-w-0 self-start overflow-hidden border border-dashed border-neutral-700/70 bg-neutral-900/80 p-6 shadow-[inset_0_1px_0_rgba(255,255,255,0.04)] transition-colors duration-300 hover:border-neutral-400/80 hover:bg-neutral-900/95"
               style={{ transitionDelay: `${200 + index * 80}ms` }}
               initial={{ opacity: 0, y: 24 }}
               whileInView={{ opacity: 1, y: 0 }}
