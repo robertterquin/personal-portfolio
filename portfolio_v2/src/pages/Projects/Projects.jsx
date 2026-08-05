@@ -338,7 +338,7 @@ const Projects = () => {
               return (
               <Motion.article
                 key={project.id}
-                className="group flex min-h-40 flex-col justify-between border border-dashed border-neutral-700/70 bg-neutral-900/80 p-6 shadow-[inset_0_1px_0_rgba(255,255,255,0.04)] transition-colors hover:border-neutral-400/80 hover:bg-neutral-900/95"
+                className="group flex h-fit min-h-40 w-full self-start flex-col justify-between border border-dashed border-neutral-700/70 bg-neutral-900/80 p-6 shadow-[inset_0_1px_0_rgba(255,255,255,0.04)] transition-colors hover:border-neutral-400/80 hover:bg-neutral-900/95"
                 whileHover={{ y: -3 }}
                 transition={{ duration: 0.2, ease: 'easeOut' }}
               >
