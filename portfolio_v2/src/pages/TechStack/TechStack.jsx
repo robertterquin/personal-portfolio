@@ -1,22 +1,20 @@
 import { useEffect, useRef, useState } from 'react';
 import { motion as Motion } from 'motion/react';
 
-const logoBase = 'https://robertterquinlaqui.vercel.app/images/';
-
 const categories = [
   {
     title: 'Programming Languages',
     description: 'The foundations I use to shape reliable digital experiences.',
     accent: 'text-mono-700',
     items: [
-      { name: 'JavaScript', level: 'Intermediate', image: 'java-script.png' },
-      { name: 'TypeScript', level: 'Learning', image: 'https://cdn.simpleicons.org/typescript/3178C6' },
-      { name: 'Objective-C', level: 'Learning', image: 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/objectivec/objectivec-plain.svg' },
-      { name: 'Swift', level: 'Learning', image: 'https://cdn.simpleicons.org/swift/F05138' },
-      { name: 'Java', level: 'Advanced', image: 'java.png' },
-      { name: 'C', level: 'Intermediate', image: 'letter-c.png' },
-      { name: 'Python', level: 'Intermediate', image: 'python.png' },
-      { name: 'Dart', level: 'Learning', image: 'dart.png' },
+      { name: 'JavaScript', level: 'Intermediate', image: '/icons/java-script.png' },
+      { name: 'TypeScript', level: 'Learning', image: '/icons/typescript.svg' },
+      { name: 'Objective-C', level: 'Learning', image: '/icons/objectivec.svg' },
+      { name: 'Swift', level: 'Learning', image: '/icons/swift.svg' },
+      { name: 'Java', level: 'Advanced', image: '/icons/java.png' },
+      { name: 'C', level: 'Intermediate', image: '/icons/letter-c.png' },
+      { name: 'Python', level: 'Intermediate', image: '/icons/python.png' },
+      { name: 'Dart', level: 'Learning', image: '/icons/dart.png' },
     ],
   },
   {
@@ -24,9 +22,9 @@ const categories = [
     description: 'Responsive interfaces and component systems for the web.',
     accent: 'text-mono-700',
     items: [
-      { name: 'HTML5', level: 'Advanced', image: 'html-5.png' },
-      { name: 'CSS3', level: 'Advanced', image: 'css-3.png' },
-      { name: 'React', level: 'Learning', image: 'https://cdn.simpleicons.org/react/61DAFB' },
+      { name: 'HTML5', level: 'Advanced', image: '/icons/html-5.png' },
+      { name: 'CSS3', level: 'Advanced', image: '/icons/css-3.png' },
+      { name: 'React', level: 'Learning', image: '/icons/react.svg' },
     ],
   },
   {
@@ -34,8 +32,8 @@ const categories = [
     description: 'Services and APIs that keep applications connected.',
     accent: 'text-mono-700',
     items: [
-      { name: 'Node.js', level: 'Learning', image: 'nodejs.png' },
-      { name: 'Express.js', level: 'Learning', image: 'express.png' },
+      { name: 'Node.js', level: 'Learning', image: '/icons/nodejs.png' },
+      { name: 'Express.js', level: 'Learning', image: '/icons/express.png' },
     ],
   },
   {
@@ -43,10 +41,10 @@ const categories = [
     description: 'Data platforms for structured, scalable products.',
     accent: 'text-mono-700',
     items: [
-      { name: 'MySQL', level: 'Intermediate', image: 'mysql.png' },
-      { name: 'Supabase', level: 'Learning', image: 'supabase.webp' },
-      { name: 'Firebase', level: 'Learning', image: 'firebase.png' },
-      { name: 'MongoDB', level: 'Learning', image: 'mongodb.png' },
+      { name: 'MySQL', level: 'Intermediate', image: '/icons/mysql.png' },
+      { name: 'Supabase', level: 'Learning', image: '/icons/supabase.webp' },
+      { name: 'Firebase', level: 'Learning', image: '/icons/firebase.png' },
+      { name: 'MongoDB', level: 'Learning', image: '/icons/mongodb.png' },
     ],
   },
   {
@@ -54,8 +52,8 @@ const categories = [
     description: 'Cross-platform interfaces built for everyday use.',
     accent: 'text-mono-700',
     items: [
-      { name: 'Flutter', level: 'Learning', image: 'flutter.png' },
-      { name: 'React Native', level: 'Learning', image: 'https://cdn.simpleicons.org/react/61DAFB' },
+      { name: 'Flutter', level: 'Learning', image: '/icons/flutter.png' },
+      { name: 'React Native', level: 'Learning', image: '/icons/react.svg' },
     ],
   },
   {
@@ -63,12 +61,12 @@ const categories = [
     description: 'The tools that support my build, test, and delivery workflow.',
     accent: 'text-mono-700',
     items: [
-      { name: 'Git', level: 'Intermediate', image: 'social.png' },
-      { name: 'GitHub', level: 'Advanced', image: 'github.png' },
-      { name: 'Android Studio', level: 'Intermediate', image: 'android-studio.png' },
-      { name: 'VSCode', level: 'Advanced', image: 'vscode.png' },
-      { name: 'NetBeans', level: 'Intermediate', image: 'netbeans.png' },
-      { name: 'Postman', level: 'Learning', image: 'postman.png' },
+      { name: 'Git', level: 'Intermediate', image: '/icons/social.png' },
+      { name: 'GitHub', level: 'Advanced', image: '/icons/github.png' },
+      { name: 'Android Studio', level: 'Intermediate', image: '/icons/android-studio.png' },
+      { name: 'VSCode', level: 'Advanced', image: '/icons/vscode.png' },
+      { name: 'NetBeans', level: 'Intermediate', image: '/icons/netbeans.png' },
+      { name: 'Postman', level: 'Learning', image: '/icons/postman.png' },
     ],
   },
   {
@@ -76,8 +74,8 @@ const categories = [
     description: 'Platforms I use to bring projects from code to the web.',
     accent: 'text-mono-700',
     items: [
-      { name: 'Vercel', level: 'Learning', image: 'https://cdn.simpleicons.org/vercel/FFFFFF' },
-      { name: 'Render', level: 'Learning', image: 'render.webp' },
+      { name: 'Vercel', level: 'Learning', image: '/icons/vercel.svg' },
+      { name: 'Render', level: 'Learning', image: '/icons/render.webp' },
     ],
   },
 ];
@@ -131,7 +129,6 @@ const TechStack = () => {
             </h2>
             <div className="mt-6 h-1 w-20 rounded-full bg-linear-to-r from-mono-500 via-mono-700 to-mono-900"></div>
           </div>
-
         </div>
 
         <div className="grid grid-cols-1 gap-6 md:grid-cols-2 xl:grid-cols-3">
@@ -163,7 +160,7 @@ const TechStack = () => {
                   >
                     <div className="flex h-10 w-10 shrink-0 items-center justify-center border border-gray-700/80 bg-white/5 p-2">
                       <img
-                        src={item.image.startsWith('http') ? item.image : `${logoBase}${item.image}`}
+                        src={item.image}
                         alt={`${item.name} logo`}
                         className="h-full w-full object-contain transition-transform duration-300 group-hover/tech:scale-110"
                       />
