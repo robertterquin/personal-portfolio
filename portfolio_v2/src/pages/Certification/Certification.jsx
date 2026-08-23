@@ -1,8 +1,9 @@
-import { useEffect, useState, useRef } from 'react';
-import { motion as Motion } from 'motion/react';
+import { useEffect, useState, useRef, useCallback } from 'react';
+import { motion as Motion, AnimatePresence } from 'motion/react';
 
 const Certification = () => {
   const [isVisible, setIsVisible] = useState(false);
+  const [selectedCertIndex, setSelectedCertIndex] = useState(null);
   const [particles] = useState(() => [...Array(25)].map((_, i) => ({
     id: i,
     left: Math.random() * 100,
@@ -23,7 +24,6 @@ const Certification = () => {
   })));
   const sectionRef = useRef(null);
 
-  // Placeholder certifications
   const certifications = [
     {
       id: 1,
@@ -83,19 +83,6 @@ const Certification = () => {
     },
   ];
 
-  const getColorClasses = () => {
-    // Unified color scheme - all certificates use the same monochrome + white text style
-    return {
-      border: 'border-neutral-700/70',
-      bg: 'bg-neutral-900/80',
-      hoverBorder: 'group-hover:border-neutral-400/80',
-      text: 'text-gray-300',
-      gradientFrom: 'from-gray-800',
-      gradientTo: 'to-gray-700',
-      accentColor: '#ffffff',
-    };
-  };
-
   const certificateOrder = {
     'HackForGov 2025 - CALABARZON': 0,
     'PowerPoint 2019 Associate': 1,
@@ -103,9 +90,46 @@ const Certification = () => {
     'IT Specialist in Databases': 3,
     'HTML and CSS Specialist': 4,
     'Cybersecurity Specialist': 5,
-    'National Programming Challenge 2024': 99,
+    'National Programming Challenge 2024': 98,
     'National Programming Challenge 2025': 99,
   };
+
+  const sortedCertifications = [...certifications].sort((a, b) => {
+    const orderA = certificateOrder[a.title] ?? 50;
+    const orderB = certificateOrder[b.title] ?? 50;
+    return orderA - orderB;
+  });
+
+  const handleNext = useCallback(() => {
+    setSelectedCertIndex((prev) => (prev + 1) % sortedCertifications.length);
+  }, [sortedCertifications.length]);
+
+  const handlePrev = useCallback(() => {
+    setSelectedCertIndex((prev) => (prev - 1 + sortedCertifications.length) % sortedCertifications.length);
+  }, [sortedCertifications.length]);
+
+  const handleClose = useCallback(() => {
+    setSelectedCertIndex(null);
+  }, []);
+
+  // Keyboard navigation & body scroll lock
+  useEffect(() => {
+    if (selectedCertIndex === null) return;
+
+    const handleKeyDown = (e) => {
+      if (e.key === 'Escape') handleClose();
+      if (e.key === 'ArrowRight') handleNext();
+      if (e.key === 'ArrowLeft') handlePrev();
+    };
+
+    document.body.style.overflow = 'hidden';
+    window.addEventListener('keydown', handleKeyDown);
+
+    return () => {
+      document.body.style.overflow = '';
+      window.removeEventListener('keydown', handleKeyDown);
+    };
+  }, [selectedCertIndex, handleClose, handleNext, handlePrev]);
 
   useEffect(() => {
     const observer = new IntersectionObserver(
@@ -132,6 +156,7 @@ const Certification = () => {
     >
       {/* Page Transition Line Top */}
       <div className="absolute top-0 left-0 right-0 h-px bg-linear-to-r from-transparent via-mono-400/30 to-transparent pointer-events-none z-20"></div>
+
       {/* Animated Background - Hexagonal Shapes */}
       <div className="absolute inset-0 pointer-events-none z-0">
         {shapes.map((shape) => (
@@ -234,7 +259,6 @@ const Certification = () => {
               </h2>
               <div className="h-1 w-20 bg-linear-to-r from-mono-500 via-mono-600 to-mono-700 rounded-full mt-6"></div>
             </div>
-            
           </div>
         </Motion.div>
 
@@ -246,47 +270,62 @@ const Certification = () => {
           viewport={{ once: true, amount: 0.1 }}
           transition={{ duration: 0.75, delay: 0.1, ease: 'easeOut' }}
         >
-          {certifications.map((cert, index) => {
-            const colorClasses = getColorClasses();
-            return (
-              <Motion.div
-                key={cert.id}
-                className="group relative min-w-0 overflow-hidden border border-dashed border-neutral-700/70 bg-neutral-900/80 p-6 shadow-[inset_0_1px_0_rgba(255,255,255,0.04)] backdrop-blur-sm transition-colors duration-300 hover:border-neutral-400/80 hover:bg-neutral-900/95"
-                style={{
-                  transitionDelay: `${200 + index * 100}ms`,
-                  order: certificateOrder[cert.title] ?? index,
-                }}
-                initial={{ opacity: 0, y: 24 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true, amount: 0.1 }}
-                whileHover={{ y: -3, scale: 1.015 }}
-                transition={{ duration: 0.2, delay: index * 0.08, ease: 'easeOut' }}
-              >
-                <div className="relative flex h-full flex-col items-center text-center">
-                  {/* Certificate Image */}
-                  <div className="mb-4 w-full overflow-hidden border border-neutral-700/70 bg-neutral-950/50 p-2" style={{
-                    background: 'rgba(10, 10, 10, 0.5)',
-                  }}>
-                    <img 
-                      src={cert.image} 
-                      alt={cert.title}
-                      className="w-full h-auto object-contain group-hover:scale-105 transition-transform duration-300"
-                    />
+          {sortedCertifications.map((cert, index) => (
+            <Motion.div
+              key={cert.id}
+              role="button"
+              tabIndex={0}
+              aria-label={`View ${cert.title} certificate`}
+              onClick={() => setSelectedCertIndex(index)}
+              onKeyDown={(e) => {
+                if (e.key === 'Enter' || e.key === ' ') {
+                  e.preventDefault();
+                  setSelectedCertIndex(index);
+                }
+              }}
+              className="group relative min-w-0 cursor-pointer overflow-hidden border border-dashed border-neutral-700/70 bg-neutral-900/80 p-6 shadow-[inset_0_1px_0_rgba(255,255,255,0.04)] backdrop-blur-sm transition-all duration-300 hover:border-neutral-400 hover:bg-neutral-900/95 focus:outline-none focus:ring-2 focus:ring-mono-500/50"
+              style={{
+                transitionDelay: `${200 + index * 100}ms`,
+              }}
+              initial={{ opacity: 0, y: 24 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, amount: 0.1 }}
+              whileHover={{ y: -4, scale: 1.015 }}
+              transition={{ duration: 0.2, delay: index * 0.08, ease: 'easeOut' }}
+            >
+              <div className="relative flex h-full flex-col items-center text-center">
+                {/* Certificate Image */}
+                <div 
+                  className="relative mb-4 w-full overflow-hidden border border-neutral-700/70 bg-neutral-950/50 p-2"
+                  style={{ background: 'rgba(10, 10, 10, 0.5)' }}
+                >
+                  <img 
+                    src={cert.image} 
+                    alt={cert.title}
+                    className="w-full h-auto object-contain group-hover:scale-105 transition-transform duration-300"
+                  />
+                  
+                  {/* Hover Overlay Hint */}
+                  <div className="absolute inset-0 flex items-center justify-center bg-black/60 opacity-0 transition-opacity duration-300 group-hover:opacity-100">
+                    <span className="flex items-center gap-2 rounded-full border border-white/20 bg-neutral-900/90 px-3 py-1.5 font-mono text-xs font-medium text-white shadow-lg backdrop-blur-xs">
+                      <svg className="h-3.5 w-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0zM10 7v6m3-3H7" />
+                      </svg>
+                      View Fullscreen
+                    </span>
                   </div>
-
-                  {/* Certificate Title */}
-                  <h3 className="text-sm font-bold text-center group-hover:text-opacity-100 transition-colors" style={{
-                    color: colorClasses.accentColor,
-                  }}>
-                    {cert.title}
-                  </h3>
-
-                  {/* Hover Shimmer Effect */}
-                  <div className="absolute top-0 left-0 w-full h-full bg-linear-to-r from-transparent via-white/0 to-transparent group-hover:via-white/10 transition-all duration-500 pointer-events-none"></div>
                 </div>
-              </Motion.div>
-            );
-          })}
+
+                {/* Certificate Title */}
+                <h3 className="text-sm font-bold text-center text-white transition-colors group-hover:text-mono-800">
+                  {cert.title}
+                </h3>
+
+                {/* Hover Shimmer Effect */}
+                <div className="absolute top-0 left-0 w-full h-full bg-linear-to-r from-transparent via-white/0 to-transparent group-hover:via-white/10 transition-all duration-500 pointer-events-none"></div>
+              </div>
+            </Motion.div>
+          ))}
         </Motion.div>
 
         {/* Bottom CTA */}
@@ -307,6 +346,91 @@ const Certification = () => {
           </div>
         </Motion.div>
       </div>
+
+      {/* Full-Screen Lightbox Modal */}
+      <AnimatePresence>
+        {selectedCertIndex !== null && (
+          <Motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            transition={{ duration: 0.2 }}
+            className="fixed inset-0 z-50 flex items-center justify-center bg-black/90 p-4 backdrop-blur-md"
+            onClick={handleClose}
+          >
+            {/* Modal Container */}
+            <Motion.div
+              initial={{ scale: 0.92, opacity: 0 }}
+              animate={{ scale: 1, opacity: 1 }}
+              exit={{ scale: 0.92, opacity: 0 }}
+              transition={{ duration: 0.25, ease: 'easeOut' }}
+              className="relative flex max-h-[92vh] max-w-5xl flex-col items-center rounded-2xl border border-neutral-700 bg-neutral-950 p-4 shadow-2xl sm:p-6"
+              onClick={(e) => e.stopPropagation()}
+            >
+              {/* Top Bar: Title & Close Button */}
+              <div className="flex w-full items-center justify-between gap-4 border-b border-neutral-800 pb-3">
+                <div className="min-w-0">
+                  <span className="font-mono text-xs font-semibold uppercase tracking-[0.2em] text-mono-600">
+                    Credential {selectedCertIndex + 1} of {sortedCertifications.length}
+                  </span>
+                  <h3 className="truncate text-base font-bold text-white sm:text-lg">
+                    {sortedCertifications[selectedCertIndex].title}
+                  </h3>
+                </div>
+
+                <button
+                  type="button"
+                  onClick={handleClose}
+                  aria-label="Close certificate preview"
+                  className="rounded-lg border border-neutral-700 bg-neutral-900 p-2 text-gray-400 transition-colors hover:border-neutral-500 hover:bg-neutral-800 hover:text-white"
+                >
+                  <svg className="h-5 w-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
+                  </svg>
+                </button>
+              </div>
+
+              {/* High-Resolution Certificate Image */}
+              <div className="relative my-4 flex max-h-[70vh] w-full items-center justify-center overflow-hidden rounded-lg bg-black/40 p-2">
+                <img
+                  src={sortedCertifications[selectedCertIndex].image}
+                  alt={sortedCertifications[selectedCertIndex].title}
+                  className="max-h-[68vh] w-auto max-w-full rounded object-contain shadow-md"
+                />
+              </div>
+
+              {/* Navigation Controls */}
+              <div className="flex w-full items-center justify-between pt-2">
+                <button
+                  type="button"
+                  onClick={handlePrev}
+                  className="inline-flex items-center gap-2 rounded-lg border border-neutral-700 bg-neutral-900 px-4 py-2 font-mono text-xs text-gray-300 transition-colors hover:border-neutral-500 hover:bg-neutral-800 hover:text-white"
+                >
+                  <svg className="h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
+                  </svg>
+                  Previous
+                </button>
+
+                <span className="font-mono text-xs text-gray-500">
+                  Use arrow keys (← / →) or Esc to close
+                </span>
+
+                <button
+                  type="button"
+                  onClick={handleNext}
+                  className="inline-flex items-center gap-2 rounded-lg border border-neutral-700 bg-neutral-900 px-4 py-2 font-mono text-xs text-gray-300 transition-colors hover:border-neutral-500 hover:bg-neutral-800 hover:text-white"
+                >
+                  Next
+                  <svg className="h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+                  </svg>
+                </button>
+              </div>
+            </Motion.div>
+          </Motion.div>
+        )}
+      </AnimatePresence>
 
       {/* Page Transition Line Bottom */}
       <div className="absolute bottom-0 left-0 right-0 h-px bg-linear-to-r from-transparent via-mono-400/30 to-transparent pointer-events-none z-20"></div>
