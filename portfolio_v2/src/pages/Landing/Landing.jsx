@@ -140,16 +140,17 @@ const Landing = () => {
             <h1 className="text-3xl sm:text-5xl md:text-6xl lg:text-7xl font-black leading-tight tracking-tighter" style={{
               textShadow: '0 10px 30px rgba(255, 255, 255, 0.1), 0 4px 12px rgba(163, 163, 163, 0.2)'
             }}>
-              Where Concepts<br />
-              Become <span className="text-transparent bg-clip-text bg-linear-to-r from-white via-gray-200 to-gray-300">Code</span>
+              Building Scalable<br />
+              Web & Mobile Apps <br className="hidden sm:inline" />
+              That Drive Real <span className="text-transparent bg-clip-text bg-linear-to-r from-white via-gray-200 to-gray-300">Impact</span>
             </h1>
 
             <div className="border-l-2 border-mono-600/50 pl-4 sm:pl-5 text-left text-xs sm:text-sm md:text-base leading-relaxed text-gray-400">
               <p>
-                I&apos;m Robert Terquin Laqui, a full-stack developer building cross-platform mobile and web applications. I specialize in Flutter, React, Node.js, Firebase, and Supabase, turning ideas into secure, scalable products with thoughtful interfaces and reliable integrations.
+                I&apos;m Robert Terquin Laqui, a full-stack software engineer specializing in cross-platform mobile and web systems with Flutter, React, Node.js, and cloud backends. I help founders and teams transform complex ideas into secure, scalable products with intuitive user experiences.
               </p>
               <p className="mt-3 sm:mt-4">
-                I&apos;m always learning through practical projects and refining how I build. I care about clean architecture, accessible interactions, and creating software that feels clear, useful, and human.
+                Whether building an MVP from scratch or scaling an existing system, I focus on clean architecture, reliable API integrations, and software that delivers measurable value.
               </p>
             </div>
             <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 pt-4 sm:pt-6 w-full sm:w-auto">
