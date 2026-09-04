@@ -137,12 +137,11 @@ const Landing = () => {
             viewport={{ once: true, amount: 0.25 }}
             transition={{ duration: 0.8, delay: 0.15, ease: 'easeOut' }}
           >
-            <h1 className="text-3xl sm:text-5xl md:text-6xl lg:text-7xl font-black leading-tight tracking-tighter" style={{
+            <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-5xl xl:text-6xl font-black leading-tight tracking-tighter" style={{
               textShadow: '0 10px 30px rgba(255, 255, 255, 0.1), 0 4px 12px rgba(163, 163, 163, 0.2)'
             }}>
               Building Scalable<br />
-              Web & Mobile Apps <br className="hidden sm:inline" />
-              That Drive Real <span className="text-transparent bg-clip-text bg-linear-to-r from-white via-gray-200 to-gray-300">Impact</span>
+              Web & Mobile <span className="text-transparent bg-clip-text bg-linear-to-r from-white via-gray-200 to-gray-300">Apps</span>
             </h1>
 
             <div className="border-l-2 border-mono-600/50 pl-4 sm:pl-5 text-left text-xs sm:text-sm md:text-base leading-relaxed text-gray-400">
