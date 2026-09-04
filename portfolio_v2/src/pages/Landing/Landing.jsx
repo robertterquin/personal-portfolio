@@ -105,7 +105,7 @@ const Landing = () => {
       <div className="relative z-10 container mx-auto px-8 md:px-16 py-12 md:py-20 flex items-center justify-center min-h-[calc(100vh-200px)]">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20 items-center w-full max-w-6xl">
           
-          {/* Left Side - Profile Image with Service Tags */}
+          {/* Left Side - Profile Image */}
           <Motion.div
             className="relative flex justify-center lg:justify-start"
             initial={{ opacity: 0, x: -40 }}
@@ -126,20 +126,6 @@ const Landing = () => {
                   }}
                 />
               </div>
-
-              {/* Service Tags */}
-              <div className="absolute -top-4 right-8 md:right-12 px-4 py-2 bg-white text-black rounded-full text-xs md:text-sm font-medium shadow-lg">
-                Full Stack Developer
-              </div>
-              
-              <div className="absolute top-1/4 -left-4 md:-left-8 px-4 py-2 bg-white text-black rounded-full text-xs md:text-sm font-medium shadow-lg">
-                Cycling
-              </div>
-               
-              <div className="absolute bottom-1/4 -right-4 md:-right-8 px-4 py-2 bg-white text-black rounded-full text-xs md:text-sm font-medium shadow-lg">
-                Running
-              </div>
-              
             </div>
           </Motion.div>
 
