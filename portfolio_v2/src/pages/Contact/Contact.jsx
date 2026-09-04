@@ -99,7 +99,7 @@ const Contact = () => {
     <section 
       ref={sectionRef}
       id="contact" 
-      className="page-shell page-shell--contact min-h-screen text-white py-32 px-8 md:px-16 lg:px-24 relative overflow-hidden"
+      className="page-shell page-shell--contact min-h-screen text-white py-16 sm:py-24 md:py-32 px-4 sm:px-8 md:px-16 lg:px-24 relative overflow-hidden"
     >
       {/* Page Transition Line Top */}
       <div className="absolute top-0 left-0 right-0 h-px bg-linear-to-r from-transparent via-mono-400/30 to-transparent pointer-events-none z-20"></div>
@@ -198,16 +198,16 @@ const Contact = () => {
           {/* Main Title */}
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-16 items-start">
             <div>
-              <h2 className="text-6xl md:text-7xl lg:text-8xl font-bold tracking-tighter leading-tight mb-4">
+              <h2 className="text-4xl sm:text-6xl md:text-7xl lg:text-8xl font-bold tracking-tighter leading-tight mb-4">
                 <span className="text-transparent bg-clip-text bg-linear-to-r from-mono-600 via-mono-800 to-mono-950 animate-gradient">Let's</span>
                 <br />
                 <span className="text-transparent bg-clip-text bg-linear-to-r from-mono-950 to-mono-800">Connect</span>
               </h2>
-              <div className="h-1 w-20 bg-linear-to-r from-mono-500 via-mono-600 to-mono-700 rounded-full mt-6"></div>
+              <div className="h-1 w-20 bg-linear-to-r from-mono-500 via-mono-600 to-mono-700 rounded-full mt-4 sm:mt-6"></div>
             </div>
             
             <div className="space-y-6 lg:pt-4">
-              <p className="text-gray-300 text-lg leading-relaxed">
+              <p className="text-gray-300 text-base sm:text-lg leading-relaxed">
                 Have a project in mind or just want to chat? Feel free to reach out. I'm always open to discussing new opportunities and collaborations.
               </p>
               <div className="grid grid-cols-1 gap-4 pt-4">
@@ -218,7 +218,7 @@ const Contact = () => {
                     </svg>
                     <div>
                       <div className="text-xs text-gray-500">Email</div>
-                      <div className="text-sm text-gray-300">business.treevor@gmail.com</div>
+                      <div className="text-xs sm:text-sm text-gray-300 break-all sm:break-normal">business.treevor@gmail.com</div>
                     </div>
                   </div>
                 </div>
@@ -330,9 +330,9 @@ const Contact = () => {
                 <button
                   type="submit"
                   disabled={isLoading}
-                  className="group relative px-8 py-4 bg-linear-to-r from-mono-600 to-mono-800 rounded-xl font-semibold text-white overflow-hidden transition-all duration-300 hover:scale-105 hover:shadow-xl hover:shadow-mono-600/30 disabled:opacity-50 disabled:cursor-not-allowed"
+                  className="group relative w-full sm:w-auto px-8 py-3.5 sm:py-4 bg-linear-to-r from-mono-600 to-mono-800 rounded-xl font-semibold text-white overflow-hidden transition-all duration-300 hover:scale-105 hover:shadow-xl hover:shadow-mono-600/30 disabled:opacity-50 disabled:cursor-not-allowed"
                 >
-                  <span className="relative z-10 flex items-center gap-2">
+                  <span className="relative z-10 flex items-center justify-center gap-2">
                     {isLoading ? 'Sending...' : 'Send Message'}
                     <svg className="w-5 h-5 transform group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M14 5l7 7m0 0l-7 7m7-7H3" />

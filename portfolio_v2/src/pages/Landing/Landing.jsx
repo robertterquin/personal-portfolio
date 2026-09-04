@@ -95,15 +95,15 @@ const Landing = () => {
       </div>
 
       {/* Top Navigation */}
-      <nav className="relative z-20 flex items-center justify-between px-8 md:px-16 py-6">
+      <nav className="relative z-20 flex items-center justify-between px-4 sm:px-8 md:px-16 py-4 sm:py-6">
         {/* Navigation Links */}
         <div className="hidden md:flex gap-8 text-sm">
         </div>
       </nav>
 
       {/* Main Content */}
-      <div className="relative z-10 container mx-auto px-8 md:px-16 py-12 md:py-20 flex items-center justify-center min-h-[calc(100vh-200px)]">
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20 items-center w-full max-w-6xl">
+      <div className="relative z-10 container mx-auto px-4 sm:px-8 md:px-16 py-8 sm:py-12 md:py-20 flex items-center justify-center min-h-[calc(100vh-160px)]">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 sm:gap-12 lg:gap-20 items-center w-full max-w-6xl">
           
           {/* Left Side - Profile Image */}
           <Motion.div
@@ -115,14 +115,14 @@ const Landing = () => {
           >
             {/* Profile Circle */}
             <div className="relative">
-              <div className="aspect-square w-80 overflow-hidden rounded-full border-8 border-mono-300 relative md:w-96 lg:w-md">
+              <div className="aspect-square w-56 sm:w-72 md:w-88 lg:w-96 overflow-hidden rounded-full border-4 sm:border-8 border-mono-300 relative shadow-2xl">
                 <img 
                   src="/profile.jpg" 
                   alt="Robert Terquin Laqui" 
                   className="h-full w-full rounded-full object-cover"
                   onError={(e) => {
                     e.target.style.display = 'none';
-                    e.target.parentElement.innerHTML = '<div class="w-full h-full bg-linear-to-br from-mono-200 to-mono-400 flex items-center justify-center"><span class="text-7xl font-bold text-white">RT</span></div>';
+                    e.target.parentElement.innerHTML = '<div class="w-full h-full bg-linear-to-br from-mono-200 to-mono-400 flex items-center justify-center"><span class="text-5xl sm:text-7xl font-bold text-white">RT</span></div>';
                   }}
                 />
               </div>
@@ -131,35 +131,35 @@ const Landing = () => {
 
           {/* Right Side - Text Content */}
           <Motion.div
-            className="space-y-8 text-center lg:text-left"
+            className="space-y-6 sm:space-y-8 text-center lg:text-left"
             initial={{ opacity: 0, x: 40 }}
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true, amount: 0.25 }}
             transition={{ duration: 0.8, delay: 0.15, ease: 'easeOut' }}
           >
-            <h1 className="text-4xl font-black leading-tight tracking-tighter sm:text-5xl md:text-6xl lg:text-7xl" style={{
+            <h1 className="text-3xl sm:text-5xl md:text-6xl lg:text-7xl font-black leading-tight tracking-tighter" style={{
               textShadow: '0 10px 30px rgba(255, 255, 255, 0.1), 0 4px 12px rgba(163, 163, 163, 0.2)'
             }}>
               Where Concepts<br />
               Become <span className="text-transparent bg-clip-text bg-linear-to-r from-white via-gray-200 to-gray-300">Code</span>
             </h1>
 
-            <div className="border-l border-mono-600/50 pl-5 text-left text-sm leading-relaxed text-gray-400 md:text-base">
+            <div className="border-l-2 border-mono-600/50 pl-4 sm:pl-5 text-left text-xs sm:text-sm md:text-base leading-relaxed text-gray-400">
               <p>
                 I&apos;m Robert Terquin Laqui, a full-stack developer building cross-platform mobile and web applications. I specialize in Flutter, React, Node.js, Firebase, and Supabase, turning ideas into secure, scalable products with thoughtful interfaces and reliable integrations.
               </p>
-              <p className="mt-4">
+              <p className="mt-3 sm:mt-4">
                 I&apos;m always learning through practical projects and refining how I build. I care about clean architecture, accessible interactions, and creating software that feels clear, useful, and human.
               </p>
             </div>
-            <div className="flex flex-col sm:flex-row gap-4 pt-6">
-              <a href="#projects" className="group inline-flex items-center justify-center gap-2 px-9 py-4 bg-linear-to-r from-mono-600 to-mono-800 rounded-xl font-semibold text-white hover:scale-105 transition-transform duration-300 shadow-lg hover:shadow-xl">
+            <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 pt-4 sm:pt-6 w-full sm:w-auto">
+              <a href="#projects" className="group inline-flex items-center justify-center gap-2 px-6 sm:px-9 py-3.5 sm:py-4 bg-linear-to-r from-mono-600 to-mono-800 rounded-xl font-semibold text-white hover:scale-105 transition-transform duration-300 shadow-lg hover:shadow-xl w-full sm:w-auto text-sm sm:text-base">
                 View My Work
                 <svg className="w-5 h-5 transform group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 7l5 5m0 0l-5 5m5-5H6" />
                 </svg>
               </a>
-              <a href="#contact" className="inline-flex items-center justify-center gap-2 px-9 py-4 border-2 border-mono-600 rounded-xl font-semibold text-mono-300 hover:bg-mono-900/30 transition-all duration-300">
+              <a href="#contact" className="inline-flex items-center justify-center gap-2 px-6 sm:px-9 py-3.5 sm:py-4 border-2 border-mono-600 rounded-xl font-semibold text-mono-300 hover:bg-mono-900/30 transition-all duration-300 w-full sm:w-auto text-sm sm:text-base">
                 Get in Touch
               </a>
             </div>

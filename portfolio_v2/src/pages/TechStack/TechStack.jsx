@@ -100,7 +100,7 @@ const TechStack = () => {
     <section
       ref={sectionRef}
       id="tech-stack"
-      className="page-shell page-shell--stack relative min-h-screen overflow-hidden px-4 py-16 text-white sm:px-6 sm:py-20 md:px-16 md:py-24 lg:px-24"
+      className="page-shell page-shell--stack relative min-h-screen overflow-hidden px-4 py-12 sm:py-16 md:py-24 text-white sm:px-6 md:px-16 lg:px-24"
     >
       <div className="absolute inset-0 pointer-events-none">
         <div
@@ -116,26 +116,26 @@ const TechStack = () => {
       </div>
 
       <div className="relative z-10 mx-auto w-full max-w-400">
-        <div className={`mb-14 grid grid-cols-1 gap-8 transition-all duration-700 ${isVisible ? 'translate-y-0 opacity-100' : 'translate-y-8 opacity-0'}`}>
+        <div className={`mb-10 sm:mb-14 grid grid-cols-1 gap-8 transition-all duration-700 ${isVisible ? 'translate-y-0 opacity-100' : 'translate-y-8 opacity-0'}`}>
           <div>
-            <div className="mb-6 flex items-center gap-3">
+            <div className="mb-4 sm:mb-6 flex items-center gap-3">
               <div className="h-px w-12 bg-linear-to-r from-mono-600 to-transparent"></div>
               <span className="font-mono text-xs font-semibold uppercase tracking-[0.3em] text-mono-700">Toolkit</span>
             </div>
-            <h2 className="text-6xl font-bold leading-tight tracking-tighter md:text-7xl lg:text-8xl">
+            <h2 className="text-4xl sm:text-6xl md:text-7xl lg:text-8xl font-bold leading-tight tracking-tighter">
               <span className="text-transparent bg-clip-text bg-linear-to-r from-mono-800 via-mono-900 to-white">Tech</span>
               <br className="lg:hidden" />
               <span className="text-transparent bg-clip-text bg-linear-to-r from-white to-mono-600">Stack</span>
             </h2>
-            <div className="mt-6 h-1 w-20 rounded-full bg-linear-to-r from-mono-500 via-mono-700 to-mono-900"></div>
+            <div className="mt-4 sm:mt-6 h-1 w-20 rounded-full bg-linear-to-r from-mono-500 via-mono-700 to-mono-900"></div>
           </div>
         </div>
 
-        <div className="grid grid-cols-1 gap-6 md:grid-cols-2 xl:grid-cols-3">
+        <div className="grid grid-cols-1 gap-4 sm:gap-6 md:grid-cols-2 xl:grid-cols-3">
           {categories.map((category, categoryIndex) => (
             <Motion.div
               key={category.title}
-              className={`group border border-neutral-700/70 bg-neutral-900/80 p-5 shadow-[inset_0_1px_0_rgba(255,255,255,0.04)] backdrop-blur-sm transition-colors duration-300 hover:border-neutral-400/80 hover:bg-neutral-900/95 sm:p-6 ${categoryIndex === 0 ? 'md:col-span-2 xl:col-span-2' : ''}`}
+              className={`group border border-neutral-700/70 bg-neutral-900/80 p-4 sm:p-6 shadow-[inset_0_1px_0_rgba(255,255,255,0.04)] backdrop-blur-sm transition-colors duration-300 hover:border-neutral-400/80 hover:bg-neutral-900/95 ${categoryIndex === 0 ? 'md:col-span-2 xl:col-span-2' : ''}`}
               initial={{ opacity: 0, y: 28 }}
               whileInView={{ opacity: 1, y: 0 }}
               whileHover={{ y: -4 }}

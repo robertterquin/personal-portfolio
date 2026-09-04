@@ -221,12 +221,12 @@ const Projects = () => {
           {/* Main Title */}
           <div className="grid grid-cols-1 items-start">
             <div>
-              <h2 className="text-6xl md:text-7xl lg:text-8xl font-bold tracking-tighter leading-tight mb-4">
+              <h2 className="text-4xl sm:text-6xl md:text-7xl lg:text-8xl font-bold tracking-tighter leading-tight mb-4">
                 <span className="text-transparent bg-clip-text bg-linear-to-r from-mono-600 via-mono-800 to-mono-950 animate-gradient">Crafted</span>
                 <br className="lg:hidden" />
                 <span className="text-transparent bg-clip-text bg-linear-to-r from-mono-950 to-mono-800">Projects</span>
               </h2>
-              <div className="h-1 w-20 bg-linear-to-r from-mono-500 via-mono-600 to-mono-700 rounded-full mt-6"></div>
+              <div className="h-1 w-20 bg-linear-to-r from-mono-500 via-mono-600 to-mono-700 rounded-full mt-4 sm:mt-6"></div>
             </div>
             
           </div>
@@ -235,9 +235,9 @@ const Projects = () => {
         <div className="mb-5 flex items-end justify-between gap-4 border-b border-white/10 pb-3">
           <div>
             <p className="font-mono text-xs font-semibold uppercase tracking-[0.25em] text-mono-600">01</p>
-            <h3 className="mt-2 text-2xl font-semibold text-white md:text-3xl">Mobile Applications</h3>
+            <h3 className="mt-2 text-xl sm:text-2xl font-semibold text-white md:text-3xl">Mobile Applications</h3>
           </div>
-          <span className="font-mono text-sm text-gray-500">{String(mobileProjects.length).padStart(2, '0')} projects</span>
+          <span className="font-mono text-xs sm:text-sm text-gray-500">{String(mobileProjects.length).padStart(2, '0')} projects</span>
         </div>
 
         {/* Mobile Project Gallery */}
@@ -251,7 +251,7 @@ const Projects = () => {
           {mobileProjects.map((project, index) => (
             <Motion.article
               key={project.id}
-              className="group relative h-fit w-full min-w-0 self-start overflow-hidden border border-dashed border-neutral-700/70 bg-neutral-900/80 p-6 shadow-[inset_0_1px_0_rgba(255,255,255,0.04)] transition-colors duration-300 hover:border-neutral-400/80 hover:bg-neutral-900/95"
+              className="group relative h-fit w-full min-w-0 self-start overflow-hidden border border-dashed border-neutral-700/70 bg-neutral-900/80 p-4 sm:p-6 shadow-[inset_0_1px_0_rgba(255,255,255,0.04)] transition-colors duration-300 hover:border-neutral-400/80 hover:bg-neutral-900/95"
               style={{ transitionDelay: `${200 + index * 80}ms` }}
               initial={{ opacity: 0, y: 24 }}
               whileInView={{ opacity: 1, y: 0 }}
@@ -327,9 +327,9 @@ const Projects = () => {
           <div className="mb-5 flex items-end justify-between gap-4 border-b border-white/10 pb-3">
             <div>
               <p className="font-mono text-xs font-semibold uppercase tracking-[0.25em] text-mono-600">02</p>
-              <h3 className="mt-2 text-2xl font-semibold text-white md:text-3xl">Web Applications</h3>
+              <h3 className="mt-2 text-xl sm:text-2xl font-semibold text-white md:text-3xl">Web Applications</h3>
             </div>
-            <span className="font-mono text-sm text-gray-500">02 projects</span>
+            <span className="font-mono text-xs sm:text-sm text-gray-500">02 projects</span>
           </div>
           <div className="grid grid-cols-1 gap-6 sm:grid-cols-2">
             {webPlaceholders.map((project) => {
@@ -338,7 +338,7 @@ const Projects = () => {
               return (
               <Motion.article
                 key={project.id}
-                className="group flex h-fit min-h-40 w-full self-start flex-col justify-between border border-dashed border-neutral-700/70 bg-neutral-900/80 p-6 shadow-[inset_0_1px_0_rgba(255,255,255,0.04)] transition-colors hover:border-neutral-400/80 hover:bg-neutral-900/95"
+                className="group flex h-fit min-h-40 w-full self-start flex-col justify-between border border-dashed border-neutral-700/70 bg-neutral-900/80 p-4 sm:p-6 shadow-[inset_0_1px_0_rgba(255,255,255,0.04)] transition-colors hover:border-neutral-400/80 hover:bg-neutral-900/95"
                 whileHover={{ y: -3 }}
                 transition={{ duration: 0.2, ease: 'easeOut' }}
               >

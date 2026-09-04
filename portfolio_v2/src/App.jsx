@@ -6,7 +6,7 @@ import Contact from './pages/Contact/Contact';
 
 function App() {
   return (
-    <div className="portfolio-canvas scroll-smooth">
+    <div className="portfolio-canvas min-h-screen w-full overflow-x-hidden scroll-smooth">
       <Landing />
       <TechStack />
       <Projects />

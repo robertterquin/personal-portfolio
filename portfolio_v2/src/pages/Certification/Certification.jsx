@@ -152,7 +152,7 @@ const Certification = () => {
     <section 
       ref={sectionRef}
       id="certification" 
-      className="page-shell page-shell--certification min-h-screen text-white py-32 px-8 md:px-16 lg:px-24 relative overflow-hidden"
+      className="page-shell page-shell--certification min-h-screen text-white py-16 sm:py-24 md:py-32 px-4 sm:px-8 md:px-16 lg:px-24 relative overflow-hidden"
     >
       {/* Page Transition Line Top */}
       <div className="absolute top-0 left-0 right-0 h-px bg-linear-to-r from-transparent via-mono-400/30 to-transparent pointer-events-none z-20"></div>
@@ -252,19 +252,19 @@ const Certification = () => {
           {/* Main Title */}
           <div className="grid grid-cols-1 items-start">
             <div>
-              <h2 className="text-6xl md:text-7xl lg:text-8xl font-bold tracking-tighter leading-tight mb-4">
+              <h2 className="text-4xl sm:text-6xl md:text-7xl lg:text-8xl font-bold tracking-tighter leading-tight mb-4">
                 <span className="text-transparent bg-clip-text bg-linear-to-r from-mono-600 via-mono-800 to-mono-950 animate-gradient">Certified</span>
                 <br className="lg:hidden" />
                 <span className="text-transparent bg-clip-text bg-linear-to-r from-mono-950 to-mono-800">Excellence</span>
               </h2>
-              <div className="h-1 w-20 bg-linear-to-r from-mono-500 via-mono-600 to-mono-700 rounded-full mt-6"></div>
+              <div className="h-1 w-20 bg-linear-to-r from-mono-500 via-mono-600 to-mono-700 rounded-full mt-4 sm:mt-6"></div>
             </div>
           </div>
         </Motion.div>
 
         {/* Certifications Grid */}
         <Motion.div
-          className={`grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 transition-all duration-700 delay-200 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-12'}`}
+          className={`grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6 transition-all duration-700 delay-200 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-12'}`}
           initial={{ opacity: 0, y: 32 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, amount: 0.1 }}
@@ -283,7 +283,7 @@ const Certification = () => {
                   setSelectedCertIndex(index);
                 }
               }}
-              className="group relative min-w-0 cursor-pointer overflow-hidden border border-dashed border-neutral-700/70 bg-neutral-900/80 p-6 shadow-[inset_0_1px_0_rgba(255,255,255,0.04)] backdrop-blur-sm transition-all duration-300 hover:border-neutral-400 hover:bg-neutral-900/95 focus:outline-none focus:ring-2 focus:ring-mono-500/50"
+              className="group relative min-w-0 cursor-pointer overflow-hidden border border-dashed border-neutral-700/70 bg-neutral-900/80 p-4 sm:p-6 shadow-[inset_0_1px_0_rgba(255,255,255,0.04)] backdrop-blur-sm transition-all duration-300 hover:border-neutral-400 hover:bg-neutral-900/95 focus:outline-none focus:ring-2 focus:ring-mono-500/50"
               style={{
                 transitionDelay: `${200 + index * 100}ms`,
               }}
@@ -364,7 +364,7 @@ const Certification = () => {
               animate={{ scale: 1, opacity: 1 }}
               exit={{ scale: 0.92, opacity: 0 }}
               transition={{ duration: 0.25, ease: 'easeOut' }}
-              className="relative flex max-h-[92vh] max-w-5xl flex-col items-center rounded-2xl border border-neutral-700 bg-neutral-950 p-4 shadow-2xl sm:p-6"
+              className="relative flex max-h-[92vh] w-full max-w-5xl flex-col items-center rounded-2xl border border-neutral-700 bg-neutral-950 p-3 sm:p-6 shadow-2xl"
               onClick={(e) => e.stopPropagation()}
             >
               {/* Top Bar: Title & Close Button */}
@@ -391,11 +391,11 @@ const Certification = () => {
               </div>
 
               {/* High-Resolution Certificate Image */}
-              <div className="relative my-4 flex max-h-[70vh] w-full items-center justify-center overflow-hidden rounded-lg bg-black/40 p-2">
+              <div className="relative my-2 sm:my-4 flex max-h-[58vh] sm:max-h-[70vh] w-full items-center justify-center overflow-hidden rounded-lg bg-black/40 p-1 sm:p-2">
                 <img
                   src={sortedCertifications[selectedCertIndex].image}
                   alt={sortedCertifications[selectedCertIndex].title}
-                  className="max-h-[68vh] w-auto max-w-full rounded object-contain shadow-md"
+                  className="max-h-[56vh] sm:max-h-[68vh] w-auto max-w-full rounded object-contain shadow-md"
                 />
               </div>
 
@@ -404,7 +404,7 @@ const Certification = () => {
                 <button
                   type="button"
                   onClick={handlePrev}
-                  className="inline-flex items-center gap-2 rounded-lg border border-neutral-700 bg-neutral-900 px-4 py-2 font-mono text-xs text-gray-300 transition-colors hover:border-neutral-500 hover:bg-neutral-800 hover:text-white"
+                  className="inline-flex items-center gap-1.5 sm:gap-2 rounded-lg border border-neutral-700 bg-neutral-900 px-3 sm:px-4 py-2 font-mono text-xs text-gray-300 transition-colors hover:border-neutral-500 hover:bg-neutral-800 hover:text-white"
                 >
                   <svg className="h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
@@ -412,14 +412,14 @@ const Certification = () => {
                   Previous
                 </button>
 
-                <span className="font-mono text-xs text-gray-500">
+                <span className="hidden sm:inline-block font-mono text-xs text-gray-500">
                   Use arrow keys (← / →) or Esc to close
                 </span>
 
                 <button
                   type="button"
                   onClick={handleNext}
-                  className="inline-flex items-center gap-2 rounded-lg border border-neutral-700 bg-neutral-900 px-4 py-2 font-mono text-xs text-gray-300 transition-colors hover:border-neutral-500 hover:bg-neutral-800 hover:text-white"
+                  className="inline-flex items-center gap-1.5 sm:gap-2 rounded-lg border border-neutral-700 bg-neutral-900 px-3 sm:px-4 py-2 font-mono text-xs text-gray-300 transition-colors hover:border-neutral-500 hover:bg-neutral-800 hover:text-white"
                 >
                   Next
                   <svg className="h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
