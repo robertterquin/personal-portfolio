@@ -978,24 +978,6 @@ html.theme-day .project-index-row.row-active {
   color: var(--ink-muted);
 }
 
-.mobile-expanded-highlights {
-  font-size: 0.8rem;
-  color: var(--ink-muted);
-}
-
-.mobile-hl-label {
-  font-family: var(--font-mono);
-  font-size: 0.7rem;
-  color: var(--ink);
-  font-weight: 700;
-  display: block;
-  margin-bottom: 4px;
-}
-
-.mobile-expanded-highlights ul {
-  margin: 0;
-  padding-left: 18px;
-}
 
 
 
@@ -1045,19 +1027,6 @@ html.theme-day .project-index-row.row-active {
   gap: 8px;
 }
 
-.viewer-nav-btn {
-  display: inline-flex;
-  align-items: center;
-  gap: 4px;
-  font-family: var(--font-mono);
-  font-size: 0.7rem;
-  color: var(--ink-muted);
-  transition: color 0.15s ease;
-}
-
-.viewer-nav-btn:hover {
-  color: var(--ink);
-}
 
 .viewer-close {
   display: inline-flex;
@@ -1153,7 +1122,7 @@ html.theme-day .project-index-row.row-active {
 }
 
 .viewer-copy-col {
-  padding: 36px;
+  padding: 40px;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
@@ -1166,74 +1135,33 @@ html.theme-day .project-index-row.row-active {
   text-transform: uppercase;
   letter-spacing: 0.08em;
   display: block;
-  margin-bottom: 4px;
+  margin-bottom: 6px;
 }
 
 .viewer-main-title {
-  margin: 0 0 10px 0;
-  font-size: 1.7rem;
+  margin: 0 0 14px 0;
+  font-size: 1.85rem;
   font-weight: 800;
   letter-spacing: -0.02em;
   color: var(--ink);
 }
 
 .viewer-detail-text {
-  margin: 0 0 18px 0;
-  font-size: 0.9rem;
-  line-height: 1.58;
-  color: var(--ink-muted);
-}
-
-.viewer-highlights-list {
-  background: var(--card-bg);
-  border: 1px solid var(--card-border);
-  border-radius: var(--radius-sm);
-  padding: 14px;
-  margin-bottom: 20px;
-}
-
-.highlights-label {
-  font-family: var(--font-mono);
-  font-size: 0.68rem;
-  font-weight: 700;
-  letter-spacing: 0.06em;
-  color: var(--ink);
-  display: block;
-  margin-bottom: 8px;
-}
-
-.viewer-highlights-list ul {
   margin: 0;
-  padding: 0;
-  list-style: none;
-  display: flex;
-  flex-direction: column;
-  gap: 6px;
-}
-
-.viewer-highlights-list li {
-  display: flex;
-  align-items: flex-start;
-  gap: 8px;
-  font-size: 0.8rem;
-  line-height: 1.4;
+  font-size: 0.95rem;
+  line-height: 1.68;
   color: var(--ink-muted);
-}
-
-.highlight-icon {
-  color: var(--accent);
-  flex-shrink: 0;
-  margin-top: 2px;
 }
 
 .viewer-actions-row {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding-top: 14px;
+  padding-top: 20px;
   border-top: 1px solid var(--line);
-  gap: 12px;
+  gap: 16px;
   flex-wrap: wrap;
+  margin-top: 32px;
 }
 
 .viewer-stack-label {
@@ -1727,38 +1655,48 @@ html.theme-day .cert-modal-container {
 .cert-modal-header-left {
   display: flex;
   align-items: center;
-  gap: 12px;
+  gap: 10px;
   min-width: 0;
+  overflow: hidden;
 }
 
-.cert-modal-code {
+.cert-modal-index {
   font-family: var(--font-mono);
-  font-size: 0.7rem;
+  font-size: 0.74rem;
   font-weight: 700;
-  letter-spacing: 0.08em;
   color: var(--accent);
+  flex-shrink: 0;
+}
+
+.cert-modal-sep {
+  color: var(--line-strong);
+  font-size: 0.8rem;
+  user-select: none;
+  flex-shrink: 0;
+}
+
+.cert-modal-title {
+  margin: 0;
+  font-size: 0.95rem;
+  font-weight: 700;
+  color: var(--ink);
   white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  letter-spacing: -0.01em;
 }
 
 .cert-modal-header-right {
   display: flex;
   align-items: center;
-  gap: 10px;
+  gap: 8px;
+  flex-shrink: 0;
 }
 
-.cert-modal-counter {
-  font-family: var(--font-mono);
-  font-size: 0.72rem;
-  color: var(--ink-dim);
-  padding-right: 10px;
-  border-right: 1px solid var(--line);
-}
-
-.cert-modal-action-btn,
 .cert-modal-close-btn {
   display: inline-flex;
   align-items: center;
-  gap: 6px;
+  gap: 5px;
   font-family: var(--font-mono);
   font-size: 0.7rem;
   letter-spacing: 0.04em;
@@ -1767,15 +1705,8 @@ html.theme-day .cert-modal-container {
   border: 1px solid var(--line);
   color: var(--ink-muted);
   border-radius: 2px;
-  text-decoration: none;
   cursor: pointer;
   transition: all 0.15s ease;
-}
-
-.cert-modal-action-btn:hover {
-  color: var(--accent);
-  border-color: var(--accent);
-  background: var(--accent-dim);
 }
 
 .cert-modal-close-btn:hover {
@@ -1822,41 +1753,6 @@ html.theme-day .cert-modal-stage {
   display: block;
 }
 
-/* Architectural Corner Registration Marks */
-.cert-corner-mark {
-  position: absolute;
-  width: 10px;
-  height: 10px;
-  pointer-events: none;
-}
-
-.cert-corner-mark.top-left {
-  top: -8px;
-  left: -8px;
-  border-top: 1px solid var(--accent);
-  border-left: 1px solid var(--accent);
-}
-
-.cert-corner-mark.top-right {
-  top: -8px;
-  right: -8px;
-  border-top: 1px solid var(--accent);
-  border-right: 1px solid var(--accent);
-}
-
-.cert-corner-mark.bottom-left {
-  bottom: -8px;
-  left: -8px;
-  border-bottom: 1px solid var(--accent);
-  border-left: 1px solid var(--accent);
-}
-
-.cert-corner-mark.bottom-right {
-  bottom: -8px;
-  right: -8px;
-  border-bottom: 1px solid var(--accent);
-  border-right: 1px solid var(--accent);
-}
 
 /* Nav Arrows */
 .cert-nav-arrow {
@@ -1897,38 +1793,22 @@ html.theme-day .cert-modal-stage {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 14px 20px;
+  padding: 12px 20px;
   background: var(--bg-subtle);
   border-top: 1px solid var(--line);
   gap: 16px;
   flex-shrink: 0;
 }
 
-.cert-modal-info {
-  display: flex;
-  flex-direction: column;
-  gap: 3px;
-  min-width: 0;
-}
-
-.cert-modal-title {
-  margin: 0;
-  font-size: 0.92rem;
-  font-weight: 700;
-  color: var(--ink);
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
-}
-
 .cert-modal-institution {
   margin: 0;
   font-family: var(--font-mono);
-  font-size: 0.72rem;
+  font-size: 0.74rem;
   color: var(--accent);
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
+  letter-spacing: 0.02em;
 }
 
 .cert-modal-nav-dots {
@@ -2000,7 +1880,6 @@ html.theme-day .cert-modal-stage {
     justify-content: center;
   }
 
-  .cert-modal-action-btn span,
   .cert-modal-close-btn span {
     display: none;
   }
@@ -2025,23 +1904,6 @@ html.theme-day .cert-modal-stage {
 .activity-title-col {
   display: flex;
   flex-direction: column;
-}
-
-.activity-heading {
-  margin: 0;
-  font-family: var(--font-display);
-  font-size: clamp(2rem, 3.6vw, 2.6rem);
-  font-weight: 800;
-  letter-spacing: -0.03em;
-  color: var(--ink);
-  line-height: 1.1;
-}
-
-.activity-heading .accent-script {
-  font-family: var(--font-serif);
-  font-style: italic;
-  font-weight: 400;
-  color: var(--accent);
 }
 
 .activity-desc {

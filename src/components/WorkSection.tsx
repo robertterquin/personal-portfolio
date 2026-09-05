@@ -1,5 +1,5 @@
 import React, { useState, useRef, useEffect } from 'react';
-import { ArrowUpRight, CheckCircle, Globe, X, ChevronLeft, ChevronRight } from 'lucide-react';
+import { ArrowUpRight, Globe, X, ChevronLeft, ChevronRight } from 'lucide-react';
 import { projectsData, type Project } from '../data/portfolioData';
 
 const GithubIcon: React.FC<{ size?: number; className?: string }> = ({ size = 14, className }) => (
@@ -178,14 +178,6 @@ export const WorkSection: React.FC = () => {
                   </div>
                   <div className="mobile-expanded-body">
                     <p className="mobile-expanded-detail">{project.detail}</p>
-                    <div className="mobile-expanded-highlights">
-                      <span className="mobile-hl-label">Highlights:</span>
-                      <ul>
-                        {project.highlights.map((h, i) => (
-                          <li key={i}>{h}</li>
-                        ))}
-                      </ul>
-                    </div>
                   </div>
                 </div>
               )}
@@ -206,25 +198,6 @@ export const WorkSection: React.FC = () => {
             </div>
 
             <div className="viewer-controls-group">
-              <button
-                type="button"
-                className="viewer-nav-btn"
-                onClick={handlePrevProject}
-                aria-label="Previous project"
-              >
-                <ChevronLeft size={14} />
-                <span>Prev</span>
-              </button>
-              <button
-                type="button"
-                className="viewer-nav-btn"
-                onClick={handleNextProject}
-                aria-label="Next project"
-              >
-                <span>Next</span>
-                <ChevronRight size={14} />
-              </button>
-              <span className="viewer-sep">|</span>
               <button
                 type="button"
                 className="viewer-close"
@@ -270,18 +243,6 @@ export const WorkSection: React.FC = () => {
                   <p className="viewer-detail-text">{activeProject.detail}</p>
                 </div>
 
-                <div className="viewer-highlights-list">
-                  <span className="highlights-label">Key Highlights</span>
-                  <ul>
-                    {activeProject.highlights.map((item, i) => (
-                      <li key={i}>
-                        <CheckCircle size={12} className="highlight-icon" />
-                        <span>{item}</span>
-                      </li>
-                    ))}
-                  </ul>
-                </div>
-
                 <div className="viewer-actions-row">
                   <span className="viewer-stack-label">{activeProject.stack}</span>
 
@@ -311,12 +272,6 @@ export const WorkSection: React.FC = () => {
                       <ArrowUpRight size={12} />
                     </a>
                   </div>
-                </div>
-
-                <div className="viewer-counter-pill">
-                  <span>
-                    {activeProject.number} / {String(projectsData.length).padStart(2, '0')}
-                  </span>
                 </div>
               </div>
             </div>

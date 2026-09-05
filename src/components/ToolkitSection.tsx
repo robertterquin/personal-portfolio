@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { createPortal } from 'react-dom';
-import { ArrowUpRight, X, ChevronLeft, ChevronRight, ExternalLink } from 'lucide-react';
+import { ArrowUpRight, X, ChevronLeft, ChevronRight } from 'lucide-react';
 import { credentialsData, type CredentialItem } from '../data/portfolioData';
 
 interface CapabilityGroup {
@@ -33,7 +33,7 @@ const capabilityGroups: CapabilityGroup[] = [
       { name: 'JavaScript (ESNext)' },
       { name: 'Tailwind CSS' },
       { name: 'Next.js & Vite' },
-      { name: 'HTML5 & Modern CSS' },
+      { name: 'HTML5 & Modern CSS', isCertified: true },
     ],
   },
   {
@@ -56,7 +56,7 @@ const capabilityGroups: CapabilityGroup[] = [
       { name: 'Java', isCertified: true },
       { name: 'Python' },
       { name: 'C Programming' },
-      { name: 'Cybersecurity Fundamentals' },
+      { name: 'Cybersecurity Fundamentals', isCertified: true },
       { name: 'Git & GitHub' },
       { name: 'Vercel Edge' },
     ],
@@ -215,27 +215,14 @@ export const ToolkitSection: React.FC = () => {
               {/* Modal Header */}
               <div className="cert-modal-header">
                 <div className="cert-modal-header-left">
-                  <span className="cert-modal-code">Credential · {selectedCert.year}</span>
-                  <span className={`ledger-type-tag ${selectedCert.type === 'Award' ? 'type-award' : 'type-cert'}`}>
-                    {selectedCert.type === 'Award' ? 'HONOR' : 'CERT'}
-                  </span>
+                  <span className="cert-modal-index">{selectedCert.index}</span>
+                  <span className="cert-modal-sep">|</span>
+                  <h3 id="cert-modal-title" className="cert-modal-title">
+                    {selectedCert.title}
+                  </h3>
                 </div>
 
                 <div className="cert-modal-header-right">
-                  <span className="cert-modal-counter">
-                    {selectedCert.index} / {String(credentialsData.length).padStart(2, '0')}
-                  </span>
-                  <a
-                    href={selectedCert.image}
-                    target="_blank"
-                    rel="noreferrer"
-                    className="cert-modal-action-btn"
-                    title="Open raw certificate image in new tab"
-                    aria-label="Open original certificate file"
-                  >
-                    <ExternalLink size={13} />
-                    <span>Raw File</span>
-                  </a>
                   <button
                     type="button"
                     className="cert-modal-close-btn"
@@ -244,7 +231,7 @@ export const ToolkitSection: React.FC = () => {
                     title="Close (Esc)"
                   >
                     <span>Close</span>
-                    <X size={15} />
+                    <X size={14} />
                   </button>
                 </div>
               </div>
@@ -262,10 +249,6 @@ export const ToolkitSection: React.FC = () => {
                 </button>
 
                 <div className="cert-modal-image-wrapper">
-                  <div className="cert-corner-mark top-left" aria-hidden="true" />
-                  <div className="cert-corner-mark top-right" aria-hidden="true" />
-                  <div className="cert-corner-mark bottom-left" aria-hidden="true" />
-                  <div className="cert-corner-mark bottom-right" aria-hidden="true" />
                   <img
                     src={selectedCert.image}
                     alt={`${selectedCert.title} - ${selectedCert.institution}`}
@@ -286,14 +269,9 @@ export const ToolkitSection: React.FC = () => {
 
               {/* Modal Footer */}
               <div className="cert-modal-footer">
-                <div className="cert-modal-info">
-                  <h3 id="cert-modal-title" className="cert-modal-title">
-                    {selectedCert.title}
-                  </h3>
-                  <p className="cert-modal-institution">
-                    {selectedCert.institution}
-                  </p>
-                </div>
+                <span className="cert-modal-institution">
+                  {selectedCert.institution} · {selectedCert.year}
+                </span>
 
                 <div className="cert-modal-nav-dots" aria-label="Certificate navigation">
                   {credentialsData.map((c) => (

@@ -61,15 +61,41 @@ export const GithubActivity: React.FC = () => {
 
     const fetchLiveContributions = async () => {
       try {
-        const res = await fetch(`https://github-contributions-api.jogruber.de/v4/${username}?y=last`);
-        if (!res.ok) return;
-        const data: ApiResponse = await res.json();
-        const liveTotal =
-          data.total?.lastYear ??
-          (data.contributions ? data.contributions.reduce((acc, c) => acc + c.count, 0) : 0);
+        let liveData: ApiResponse | null = null;
+        let liveTotal = 0;
 
-        if (isMounted && liveTotal > 0 && data.contributions && data.contributions.length > 0) {
-          setContributions(data.contributions);
+        // 1. Try local dev direct proxy (fastest, zero cache lag)
+        try {
+          const devRes = await fetch('/api/github-contributions');
+          if (devRes.ok) {
+            const devData: ApiResponse = await devRes.json();
+            const count = devData.total?.lastYear ?? (devData.contributions ? devData.contributions.reduce((acc, c) => acc + c.count, 0) : 0);
+            if (count > 0 && devData.contributions && devData.contributions.length > 0) {
+              liveData = devData;
+              liveTotal = count;
+            }
+          }
+        } catch {
+          // Dev proxy unavailable in static production builds
+        }
+
+        // 2. Fallback to public live API (for deployed builds)
+        if (!liveData || liveTotal === 0) {
+          const res = await fetch(`https://github-contributions-api.jogruber.de/v4/${username}?y=last`);
+          if (res.ok) {
+            const apiData: ApiResponse = await res.json();
+            const count =
+              apiData.total?.lastYear ??
+              (apiData.contributions ? apiData.contributions.reduce((acc, c) => acc + c.count, 0) : 0);
+            if (count > 0 && apiData.contributions && apiData.contributions.length > 0) {
+              liveData = apiData;
+              liveTotal = count;
+            }
+          }
+        }
+
+        if (isMounted && liveData && liveTotal > 0 && liveData.contributions && liveData.contributions.length > 0) {
+          setContributions(liveData.contributions);
           setTotalCount(liveTotal);
         }
       } catch {
@@ -104,11 +130,7 @@ export const GithubActivity: React.FC = () => {
       <div className="github-activity-header">
         <div className="activity-title-col">
           <span className="section-label">GitHub Activity</span>
-          <h2 className="activity-heading">
-            A record of
-            <br />
-            <span className="accent-script">small progress.</span>
-          </h2>
+          <h2 className="section-title">Contribution Activity</h2>
         </div>
 
         <p className="activity-desc">
