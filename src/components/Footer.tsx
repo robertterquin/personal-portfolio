@@ -1,13 +1,8 @@
 import React from 'react';
-import { ArrowUp, ArrowUpRight } from 'lucide-react';
+import { ArrowUp } from 'lucide-react';
 import { personalData } from '../data/portfolioData';
 
-interface FooterProps {
-  viewMode: 'home' | 'contact';
-  onToggleContact: () => void;
-}
-
-export const Footer: React.FC<FooterProps> = ({ viewMode, onToggleContact }) => {
+export const Footer: React.FC = () => {
   const currentYear = new Date().getFullYear();
 
   return (
@@ -28,26 +23,6 @@ export const Footer: React.FC<FooterProps> = ({ viewMode, onToggleContact }) => 
       </div>
 
       <div className="footer-right">
-        {viewMode === 'home' ? (
-          <button
-            type="button"
-            className="footer-contact-link"
-            onClick={onToggleContact}
-          >
-            <span>Start a conversation</span>
-            <ArrowUpRight size={14} />
-          </button>
-        ) : (
-          <button
-            type="button"
-            className="footer-contact-link"
-            onClick={onToggleContact}
-          >
-            <span>Back to portfolio</span>
-            <ArrowUpRight size={14} />
-          </button>
-        )}
-
         <a href="#top" className="back-to-top-btn" aria-label="Back to top of dossier">
           <span>Top</span>
           <ArrowUp size={13} />

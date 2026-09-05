@@ -213,11 +213,24 @@ html.theme-day .status-indicator {
   box-shadow: 0 0 6px rgba(5, 150, 105, 0.4);
 }
 
-.header-center {
+.header-time-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  text-decoration: none;
+}
+
+.timezone-clock {
   font-family: var(--font-mono);
-  font-size: 0.74rem;
-  color: var(--ink-dim);
-  letter-spacing: 0.06em;
+  font-size: 0.78rem;
+  font-weight: 600;
+  color: var(--ink);
+  letter-spacing: 0.05em;
+  transition: color 0.15s ease;
+}
+
+.header-time-link:hover .timezone-clock {
+  color: var(--accent);
 }
 
 .header-right {
@@ -305,7 +318,7 @@ html.theme-day .status-indicator {
 
 .hero-title {
   margin: 0 0 18px 0;
-  font-size: clamp(2.8rem, 5.8vw, 4.4rem);
+  font-size: clamp(2.4rem, 4.8vw, 3.8rem);
   font-weight: 800;
   line-height: 0.95;
   letter-spacing: -0.04em;
@@ -324,7 +337,7 @@ html.theme-day .status-indicator {
   display: grid;
   grid-template-columns: auto 1fr;
   gap: 28px;
-  margin-bottom: 32px;
+  margin-bottom: 0;
   padding: 16px 0;
   border-top: 1px solid var(--line);
   border-bottom: 1px solid var(--line);
@@ -435,8 +448,8 @@ html.theme-day .hero-btn-primary:hover {
 
 .portrait-corner-tl { top: 8px; left: 8px; }
 .portrait-corner-tr { top: 8px; right: 8px; }
-.portrait-corner-bl { bottom: 42px; left: 8px; }
-.portrait-corner-br { bottom: 42px; right: 8px; }
+.portrait-corner-bl { bottom: 8px; left: 8px; }
+.portrait-corner-br { bottom: 8px; right: 8px; }
 
 html.theme-day .portrait-frame {
   box-shadow: 0 12px 28px rgba(158, 107, 56, 0.12);

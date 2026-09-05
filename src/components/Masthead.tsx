@@ -1,13 +1,8 @@
 import React from 'react';
-import { ArrowDown, ArrowUpRight } from 'lucide-react';
 import { personalData } from '../data/portfolioData';
 import heroImg from '../assets/hero.png';
 
-interface MastheadProps {
-  onOpenContact?: () => void;
-}
-
-export const Masthead: React.FC<MastheadProps> = ({ onOpenContact }) => {
+export const Masthead: React.FC = () => {
   return (
     <section id="top" className="architectural-hero">
       <div className="hero-grid">
@@ -21,6 +16,8 @@ export const Masthead: React.FC<MastheadProps> = ({ onOpenContact }) => {
             ROBERT
             <br />
             TERQUIN
+            <br />
+            LAQUI
           </h1>
 
           <p className="hero-bio">
@@ -36,28 +33,6 @@ export const Masthead: React.FC<MastheadProps> = ({ onOpenContact }) => {
               <span className="meta-k">Core Focus</span>
               <strong className="meta-v">{personalData.focus}</strong>
             </div>
-          </div>
-
-          <div className="hero-actions">
-            <a href="#work" className="hero-btn hero-btn-primary">
-              <span>View Projects</span>
-              <ArrowDown size={14} />
-            </a>
-            {onOpenContact ? (
-              <button
-                type="button"
-                className="hero-btn hero-btn-secondary"
-                onClick={onOpenContact}
-              >
-                <span>Get in Touch</span>
-                <ArrowUpRight size={14} />
-              </button>
-            ) : (
-              <a href="#contact" className="hero-btn hero-btn-secondary">
-                <span>Get in Touch</span>
-                <ArrowUpRight size={14} />
-              </a>
-            )}
           </div>
         </div>
 
@@ -79,10 +54,6 @@ export const Masthead: React.FC<MastheadProps> = ({ onOpenContact }) => {
               }}
             />
             <div className="portrait-scanline" aria-hidden="true"></div>
-            <div className="portrait-badge">
-              <span className="badge-dot"></span>
-              <span className="badge-text">Cavite, PH • Ready for Contracts</span>
-            </div>
           </div>
         </div>
       </div>
