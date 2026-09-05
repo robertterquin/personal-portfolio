@@ -49,7 +49,6 @@ export const Masthead: React.FC = () => {
                 (e.target as HTMLImageElement).style.display = 'none';
               }}
             />
-            <div className="portrait-scanline" aria-hidden="true"></div>
           </div>
         </div>
       </div>

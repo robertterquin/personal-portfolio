@@ -559,22 +559,6 @@ html.theme-day .portrait-frame {
   transform: scale(1.02);
 }
 
-.portrait-scanline {
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  background: repeating-linear-gradient(
-    0deg,
-    rgba(0, 0, 0, 0.18) 0px,
-    rgba(0, 0, 0, 0.18) 1px,
-    transparent 1px,
-    transparent 2px
-  );
-  pointer-events: none;
-  opacity: 0.5;
-}
 
 .portrait-badge {
   position: absolute;
@@ -1013,99 +997,7 @@ html.theme-day .project-index-row.row-active {
   padding-left: 18px;
 }
 
-/* Desktop Floating Cursor Preview Portal */
-.floating-preview-portal {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 320px;
-  pointer-events: none;
-  z-index: 999;
-  transition: transform 0.09s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.2s ease;
-  will-change: transform;
-}
 
-.floating-preview-card {
-  width: 320px;
-  background: var(--card-bg);
-  border: 1px solid var(--leather-border);
-  border-radius: var(--radius-sm);
-  overflow: hidden;
-  box-shadow: 0 24px 50px rgba(14, 13, 12, 0.6);
-  backdrop-filter: blur(10px);
-  -webkit-backdrop-filter: blur(10px);
-}
-
-html.theme-day .floating-preview-card {
-  box-shadow: 0 20px 40px rgba(158, 107, 56, 0.14);
-}
-
-.floating-card-image-wrap {
-  width: 100%;
-  height: 190px;
-  position: relative;
-  background: #000000;
-  overflow: hidden;
-}
-
-.floating-card-img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  object-position: center top;
-  display: block;
-}
-
-.floating-card-scanline {
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  background: repeating-linear-gradient(
-    0deg,
-    rgba(0, 0, 0, 0.18) 0px,
-    rgba(0, 0, 0, 0.18) 1px,
-    transparent 1px,
-    transparent 2px
-  );
-  pointer-events: none;
-}
-
-.floating-card-footer {
-  padding: 10px 14px;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  border-top: 1px solid var(--line);
-  background: var(--bg-subtle);
-  font-family: var(--font-mono);
-}
-
-.floating-card-info {
-  display: flex;
-  align-items: baseline;
-  gap: 6px;
-}
-
-.floating-card-num {
-  font-size: 0.68rem;
-  color: var(--accent);
-  font-weight: 700;
-}
-
-.floating-card-title {
-  font-size: 0.76rem;
-  color: var(--ink);
-  letter-spacing: -0.01em;
-}
-
-.floating-card-tag {
-  font-size: 0.62rem;
-  color: var(--accent);
-  letter-spacing: 0.04em;
-  font-weight: 600;
-}
 
 /* Minimal Project File Viewer Drawer */
 .minimal-viewer {
@@ -1232,23 +1124,6 @@ html.theme-day .floating-preview-card {
   object-fit: cover;
   object-position: center top;
   display: block;
-  filter: grayscale(10%) contrast(104%);
-}
-
-.viewer-scanlines {
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  background: repeating-linear-gradient(
-    0deg,
-    rgba(0, 0, 0, 0.16) 0px,
-    rgba(0, 0, 0, 0.16) 1px,
-    transparent 1px,
-    transparent 2px
-  );
-  pointer-events: none;
 }
 
 .viewer-badge-bar {

@@ -13,14 +13,10 @@ type FilterCategory = 'all' | 'mobile' | 'web';
 
 export const WorkSection: React.FC = () => {
   const [activeFilter, setActiveFilter] = useState<FilterCategory>('all');
-  const [hoveredProject, setHoveredProject] = useState<Project | null>(null);
-  const [cursorPos, setCursorPos] = useState<{ x: number; y: number }>({ x: 0, y: 0 });
-  const [isHoveringList, setIsHoveringList] = useState<boolean>(false);
   const [selectedIndex, setSelectedIndex] = useState<number>(0);
   const [isViewerOpen, setIsViewerOpen] = useState<boolean>(false);
   const [mobileExpandedId, setMobileExpandedId] = useState<string | null>(null);
 
-  const listRef = useRef<HTMLDivElement>(null);
   const viewerRef = useRef<HTMLDivElement>(null);
 
   const filteredProjects = projectsData.filter((p) => {
@@ -29,24 +25,6 @@ export const WorkSection: React.FC = () => {
   });
 
   const activeProject: Project = projectsData[selectedIndex] || projectsData[0];
-
-  // Track cursor position for floating image preview
-  const handleMouseMove = (e: React.MouseEvent) => {
-    setCursorPos({
-      x: e.clientX,
-      y: e.clientY,
-    });
-  };
-
-  const handleMouseEnterRow = (project: Project) => {
-    setHoveredProject(project);
-    setIsHoveringList(true);
-  };
-
-  const handleMouseLeaveList = () => {
-    setIsHoveringList(false);
-    setHoveredProject(null);
-  };
 
   const handleSelectProject = (project: Project) => {
     const originalIndex = projectsData.findIndex((p) => p.id === project.id);
@@ -84,20 +62,6 @@ export const WorkSection: React.FC = () => {
     window.addEventListener('keydown', handleKeyDown);
     return () => window.removeEventListener('keydown', handleKeyDown);
   }, [isViewerOpen]);
-
-  // Adjust preview position to prevent edge cutoffs
-  const previewWidth = 320;
-  const previewHeight = 220;
-  const screenWidth = typeof window !== 'undefined' ? window.innerWidth : 1200;
-  const screenHeight = typeof window !== 'undefined' ? window.innerHeight : 800;
-
-  const previewX = cursorPos.x + 24 + previewWidth > screenWidth
-    ? cursorPos.x - previewWidth - 20
-    : cursorPos.x + 24;
-
-  const previewY = cursorPos.y + previewHeight - 80 > screenHeight
-    ? cursorPos.y - previewHeight + 40
-    : cursorPos.y - 80;
 
   return (
     <section id="work" className="work-index-section">
@@ -142,12 +106,7 @@ export const WorkSection: React.FC = () => {
       </div>
 
       {/* Interactive Project Index Table / List */}
-      <div
-        className="project-index-list"
-        ref={listRef}
-        onMouseMove={handleMouseMove}
-        onMouseLeave={handleMouseLeaveList}
-      >
+      <div className="project-index-list">
         {filteredProjects.map((project) => {
           const isSelected = isViewerOpen && projectsData[selectedIndex]?.id === project.id;
           const isMobileExpanded = mobileExpandedId === project.id;
@@ -156,7 +115,6 @@ export const WorkSection: React.FC = () => {
             <div
               key={project.id}
               className={`project-index-row ${isSelected ? 'row-active' : ''}`}
-              onMouseEnter={() => handleMouseEnterRow(project)}
               onClick={() => handleSelectProject(project)}
               role="button"
               tabIndex={0}
@@ -236,38 +194,6 @@ export const WorkSection: React.FC = () => {
         })}
       </div>
 
-      {/* Desktop Floating Preview Portal */}
-      {isHoveringList && hoveredProject && (
-        <div
-          className="floating-preview-portal"
-          style={{
-            transform: `translate3d(${previewX}px, ${previewY}px, 0)`,
-          }}
-          aria-hidden="true"
-        >
-          <div className="floating-preview-card">
-            <div className="floating-card-image-wrap">
-              <img
-                src={hoveredProject.image}
-                alt=""
-                className="floating-card-img"
-                onError={(e) => {
-                  (e.target as HTMLImageElement).style.display = 'none';
-                }}
-              />
-              <div className="floating-card-scanline" />
-            </div>
-
-            <div className="floating-card-footer">
-              <div className="floating-card-info">
-                <span className="floating-card-num">{hoveredProject.number}</span>
-                <strong className="floating-card-title">{hoveredProject.title}</strong>
-              </div>
-              <span className="floating-card-tag">{hoveredProject.tag}</span>
-            </div>
-          </div>
-        </div>
-      )}
 
       {/* Architectural Project File Viewer Drawer */}
       {isViewerOpen && (
@@ -333,7 +259,6 @@ export const WorkSection: React.FC = () => {
                       (e.target as HTMLImageElement).style.display = 'none';
                     }}
                   />
-                  <div className="viewer-scanlines" aria-hidden="true" />
                 </div>
               </div>
 
