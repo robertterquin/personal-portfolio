@@ -36,7 +36,6 @@ export const Snapshot: React.FC = () => {
       <div className="connect-strip-inner">
         {/* Email with 1-click inline copy */}
         <div className="strip-email-block">
-          <span className="strip-label">DIRECT //</span>
           <button
             type="button"
             className="strip-email-trigger"

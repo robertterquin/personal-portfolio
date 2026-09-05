@@ -12,19 +12,13 @@ export const Footer: React.FC = () => {
           © {currentYear} {personalData.name}
         </p>
         <span className="footer-meta">
-          {personalData.location}
-        </span>
-      </div>
-
-      <div className="footer-center">
-        <span className="footer-tagline">
-          Engineered with precision &amp; modern web standards.
+          · {personalData.location}
         </span>
       </div>
 
       <div className="footer-right">
-        <a href="#top" className="back-to-top-btn" aria-label="Back to top of dossier">
-          <span>Top</span>
+        <a href="#top" className="back-to-top-btn" aria-label="Back to top">
+          <span>Back to top</span>
           <ArrowUp size={13} />
         </a>
       </div>

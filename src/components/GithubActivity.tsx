@@ -103,7 +103,7 @@ export const GithubActivity: React.FC = () => {
       {/* Section Header */}
       <div className="github-activity-header">
         <div className="activity-title-col">
-          <span className="section-label">03 — GITHUB ACTIVITY</span>
+          <span className="section-label">GitHub Activity</span>
           <h2 className="activity-heading">
             A record of
             <br />
@@ -112,7 +112,7 @@ export const GithubActivity: React.FC = () => {
         </div>
 
         <p className="activity-desc">
-          Live public contribution activity from GitHub. Hover or focus a square to inspect a day.
+          Public contribution activity recorded across GitHub repositories.
         </p>
       </div>
 

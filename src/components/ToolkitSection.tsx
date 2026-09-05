@@ -107,15 +107,15 @@ export const ToolkitSection: React.FC = () => {
         {/* Left Column: Architectural Capability Spec Sheet */}
         <div className="toolkit-col toolkit-tools-col">
           <div className="section-title-wrap">
-            <span className="section-label">Technical Specification</span>
-            <h2 className="section-title">Capabilities &amp; Stack</h2>
+            <span className="section-label">Technical Stack</span>
+            <h2 className="section-title">Capabilities &amp; Tools</h2>
           </div>
 
           <div className="capability-spec-ledger">
             {capabilityGroups.map((group) => (
               <div key={group.code} className="spec-group-row">
                 <div className="spec-group-header">
-                  <span className="spec-code">// {group.code}</span>
+                  <span className="spec-code">{group.code}</span>
                   <h3 className="spec-cat-title">{group.category}</h3>
                 </div>
                 <p className="spec-focus-desc">{group.focus}</p>
@@ -136,11 +136,11 @@ export const ToolkitSection: React.FC = () => {
           </div>
         </div>
 
-        {/* Right Column: Verified Credentials & Doctrine */}
+        {/* Right Column: Verified Credentials */}
         <div className="toolkit-col toolkit-cred-col">
           <div className="section-title-wrap">
-            <span className="section-label">Verified Record</span>
-            <h2 className="section-title">Credentials &amp; Proof</h2>
+            <span className="section-label">Credentials</span>
+            <h2 className="section-title">Certifications &amp; Honors</h2>
           </div>
 
           <div className="chronological-ledger">
@@ -156,7 +156,7 @@ export const ToolkitSection: React.FC = () => {
             ].map((group) => (
               <div key={group.year} className="ledger-year-section">
                 <div className="ledger-year-header">
-                  <span className="ledger-year-tag">// {group.year}</span>
+                  <span className="ledger-year-tag">{group.year}</span>
                   <span className="ledger-year-rule" aria-hidden="true"></span>
                 </div>
 
@@ -186,14 +186,6 @@ export const ToolkitSection: React.FC = () => {
               </div>
             ))}
           </div>
-
-          {/* Architectural Doctrine (No Card) */}
-          <div className="architectural-doctrine">
-            <span className="doctrine-tag">ENGINEERING DOCTRINE // 2026</span>
-            <p className="doctrine-statement">
-              Building resilient mobile ecosystems with offline-first synchronization, clean architecture, and defensive cybersecurity standards.
-            </p>
-          </div>
         </div>
       </div>
 
@@ -215,7 +207,7 @@ export const ToolkitSection: React.FC = () => {
               {/* Modal Header */}
               <div className="cert-modal-header">
                 <div className="cert-modal-header-left">
-                  <span className="cert-modal-code">// VERIFIED CREDENTIAL // {selectedCert.year}</span>
+                  <span className="cert-modal-code">Credential · {selectedCert.year}</span>
                   <span className={`ledger-type-tag ${selectedCert.type === 'Award' ? 'type-award' : 'type-cert'}`}>
                     {selectedCert.type === 'Award' ? 'HONOR' : 'CERT'}
                   </span>

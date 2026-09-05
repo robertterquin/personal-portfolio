@@ -26,8 +26,8 @@ export const Masthead: React.FC = () => {
               <strong className="meta-v">{personalData.location}</strong>
             </div>
             <div className="hero-meta-item">
-              <span className="meta-k">Core Focus</span>
-              <strong className="meta-v">{personalData.focus}</strong>
+              <span className="meta-k">Education</span>
+              <strong className="meta-v">BS Information Technology</strong>
             </div>
           </div>
         </div>

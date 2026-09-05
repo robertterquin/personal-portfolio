@@ -168,10 +168,9 @@ export const WorkSection: React.FC = () => {
               }}
               aria-label={`Inspect ${project.title}`}
             >
-              {/* Monospace Number & Category Tag */}
+              {/* Monospace Number */}
               <div className="row-col row-col-idx">
                 <span className="row-index-num">{project.number}</span>
-                <span className="row-cat-tag">{project.category === 'mobile' ? 'APP' : 'WEB'}</span>
               </div>
 
               {/* Main Title & One-line Summary */}
@@ -275,7 +274,7 @@ export const WorkSection: React.FC = () => {
         <div className="minimal-viewer" ref={viewerRef} aria-live="polite">
           <div className="viewer-top-bar">
             <div className="viewer-title-group">
-              <span className="viewer-index-tag">Project // {activeProject.number}</span>
+              <span className="viewer-index-tag">Project {activeProject.number}</span>
               <span className="viewer-sep">|</span>
               <strong className="viewer-name">{activeProject.title}</strong>
             </div>
@@ -347,7 +346,7 @@ export const WorkSection: React.FC = () => {
                 </div>
 
                 <div className="viewer-highlights-list">
-                  <span className="highlights-label">Key Engineering Highlights</span>
+                  <span className="highlights-label">Key Highlights</span>
                   <ul>
                     {activeProject.highlights.map((item, i) => (
                       <li key={i}>
