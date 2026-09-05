@@ -64,6 +64,12 @@ export const Masthead: React.FC<MastheadProps> = ({ onOpenContact }) => {
         {/* Right Column (40%): Clean Framed Portrait */}
         <div className="hero-portrait-stage">
           <div className="portrait-frame">
+            {/* Architectural registration corner marks */}
+            <span className="portrait-corner portrait-corner-tl" aria-hidden="true">+</span>
+            <span className="portrait-corner portrait-corner-tr" aria-hidden="true">+</span>
+            <span className="portrait-corner portrait-corner-bl" aria-hidden="true">+</span>
+            <span className="portrait-corner portrait-corner-br" aria-hidden="true">+</span>
+
             <img
               src={heroImg}
               alt="Robert Terquin"

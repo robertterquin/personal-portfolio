@@ -361,13 +361,13 @@ html.theme-day .status-indicator {
   display: inline-flex;
   align-items: center;
   gap: 8px;
-  padding: 11px 22px;
-  border-radius: var(--radius-sm);
+  padding: 10px 20px;
+  border-radius: 2px;
   font-family: var(--font-mono);
   font-size: 0.78rem;
   font-weight: 600;
-  letter-spacing: 0.04em;
-  transition: all 0.15s ease;
+  letter-spacing: 0.05em;
+  transition: all 0.18s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
 .hero-btn-primary {
@@ -380,6 +380,7 @@ html.theme-day .status-indicator {
   background: var(--accent);
   color: #0e0d0c;
   border-color: var(--accent);
+  transform: translateY(-1px);
 }
 
 html.theme-day .hero-btn-primary:hover {
@@ -389,14 +390,16 @@ html.theme-day .hero-btn-primary:hover {
 }
 
 .hero-btn-secondary {
-  background: var(--card-bg);
-  border: 1px solid var(--card-border);
+  background: transparent;
+  border: 1px solid var(--leather-border);
   color: var(--ink);
 }
 
 .hero-btn-secondary:hover {
   border-color: var(--accent);
-  background: var(--card-hover);
+  background: var(--accent-dim);
+  color: var(--accent);
+  transform: translateY(-1px);
 }
 
 /* Portrait Frame */
@@ -412,10 +415,28 @@ html.theme-day .hero-btn-primary:hover {
   position: relative;
   background: var(--bg-subtle);
   border: 1px solid var(--leather-border);
-  border-radius: var(--radius-sm);
+  border-radius: 2px;
   overflow: hidden;
   box-shadow: 0 16px 36px rgba(0, 0, 0, 0.4);
 }
+
+/* Swiss Corner Registration Marks */
+.portrait-corner {
+  position: absolute;
+  font-family: var(--font-mono);
+  font-size: 0.78rem;
+  font-weight: 700;
+  color: var(--accent);
+  line-height: 1;
+  z-index: 4;
+  pointer-events: none;
+  opacity: 0.85;
+}
+
+.portrait-corner-tl { top: 8px; left: 8px; }
+.portrait-corner-tr { top: 8px; right: 8px; }
+.portrait-corner-bl { bottom: 42px; left: 8px; }
+.portrait-corner-br { bottom: 42px; right: 8px; }
 
 html.theme-day .portrait-frame {
   box-shadow: 0 12px 28px rgba(158, 107, 56, 0.12);
@@ -480,10 +501,10 @@ html.theme-day .portrait-frame {
 }
 
 /* ==========================================================================
-   3. HORIZONTAL STUDIO CONNECT STRIP
+   3. HORIZONTAL STUDIO CONNECT STRIP (EDITORIAL DISPATCH)
    ========================================================================== */
 .studio-connect-strip {
-  padding: 20px 0;
+  padding: 16px 0;
   border-bottom: 1px solid var(--line);
 }
 
@@ -495,84 +516,97 @@ html.theme-day .portrait-frame {
   flex-wrap: wrap;
 }
 
-.strip-copy-btn {
+.strip-email-block {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.strip-label {
+  font-family: var(--font-mono);
+  font-size: 0.68rem;
+  color: var(--accent);
+  font-weight: 700;
+  letter-spacing: 0.08em;
+}
+
+.strip-email-trigger {
   display: inline-flex;
   align-items: center;
   gap: 8px;
-  background: var(--card-bg);
-  border: 1px solid var(--card-border);
-  padding: 7px 14px;
-  border-radius: var(--radius-sm);
+  background: transparent;
+  border: none;
+  padding: 4px 0;
   color: var(--ink);
   font-family: var(--font-mono);
-  font-size: 0.75rem;
-  transition: all 0.15s ease;
+  font-size: 0.8rem;
+  cursor: pointer;
+  transition: color 0.15s ease;
 }
 
-.strip-copy-btn:hover {
-  border-color: var(--accent);
-  background: var(--card-hover);
-}
-
-.strip-copy-btn.copied {
-  border-color: #10b981;
-  color: #10b981;
+.strip-email-trigger:hover .strip-email-text {
+  color: var(--accent);
 }
 
 .strip-icon {
   color: var(--ink-dim);
 }
 
-.strip-action-badge {
+.strip-email-text {
+  transition: color 0.15s ease;
+  font-weight: 500;
+}
+
+.strip-copy-cue {
   display: inline-flex;
   align-items: center;
   gap: 4px;
-  font-size: 0.65rem;
+  font-size: 0.68rem;
   color: var(--ink-dim);
-  border-left: 1px solid var(--line);
-  padding-left: 8px;
+  border: 1px solid var(--line);
+  padding: 2px 7px;
+  border-radius: 2px;
+  margin-left: 6px;
+  transition: all 0.15s ease;
 }
 
-.strip-status-block {
-  display: inline-flex;
-  align-items: center;
-  gap: 8px;
-  font-family: var(--font-mono);
-  font-size: 0.74rem;
-  color: var(--ink-muted);
+.strip-email-trigger:hover .strip-copy-cue {
+  border-color: var(--accent);
+  color: var(--accent);
+  background: var(--accent-dim);
 }
 
-.status-live-dot {
-  width: 6px;
-  height: 6px;
-  border-radius: 50%;
-  background: #10b981;
-  box-shadow: 0 0 6px rgba(16, 185, 129, 0.4);
+.strip-copy-cue.copied {
+  border-color: #10b981;
+  color: #10b981;
+  background: rgba(16, 185, 129, 0.1);
 }
 
 .strip-links-block {
   display: flex;
   align-items: center;
-  gap: 10px;
+  gap: 12px;
 }
 
-.strip-link-btn {
+.strip-nav-link {
   display: inline-flex;
   align-items: center;
-  gap: 6px;
-  padding: 6px 12px;
-  border: 1px solid var(--line);
-  border-radius: var(--radius-sm);
+  gap: 5px;
   font-family: var(--font-mono);
-  font-size: 0.72rem;
-  color: var(--ink);
-  transition: all 0.15s ease;
+  font-size: 0.75rem;
+  color: var(--ink-muted);
+  transition: color 0.15s ease;
+  text-decoration: none;
 }
 
-.strip-link-btn:hover {
-  border-color: var(--accent);
-  background: var(--card-hover);
+.strip-nav-link:hover {
   color: var(--accent);
+}
+
+.strip-divider {
+  color: var(--line-strong);
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
 }
 
 .arrow-muted {
@@ -2210,14 +2244,15 @@ html.theme-day .terminal-container {
     width: 100%;
   }
 
-  .strip-copy-btn {
+  .strip-email-block {
     width: 100%;
-    justify-content: center;
+    flex-wrap: wrap;
   }
 
   .strip-links-block {
     width: 100%;
     flex-wrap: wrap;
+    gap: 10px;
   }
 
   .work-filter-bar {

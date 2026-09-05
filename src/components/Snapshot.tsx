@@ -2,14 +2,14 @@ import React, { useState } from 'react';
 import { Mail, Copy, Check, FileText, ArrowUpRight } from 'lucide-react';
 import { personalData } from '../data/portfolioData';
 
-const GithubIcon: React.FC<{ size?: number; className?: string }> = ({ size = 14, className }) => (
+const GithubIcon: React.FC<{ size?: number; className?: string }> = ({ size = 13, className }) => (
   <svg width={size} height={size} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className={className}>
     <path d="M15 22v-4a4.8 4.8 0 0 0-1-3.5c3 0 6-2 6-5.5.08-1.25-.27-2.48-1-3.5.28-1.15.28-2.35 0-3.5 0 0-1 0-3 1.5-2.64-.5-5.36-.5-8 0C6 2 5 2 5 2c-.3 1.15-.3 2.35 0 3.5A5.403 5.403 0 0 0 4 9c0 3.5 3 5.5 6 5.5-.39.49-.68 1.05-.85 1.65-.17.6-.22 1.23-.15 1.85v4" />
     <path d="M9 18c-4.51 2-5-2-7-2" />
   </svg>
 );
 
-const LinkedinIcon: React.FC<{ size?: number; className?: string }> = ({ size = 14, className }) => (
+const LinkedinIcon: React.FC<{ size?: number; className?: string }> = ({ size = 13, className }) => (
   <svg width={size} height={size} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className={className}>
     <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z" />
     <rect width="4" height="12" x="2" y="9" />
@@ -34,62 +34,61 @@ export const Snapshot: React.FC = () => {
   return (
     <section className="studio-connect-strip">
       <div className="connect-strip-inner">
-        {/* Email with 1-click copy */}
-        <div className="strip-item strip-email-block">
+        {/* Email with 1-click inline copy */}
+        <div className="strip-email-block">
+          <span className="strip-label">DIRECT //</span>
           <button
             type="button"
-            className={`strip-copy-btn ${copied ? 'copied' : ''}`}
+            className="strip-email-trigger"
             onClick={handleCopyEmail}
             aria-label="Copy email address"
           >
-            <Mail size={14} className="strip-icon" />
+            <Mail size={13} className="strip-icon" />
             <span className="strip-email-text">{personalData.email}</span>
-            <span className="strip-action-badge">
-              {copied ? <Check size={12} /> : <Copy size={12} />}
+            <span className={`strip-copy-cue ${copied ? 'copied' : ''}`}>
+              {copied ? <Check size={11} /> : <Copy size={11} />}
               <span>{copied ? 'Copied' : 'Copy'}</span>
             </span>
           </button>
         </div>
 
-        {/* Status pill */}
-        <div className="strip-item strip-status-block">
-          <span className="status-live-dot"></span>
-          <span className="status-text">{personalData.availability}</span>
-        </div>
-
-        {/* Links */}
-        <div className="strip-item strip-links-block">
+        {/* Links: Clean Typographic Line */}
+        <div className="strip-links-block">
           <a
             href={personalData.github}
             target="_blank"
             rel="noreferrer"
-            className="strip-link-btn"
+            className="strip-nav-link"
           >
-            <GithubIcon size={14} />
+            <GithubIcon size={13} />
             <span>GitHub</span>
-            <ArrowUpRight size={12} className="arrow-muted" />
+            <ArrowUpRight size={11} className="arrow-muted" />
           </a>
+
+          <span className="strip-divider" aria-hidden="true">·</span>
 
           <a
             href={personalData.linkedin}
             target="_blank"
             rel="noreferrer"
-            className="strip-link-btn"
+            className="strip-nav-link"
           >
-            <LinkedinIcon size={14} />
+            <LinkedinIcon size={13} />
             <span>LinkedIn</span>
-            <ArrowUpRight size={12} className="arrow-muted" />
+            <ArrowUpRight size={11} className="arrow-muted" />
           </a>
+
+          <span className="strip-divider" aria-hidden="true">·</span>
 
           <a
             href={personalData.resumeUrl}
             target="_blank"
             rel="noreferrer"
-            className="strip-link-btn"
+            className="strip-nav-link"
           >
-            <FileText size={14} />
+            <FileText size={13} />
             <span>Resume</span>
-            <ArrowUpRight size={12} className="arrow-muted" />
+            <ArrowUpRight size={11} className="arrow-muted" />
           </a>
         </div>
       </div>
