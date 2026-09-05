@@ -1,21 +1,14 @@
 import React, { useState, useRef, useEffect } from 'react';
 import { Icon } from '@iconify/react';
+import { motion, AnimatePresence } from 'motion/react';
 import { projectsData, type Project } from '../data/portfolioData';
 
-type FilterCategory = 'all' | 'mobile' | 'web';
-
 export const WorkSection: React.FC = () => {
-  const [activeFilter, setActiveFilter] = useState<FilterCategory>('all');
   const [selectedIndex, setSelectedIndex] = useState<number>(0);
   const [isViewerOpen, setIsViewerOpen] = useState<boolean>(false);
   const [mobileExpandedId, setMobileExpandedId] = useState<string | null>(null);
 
   const viewerRef = useRef<HTMLDivElement>(null);
-
-  const filteredProjects = projectsData.filter((p) => {
-    if (activeFilter === 'all') return true;
-    return p.category === activeFilter;
-  });
 
   const activeProject: Project = projectsData[selectedIndex] || projectsData[0];
 
@@ -58,49 +51,17 @@ export const WorkSection: React.FC = () => {
 
   return (
     <section id="work" className="work-index-section">
-      {/* Section Header & Architectural Controls */}
+      {/* Section Header */}
       <div className="work-index-header">
         <div className="work-index-title-group">
           <span className="section-label">Selected Work</span>
           <h2 className="section-title">Systems &amp; Applications</h2>
         </div>
-
-        {/* Filter Pills */}
-        <div className="work-filter-bar">
-          <button
-            type="button"
-            className={`filter-pill ${activeFilter === 'all' ? 'active' : ''}`}
-            onClick={() => setActiveFilter('all')}
-          >
-            <span>All</span>
-            <span className="filter-count">({projectsData.length})</span>
-          </button>
-          <button
-            type="button"
-            className={`filter-pill ${activeFilter === 'mobile' ? 'active' : ''}`}
-            onClick={() => setActiveFilter('mobile')}
-          >
-            <span>Mobile</span>
-            <span className="filter-count">
-              ({projectsData.filter((p) => p.category === 'mobile').length})
-            </span>
-          </button>
-          <button
-            type="button"
-            className={`filter-pill ${activeFilter === 'web' ? 'active' : ''}`}
-            onClick={() => setActiveFilter('web')}
-          >
-            <span>Web &amp; AI</span>
-            <span className="filter-count">
-              ({projectsData.filter((p) => p.category === 'web').length})
-            </span>
-          </button>
-        </div>
       </div>
 
       {/* Interactive Project Index Table / List */}
       <div className="project-index-list">
-        {filteredProjects.map((project) => {
+        {projectsData.map((project) => {
           const isSelected = isViewerOpen && projectsData[selectedIndex]?.id === project.id;
           const isMobileExpanded = mobileExpandedId === project.id;
 
@@ -157,23 +118,30 @@ export const WorkSection: React.FC = () => {
               </div>
 
               {/* Mobile Inline Expanded Spec (Visible only on mobile when toggled) */}
-              {isMobileExpanded && (
-                <div
-                  className="row-mobile-expanded"
-                  onClick={(e) => e.stopPropagation()}
-                >
-                  <div className="mobile-expanded-img-wrap">
-                    <img
-                      src={project.image}
-                      alt={`${project.title} preview`}
-                      className="mobile-expanded-img"
-                    />
-                  </div>
-                  <div className="mobile-expanded-body">
-                    <p className="mobile-expanded-detail">{project.detail}</p>
-                  </div>
-                </div>
-              )}
+              <AnimatePresence>
+                {isMobileExpanded && (
+                  <motion.div
+                    className="row-mobile-expanded"
+                    onClick={(e) => e.stopPropagation()}
+                    initial={{ height: 0, opacity: 0 }}
+                    animate={{ height: 'auto', opacity: 1 }}
+                    exit={{ height: 0, opacity: 0 }}
+                    transition={{ duration: 0.25, ease: [0.16, 1, 0.3, 1] }}
+                    style={{ overflow: 'hidden' }}
+                  >
+                    <div className="mobile-expanded-img-wrap">
+                      <img
+                        src={project.image}
+                        alt={`${project.title} preview`}
+                        className="mobile-expanded-img"
+                      />
+                    </div>
+                    <div className="mobile-expanded-body">
+                      <p className="mobile-expanded-detail">{project.detail}</p>
+                    </div>
+                  </motion.div>
+                )}
+              </AnimatePresence>
             </div>
           );
         })}
@@ -181,117 +149,128 @@ export const WorkSection: React.FC = () => {
 
 
       {/* Architectural Project File Viewer Drawer */}
-      {isViewerOpen && (
-        <div className="minimal-viewer" ref={viewerRef} aria-live="polite">
-          <div className="viewer-top-bar">
-            <div className="viewer-title-group">
-              <span className="viewer-index-tag">Project {activeProject.number}</span>
-              <span className="viewer-sep">|</span>
-              <strong className="viewer-name">{activeProject.title}</strong>
-            </div>
-
-            <div className="viewer-controls-group">
-              <button
-                type="button"
-                className="viewer-close"
-                onClick={() => setIsViewerOpen(false)}
-                aria-label="Close viewer"
-              >
-                <span>Close</span>
-                <Icon icon="lucide:x" width={14} height={14} />
-              </button>
-            </div>
-          </div>
-
-          <div className="viewer-body-stage">
-            <button
-              type="button"
-              className="stage-nav-arrow stage-nav-prev"
-              onClick={handlePrevProject}
-              aria-label="Previous project"
-            >
-              <Icon icon="lucide:chevron-left" width={18} height={18} />
-            </button>
-
-            <div className="viewer-grid">
-              {/* Left: Showcase Image Preview */}
-              <div className="viewer-image-col">
-                <div className="viewer-img-frame">
-                  <img
-                    src={activeProject.image}
-                    alt={`${activeProject.title} preview`}
-                    className="viewer-img"
-                    onError={(e) => {
-                      (e.target as HTMLImageElement).style.display = 'none';
-                    }}
-                  />
-                </div>
+      <AnimatePresence>
+        {isViewerOpen && (
+          <motion.div
+            className="minimal-viewer"
+            ref={viewerRef}
+            aria-live="polite"
+            initial={{ opacity: 0, height: 0 }}
+            animate={{ opacity: 1, height: 'auto' }}
+            exit={{ opacity: 0, height: 0 }}
+            transition={{ duration: 0.3, ease: [0.16, 1, 0.3, 1] }}
+            style={{ overflow: 'hidden' }}
+          >
+            <div className="viewer-top-bar">
+              <div className="viewer-title-group">
+                <span className="viewer-index-tag">Project {activeProject.number}</span>
+                <span className="viewer-sep">|</span>
+                <strong className="viewer-name">{activeProject.title}</strong>
               </div>
 
-              {/* Right: Project Spec Copy */}
-              <div className="viewer-copy-col">
-                <div className="viewer-copy-header">
-                  <span className="viewer-cat-label">{activeProject.tag}</span>
-                  <h3 className="viewer-main-title">{activeProject.title}</h3>
-                  <p className="viewer-detail-text">{activeProject.detail}</p>
+              <div className="viewer-controls-group">
+                <button
+                  type="button"
+                  className="viewer-close"
+                  onClick={() => setIsViewerOpen(false)}
+                  aria-label="Close viewer"
+                >
+                  <span>Close</span>
+                  <Icon icon="lucide:x" width={14} height={14} />
+                </button>
+              </div>
+            </div>
+
+            <div className="viewer-body-stage">
+              <button
+                type="button"
+                className="stage-nav-arrow stage-nav-prev"
+                onClick={handlePrevProject}
+                aria-label="Previous project"
+              >
+                <Icon icon="lucide:chevron-left" width={18} height={18} />
+              </button>
+
+              <div className="viewer-grid">
+                {/* Left: Showcase Image Preview */}
+                <div className="viewer-image-col">
+                  <div className="viewer-img-frame">
+                    <img
+                      src={activeProject.image}
+                      alt={`${activeProject.title} preview`}
+                      className="viewer-img"
+                      onError={(e) => {
+                        (e.target as HTMLImageElement).style.display = 'none';
+                      }}
+                    />
+                  </div>
                 </div>
 
-                <div className="viewer-actions-row">
-                  <span className="viewer-stack-label">{activeProject.stack}</span>
+                {/* Right: Project Spec Copy */}
+                <div className="viewer-copy-col">
+                  <div className="viewer-copy-header">
+                    <span className="viewer-cat-label">{activeProject.tag}</span>
+                    <h3 className="viewer-main-title">{activeProject.title}</h3>
+                    <p className="viewer-detail-text">{activeProject.detail}</p>
+                  </div>
 
-                  <div className="viewer-links">
-                    {activeProject.demoUrl &&
-                      activeProject.demoUrl.startsWith('http') &&
-                      !activeProject.demoUrl.includes('github') && (
-                        <a
-                          href={activeProject.demoUrl}
-                          target="_blank"
-                          rel="noreferrer"
-                          className="viewer-btn viewer-btn-primary"
-                        >
-                          <Icon icon="lucide:globe" width={13} height={13} />
-                          <span>Live Site</span>
-                          <Icon icon="lucide:arrow-up-right" width={12} height={12} />
-                        </a>
-                      )}
-                    <a
-                      href={activeProject.repoUrl}
-                      target="_blank"
-                      rel="noreferrer"
-                      className="viewer-btn viewer-btn-secondary"
-                    >
-                      <Icon icon="lucide:github" width={13} height={13} />
-                      <span>Source</span>
-                      <Icon icon="lucide:arrow-up-right" width={12} height={12} />
-                    </a>
+                  <div className="viewer-actions-row">
+                    <span className="viewer-stack-label">{activeProject.stack}</span>
+
+                    <div className="viewer-links">
+                      {activeProject.demoUrl &&
+                        activeProject.demoUrl.startsWith('http') &&
+                        !activeProject.demoUrl.includes('github') && (
+                          <a
+                            href={activeProject.demoUrl}
+                            target="_blank"
+                            rel="noreferrer"
+                            className="viewer-btn viewer-btn-primary"
+                          >
+                            <Icon icon="lucide:globe" width={13} height={13} />
+                            <span>Live Site</span>
+                            <Icon icon="lucide:arrow-up-right" width={12} height={12} />
+                          </a>
+                        )}
+                      <a
+                        href={activeProject.repoUrl}
+                        target="_blank"
+                        rel="noreferrer"
+                        className="viewer-btn viewer-btn-secondary"
+                      >
+                        <Icon icon="lucide:github" width={13} height={13} />
+                        <span>Source</span>
+                        <Icon icon="lucide:arrow-up-right" width={12} height={12} />
+                      </a>
+                    </div>
                   </div>
                 </div>
               </div>
-            </div>
 
-            <button
-              type="button"
-              className="stage-nav-arrow stage-nav-next"
-              onClick={handleNextProject}
-              aria-label="Next project"
-            >
-              <Icon icon="lucide:chevron-right" width={18} height={18} />
-            </button>
-          </div>
-
-          <div className="viewer-progress-dots">
-            {projectsData.map((project, idx) => (
               <button
                 type="button"
-                key={project.id}
-                className={`progress-dot ${idx === selectedIndex ? 'active' : ''}`}
-                onClick={() => setSelectedIndex(idx)}
-                aria-label={`Jump to ${project.title}`}
-              />
-            ))}
-          </div>
-        </div>
-      )}
+                className="stage-nav-arrow stage-nav-next"
+                onClick={handleNextProject}
+                aria-label="Next project"
+              >
+                <Icon icon="lucide:chevron-right" width={18} height={18} />
+              </button>
+            </div>
+
+            <div className="viewer-progress-dots">
+              {projectsData.map((project, idx) => (
+                <button
+                  type="button"
+                  key={project.id}
+                  className={`progress-dot ${idx === selectedIndex ? 'active' : ''}`}
+                  onClick={() => setSelectedIndex(idx)}
+                  aria-label={`Jump to ${project.title}`}
+                />
+              ))}
+            </div>
+          </motion.div>
+        )}
+      </AnimatePresence>
     </section>
   );
 };

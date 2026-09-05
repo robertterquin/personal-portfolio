@@ -1605,20 +1605,10 @@ html.theme-day .ledger-row:hover {
   padding: 24px;
   box-sizing: border-box;
   overflow: hidden;
-  animation: certFadeIn 0.2s cubic-bezier(0.16, 1, 0.3, 1) forwards;
 }
 
 html.theme-day .cert-modal-overlay {
   background: rgba(26, 22, 18, 0.82);
-}
-
-@keyframes certFadeIn {
-  from {
-    opacity: 0;
-  }
-  to {
-    opacity: 1;
-  }
 }
 
 .cert-modal-container {
@@ -1635,23 +1625,11 @@ html.theme-day .cert-modal-overlay {
   flex-direction: column;
   overflow: hidden;
   margin: auto;
-  animation: certScaleUp 0.22s cubic-bezier(0.16, 1, 0.3, 1) forwards;
 }
 
 html.theme-day .cert-modal-container {
   border-color: var(--line-strong);
   box-shadow: 0 32px 80px rgba(40, 30, 20, 0.25), 0 0 0 1px rgba(158, 107, 56, 0.2);
-}
-
-@keyframes certScaleUp {
-  from {
-    opacity: 0;
-    transform: scale(0.97) translateY(8px);
-  }
-  to {
-    opacity: 1;
-    transform: scale(1) translateY(0);
-  }
 }
 
 

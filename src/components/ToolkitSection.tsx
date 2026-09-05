@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { createPortal } from 'react-dom';
 import { Icon } from '@iconify/react';
+import { motion, AnimatePresence } from 'motion/react';
 import { credentialsData, type CredentialItem } from '../data/portfolioData';
 
 interface CapabilityGroup {
@@ -198,96 +199,107 @@ export const ToolkitSection: React.FC = () => {
       </div>
 
       {/* Certificate Inspection Modal Lightbox */}
-      {selectedCert &&
-        typeof document !== 'undefined' &&
+      {typeof document !== 'undefined' &&
         createPortal(
-          <div
-            className="cert-modal-overlay"
-            onClick={() => setSelectedCert(null)}
-            role="dialog"
-            aria-modal="true"
-            aria-labelledby="cert-modal-title"
-          >
-            <div
-              className="cert-modal-container"
-              onClick={(e) => e.stopPropagation()}
-            >
-              {/* Modal Header */}
-              <div className="cert-modal-header">
-                <div className="cert-modal-header-left">
-                  <span className="cert-modal-index">{selectedCert.index}</span>
-                  <span className="cert-modal-sep">|</span>
-                  <h3 id="cert-modal-title" className="cert-modal-title">
-                    {selectedCert.title}
-                  </h3>
-                </div>
-
-                <div className="cert-modal-header-right">
-                  <button
-                    type="button"
-                    className="cert-modal-close-btn"
-                    onClick={() => setSelectedCert(null)}
-                    aria-label="Close modal (ESC)"
-                    title="Close (Esc)"
-                  >
-                    <span>Close</span>
-                    <Icon icon="lucide:x" width={14} height={14} />
-                  </button>
-                </div>
-              </div>
-
-              {/* Modal Stage / Image Preview */}
-              <div className="cert-modal-stage">
-                <button
-                  type="button"
-                  className="cert-nav-arrow cert-nav-prev"
-                  onClick={handlePrevCert}
-                  aria-label="Previous certificate"
-                  title="Previous certificate (←)"
+          <AnimatePresence>
+            {selectedCert && (
+              <motion.div
+                className="cert-modal-overlay"
+                onClick={() => setSelectedCert(null)}
+                role="dialog"
+                aria-modal="true"
+                aria-labelledby="cert-modal-title"
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                exit={{ opacity: 0 }}
+                transition={{ duration: 0.2 }}
+              >
+                <motion.div
+                  className="cert-modal-container"
+                  onClick={(e) => e.stopPropagation()}
+                  initial={{ opacity: 0, scale: 0.97, y: 8 }}
+                  animate={{ opacity: 1, scale: 1, y: 0 }}
+                  exit={{ opacity: 0, scale: 0.97, y: 8 }}
+                  transition={{ duration: 0.22, ease: [0.16, 1, 0.3, 1] }}
                 >
-                  <Icon icon="lucide:chevron-left" width={20} height={20} />
-                </button>
+                  {/* Modal Header */}
+                  <div className="cert-modal-header">
+                    <div className="cert-modal-header-left">
+                      <span className="cert-modal-index">{selectedCert.index}</span>
+                      <span className="cert-modal-sep">|</span>
+                      <h3 id="cert-modal-title" className="cert-modal-title">
+                        {selectedCert.title}
+                      </h3>
+                    </div>
 
-                <div className="cert-modal-image-wrapper">
-                  <img
-                    src={selectedCert.image}
-                    alt={`${selectedCert.title} - ${selectedCert.institution}`}
-                    className="cert-modal-image"
-                  />
-                </div>
+                    <div className="cert-modal-header-right">
+                      <button
+                        type="button"
+                        className="cert-modal-close-btn"
+                        onClick={() => setSelectedCert(null)}
+                        aria-label="Close modal (ESC)"
+                        title="Close (Esc)"
+                      >
+                        <span>Close</span>
+                        <Icon icon="lucide:x" width={14} height={14} />
+                      </button>
+                    </div>
+                  </div>
 
-                <button
-                  type="button"
-                  className="cert-nav-arrow cert-nav-next"
-                  onClick={handleNextCert}
-                  aria-label="Next certificate"
-                  title="Next certificate (→)"
-                >
-                  <Icon icon="lucide:chevron-right" width={20} height={20} />
-                </button>
-              </div>
-
-              {/* Modal Footer */}
-              <div className="cert-modal-footer">
-                <span className="cert-modal-institution">
-                  {selectedCert.institution} · {selectedCert.year}
-                </span>
-
-                <div className="cert-modal-nav-dots" aria-label="Certificate navigation">
-                  {credentialsData.map((c) => (
+                  {/* Modal Stage / Image Preview */}
+                  <div className="cert-modal-stage">
                     <button
-                      key={c.index}
                       type="button"
-                      className={`cert-dot-btn ${c.index === selectedCert.index ? 'active' : ''}`}
-                      onClick={() => setSelectedCert(c)}
-                      aria-label={`Switch to ${c.title}`}
-                      title={`${c.title} (${c.year})`}
-                    />
-                  ))}
-                </div>
-              </div>
-            </div>
-          </div>,
+                      className="cert-nav-arrow cert-nav-prev"
+                      onClick={handlePrevCert}
+                      aria-label="Previous certificate"
+                      title="Previous certificate (←)"
+                    >
+                      <Icon icon="lucide:chevron-left" width={20} height={20} />
+                    </button>
+
+                    <div className="cert-modal-image-wrapper">
+                      <img
+                        src={selectedCert.image}
+                        alt={`${selectedCert.title} - ${selectedCert.institution}`}
+                        className="cert-modal-image"
+                      />
+                    </div>
+
+                    <button
+                      type="button"
+                      className="cert-nav-arrow cert-nav-next"
+                      onClick={handleNextCert}
+                      aria-label="Next certificate"
+                      title="Next certificate (→)"
+                    >
+                      <Icon icon="lucide:chevron-right" width={20} height={20} />
+                    </button>
+                  </div>
+
+                  {/* Modal Footer */}
+                  <div className="cert-modal-footer">
+                    <span className="cert-modal-institution">
+                      {selectedCert.institution} · {selectedCert.year}
+                    </span>
+
+                    <div className="cert-modal-nav-dots" aria-label="Certificate navigation">
+                      {credentialsData.map((c) => (
+                        <button
+                          key={c.index}
+                          type="button"
+                          className={`cert-dot-btn ${c.index === selectedCert.index ? 'active' : ''}`}
+                          onClick={() => setSelectedCert(c)}
+                          aria-label={`Switch to ${c.title}`}
+                          title={`${c.title} (${c.year})`}
+                        />
+                      ))}
+                    </div>
+                  </div>
+                </motion.div>
+              </motion.div>
+            )}
+          </AnimatePresence>,
           document.body
         )}
     </section>
