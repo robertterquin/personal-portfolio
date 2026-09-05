@@ -11,7 +11,7 @@
     "sync:github": "node scripts/sync-github.mjs"
   },
   "dependencies": {
-    "lucide-react": "^1.41.0",
+    "@iconify/react": "^6.0.2",
     "react": "^19.2.7",
     "react-dom": "^19.2.7",
     "react-github-calendar": "^5.0.9"

@@ -590,7 +590,7 @@ html.theme-day .portrait-frame {
    3. HORIZONTAL STUDIO CONNECT STRIP (EDITORIAL DISPATCH)
    ========================================================================== */
 .studio-connect-strip {
-  padding: 30px 0;
+  padding: 32px 0;
   border-bottom: 1px solid var(--line);
 }
 
@@ -610,7 +610,7 @@ html.theme-day .portrait-frame {
 
 .strip-label {
   font-family: var(--font-mono);
-  font-size: 0.68rem;
+  font-size: 0.75rem;
   color: var(--accent);
   font-weight: 700;
   letter-spacing: 0.08em;
@@ -619,13 +619,13 @@ html.theme-day .portrait-frame {
 .strip-email-trigger {
   display: inline-flex;
   align-items: center;
-  gap: 8px;
+  gap: 10px;
   background: transparent;
   border: none;
   padding: 6px 0;
   color: var(--ink);
   font-family: var(--font-mono);
-  font-size: 0.82rem;
+  font-size: 0.96rem;
   cursor: pointer;
   transition: color 0.15s ease;
 }
@@ -636,23 +636,30 @@ html.theme-day .portrait-frame {
 
 .strip-icon {
   color: var(--ink-dim);
+  transition: color 0.15s ease;
+}
+
+.strip-email-trigger:hover .strip-icon {
+  color: var(--accent);
 }
 
 .strip-email-text {
   transition: color 0.15s ease;
-  font-weight: 500;
+  font-weight: 600;
+  letter-spacing: -0.01em;
 }
 
 .strip-copy-cue {
   display: inline-flex;
   align-items: center;
-  gap: 4px;
-  font-size: 0.68rem;
+  gap: 5px;
+  font-size: 0.75rem;
   color: var(--ink-dim);
-  border: 1px solid var(--line);
-  padding: 3px 8px;
-  border-radius: 2px;
-  margin-left: 8px;
+  border: 1px solid var(--line-strong);
+  padding: 4px 10px;
+  border-radius: 4px;
+  margin-left: 10px;
+  font-weight: 500;
   transition: all 0.15s ease;
 }
 
@@ -671,17 +678,18 @@ html.theme-day .portrait-frame {
 .strip-links-block {
   display: flex;
   align-items: center;
-  gap: 16px;
+  gap: 20px;
 }
 
 .strip-nav-link {
   display: inline-flex;
   align-items: center;
-  gap: 5px;
+  gap: 7px;
   font-family: var(--font-mono);
-  font-size: 0.75rem;
+  font-size: 0.90rem;
+  font-weight: 500;
   color: var(--ink-muted);
-  transition: color 0.15s ease;
+  transition: all 0.15s ease;
   text-decoration: none;
 }
 
@@ -689,14 +697,20 @@ html.theme-day .portrait-frame {
   color: var(--accent);
 }
 
+.strip-nav-link:hover .arrow-muted {
+  color: var(--accent);
+  transform: translate(1px, -1px);
+}
+
 .strip-divider {
   color: var(--line-strong);
   font-family: var(--font-mono);
-  font-size: 0.75rem;
+  font-size: 0.90rem;
 }
 
 .arrow-muted {
   color: var(--ink-dim);
+  transition: transform 0.15s ease, color 0.15s ease;
 }
 
 

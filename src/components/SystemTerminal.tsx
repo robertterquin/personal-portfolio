@@ -1,5 +1,5 @@
 import React, { useState, useRef, useEffect } from 'react';
-import { Terminal, Send, RotateCcw, Sparkles } from 'lucide-react';
+import { Icon } from '@iconify/react';
 import { personalData, projectsData, skillsData } from '../data/portfolioData';
 
 interface HistoryEntry {
@@ -166,7 +166,7 @@ export const SystemTerminal: React.FC = () => {
       <div className="terminal-container">
         <div className="terminal-header-bar">
           <div className="terminal-header-left">
-            <Terminal size={13} className="term-icon" />
+            <Icon icon="lucide:terminal" width={13} height={13} className="term-icon" />
             <span className="term-header-title">SYSTEM WORKBENCH // v3.0</span>
             <span className="term-status-badge">ONLINE</span>
           </div>
@@ -177,7 +177,7 @@ export const SystemTerminal: React.FC = () => {
               onClick={() => executeCommand('clear')}
               title="Reset terminal"
             >
-              <RotateCcw size={12} />
+              <Icon icon="lucide:rotate-ccw" width={12} height={12} />
               <span>Clear</span>
             </button>
           </div>
@@ -213,7 +213,7 @@ export const SystemTerminal: React.FC = () => {
               spellCheck="false"
             />
             <button type="submit" className="term-submit-btn" aria-label="Execute command">
-              <Send size={13} />
+              <Icon icon="lucide:send" width={13} height={13} />
             </button>
           </form>
         </div>
@@ -227,7 +227,7 @@ export const SystemTerminal: React.FC = () => {
               className="shortcut-chip"
               onClick={() => executeCommand(cmd)}
             >
-              <Sparkles size={10} className="chip-sparkle" />
+              <Icon icon="lucide:sparkles" width={10} height={10} className="chip-sparkle" />
               <span>{cmd}</span>
             </button>
           ))}

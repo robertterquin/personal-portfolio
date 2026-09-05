@@ -1,5 +1,5 @@
 import React from 'react';
-import { Sun, Moon } from 'lucide-react';
+import { Icon } from '@iconify/react';
 
 interface HeaderProps {
   theme: 'day' | 'night';
@@ -28,7 +28,11 @@ export const Header: React.FC<HeaderProps> = ({
           aria-label={`Switch to ${theme === 'night' ? 'Day' : 'Night'} theme`}
           title={`Switch to ${theme === 'night' ? 'Day' : 'Night'} theme`}
         >
-          {theme === 'night' ? <Sun size={15} /> : <Moon size={15} />}
+          {theme === 'night' ? (
+            <Icon icon="lucide:sun" width={15} height={15} />
+          ) : (
+            <Icon icon="lucide:moon" width={15} height={15} />
+          )}
           <span className="theme-toggle-label">{theme === 'night' ? 'Day' : 'Night'}</span>
         </button>
       </div>

@@ -1,5 +1,5 @@
 import React from 'react';
-import { ArrowUp } from 'lucide-react';
+import { Icon } from '@iconify/react';
 import { personalData } from '../data/portfolioData';
 
 export const Footer: React.FC = () => {
@@ -19,7 +19,7 @@ export const Footer: React.FC = () => {
       <div className="footer-right">
         <a href="#top" className="back-to-top-btn" aria-label="Back to top">
           <span>Back to top</span>
-          <ArrowUp size={13} />
+          <Icon icon="lucide:arrow-up" width={13} height={13} />
         </a>
       </div>
     </footer>

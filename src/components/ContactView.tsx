@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Mail, MapPin, CheckCircle2, Clock, Send, Check } from 'lucide-react';
+import { Icon } from '@iconify/react';
 import { personalData } from '../data/portfolioData';
 
 interface FormData {
@@ -96,19 +96,19 @@ export const ContactView: React.FC<{ onBackToPortfolio: () => void }> = () => {
           <p className="dossier-marker">DIRECT LINE</p>
           <div className="aside-group">
             <a href={`mailto:${personalData.email}`} className="aside-link">
-              <Mail size={16} />
+              <Icon icon="lucide:mail" width={16} height={16} />
               <span>{personalData.email}</span>
             </a>
             <p className="aside-info">
-              <MapPin size={15} />
+              <Icon icon="lucide:map-pin" width={15} height={15} />
               <span>{personalData.location}</span>
             </p>
             <p className="aside-info">
-              <CheckCircle2 size={15} className="status-green" />
+              <Icon icon="lucide:check-circle-2" width={15} height={15} className="status-green" />
               <span>{personalData.availability}</span>
             </p>
             <p className="aside-info">
-              <Clock size={15} />
+              <Icon icon="lucide:clock" width={15} height={15} />
               <span>Standard response time: 24–48 hours</span>
             </p>
           </div>
@@ -207,12 +207,12 @@ export const ContactView: React.FC<{ onBackToPortfolio: () => void }> = () => {
                 <span>DISPATCHING...</span>
               ) : status === 'success' ? (
                 <>
-                  <Check size={16} />
+                  <Icon icon="lucide:check" width={16} height={16} />
                   <span>TRANSMISSION SENT</span>
                 </>
               ) : (
                 <>
-                  <Send size={15} />
+                  <Icon icon="lucide:send" width={15} height={15} />
                   <span>DISPATCH ENQUIRY</span>
                 </>
               )}

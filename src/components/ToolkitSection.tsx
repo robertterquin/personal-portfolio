@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { createPortal } from 'react-dom';
-import { ArrowUpRight, X, ChevronLeft, ChevronRight } from 'lucide-react';
+import { Icon } from '@iconify/react';
 import { credentialsData, type CredentialItem } from '../data/portfolioData';
 
 interface CapabilityGroup {
@@ -187,7 +187,7 @@ export const ToolkitSection: React.FC = () => {
                         <span className="ledger-issuer">{item.institution}</span>
                       </div>
 
-                      <ArrowUpRight size={12} className="ledger-arrow" />
+                      <Icon icon="lucide:arrow-up-right" width={12} height={12} className="ledger-arrow" />
                     </button>
                   ))}
                 </div>
@@ -231,7 +231,7 @@ export const ToolkitSection: React.FC = () => {
                     title="Close (Esc)"
                   >
                     <span>Close</span>
-                    <X size={14} />
+                    <Icon icon="lucide:x" width={14} height={14} />
                   </button>
                 </div>
               </div>
@@ -245,7 +245,7 @@ export const ToolkitSection: React.FC = () => {
                   aria-label="Previous certificate"
                   title="Previous certificate (←)"
                 >
-                  <ChevronLeft size={20} />
+                  <Icon icon="lucide:chevron-left" width={20} height={20} />
                 </button>
 
                 <div className="cert-modal-image-wrapper">
@@ -263,7 +263,7 @@ export const ToolkitSection: React.FC = () => {
                   aria-label="Next certificate"
                   title="Next certificate (→)"
                 >
-                  <ChevronRight size={20} />
+                  <Icon icon="lucide:chevron-right" width={20} height={20} />
                 </button>
               </div>
 
