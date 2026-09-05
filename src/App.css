@@ -24,11 +24,11 @@
   --ink-muted: #aca59c;
   --ink-dim: #7a7369;
 
-  /* Warm Cognac Amber & Saddle Leather Accents */
+  /* Warm Cognac Saddle Leather Accents (Sampled from Profile Image) */
   --accent: #c9945a;
   --accent-hover: #d9aa74;
   --accent-dim: rgba(201, 148, 90, 0.12);
-  --accent-glow: rgba(201, 148, 90, 0.24);
+  --accent-glow: rgba(201, 148, 90, 0.22);
 
   --leather: #c9945a;
   --leather-subtle: rgba(201, 148, 90, 0.09);
@@ -317,12 +317,17 @@ html.theme-day .status-indicator {
 }
 
 .hero-title {
-  margin: 0 0 18px 0;
-  font-size: clamp(2.4rem, 4.8vw, 3.8rem);
+  margin: 0 0 22px 0;
+  font-size: clamp(2.5rem, 5vw, 4rem);
   font-weight: 800;
   line-height: 0.95;
   letter-spacing: -0.04em;
-  color: var(--ink);
+  color: var(--accent);
+}
+
+.hero-title-dot {
+  color: var(--accent);
+  opacity: 0.85;
 }
 
 .hero-bio {
@@ -1509,86 +1514,133 @@ html.theme-day .viewer-btn-primary:hover {
   text-align: right;
 }
 
-/* Credentials Ledger (Zero Cards) */
-.credentials-ledger {
+/* Chronological Proof Ledger (Zero Cards) */
+.chronological-ledger {
+  display: flex;
+  flex-direction: column;
+  gap: 22px;
+}
+
+.ledger-year-section {
   display: flex;
   flex-direction: column;
 }
 
-.cred-ledger-row {
+.ledger-year-header {
   display: flex;
   align-items: center;
-  gap: 14px;
-  padding: 13px 8px;
-  border-top: 1px solid var(--line);
+  gap: 12px;
+  margin-bottom: 6px;
+}
+
+.ledger-year-tag {
+  font-family: var(--font-mono);
+  font-size: 0.74rem;
+  font-weight: 700;
+  color: var(--accent);
+  letter-spacing: 0.08em;
+}
+
+.ledger-year-rule {
+  flex: 1;
+  height: 1px;
+  background: var(--line);
+}
+
+.ledger-year-list {
+  display: flex;
+  flex-direction: column;
+}
+
+.ledger-row {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 10px 8px;
+  border-bottom: 1px solid var(--line);
   transition: all 0.16s ease;
+  text-decoration: none;
   background: transparent;
 }
 
-.cred-ledger-row:last-child {
-  border-bottom: 1px solid var(--line);
-}
-
-.cred-ledger-row:hover {
+.ledger-row:hover {
   background: var(--card-hover);
   padding-left: 12px;
 }
 
-html.theme-day .cred-ledger-row:hover {
+html.theme-day .ledger-row:hover {
   background: rgba(158, 107, 56, 0.06);
 }
 
-.cred-ledger-num {
+.ledger-type-tag {
   font-family: var(--font-mono);
-  font-size: 0.72rem;
-  color: var(--accent);
+  font-size: 0.6rem;
   font-weight: 700;
-  min-width: 20px;
+  letter-spacing: 0.08em;
+  padding: 2px 6px;
+  border-radius: 2px;
+  min-width: 44px;
+  text-align: center;
+  flex-shrink: 0;
 }
 
-.cred-ledger-content {
+.type-award {
+  color: var(--accent);
+  background: var(--accent-dim);
+  border: 1px solid var(--leather-border);
+}
+
+.type-cert {
+  color: var(--ink-dim);
+  background: transparent;
+  border: 1px solid var(--line-strong);
+}
+
+.ledger-text-col {
   flex: 1;
   display: flex;
-  flex-direction: column;
-  gap: 2px;
+  align-items: baseline;
+  gap: 8px;
+  min-width: 0;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
 }
 
-.cred-ledger-title {
-  font-size: 0.88rem;
+.ledger-title {
+  font-size: 0.86rem;
   font-weight: 600;
   color: var(--ink);
+  white-space: nowrap;
   transition: color 0.15s ease;
 }
 
-.cred-ledger-row:hover .cred-ledger-title {
+.ledger-row:hover .ledger-title {
   color: var(--accent);
 }
 
-.cred-ledger-sub {
-  display: flex;
-  align-items: center;
-  gap: 6px;
+.ledger-sub-dash {
+  color: var(--ink-dim);
+  font-size: 0.72rem;
+  flex-shrink: 0;
+}
+
+.ledger-issuer {
   font-family: var(--font-mono);
-  font-size: 0.68rem;
+  font-size: 0.7rem;
   color: var(--ink-dim);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 
-.cred-type-icon {
-  color: var(--accent);
+.ledger-arrow {
+  color: var(--ink-dim);
   flex-shrink: 0;
-}
-
-.cred-meta-dot {
-  color: var(--line-strong);
-}
-
-.cred-arrow-icon {
-  color: var(--ink-dim);
   transition: transform 0.15s ease, color 0.15s ease;
-  flex-shrink: 0;
 }
 
-.cred-ledger-row:hover .cred-arrow-icon {
+.ledger-row:hover .ledger-arrow {
   color: var(--accent);
   transform: translate(2px, -2px);
 }
@@ -2303,5 +2355,20 @@ html.theme-day .terminal-container {
   .spec-item-detail {
     text-align: left;
     padding-left: 19px;
+  }
+
+  .ledger-text-col {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 2px;
+    white-space: normal;
+  }
+
+  .ledger-sub-dash {
+    display: none;
+  }
+
+  .ledger-issuer {
+    white-space: normal;
   }
 }

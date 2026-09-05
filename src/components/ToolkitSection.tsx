@@ -1,5 +1,5 @@
 import React from 'react';
-import { ArrowUpRight, Award, GraduationCap, Check } from 'lucide-react';
+import { ArrowUpRight, Check } from 'lucide-react';
 import { credentialsData } from '../data/portfolioData';
 
 interface CapabilityGroup {
@@ -99,32 +99,48 @@ export const ToolkitSection: React.FC = () => {
             <h2 className="section-title">Credentials &amp; Proof</h2>
           </div>
 
-          <div className="credentials-ledger">
-            {credentialsData.map((item) => (
-              <a
-                key={item.index}
-                href={item.image}
-                target="_blank"
-                rel="noreferrer"
-                className="cred-ledger-row"
-                aria-label={`Inspect ${item.title} certificate`}
-              >
-                <span className="cred-ledger-num">{item.index}</span>
-                <div className="cred-ledger-content">
-                  <strong className="cred-ledger-title">{item.title}</strong>
-                  <div className="cred-ledger-sub">
-                    {item.type === 'Degree' ? (
-                      <GraduationCap size={11} className="cred-type-icon" />
-                    ) : (
-                      <Award size={11} className="cred-type-icon" />
-                    )}
-                    <span>{item.institution}</span>
-                    <span className="cred-meta-dot">•</span>
-                    <span>{item.year}</span>
-                  </div>
+          <div className="chronological-ledger">
+            {[
+              {
+                year: '2025',
+                items: credentialsData.filter((c) => c.year === '2025'),
+              },
+              {
+                year: '2024',
+                items: credentialsData.filter((c) => c.year === '2024'),
+              },
+            ].map((group) => (
+              <div key={group.year} className="ledger-year-section">
+                <div className="ledger-year-header">
+                  <span className="ledger-year-tag">// {group.year}</span>
+                  <span className="ledger-year-rule" aria-hidden="true"></span>
                 </div>
-                <ArrowUpRight size={13} className="cred-arrow-icon" />
-              </a>
+
+                <div className="ledger-year-list">
+                  {group.items.map((item) => (
+                    <a
+                      key={item.title + item.year}
+                      href={item.image}
+                      target="_blank"
+                      rel="noreferrer"
+                      className="ledger-row"
+                      aria-label={`Inspect ${item.title} certificate`}
+                    >
+                      <span className={`ledger-type-tag ${item.type === 'Award' ? 'type-award' : 'type-cert'}`}>
+                        {item.type === 'Award' ? 'HONOR' : 'CERT'}
+                      </span>
+
+                      <div className="ledger-text-col">
+                        <strong className="ledger-title">{item.title}</strong>
+                        <span className="ledger-sub-dash">—</span>
+                        <span className="ledger-issuer">{item.institution}</span>
+                      </div>
+
+                      <ArrowUpRight size={12} className="ledger-arrow" />
+                    </a>
+                  ))}
+                </div>
+              </div>
             ))}
           </div>
 

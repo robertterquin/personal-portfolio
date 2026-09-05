@@ -8,16 +8,12 @@ export const Masthead: React.FC = () => {
       <div className="hero-grid">
         {/* Left Column (60%): Bio & Headline */}
         <div className="hero-content">
-          <div className="hero-label-wrap">
-            <span className="hero-pretitle">Full-Stack &amp; Mobile Engineer</span>
-          </div>
-
           <h1 className="hero-title">
             ROBERT
             <br />
             TERQUIN
             <br />
-            LAQUI
+            LAQUI<span className="hero-title-dot">.</span>
           </h1>
 
           <p className="hero-bio">
