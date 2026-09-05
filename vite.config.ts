@@ -1,5 +1,7 @@
 import { defineConfig, type Plugin } from 'vite'
 import react from '@vitejs/plugin-react'
+import fs from 'node:fs'
+import path from 'node:path'
 
 function parseGithubHtml(html: string) {
   const totalMatch = html.match(/([0-9,]+)\s+contributions\s+in\s+the\s+last\s+year/i);
@@ -52,10 +54,28 @@ function githubContributionsPlugin(): Plugin {
             return;
           }
           const html = await ghRes.text();
-          const data = parseGithubHtml(html);
+          let data = parseGithubHtml(html);
+          if (data.total.lastYear === 0) {
+            try {
+              const baseFilePath = path.resolve(process.cwd(), 'src/data/githubContributions.json');
+              const localData = JSON.parse(fs.readFileSync(baseFilePath, 'utf-8'));
+              if (localData?.total?.lastYear > 0) {
+                data = localData;
+              }
+            } catch {
+              // keep data as is
+            }
+          }
           res.setHeader('Content-Type', 'application/json');
           res.end(JSON.stringify(data));
         } catch (err: unknown) {
+          try {
+            const baseFilePath = path.resolve(process.cwd(), 'src/data/githubContributions.json');
+            const localData = JSON.parse(fs.readFileSync(baseFilePath, 'utf-8'));
+            res.setHeader('Content-Type', 'application/json');
+            res.end(JSON.stringify(localData));
+            return;
+          } catch {}
           res.statusCode = 500;
           const msg = err instanceof Error ? err.message : 'Unknown error';
           res.end(JSON.stringify({ error: msg }));
