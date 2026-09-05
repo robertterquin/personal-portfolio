@@ -6,11 +6,11 @@
    ========================================================================== */
 
 :root {
-  /* Typography */
+  /* Typography — Option 1: Design-Engineer / Bespoke Editorial */
   --font-sans: 'DM Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-  --font-mono: 'DM Mono', monospace;
-  --font-serif: 'Libre Baskerville', Georgia, serif;
-  --font-display: 'Space Grotesk', -apple-system, BlinkMacSystemFont, sans-serif;
+  --font-display: 'Instrument Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+  --font-serif: 'Instrument Serif', Georgia, serif;
+  --font-mono: 'JetBrains Mono', monospace;
 
   /* Night Mode Tokens — Deep Obsidian Espresso, Warm Travertine & Roasted Saddle Leather */
   --bg: #11100f;
@@ -224,6 +224,7 @@ button {
 
 .section-title {
   margin: 0;
+  font-family: var(--font-display);
   font-size: clamp(2.1rem, 3.5vw, 2.75rem);
   font-weight: 800;
   letter-spacing: -0.03em;
@@ -1506,18 +1507,20 @@ html.theme-day .viewer-btn-primary:hover {
   padding-right: 64px;
 }
 
-/* Capability Spec Ledger (Zero Cards) */
-.capability-spec-ledger {
+/* ==========================================================================
+   5. REFINED SWISS EDITORIAL SPEC LEDGER (ZERO BOXES, NO CHECKMARKS)
+   ========================================================================== */
+.spec-ledger {
   display: flex;
   flex-direction: column;
 }
 
 .spec-group-row {
-  padding: 26px 0;
+  padding: 24px 0;
   border-top: 1px solid var(--line);
   display: flex;
   flex-direction: column;
-  gap: 10px;
+  gap: 8px;
 }
 
 .spec-group-row:last-child {
@@ -1535,11 +1538,12 @@ html.theme-day .viewer-btn-primary:hover {
   font-size: 0.74rem;
   color: var(--accent);
   font-weight: 700;
-  letter-spacing: 0.06em;
+  letter-spacing: 0.08em;
 }
 
 .spec-cat-title {
   margin: 0;
+  font-family: var(--font-display);
   font-size: 1.05rem;
   font-weight: 700;
   color: var(--ink);
@@ -1547,8 +1551,8 @@ html.theme-day .viewer-btn-primary:hover {
 }
 
 .spec-focus-desc {
-  margin: 0 0 8px 0;
-  font-size: 0.84rem;
+  margin: 0 0 10px 0;
+  font-size: 0.82rem;
   line-height: 1.5;
   color: var(--ink-muted);
 }
@@ -1556,7 +1560,7 @@ html.theme-day .viewer-btn-primary:hover {
 .spec-items-table {
   display: flex;
   flex-direction: column;
-  gap: 4px;
+  gap: 3px;
 }
 
 .spec-item-line {
@@ -1564,7 +1568,7 @@ html.theme-day .viewer-btn-primary:hover {
   align-items: center;
   justify-content: space-between;
   gap: 16px;
-  padding: 6px 8px;
+  padding: 7px 10px;
   border-radius: var(--radius-sm);
   transition: background 0.15s ease;
 }
@@ -1576,7 +1580,7 @@ html.theme-day .viewer-btn-primary:hover {
 .spec-item-name {
   display: inline-flex;
   align-items: center;
-  gap: 7px;
+  gap: 9px;
   font-size: 0.86rem;
   color: var(--ink);
 }
@@ -1585,9 +1589,32 @@ html.theme-day .viewer-btn-primary:hover {
   font-weight: 600;
 }
 
-.spec-check-icon {
-  color: var(--accent);
+.spec-bullet {
+  width: 4px;
+  height: 4px;
+  border-radius: 50%;
+  background: var(--accent);
+  opacity: 0.65;
   flex-shrink: 0;
+  transition: opacity 0.15s ease, transform 0.15s ease;
+}
+
+.spec-item-line:hover .spec-bullet {
+  opacity: 1;
+  transform: scale(1.3);
+}
+
+.spec-cert-tag {
+  font-family: var(--font-mono);
+  font-size: 0.65rem;
+  color: var(--accent);
+  background: var(--accent-dim);
+  border: 1px solid var(--accent-glow);
+  padding: 1px 5px;
+  border-radius: 3px;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
 }
 
 .spec-item-detail {
@@ -1595,6 +1622,7 @@ html.theme-day .viewer-btn-primary:hover {
   font-size: 0.72rem;
   color: var(--ink-dim);
   text-align: right;
+  letter-spacing: -0.01em;
 }
 
 /* Chronological Proof Ledger (Zero Cards) */
@@ -2150,6 +2178,7 @@ html.theme-day .cert-modal-stage {
 
 .activity-heading {
   margin: 0;
+  font-family: var(--font-display);
   font-size: clamp(2rem, 3.6vw, 2.6rem);
   font-weight: 800;
   letter-spacing: -0.03em;
@@ -2498,6 +2527,7 @@ html.theme-day .legend-cell.level-4 { background: #216e39; }
 
 .contact-header h2 {
   margin: 0 0 12px 0;
+  font-family: var(--font-display);
   font-size: clamp(2.2rem, 4vw, 3.2rem);
   font-weight: 800;
   letter-spacing: -0.03em;
@@ -2794,6 +2824,20 @@ html.theme-day .legend-cell.level-4 { background: #216e39; }
 
   .row-mobile-toggle {
     display: inline-flex;
+  }
+}
+
+@media (max-width: 640px) {
+  .spec-item-line {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 3px;
+    padding: 6px 8px;
+  }
+
+  .spec-item-detail {
+    text-align: left;
+    padding-left: 13px;
   }
 }
 

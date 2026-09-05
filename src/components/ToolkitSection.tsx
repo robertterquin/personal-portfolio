@@ -1,13 +1,13 @@
 import React, { useState, useEffect } from 'react';
 import { createPortal } from 'react-dom';
-import { ArrowUpRight, Check, X, ChevronLeft, ChevronRight, ExternalLink } from 'lucide-react';
+import { ArrowUpRight, X, ChevronLeft, ChevronRight, ExternalLink } from 'lucide-react';
 import { credentialsData, type CredentialItem } from '../data/portfolioData';
 
 interface CapabilityGroup {
   code: string;
   category: string;
   focus: string;
-  items: { name: string; detail: string }[];
+  items: { name: string; detail: string; isCertified?: boolean }[];
 }
 
 const capabilityGroups: CapabilityGroup[] = [
@@ -17,8 +17,9 @@ const capabilityGroups: CapabilityGroup[] = [
     focus: 'Cross-platform engineering, offline-first synchronization, and state management.',
     items: [
       { name: 'Flutter & Dart', detail: 'Core Framework & Native Channels' },
-      { name: 'Offline Data Sync', detail: 'SQLite, Supabase, Local Caching' },
+      { name: 'React Native', detail: 'Cross-Platform & Bridge Architecture' },
       { name: 'Android Studio & SDKs', detail: 'Gradle Pipelines, Emulation, APKs' },
+      { name: 'Offline Data Sync', detail: 'SQLite, Supabase, Local Caching' },
       { name: 'Reactive State', detail: 'Provider, Riverpod, Event Streams' },
     ],
   },
@@ -28,7 +29,7 @@ const capabilityGroups: CapabilityGroup[] = [
     focus: 'Component architecture, strict typing, and high-performance rendering.',
     items: [
       { name: 'React', detail: 'Custom Hooks, SPA Architecture, Vite' },
-      { name: 'TypeScript', detail: 'Strict Type Systems & Interface Contracts' },
+      { name: 'TypeScript & JavaScript', detail: 'Strict Type Systems & Modern ESNext' },
       { name: 'Tailwind CSS', detail: 'Design Tokens, Responsive Grid Systems' },
       { name: 'HTML5 & Modern CSS', detail: 'Certified Specialist Standards' },
     ],
@@ -39,8 +40,8 @@ const capabilityGroups: CapabilityGroup[] = [
     focus: 'Relational schema modeling, RESTful microservices, and secure authentication.',
     items: [
       { name: 'Node.js & Express', detail: 'REST APIs, Middleware, Service Routing' },
-      { name: 'Supabase & Cloud DB', detail: 'PostgreSQL, Row Level Security, Realtime' },
-      { name: 'MySQL (Certified)', detail: 'Relational Schema Design & Query Indexing' },
+      { name: 'Supabase & Firebase', detail: 'PostgreSQL, Row Level Security, Realtime' },
+      { name: 'MySQL & Databases', detail: 'Certified Relational Schema & NoSQL', isCertified: true },
       { name: 'Authentication Layers', detail: 'JWT Tokens, OAuth, Session Guards' },
     ],
   },
@@ -49,10 +50,10 @@ const capabilityGroups: CapabilityGroup[] = [
     category: 'Core Engineering & Security',
     focus: 'Defensive cybersecurity standards, version control, and computer architecture.',
     items: [
-      { name: 'Java (Oracle Certified)', detail: 'OOP Patterns & Enterprise Foundations' },
+      { name: 'Java', detail: 'Oracle Certified & Enterprise Foundations', isCertified: true },
       { name: 'Python & C', detail: 'Algorithms, Data Automation, Memory Concepts' },
       { name: 'Cybersecurity Fundamentals', detail: 'Mitigation, Threat Modeling, Defensive Coding' },
-      { name: 'Git & Deployment', detail: 'Branch Workflows, CI/CD, Edge Networks' },
+      { name: 'Git & Deployment', detail: 'GitHub Actions, CI/CD, Vercel Edge' },
     ],
   },
 ];
@@ -111,7 +112,7 @@ export const ToolkitSection: React.FC = () => {
             <h2 className="section-title">Capabilities &amp; Tools</h2>
           </div>
 
-          <div className="capability-spec-ledger">
+          <div className="spec-ledger">
             {capabilityGroups.map((group) => (
               <div key={group.code} className="spec-group-row">
                 <div className="spec-group-header">
@@ -124,8 +125,11 @@ export const ToolkitSection: React.FC = () => {
                   {group.items.map((item) => (
                     <div key={item.name} className="spec-item-line">
                       <span className="spec-item-name">
-                        <Check size={12} className="spec-check-icon" />
+                        <span className="spec-bullet" aria-hidden="true" />
                         <strong>{item.name}</strong>
+                        {item.isCertified && (
+                          <span className="spec-cert-tag">Certified</span>
+                        )}
                       </span>
                       <span className="spec-item-detail">{item.detail}</span>
                     </div>
