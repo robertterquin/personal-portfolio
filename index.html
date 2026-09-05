@@ -20,6 +20,43 @@
         }
       })();
     </script>
+    <style>
+      ::-webkit-scrollbar, html::-webkit-scrollbar, body::-webkit-scrollbar {
+        width: 4px !important;
+        height: 4px !important;
+      }
+      ::-webkit-scrollbar-button, html::-webkit-scrollbar-button, body::-webkit-scrollbar-button {
+        display: none !important;
+        width: 0 !important;
+        height: 0 !important;
+      }
+      ::-webkit-scrollbar-track, html::-webkit-scrollbar-track, body::-webkit-scrollbar-track {
+        background: transparent !important;
+      }
+      ::-webkit-scrollbar-track-piece, html::-webkit-scrollbar-track-piece, body::-webkit-scrollbar-track-piece {
+        background: transparent !important;
+      }
+      ::-webkit-scrollbar-thumb, html::-webkit-scrollbar-thumb, body::-webkit-scrollbar-thumb {
+        background: #544d44 !important;
+        border-radius: 9999px !important;
+      }
+      ::-webkit-scrollbar-thumb:hover, html::-webkit-scrollbar-thumb:hover, body::-webkit-scrollbar-thumb:hover {
+        background: #b88252 !important;
+      }
+      ::-webkit-scrollbar-corner, html::-webkit-scrollbar-corner, body::-webkit-scrollbar-corner {
+        background: transparent !important;
+      }
+      html.theme-day ::-webkit-scrollbar-thumb, html.theme-day::-webkit-scrollbar-thumb, html.theme-day body::-webkit-scrollbar-thumb {
+        background: #c2b7a9 !important;
+      }
+      html.theme-day ::-webkit-scrollbar-thumb:hover, html.theme-day::-webkit-scrollbar-thumb:hover, html.theme-day body::-webkit-scrollbar-thumb:hover {
+        background: #8e582e !important;
+      }
+      @supports not selector(::-webkit-scrollbar) {
+        * { scrollbar-width: thin; scrollbar-color: #544d44 transparent; }
+        html.theme-day * { scrollbar-color: #c2b7a9 transparent; }
+      }
+    </style>
   </head>
   <body>
     <div id="root"></div>

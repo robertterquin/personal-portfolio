@@ -38,6 +38,10 @@
   --radius-sm: 4px;
   --radius-md: 8px;
   --radius-lg: 12px;
+
+  /* GitHub Heatmap Grid Metrics — Scaled up to occupy full rectangle */
+  --gh-cell-size: clamp(20px, 1.6vw, 24px);
+  --gh-cell-gap: clamp(4px, 0.35vw, 5px);
 }
 
 /* Day Mode Tokens — Architectural Travertine Linen, Rich Espresso & Saddle Leather */
@@ -68,6 +72,83 @@ html.theme-day body {
 /* Global Reset & Base */
 * {
   box-sizing: border-box;
+}
+
+/* ==========================================================================
+   MINIMALIST SCROLLBAR ARCHITECTURE (GLOBAL)
+   Inspired by cjsacdalan.com — Hairline 4px Minimalist Design
+   Palette: Roasted Saddle Leather & Warm Travertine
+   ========================================================================== */
+/* WebKit / Chromium Engines (Chrome, Edge, Safari, Brave, Opera) */
+::-webkit-scrollbar,
+html::-webkit-scrollbar,
+body::-webkit-scrollbar {
+  width: 4px;
+  height: 4px;
+}
+
+::-webkit-scrollbar-button,
+html::-webkit-scrollbar-button,
+body::-webkit-scrollbar-button {
+  display: none;
+  width: 0;
+  height: 0;
+}
+
+::-webkit-scrollbar-track,
+html::-webkit-scrollbar-track,
+body::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+::-webkit-scrollbar-track-piece,
+html::-webkit-scrollbar-track-piece,
+body::-webkit-scrollbar-track-piece {
+  background: transparent;
+}
+
+::-webkit-scrollbar-thumb,
+html::-webkit-scrollbar-thumb,
+body::-webkit-scrollbar-thumb {
+  background: #544d44;
+  border-radius: 9999px;
+  transition: background-color 0.15s ease;
+}
+
+::-webkit-scrollbar-thumb:hover,
+html::-webkit-scrollbar-thumb:hover,
+body::-webkit-scrollbar-thumb:hover {
+  background: var(--accent);
+}
+
+::-webkit-scrollbar-corner,
+html::-webkit-scrollbar-corner,
+body::-webkit-scrollbar-corner {
+  background: transparent;
+}
+
+/* Day Mode Scrollbars */
+html.theme-day ::-webkit-scrollbar-thumb,
+html.theme-day::-webkit-scrollbar-thumb,
+html.theme-day body::-webkit-scrollbar-thumb {
+  background: #c2b7a9;
+}
+
+html.theme-day ::-webkit-scrollbar-thumb:hover,
+html.theme-day::-webkit-scrollbar-thumb:hover,
+html.theme-day body::-webkit-scrollbar-thumb:hover {
+  background: var(--accent);
+}
+
+/* Firefox Only (Uses standard CSS properties without breaking Chromium WebKit engine) */
+@supports not selector(::-webkit-scrollbar) {
+  * {
+    scrollbar-width: thin;
+    scrollbar-color: #544d44 transparent;
+  }
+  html.theme-day * {
+    scrollbar-color: #c2b7a9 transparent;
+  }
 }
 
 html {
@@ -2148,14 +2229,14 @@ html.theme-day .github-heatmap-container {
   color: var(--accent);
 }
 
-/* Scroll Stage & Board */
+/* Scroll Stage & Board — Scaled up to occupy the rectangle prominently */
 .heatmap-scroll-stage {
-  padding: 34px 26px;
+  padding: 24px 20px;
   overflow-x: auto;
   background: #0d0c0b;
   display: flex;
   align-items: center;
-  justify-content: center;
+  width: 100%;
 }
 
 html.theme-day .heatmap-scroll-stage {
@@ -2165,85 +2246,93 @@ html.theme-day .heatmap-scroll-stage {
 .heatmap-board {
   display: flex;
   flex-direction: column;
-  gap: 6px;
+  gap: 12px;
   width: max-content;
+  margin: auto;
 }
 
 .heatmap-months-row {
   display: flex;
   align-items: center;
-  gap: 8px;
+  gap: 12px;
+  width: max-content;
 }
 
 .heatmap-month-spacer {
-  width: 26px;
+  width: 36px;
   flex-shrink: 0;
 }
 
 .heatmap-months-track {
   display: grid;
-  grid-template-columns: repeat(53, 11px);
-  gap: 4px;
+  grid-template-columns: repeat(53, var(--gh-cell-size));
+  gap: var(--gh-cell-gap);
+  width: max-content;
 }
 
 .heatmap-month-tag {
   font-family: var(--font-mono);
-  font-size: 0.65rem;
+  font-size: 0.8rem;
+  font-weight: 500;
   color: var(--ink-dim);
   text-align: left;
 }
 
 .heatmap-body-row {
   display: flex;
-  align-items: flex-start;
-  gap: 8px;
+  align-items: stretch;
+  gap: 12px;
+  width: max-content;
 }
 
 .heatmap-weekdays-col {
   display: grid;
-  grid-template-rows: repeat(7, 11px);
-  gap: 4px;
-  width: 26px;
+  grid-template-rows: repeat(7, var(--gh-cell-size));
+  gap: var(--gh-cell-gap);
+  width: 36px;
   flex-shrink: 0;
 }
 
 .weekday-label {
   font-family: var(--font-mono);
-  font-size: 0.62rem;
+  font-size: 0.78rem;
   color: var(--ink-dim);
-  line-height: 11px;
-  text-align: right;
-  padding-right: 4px;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  padding-right: 8px;
+  height: var(--gh-cell-size);
+  line-height: var(--gh-cell-size);
 }
 
 .heatmap-grid {
   display: grid;
-  grid-template-rows: repeat(7, 11px);
+  grid-template-rows: repeat(7, var(--gh-cell-size));
   grid-auto-flow: column;
-  grid-auto-columns: 11px;
-  gap: 4px;
+  grid-auto-columns: var(--gh-cell-size);
+  gap: var(--gh-cell-gap);
   width: max-content;
 }
 
 .heatmap-cell {
-  width: 11px;
-  height: 11px;
-  border-radius: 2px;
-  background: rgba(255, 255, 255, 0.05);
+  width: var(--gh-cell-size);
+  height: var(--gh-cell-size);
+  border-radius: 4px;
+  background: #161b22;
   cursor: pointer;
   outline: none;
-  transition: transform 0.12s ease, outline 0.12s ease;
+  transition: transform 0.14s ease, outline 0.14s ease, box-shadow 0.14s ease;
 }
 
 html.theme-day .heatmap-cell {
-  background: #e5dfd4;
+  background: #ebedf0;
 }
 
 .heatmap-cell:hover,
 .heatmap-cell:focus-visible {
-  transform: scale(1.35);
-  outline: 1px solid var(--accent);
-  z-index: 5;
+  transform: scale(1.3);
+  outline: 2px solid var(--accent);
+  z-index: 10;
 }
 
 /* Authentic GitHub Contribution Heatmap Levels (Pixel-sampled from Robert's GitHub Profile) */
@@ -2332,9 +2421,9 @@ html.theme-day .heatmap-cell.level-4 {
 }
 
 .legend-cell {
-  width: 9px;
-  height: 9px;
-  border-radius: 2px;
+  width: 14px;
+  height: 14px;
+  border-radius: 3px;
 }
 
 .legend-cell.level-0 { background: #161b22; }
