@@ -1,6 +1,7 @@
-import React from 'react';
-import { ArrowUpRight, Check } from 'lucide-react';
-import { credentialsData } from '../data/portfolioData';
+import React, { useState, useEffect } from 'react';
+import { createPortal } from 'react-dom';
+import { ArrowUpRight, Check, X, ChevronLeft, ChevronRight, ExternalLink } from 'lucide-react';
+import { credentialsData, type CredentialItem } from '../data/portfolioData';
 
 interface CapabilityGroup {
   code: string;
@@ -57,6 +58,49 @@ const capabilityGroups: CapabilityGroup[] = [
 ];
 
 export const ToolkitSection: React.FC = () => {
+  const [selectedCert, setSelectedCert] = useState<CredentialItem | null>(null);
+
+  const selectedIndex = selectedCert
+    ? credentialsData.findIndex((c) => c.index === selectedCert.index)
+    : -1;
+
+  const handlePrevCert = (e?: React.MouseEvent) => {
+    e?.stopPropagation();
+    if (selectedIndex === -1) return;
+    const prevIndex = selectedIndex === 0 ? credentialsData.length - 1 : selectedIndex - 1;
+    setSelectedCert(credentialsData[prevIndex]);
+  };
+
+  const handleNextCert = (e?: React.MouseEvent) => {
+    e?.stopPropagation();
+    if (selectedIndex === -1) return;
+    const nextIndex = selectedIndex === credentialsData.length - 1 ? 0 : selectedIndex + 1;
+    setSelectedCert(credentialsData[nextIndex]);
+  };
+
+  useEffect(() => {
+    if (!selectedCert) return;
+
+    const handleKeyDown = (e: KeyboardEvent) => {
+      if (e.key === 'Escape') {
+        setSelectedCert(null);
+      } else if (e.key === 'ArrowLeft') {
+        handlePrevCert();
+      } else if (e.key === 'ArrowRight') {
+        handleNextCert();
+      }
+    };
+
+    const originalOverflow = document.body.style.overflow;
+    document.body.style.overflow = 'hidden';
+
+    window.addEventListener('keydown', handleKeyDown);
+    return () => {
+      document.body.style.overflow = originalOverflow;
+      window.removeEventListener('keydown', handleKeyDown);
+    };
+  }, [selectedCert, selectedIndex]);
+
   return (
     <section id="toolkit" className="minimal-toolkit-section">
       <div className="toolkit-two-col">
@@ -118,11 +162,10 @@ export const ToolkitSection: React.FC = () => {
 
                 <div className="ledger-year-list">
                   {group.items.map((item) => (
-                    <a
+                    <button
                       key={item.title + item.year}
-                      href={item.image}
-                      target="_blank"
-                      rel="noreferrer"
+                      type="button"
+                      onClick={() => setSelectedCert(item)}
                       className="ledger-row"
                       aria-label={`Inspect ${item.title} certificate`}
                     >
@@ -137,7 +180,7 @@ export const ToolkitSection: React.FC = () => {
                       </div>
 
                       <ArrowUpRight size={12} className="ledger-arrow" />
-                    </a>
+                    </button>
                   ))}
                 </div>
               </div>
@@ -147,13 +190,128 @@ export const ToolkitSection: React.FC = () => {
           {/* Architectural Doctrine (No Card) */}
           <div className="architectural-doctrine">
             <span className="doctrine-tag">ENGINEERING DOCTRINE // 2026</span>
-            <blockquote className="doctrine-quote">
-              “Building resilient mobile ecosystems with offline-first synchronization, clean architecture, and defensive cybersecurity standards.”
-            </blockquote>
-            <span className="doctrine-signoff">— Robert Terquin Laqui</span>
+            <p className="doctrine-statement">
+              Building resilient mobile ecosystems with offline-first synchronization, clean architecture, and defensive cybersecurity standards.
+            </p>
           </div>
         </div>
       </div>
+
+      {/* Certificate Inspection Modal Lightbox */}
+      {selectedCert &&
+        typeof document !== 'undefined' &&
+        createPortal(
+          <div
+            className="cert-modal-overlay"
+            onClick={() => setSelectedCert(null)}
+            role="dialog"
+            aria-modal="true"
+            aria-labelledby="cert-modal-title"
+          >
+            <div
+              className="cert-modal-container"
+              onClick={(e) => e.stopPropagation()}
+            >
+              {/* Modal Header */}
+              <div className="cert-modal-header">
+                <div className="cert-modal-header-left">
+                  <span className="cert-modal-code">// VERIFIED CREDENTIAL // {selectedCert.year}</span>
+                  <span className={`ledger-type-tag ${selectedCert.type === 'Award' ? 'type-award' : 'type-cert'}`}>
+                    {selectedCert.type === 'Award' ? 'HONOR' : 'CERT'}
+                  </span>
+                </div>
+
+                <div className="cert-modal-header-right">
+                  <span className="cert-modal-counter">
+                    {selectedCert.index} / {String(credentialsData.length).padStart(2, '0')}
+                  </span>
+                  <a
+                    href={selectedCert.image}
+                    target="_blank"
+                    rel="noreferrer"
+                    className="cert-modal-action-btn"
+                    title="Open raw certificate image in new tab"
+                    aria-label="Open original certificate file"
+                  >
+                    <ExternalLink size={13} />
+                    <span>Raw File</span>
+                  </a>
+                  <button
+                    type="button"
+                    className="cert-modal-close-btn"
+                    onClick={() => setSelectedCert(null)}
+                    aria-label="Close modal (ESC)"
+                    title="Close (Esc)"
+                  >
+                    <span>Close</span>
+                    <X size={15} />
+                  </button>
+                </div>
+              </div>
+
+              {/* Modal Stage / Image Preview */}
+              <div className="cert-modal-stage">
+                <button
+                  type="button"
+                  className="cert-nav-arrow cert-nav-prev"
+                  onClick={handlePrevCert}
+                  aria-label="Previous certificate"
+                  title="Previous certificate (←)"
+                >
+                  <ChevronLeft size={20} />
+                </button>
+
+                <div className="cert-modal-image-wrapper">
+                  <div className="cert-corner-mark top-left" aria-hidden="true" />
+                  <div className="cert-corner-mark top-right" aria-hidden="true" />
+                  <div className="cert-corner-mark bottom-left" aria-hidden="true" />
+                  <div className="cert-corner-mark bottom-right" aria-hidden="true" />
+                  <img
+                    src={selectedCert.image}
+                    alt={`${selectedCert.title} - ${selectedCert.institution}`}
+                    className="cert-modal-image"
+                  />
+                </div>
+
+                <button
+                  type="button"
+                  className="cert-nav-arrow cert-nav-next"
+                  onClick={handleNextCert}
+                  aria-label="Next certificate"
+                  title="Next certificate (→)"
+                >
+                  <ChevronRight size={20} />
+                </button>
+              </div>
+
+              {/* Modal Footer */}
+              <div className="cert-modal-footer">
+                <div className="cert-modal-info">
+                  <h3 id="cert-modal-title" className="cert-modal-title">
+                    {selectedCert.title}
+                  </h3>
+                  <p className="cert-modal-institution">
+                    {selectedCert.institution}
+                  </p>
+                </div>
+
+                <div className="cert-modal-nav-dots" aria-label="Certificate navigation">
+                  {credentialsData.map((c) => (
+                    <button
+                      key={c.index}
+                      type="button"
+                      className={`cert-dot-btn ${c.index === selectedCert.index ? 'active' : ''}`}
+                      onClick={() => setSelectedCert(c)}
+                      aria-label={`Switch to ${c.title}`}
+                      title={`${c.title} (${c.year})`}
+                    />
+                  ))}
+                </div>
+              </div>
+            </div>
+          </div>,
+          document.body
+        )}
     </section>
   );
 };

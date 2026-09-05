@@ -5,7 +5,7 @@ import { Masthead } from './components/Masthead';
 import { Snapshot } from './components/Snapshot';
 import { WorkSection } from './components/WorkSection';
 import { ToolkitSection } from './components/ToolkitSection';
-import { SystemTerminal } from './components/SystemTerminal';
+import { GithubActivity } from './components/GithubActivity';
 import { Footer } from './components/Footer';
 
 function App() {
@@ -71,7 +71,7 @@ function App() {
             <Snapshot />
             <WorkSection />
             <ToolkitSection />
-            <SystemTerminal />
+            <GithubActivity />
           </div>
         </main>
 
