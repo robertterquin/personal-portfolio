@@ -665,13 +665,14 @@ html.theme-day .filter-pill.active {
   grid-template-columns: 80px 1.6fr 1.1fr auto;
   align-items: center;
   gap: 24px;
-  padding: 22px 18px;
+  padding: 22px 14px;
   border-top: 1px solid var(--line);
   transition: all 0.18s cubic-bezier(0.16, 1, 0.3, 1);
   cursor: pointer;
   position: relative;
   background: transparent;
-  border-radius: var(--radius-sm);
+  border-radius: 0;
+  border-left: 2px solid transparent;
 }
 
 .project-index-list .project-index-row:last-child {
@@ -681,14 +682,13 @@ html.theme-day .filter-pill.active {
 .project-index-row:hover,
 .project-index-row.row-active {
   background: var(--card-hover);
-  border-color: var(--line-strong);
-  transform: translateX(4px);
+  border-left-color: var(--accent);
+  padding-left: 20px;
 }
 
 html.theme-day .project-index-row:hover,
 html.theme-day .project-index-row.row-active {
-  background: #ffffff;
-  box-shadow: 0 4px 16px rgba(158, 107, 56, 0.08);
+  background: rgba(158, 107, 56, 0.05);
 }
 
 /* Row Column 1: Index Number & Type */
@@ -1316,17 +1316,49 @@ html.theme-day .viewer-btn-primary:hover {
 }
 
 /* ==========================================================================
-   5. MINIMAL STACK & CAPABILITIES (SAM RICHMOND APPROACH)
+   5. ARCHITECTURAL CAPABILITIES & SPECIFICATION LEDGER
    ========================================================================== */
+.section-title-wrap {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  margin-bottom: 24px;
+}
+
+.section-label {
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--accent);
+  font-weight: 600;
+}
+
+.section-title {
+  margin: 0;
+  font-size: clamp(1.6rem, 3.2vw, 2.2rem);
+  font-weight: 800;
+  letter-spacing: -0.03em;
+  color: var(--ink);
+}
+
+.section-subtext {
+  margin: 6px 0 0 0;
+  font-size: 0.9rem;
+  line-height: 1.55;
+  color: var(--ink-muted);
+  max-width: 620px;
+}
+
 .minimal-toolkit-section {
-  padding: 56px 0;
+  padding: 60px 0;
   border-bottom: 1px solid var(--line);
 }
 
 .toolkit-two-col {
   display: grid;
   grid-template-columns: 1.15fr 0.85fr;
-  gap: 40px;
+  gap: 48px;
 }
 
 .toolkit-col {
@@ -1336,234 +1368,215 @@ html.theme-day .viewer-btn-primary:hover {
 
 .toolkit-tools-col {
   border-right: 1px solid var(--line);
-  padding-right: 40px;
+  padding-right: 48px;
 }
 
-/* Minimal Tool Inspector Card */
-.minimal-tool-card {
-  background: var(--card-bg);
-  border: 1px solid var(--card-border);
-  border-radius: var(--radius-sm);
-  padding: 20px;
-  margin: 20px 0 20px 0;
-}
-
-.tool-card-top {
+/* Capability Spec Ledger (Zero Cards) */
+.capability-spec-ledger {
   display: flex;
-  align-items: center;
-  justify-content: space-between;
-  margin-bottom: 12px;
-  font-family: var(--font-mono);
-  font-size: 0.7rem;
+  flex-direction: column;
 }
 
-.tool-index {
-  color: var(--accent);
-  font-weight: 700;
-}
-
-.tool-category {
-  color: var(--ink-dim);
-  letter-spacing: 0.05em;
-}
-
-.tool-name-row {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  margin-bottom: 6px;
-}
-
-.tool-name {
-  margin: 0;
-  font-size: 1.25rem;
-  font-weight: 700;
-  color: var(--ink);
-}
-
-.tool-level {
-  font-family: var(--font-mono);
-  font-size: 0.7rem;
-  color: var(--accent);
-  font-weight: 600;
-}
-
-.tool-desc {
-  margin: 0 0 16px 0;
-  font-size: 0.88rem;
-  line-height: 1.55;
-  color: var(--ink-muted);
-}
-
-.tool-card-footer {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  padding-top: 12px;
+.spec-group-row {
+  padding: 22px 0;
   border-top: 1px solid var(--line);
-  font-family: var(--font-mono);
-  font-size: 0.68rem;
-  color: var(--ink-dim);
-}
-
-.tool-nav-arrows {
-  display: flex;
-  align-items: center;
-  gap: 6px;
-}
-
-.tool-arrow-btn {
-  width: 28px;
-  height: 28px;
-  border: 1px solid var(--line);
-  border-radius: var(--radius-sm);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  color: var(--ink);
-  transition: all 0.15s ease;
-}
-
-.tool-arrow-btn:hover {
-  border-color: var(--accent);
-  color: var(--accent);
-  background: var(--accent-dim);
-}
-
-/* Minimal Skill Cloud */
-.minimal-skill-cloud {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 8px;
-}
-
-.skill-pill {
-  padding: 5px 11px;
-  background: var(--card-bg);
-  border: 1px solid var(--card-border);
-  border-radius: var(--radius-sm);
-  font-family: var(--font-mono);
-  font-size: 0.74rem;
-  color: var(--ink-muted);
-  transition: all 0.15s ease;
-}
-
-.skill-pill:hover {
-  border-color: var(--accent);
-  color: var(--accent);
-  background: var(--accent-dim);
-}
-
-.skill-pill.active {
-  background: var(--accent) !important;
-  border-color: var(--accent) !important;
-  color: #0e0d0c !important;
-  font-weight: 700;
-}
-
-html.theme-day .skill-pill.active {
-  background: var(--accent) !important;
-  border-color: var(--accent) !important;
-  color: #ffffff !important;
-}
-
-/* Credentials Column */
-.minimal-credentials-list {
   display: flex;
   flex-direction: column;
   gap: 8px;
-  margin: 20px 0 24px 0;
 }
 
-.minimal-cred-row {
+.spec-group-row:last-child {
+  border-bottom: 1px solid var(--line);
+}
+
+.spec-group-header {
   display: flex;
-  align-items: center;
-  gap: 12px;
-  padding: 11px 14px;
-  background: var(--card-bg);
-  border: 1px solid var(--card-border);
-  border-radius: var(--radius-sm);
-  transition: all 0.15s ease;
+  align-items: baseline;
+  gap: 10px;
 }
 
-.minimal-cred-row:hover {
-  border-color: var(--accent);
-  transform: translateX(3px);
-}
-
-.cred-num {
+.spec-code {
   font-family: var(--font-mono);
-  font-size: 0.7rem;
+  font-size: 0.74rem;
   color: var(--accent);
   font-weight: 700;
+  letter-spacing: 0.06em;
 }
 
-.cred-details {
+.spec-cat-title {
+  margin: 0;
+  font-size: 1.05rem;
+  font-weight: 700;
+  color: var(--ink);
+  letter-spacing: -0.01em;
+}
+
+.spec-focus-desc {
+  margin: 0 0 8px 0;
+  font-size: 0.84rem;
+  line-height: 1.5;
+  color: var(--ink-muted);
+}
+
+.spec-items-table {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.spec-item-line {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  padding: 6px 8px;
+  border-radius: var(--radius-sm);
+  transition: background 0.15s ease;
+}
+
+.spec-item-line:hover {
+  background: var(--accent-dim);
+}
+
+.spec-item-name {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  font-size: 0.86rem;
+  color: var(--ink);
+}
+
+.spec-item-name strong {
+  font-weight: 600;
+}
+
+.spec-check-icon {
+  color: var(--accent);
+  flex-shrink: 0;
+}
+
+.spec-item-detail {
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  color: var(--ink-dim);
+  text-align: right;
+}
+
+/* Credentials Ledger (Zero Cards) */
+.credentials-ledger {
+  display: flex;
+  flex-direction: column;
+}
+
+.cred-ledger-row {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  padding: 13px 8px;
+  border-top: 1px solid var(--line);
+  transition: all 0.16s ease;
+  background: transparent;
+}
+
+.cred-ledger-row:last-child {
+  border-bottom: 1px solid var(--line);
+}
+
+.cred-ledger-row:hover {
+  background: var(--card-hover);
+  padding-left: 12px;
+}
+
+html.theme-day .cred-ledger-row:hover {
+  background: rgba(158, 107, 56, 0.06);
+}
+
+.cred-ledger-num {
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  color: var(--accent);
+  font-weight: 700;
+  min-width: 20px;
+}
+
+.cred-ledger-content {
   flex: 1;
   display: flex;
   flex-direction: column;
   gap: 2px;
 }
 
-.cred-name {
-  font-size: 0.85rem;
-  font-weight: 700;
+.cred-ledger-title {
+  font-size: 0.88rem;
+  font-weight: 600;
   color: var(--ink);
+  transition: color 0.15s ease;
 }
 
-.cred-meta {
+.cred-ledger-row:hover .cred-ledger-title {
+  color: var(--accent);
+}
+
+.cred-ledger-sub {
   display: flex;
   align-items: center;
-  gap: 5px;
+  gap: 6px;
   font-family: var(--font-mono);
   font-size: 0.68rem;
   color: var(--ink-dim);
 }
 
-.cred-icon {
-  flex-shrink: 0;
+.cred-type-icon {
   color: var(--accent);
+  flex-shrink: 0;
 }
 
-.meta-dot {
+.cred-meta-dot {
   color: var(--line-strong);
 }
 
-.cred-link-icon {
+.cred-arrow-icon {
   color: var(--ink-dim);
-  transition: color 0.15s ease;
+  transition: transform 0.15s ease, color 0.15s ease;
+  flex-shrink: 0;
 }
 
-.minimal-cred-row:hover .cred-link-icon {
+.cred-ledger-row:hover .cred-arrow-icon {
   color: var(--accent);
+  transform: translate(2px, -2px);
 }
 
-.minimal-philosophy-card {
-  padding: 16px;
-  background: var(--card-bg);
-  border: 1px solid var(--card-border);
-  border-radius: var(--radius-sm);
-  margin-top: auto;
+/* Architectural Doctrine Blockquote */
+.architectural-doctrine {
+  margin-top: 36px;
+  padding-left: 18px;
+  border-left: 2px solid var(--accent);
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
 }
 
-.philosophy-title {
+.doctrine-tag {
   font-family: var(--font-mono);
   font-size: 0.68rem;
   font-weight: 700;
   letter-spacing: 0.08em;
-  color: var(--ink-dim);
-  text-transform: uppercase;
-  display: block;
-  margin-bottom: 6px;
+  color: var(--accent);
 }
 
-.philosophy-quote {
+.doctrine-quote {
   margin: 0;
   font-family: var(--font-serif);
   font-style: italic;
-  font-size: 0.92rem;
-  line-height: 1.55;
+  font-size: 0.96rem;
+  line-height: 1.6;
   color: var(--ink-muted);
+}
+
+.doctrine-signoff {
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  color: var(--ink-dim);
 }
 
 /* ==========================================================================
@@ -1579,15 +1592,16 @@ html.theme-day .skill-pill.active {
 }
 
 .terminal-container {
-  background: #090a0c;
-  border: 1px solid rgba(255, 255, 255, 0.14);
-  border-radius: var(--radius-md);
+  background: #0e0d0c;
+  border: 1px solid var(--leather-border);
+  border-radius: var(--radius-sm);
   overflow: hidden;
-  box-shadow: 0 16px 40px rgba(0, 0, 0, 0.45);
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.3);
 }
 
 html.theme-day .terminal-container {
-  background: #111214;
+  background: #141311;
+  box-shadow: 0 10px 24px rgba(158, 107, 56, 0.1);
 }
 
 .terminal-header-bar {
@@ -1819,23 +1833,28 @@ html.theme-day .terminal-container {
   display: inline-flex;
   align-items: center;
   gap: 4px;
-  background: rgba(255, 255, 255, 0.06);
-  border: 1px solid rgba(255, 255, 255, 0.1);
+  background: transparent;
+  border: 1px solid var(--leather-border);
   padding: 3px 8px;
-  border-radius: var(--radius-sm);
+  border-radius: 2px;
   font-family: var(--font-mono);
   font-size: 0.68rem;
-  color: #f4f4f5;
+  color: var(--accent);
   transition: all 0.15s ease;
 }
 
 .shortcut-chip:hover {
-  border-color: #ffffff;
-  background: rgba(255, 255, 255, 0.15);
+  border-color: var(--accent);
+  background: var(--accent);
+  color: #0e0d0c;
 }
 
 .chip-sparkle {
-  color: #a1a1a6;
+  color: var(--accent);
+}
+
+.shortcut-chip:hover .chip-sparkle {
+  color: #0e0d0c;
 }
 
 /* ==========================================================================
@@ -2225,5 +2244,16 @@ html.theme-day .terminal-container {
   .row-mobile-toggle {
     padding: 5px 9px;
     font-size: 0.66rem;
+  }
+
+  .spec-item-line {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 2px;
+  }
+
+  .spec-item-detail {
+    text-align: left;
+    padding-left: 19px;
   }
 }

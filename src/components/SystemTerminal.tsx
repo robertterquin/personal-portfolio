@@ -155,19 +155,19 @@ export const SystemTerminal: React.FC = () => {
 
   return (
     <section id="terminal" className="terminal-section">
-      <div className="section-banner terminal-banner">
-        <p className="dossier-marker">Terminal</p>
-        <h2>Interactive Shell</h2>
+      <div className="section-title-wrap terminal-banner">
+        <span className="section-label">Developer Console</span>
+        <h2 className="section-title">Interactive Workbench</h2>
         <p className="section-subtext">
-          A command-line interface to inspect projects, technical competencies, and system status.
+          Direct terminal interface to inspect system telemetry, architecture specs, and project metadata.
         </p>
       </div>
 
       <div className="terminal-container">
         <div className="terminal-header-bar">
           <div className="terminal-header-left">
-            <Terminal size={14} className="term-icon" />
-            <span className="term-header-title">terminal.sh</span>
+            <Terminal size={13} className="term-icon" />
+            <span className="term-header-title">SYSTEM WORKBENCH // v3.0</span>
             <span className="term-status-badge">ONLINE</span>
           </div>
           <div className="terminal-header-actions">
