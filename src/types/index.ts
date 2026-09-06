@@ -31,7 +31,6 @@ export interface Project {
   stack: string;
   image: string;
   highlights: string[];
-  metrics?: string;
   demoUrl: string;
   repoUrl: string;
 }

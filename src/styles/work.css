@@ -82,18 +82,6 @@ html.theme-day .project-index-row.row-active {
   transition: color 0.15s ease;
 }
 
-.row-tag-badge {
-  font-family: var(--font-mono);
-  font-size: 0.64rem;
-  text-transform: uppercase;
-  letter-spacing: 0.06em;
-  color: var(--accent);
-  background: var(--accent-dim);
-  border: 1px solid var(--leather-border);
-  padding: 2px 8px;
-  border-radius: 2px;
-}
-
 .row-description {
   margin: 0;
   font-size: 0.86rem;
@@ -266,17 +254,10 @@ html.theme-day .project-index-row.row-active {
   gap: 8px;
 }
 
-.viewer-index-tag {
-  color: var(--accent);
-  font-weight: 700;
-}
-
-.viewer-sep {
-  color: var(--ink-dim);
-}
-
 .viewer-name {
-  color: var(--ink-muted);
+  color: var(--ink);
+  font-weight: 700;
+  letter-spacing: -0.01em;
 }
 
 .viewer-controls-group {
@@ -357,34 +338,6 @@ html.theme-day .project-index-row.row-active {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-}
-
-.viewer-meta-tags {
-  display: flex;
-  align-items: center;
-  gap: 8px;
-  flex-wrap: wrap;
-  margin-bottom: 8px;
-}
-
-.viewer-cat-label {
-  font-family: var(--font-mono);
-  font-size: 0.68rem;
-  color: var(--ink-dim);
-  text-transform: uppercase;
-  letter-spacing: 0.08em;
-  display: block;
-}
-
-.viewer-metrics-tag {
-  font-family: var(--font-mono);
-  font-size: 0.64rem;
-  padding: 2px 8px;
-  border-radius: var(--radius-sm);
-  background: var(--accent-dim);
-  color: var(--accent);
-  border: 1px solid var(--leather-border);
-  letter-spacing: 0.02em;
 }
 
 .viewer-main-title {

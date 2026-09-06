@@ -85,7 +85,6 @@ export const WorkSection: React.FC = () => {
               <div className="row-col row-col-title">
                 <div className="row-title-wrap">
                   <h3 className="row-title">{project.title}</h3>
-                  <span className="row-tag-badge">{project.tag}</span>
                 </div>
                 <p className="row-description">{project.description}</p>
               </div>
@@ -199,8 +198,6 @@ export const WorkSection: React.FC = () => {
           >
             <div className="viewer-top-bar">
               <div className="viewer-title-group">
-                <span className="viewer-index-tag">{activeProject.tag}</span>
-                <span className="viewer-sep">|</span>
                 <strong className="viewer-name">{activeProject.title}</strong>
               </div>
 
@@ -245,12 +242,6 @@ export const WorkSection: React.FC = () => {
                 {/* Right: Project Spec Copy */}
                 <div className="viewer-copy-col">
                   <div className="viewer-copy-header">
-                    <div className="viewer-meta-tags">
-                      <span className="viewer-cat-label">{activeProject.tag}</span>
-                      {activeProject.metrics && (
-                        <span className="viewer-metrics-tag">{activeProject.metrics}</span>
-                      )}
-                    </div>
                     <h3 className="viewer-main-title">{activeProject.title}</h3>
                     <p className="viewer-detail-text">{activeProject.detail}</p>
                   </div>
