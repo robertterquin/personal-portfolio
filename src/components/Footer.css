@@ -1,0 +1,56 @@
+/* ==========================================================================
+   FOOTER COMPONENT STYLES
+   ========================================================================== */
+
+.dossier-footer {
+  padding: 64px 0 40px 0;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 24px;
+  font-family: var(--font-mono);
+  font-size: 0.74rem;
+  color: var(--ink-dim);
+  flex-wrap: wrap;
+}
+
+.footer-left {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.footer-copyright {
+  margin: 0;
+  color: var(--ink-muted);
+}
+
+.footer-meta {
+  color: var(--ink-dim);
+}
+
+.footer-right {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.back-to-top-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  color: var(--ink-dim);
+  transition: color 0.15s ease;
+}
+
+.back-to-top-btn:hover {
+  color: var(--ink);
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .dossier-footer {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+}

@@ -1,0 +1,300 @@
+/* ==========================================================================
+   GITHUB ACTIVITY COMPONENT STYLES
+   ========================================================================== */
+
+.github-activity-section {
+  padding: 92px 0;
+  border-bottom: 1px solid var(--line);
+}
+
+.github-activity-header {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  margin-bottom: 36px;
+  gap: 24px;
+}
+
+.activity-title-col {
+  display: flex;
+  flex-direction: column;
+}
+
+.activity-desc {
+  margin: 0;
+  font-size: 0.88rem;
+  line-height: 1.6;
+  color: var(--ink-dim);
+  max-width: 380px;
+  text-align: right;
+}
+
+/* Main Heatmap Box */
+.github-heatmap-container {
+  background: var(--card-bg);
+  border: 1px solid var(--line-strong);
+  border-radius: var(--radius-sm);
+  overflow: hidden;
+  box-shadow: 0 16px 40px rgba(0, 0, 0, 0.35);
+  display: flex;
+  flex-direction: column;
+}
+
+html.theme-day .github-heatmap-container {
+  box-shadow: 0 10px 30px rgba(158, 107, 56, 0.08);
+}
+
+/* Top Bar */
+.heatmap-top-bar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 16px 24px;
+  background: var(--bg-subtle);
+  border-bottom: 1px solid var(--line);
+}
+
+.heatmap-user-meta {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.github-brand-icon {
+  color: var(--ink-dim);
+}
+
+.heatmap-username {
+  font-family: var(--font-mono);
+  font-size: 0.78rem;
+  font-weight: 600;
+  color: var(--ink-muted);
+}
+
+.heatmap-profile-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  color: var(--ink-dim);
+  transition: color 0.15s ease;
+}
+
+.heatmap-profile-link:hover {
+  color: var(--accent);
+}
+
+/* Scroll Viewport & Grid Board */
+.heatmap-scroll-stage {
+  padding: 24px 20px;
+  overflow-x: auto;
+  background: #0d0c0b;
+  display: flex;
+  align-items: center;
+  width: 100%;
+}
+
+html.theme-day .heatmap-scroll-stage {
+  background: #f7f4ed;
+}
+
+.heatmap-board {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  width: max-content;
+  margin: auto;
+}
+
+.heatmap-months-row {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  width: max-content;
+}
+
+.heatmap-month-spacer {
+  width: 36px;
+  flex-shrink: 0;
+}
+
+.heatmap-months-track {
+  display: grid;
+  grid-template-columns: repeat(53, var(--gh-cell-size));
+  gap: var(--gh-cell-gap);
+  width: max-content;
+}
+
+.heatmap-month-tag {
+  font-family: var(--font-mono);
+  font-size: 0.8rem;
+  font-weight: 500;
+  color: var(--ink-dim);
+  text-align: left;
+}
+
+.heatmap-body-row {
+  display: flex;
+  align-items: stretch;
+  gap: 12px;
+  width: max-content;
+}
+
+.heatmap-weekdays-col {
+  display: grid;
+  grid-template-rows: repeat(7, var(--gh-cell-size));
+  gap: var(--gh-cell-gap);
+  width: 36px;
+  flex-shrink: 0;
+}
+
+.weekday-label {
+  font-family: var(--font-mono);
+  font-size: 0.78rem;
+  color: var(--ink-dim);
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  padding-right: 8px;
+  height: var(--gh-cell-size);
+  line-height: var(--gh-cell-size);
+}
+
+.heatmap-grid {
+  display: grid;
+  grid-template-rows: repeat(7, var(--gh-cell-size));
+  grid-auto-flow: column;
+  grid-auto-columns: var(--gh-cell-size);
+  gap: var(--gh-cell-gap);
+  width: max-content;
+}
+
+.heatmap-cell {
+  width: var(--gh-cell-size);
+  height: var(--gh-cell-size);
+  border-radius: 4px;
+  background: #1c1917;
+  cursor: pointer;
+  outline: none;
+  transition: transform 0.14s ease, outline 0.14s ease, box-shadow 0.14s ease;
+}
+
+html.theme-day .heatmap-cell {
+  background: #ebe5db;
+}
+
+.heatmap-cell:hover,
+.heatmap-cell:focus-visible {
+  transform: scale(1.3);
+  outline: 2px solid var(--accent);
+  z-index: 10;
+}
+
+/* Warm Studio Saddle Leather Levels */
+.heatmap-cell.level-0 { background: #1c1917; }
+html.theme-day .heatmap-cell.level-0 { background: #ebe5db; }
+
+.heatmap-cell.level-1 { background: #3e2617; }
+html.theme-day .heatmap-cell.level-1 { background: #d8c3ad; }
+
+.heatmap-cell.level-2 { background: #6e3f1e; }
+html.theme-day .heatmap-cell.level-2 { background: #b88d66; }
+
+.heatmap-cell.level-3 { background: #b87333; }
+html.theme-day .heatmap-cell.level-3 { background: #8e582e; }
+
+.heatmap-cell.level-4 {
+  background: #e59a58;
+  box-shadow: 0 0 8px rgba(229, 154, 88, 0.45);
+}
+html.theme-day .heatmap-cell.level-4 {
+  background: #5f3414;
+  box-shadow: 0 0 6px rgba(95, 52, 20, 0.35);
+}
+
+/* Bottom Bar */
+.heatmap-bottom-bar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 16px 24px;
+  background: var(--bg-subtle);
+  border-top: 1px solid var(--line);
+  font-family: var(--font-mono);
+  font-size: 0.74rem;
+  color: var(--ink-dim);
+  gap: 16px;
+  flex-wrap: wrap;
+}
+
+.heatmap-total-label {
+  color: var(--ink-muted);
+}
+
+.heatmap-bottom-right {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+
+.heatmap-inspection-status strong {
+  color: var(--accent);
+}
+
+.inspection-cue {
+  color: var(--ink-dim);
+  font-style: italic;
+}
+
+.heatmap-legend {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  font-family: var(--font-mono);
+  font-size: 0.66rem;
+  color: var(--ink-dim);
+}
+
+.legend-cell {
+  width: 14px;
+  height: 14px;
+  border-radius: 3px;
+}
+
+.legend-cell.level-0 { background: #1c1917; }
+.legend-cell.level-1 { background: #3e2617; }
+.legend-cell.level-2 { background: #6e3f1e; }
+.legend-cell.level-3 { background: #b87333; }
+.legend-cell.level-4 { background: #e59a58; }
+
+html.theme-day .legend-cell.level-0 { background: #ebe5db; }
+html.theme-day .legend-cell.level-1 { background: #d8c3ad; }
+html.theme-day .legend-cell.level-2 { background: #b88d66; }
+html.theme-day .legend-cell.level-3 { background: #8e582e; }
+html.theme-day .legend-cell.level-4 { background: #5f3414; }
+
+/* Responsive */
+@media (max-width: 768px) {
+  .github-activity-header {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 12px;
+  }
+
+  .activity-desc {
+    text-align: left;
+    max-width: 100%;
+  }
+
+  .heatmap-scroll-stage {
+    padding: 18px 14px;
+    justify-content: flex-start;
+  }
+
+  .heatmap-bottom-bar {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 6px;
+  }
+}

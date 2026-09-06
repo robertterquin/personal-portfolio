@@ -3,6 +3,7 @@ import { Icon } from '@iconify/react';
 import { motion, AnimatePresence } from 'motion/react';
 import type { Project } from '../types';
 import { projectsData } from '../data/portfolioData';
+import './WorkSection.css';
 
 export const WorkSection: React.FC = () => {
   const [selectedIndex, setSelectedIndex] = useState<number>(0);

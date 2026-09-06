@@ -1,0 +1,140 @@
+/* ==========================================================================
+   DESIGN TOKENS & BASE THEME ARCHITECTURE
+   Palette: Warm Studio (Obsidian Espresso, Warm Limestone & Saddle Leather)
+   ========================================================================== */
+
+:root {
+  /* Typography */
+  --font-sans: 'DM Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  --font-display: 'Instrument Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+  --font-serif: 'Instrument Serif', Georgia, serif;
+  --font-mono: 'JetBrains Mono', monospace;
+
+  /* Night Mode Tokens — Deep Obsidian Espresso, Warm Travertine & Roasted Saddle Leather */
+  --bg: #11100f;
+  --bg-subtle: #181615;
+  --card-bg: #1e1b19;
+  --card-hover: #262220;
+  --card-border: rgba(206, 191, 171, 0.12);
+  --line: rgba(206, 191, 171, 0.08);
+  --line-strong: rgba(206, 191, 171, 0.22);
+
+  --ink: #f7f5f2;
+  --ink-muted: #aca59c;
+  --ink-dim: #7a7369;
+
+  /* Rich Roasted Saddle Leather Accents */
+  --accent: #b88252;
+  --accent-hover: #cb9767;
+  --accent-dim: rgba(184, 130, 82, 0.12);
+  --accent-glow: rgba(184, 130, 82, 0.22);
+
+  --leather: #b88252;
+  --leather-subtle: rgba(184, 130, 82, 0.09);
+  --leather-border: rgba(184, 130, 82, 0.28);
+
+  --radius-sm: 4px;
+  --radius-md: 8px;
+  --radius-lg: 12px;
+
+  /* GitHub Heatmap Grid Metrics */
+  --gh-cell-size: clamp(20px, 1.6vw, 24px);
+  --gh-cell-gap: clamp(4px, 0.35vw, 5px);
+}
+
+/* Day Mode Tokens — Architectural Travertine Linen, Rich Espresso & Saddle Leather */
+html.theme-day,
+html.theme-day body {
+  --bg: #f4f0e8;
+  --bg-subtle: #eae4d8;
+  --card-bg: #ffffff;
+  --card-hover: #faf8f4;
+  --card-border: #ded6c8;
+  --line: #e4dcd0;
+  --line-strong: #a49987;
+
+  --ink: #161311;
+  --ink-muted: #5e564d;
+  --ink-dim: #857d72;
+
+  --accent: #8e582e;
+  --accent-hover: #71421e;
+  --accent-dim: rgba(142, 88, 46, 0.1);
+  --accent-glow: rgba(142, 88, 46, 0.18);
+
+  --leather: #8e582e;
+  --leather-subtle: rgba(142, 88, 46, 0.08);
+  --leather-border: rgba(142, 88, 46, 0.25);
+}
+
+/* Global Reset & Base Layout */
+* {
+  box-sizing: border-box;
+}
+
+html {
+  background: var(--bg);
+  color: var(--ink);
+  scroll-behavior: smooth;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--ink);
+  font-family: var(--font-sans);
+  min-width: 320px;
+  overflow-x: hidden;
+  transition: background-color 0.25s ease, color 0.25s ease;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+button {
+  font-family: inherit;
+  cursor: pointer;
+  border: none;
+  background: transparent;
+}
+
+/* Shared Typography & Utility Classes */
+.section-label {
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--accent);
+  font-weight: 600;
+  display: block;
+  margin-bottom: 8px;
+}
+
+.section-title {
+  margin: 0;
+  font-family: var(--font-display);
+  font-size: clamp(2.1rem, 3.5vw, 2.75rem);
+  font-weight: 800;
+  letter-spacing: -0.03em;
+  color: var(--ink);
+  line-height: 1.1;
+}
+
+.section-title-wrap {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  margin-bottom: 24px;
+}
+
+.section-subtext {
+  margin: 6px 0 0 0;
+  font-size: 0.9rem;
+  line-height: 1.55;
+  color: var(--ink-muted);
+  max-width: 620px;
+}

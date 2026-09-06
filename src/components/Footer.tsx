@@ -1,6 +1,7 @@
 import React from 'react';
 import { Icon } from '@iconify/react';
 import { personalData } from '../data/portfolioData';
+import './Footer.css';
 
 export const Footer: React.FC = () => {
   const currentYear = new Date().getFullYear();

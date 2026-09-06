@@ -4,6 +4,7 @@ import { Icon } from '@iconify/react';
 import { motion, AnimatePresence } from 'motion/react';
 import type { CredentialItem } from '../types';
 import { capabilityGroups, credentialsData } from '../data/portfolioData';
+import './ToolkitSection.css';
 
 export const ToolkitSection: React.FC = () => {
   const [selectedCert, setSelectedCert] = useState<CredentialItem | null>(null);
