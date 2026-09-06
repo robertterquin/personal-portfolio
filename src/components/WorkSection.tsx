@@ -1,7 +1,8 @@
 import React, { useState, useRef, useEffect } from 'react';
 import { Icon } from '@iconify/react';
 import { motion, AnimatePresence } from 'motion/react';
-import { projectsData, type Project } from '../data/portfolioData';
+import type { Project } from '../types';
+import { projectsData } from '../data/portfolioData';
 
 export const WorkSection: React.FC = () => {
   const [selectedIndex, setSelectedIndex] = useState<number>(0);

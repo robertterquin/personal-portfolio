@@ -1,8 +1,9 @@
 import React from 'react';
 import { Icon } from '@iconify/react';
+import type { Theme } from '../types';
 
 interface HeaderProps {
-  theme: 'day' | 'night';
+  theme: Theme;
   onToggleTheme: () => void;
   manilaTime: string;
 }

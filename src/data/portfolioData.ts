@@ -1,43 +1,12 @@
-export interface Project {
-  id: string;
-  number: string;
-  title: string;
-  tag: string;
-  description: string;
-  detail: string;
-  stack: string;
-  image: string;
-  highlights: string[];
-  metrics?: string;
-  demoUrl: string;
-  repoUrl: string;
-  category: 'web' | 'mobile' | 'system' | 'tool';
-}
+import type {
+  PersonalData,
+  Project,
+  CapabilityGroup,
+  CredentialItem,
+  TimelineEvent,
+} from '../types';
 
-export interface SkillItem {
-  name: string;
-  category: 'Frontend' | 'Backend' | 'Database' | 'Systems & DevOps' | 'Core' | 'Mobile';
-  description: string;
-  proficiency: string;
-}
-
-export interface CredentialItem {
-  index: string;
-  title: string;
-  institution: string;
-  year: string;
-  image: string;
-  type: 'Degree' | 'Certification' | 'Award' | 'Achievement';
-}
-
-export interface TimelineEvent {
-  year: string;
-  role: string;
-  organization: string;
-  description: string;
-}
-
-export const personalData = {
+export const personalData: PersonalData = {
   name: 'Robert Terquin Laqui',
   monogram: 'RT',
   role: 'Full-Stack Software Engineer & Mobile Developer',
@@ -179,96 +148,56 @@ export const projectsData: Project[] = [
   },
 ];
 
-export const skillsData: SkillItem[] = [
+export const capabilityGroups: CapabilityGroup[] = [
   {
-    name: 'Flutter & Dart',
-    category: 'Mobile',
-    proficiency: 'Core',
-    description: 'Cross-platform mobile applications, state architecture, and offline SQLite/Supabase synchronization.',
+    code: '01',
+    category: 'Mobile Systems & Architecture',
+    focus: 'Cross-platform engineering, offline-first synchronization, and state management.',
+    tools: [
+      { name: 'Flutter & Dart' },
+      { name: 'React Native' },
+      { name: 'Android Studio & SDKs' },
+      { name: 'SQLite Sync' },
+      { name: 'Riverpod & Provider' },
+    ],
   },
   {
-    name: 'React',
-    category: 'Frontend',
-    proficiency: 'Advanced',
-    description: 'Component-driven user interfaces, custom hook design, performant rendering, and state management.',
+    code: '02',
+    category: 'Web & Full-Stack Interfaces',
+    focus: 'Component architecture, strict typing, and high-performance rendering.',
+    tools: [
+      { name: 'React' },
+      { name: 'TypeScript' },
+      { name: 'JavaScript (ESNext)' },
+      { name: 'Tailwind CSS' },
+      { name: 'Next.js & Vite' },
+      { name: 'HTML5 & Modern CSS', isCertified: true },
+    ],
   },
   {
-    name: 'TypeScript',
-    category: 'Frontend',
-    proficiency: 'Advanced',
-    description: 'Strict type safety, generative interfaces, and preventing runtime defects during build time.',
+    code: '03',
+    category: 'Backend & Data Infrastructure',
+    focus: 'Relational schema modeling, RESTful microservices, and secure authentication.',
+    tools: [
+      { name: 'Node.js & Express' },
+      { name: 'Supabase & Firebase' },
+      { name: 'PostgreSQL' },
+      { name: 'MySQL', isCertified: true },
+      { name: 'JWT & OAuth' },
+    ],
   },
   {
-    name: 'Node.js & Express',
-    category: 'Backend',
-    proficiency: 'Proficient',
-    description: 'RESTful API architectures, asynchronous event loops, authentication middleware, and service routing.',
-  },
-  {
-    name: 'Supabase & Firebase',
-    category: 'Database',
-    proficiency: 'Core',
-    description: 'Cloud PostgreSQL schemas, real-time database listeners, auth providers, and secure cloud storage.',
-  },
-  {
-    name: 'MySQL & Databases',
-    category: 'Database',
-    proficiency: 'Certified',
-    description: 'Relational database schema modeling, SQL query optimization, indexes, and transactional consistency.',
-  },
-  {
-    name: 'Java (Oracle Certified)',
-    category: 'Core',
-    proficiency: 'Advanced',
-    description: 'Object-oriented programming, design patterns, robust software structure, and backend services.',
-  },
-  {
-    name: 'Python',
-    category: 'Core',
-    proficiency: 'Proficient',
-    description: 'Automation scripts, rapid prototyping, AI integration pipelines, and data scraping.',
-  },
-  {
-    name: 'HTML5 & CSS3',
-    category: 'Frontend',
-    proficiency: 'Certified Specialist',
-    description: 'Semantic markup, modern CSS grid/flexbox, accessibility standards, and responsive web systems.',
-  },
-  {
-    name: 'TailwindCSS',
-    category: 'Frontend',
-    proficiency: 'Advanced',
-    description: 'Scalable utility token systems, bespoke design tokens, and smooth micro-interaction styling.',
-  },
-  {
-    name: 'Git & GitHub',
-    category: 'Systems & DevOps',
-    proficiency: 'Advanced',
-    description: 'Version control branch management, pull request reviews, and GitHub deployment pipelines.',
-  },
-  {
-    name: 'Vercel & Cloud',
-    category: 'Systems & DevOps',
-    proficiency: 'Proficient',
-    description: 'Edge network deployment, custom domain DNS, environment variable isolation, and CI/CD triggers.',
-  },
-  {
-    name: 'C Programming',
-    category: 'Core',
-    proficiency: 'Intermediate',
-    description: 'Low-level memory management, pointers, and foundational computer architecture concepts.',
-  },
-  {
-    name: 'Cybersecurity Fundamentals',
-    category: 'Systems & DevOps',
-    proficiency: 'Specialist',
-    description: 'Threat modeling, web vulnerability mitigation, secure authentication, and defense best practices.',
-  },
-  {
-    name: 'Android Studio & Mobile SDKs',
-    category: 'Mobile',
-    proficiency: 'Proficient',
-    description: 'Native mobile build pipelines, Android emulation, permissions management, and APK signing.',
+    code: '04',
+    category: 'Core Engineering & Security',
+    focus: 'Defensive cybersecurity standards, version control, and computer architecture.',
+    tools: [
+      { name: 'Java', isCertified: true },
+      { name: 'Python' },
+      { name: 'C Programming' },
+      { name: 'Cybersecurity Fundamentals', isCertified: true },
+      { name: 'Git & GitHub' },
+      { name: 'Vercel Edge' },
+    ],
   },
 ];
 
@@ -362,5 +291,3 @@ export const timelineData: TimelineEvent[] = [
       'Competed in National Programming Challenge 2024. Deep-dived into Java OOP, relational database schemas, and web standards.',
   },
 ];
-
-

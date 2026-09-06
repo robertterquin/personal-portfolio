@@ -2,67 +2,8 @@ import React, { useState, useEffect } from 'react';
 import { createPortal } from 'react-dom';
 import { Icon } from '@iconify/react';
 import { motion, AnimatePresence } from 'motion/react';
-import { credentialsData, type CredentialItem } from '../data/portfolioData';
-
-interface CapabilityGroup {
-  code: string;
-  category: string;
-  focus: string;
-  tools: { name: string; isCertified?: boolean }[];
-}
-
-const capabilityGroups: CapabilityGroup[] = [
-  {
-    code: '01',
-    category: 'Mobile Systems & Architecture',
-    focus: 'Cross-platform engineering, offline-first synchronization, and state management.',
-    tools: [
-      { name: 'Flutter & Dart' },
-      { name: 'React Native' },
-      { name: 'Android Studio & SDKs' },
-      { name: 'SQLite Sync' },
-      { name: 'Riverpod & Provider' },
-    ],
-  },
-  {
-    code: '02',
-    category: 'Web & Full-Stack Interfaces',
-    focus: 'Component architecture, strict typing, and high-performance rendering.',
-    tools: [
-      { name: 'React' },
-      { name: 'TypeScript' },
-      { name: 'JavaScript (ESNext)' },
-      { name: 'Tailwind CSS' },
-      { name: 'Next.js & Vite' },
-      { name: 'HTML5 & Modern CSS', isCertified: true },
-    ],
-  },
-  {
-    code: '03',
-    category: 'Backend & Data Infrastructure',
-    focus: 'Relational schema modeling, RESTful microservices, and secure authentication.',
-    tools: [
-      { name: 'Node.js & Express' },
-      { name: 'Supabase & Firebase' },
-      { name: 'PostgreSQL' },
-      { name: 'MySQL', isCertified: true },
-      { name: 'JWT & OAuth' },
-    ],
-  },
-  {
-    code: '04',
-    category: 'Core Engineering & Security',
-    focus: 'Defensive cybersecurity standards, version control, and computer architecture.',
-    tools: [
-      { name: 'Java', isCertified: true },
-      { name: 'Python' },
-      { name: 'C Programming' },
-      { name: 'Cybersecurity Fundamentals', isCertified: true },
-      { name: 'Git & GitHub' },
-      { name: 'Vercel Edge' },
-    ],
-  },
-];
+import type { CredentialItem } from '../types';
+import { capabilityGroups, credentialsData } from '../data/portfolioData';
 
 export const ToolkitSection: React.FC = () => {
   const [selectedCert, setSelectedCert] = useState<CredentialItem | null>(null);
