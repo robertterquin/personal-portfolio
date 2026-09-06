@@ -71,11 +71,8 @@ export const ToolkitSection: React.FC = () => {
                   {group.tools.map((tool, idx) => (
                     <React.Fragment key={tool.name}>
                       {idx > 0 && <span className="spec-flow-sep" aria-hidden="true">·</span>}
-                      <span className={`spec-tool-item ${tool.isCertified ? 'is-certified' : ''}`}>
+                      <span className="spec-tool-item">
                         <span className="tool-text">{tool.name}</span>
-                        {tool.isCertified && (
-                          <span className="spec-cert-tag">Certified</span>
-                        )}
                       </span>
                     </React.Fragment>
                   ))}

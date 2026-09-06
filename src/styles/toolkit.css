@@ -102,19 +102,6 @@
   user-select: none;
 }
 
-.spec-cert-tag {
-  font-family: var(--font-mono);
-  font-size: 0.64rem;
-  color: var(--accent);
-  background: var(--accent-dim);
-  border: 1px solid var(--accent-glow);
-  padding: 1px 6px;
-  border-radius: 3px;
-  font-weight: 600;
-  letter-spacing: 0.04em;
-  text-transform: uppercase;
-}
-
 /* Chronological Proof Ledger */
 .chronological-ledger {
   display: flex;

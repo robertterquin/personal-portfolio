@@ -37,7 +37,6 @@ export interface Project {
 
 export interface CapabilityTool {
   name: string;
-  isCertified?: boolean;
 }
 
 export interface CapabilityGroup {
