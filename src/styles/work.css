@@ -205,7 +205,7 @@ html.theme-day .project-index-row.row-active {
 .mobile-expanded-body {
   display: flex;
   flex-direction: column;
-  gap: 10px;
+  gap: 12px;
 }
 
 .mobile-expanded-detail {
@@ -213,6 +213,51 @@ html.theme-day .project-index-row.row-active {
   font-size: 0.85rem;
   line-height: 1.5;
   color: var(--ink-muted);
+}
+
+.mobile-highlights-block {
+  padding: 12px 14px;
+  background: var(--card-bg);
+  border: 1px solid var(--card-border);
+  border-left: 2px solid var(--accent);
+  border-radius: var(--radius-sm);
+}
+
+.mobile-highlights-title {
+  display: block;
+  font-family: var(--font-mono);
+  font-size: 0.66rem;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  font-weight: 700;
+  color: var(--ink-dim);
+  margin-bottom: 8px;
+}
+
+.mobile-highlights-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.mobile-highlight-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 8px;
+  font-size: 0.8rem;
+  line-height: 1.45;
+  color: var(--ink);
+}
+
+.mobile-expanded-actions {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-top: 4px;
+  flex-wrap: wrap;
 }
 
 /* Minimal Project File Viewer Drawer */
@@ -335,6 +380,14 @@ html.theme-day .project-index-row.row-active {
   justify-content: space-between;
 }
 
+.viewer-meta-tags {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex-wrap: wrap;
+  margin-bottom: 8px;
+}
+
 .viewer-cat-label {
   font-family: var(--font-mono);
   font-size: 0.68rem;
@@ -342,7 +395,17 @@ html.theme-day .project-index-row.row-active {
   text-transform: uppercase;
   letter-spacing: 0.08em;
   display: block;
-  margin-bottom: 6px;
+}
+
+.viewer-metrics-tag {
+  font-family: var(--font-mono);
+  font-size: 0.64rem;
+  padding: 2px 8px;
+  border-radius: var(--radius-sm);
+  background: var(--accent-dim);
+  color: var(--accent);
+  border: 1px solid var(--leather-border);
+  letter-spacing: 0.02em;
 }
 
 .viewer-main-title {
@@ -358,6 +421,70 @@ html.theme-day .project-index-row.row-active {
   font-size: 0.95rem;
   line-height: 1.68;
   color: var(--ink-muted);
+}
+
+/* Highlights Card */
+.viewer-highlights-card {
+  margin: 22px 0 8px 0;
+  padding: 16px 18px;
+  background: var(--card-bg);
+  border: 1px solid var(--card-border);
+  border-left: 2px solid var(--accent);
+  border-radius: var(--radius-sm);
+}
+
+.viewer-highlights-header {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  margin-bottom: 12px;
+}
+
+.highlights-header-icon {
+  color: var(--accent);
+  flex-shrink: 0;
+}
+
+.viewer-highlights-title {
+  font-family: var(--font-mono);
+  font-size: 0.68rem;
+  text-transform: uppercase;
+  letter-spacing: 0.07em;
+  font-weight: 700;
+  color: var(--ink-dim);
+}
+
+.viewer-highlights-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.viewer-highlight-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 9px;
+  font-size: 0.85rem;
+  line-height: 1.5;
+  color: var(--ink);
+}
+
+.highlight-bullet {
+  color: var(--accent);
+  font-family: var(--font-mono);
+  font-size: 0.95rem;
+  font-weight: 700;
+  line-height: 1.3;
+  flex-shrink: 0;
+  user-select: none;
+}
+
+.highlight-text {
+  color: var(--ink);
+  font-weight: 400;
 }
 
 .viewer-actions-row {

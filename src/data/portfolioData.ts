@@ -11,13 +11,15 @@ export const personalData: PersonalData = {
   monogram: 'RT',
   role: 'Full-Stack Software Engineer & Mobile Developer',
   focus: 'Cross-Platform Mobile · Web Architecture · Cloud Systems',
-  location: 'Cavite, Philippines',
+  location: 'Philippines',
   timezone: 'Asia/Manila',
   coordinates: '14.2829° N, 120.9167° E',
   availability: 'Available for new opportunities',
   shortBio:
     'Full-stack software engineer specializing in cross-platform mobile and web systems with Flutter, React, Node.js, and cloud backends. Focused on building clean, high-performance applications with thoughtful user experiences.',
   email: 'business.treevor@gmail.com',
+  phone: '+63 926 029 4838',
+  phoneRaw: '09260294838',
   github: 'https://github.com/robertterquin',
   linkedin: 'https://www.linkedin.com/in/robertterquinlaqui/',
   resumeUrl: '/Robert_Terquin_Laqui_Resume.pdf',
@@ -204,8 +206,8 @@ export const capabilityGroups: CapabilityGroup[] = [
 export const credentialsData: CredentialItem[] = [
   {
     index: '01',
-    title: 'HackForGov 2025 - CALABARZON',
-    institution: 'Government Cybersecurity Challenge Finalist',
+    title: 'HackForGov 2025: CALABARZON',
+    institution: '2nd Runner-Up · DICT Cybersecurity Challenge',
     year: '2025',
     image: '/certificates/hackforgov-2025.jpg',
     type: 'Award',
@@ -270,24 +272,13 @@ export const credentialsData: CredentialItem[] = [
 
 export const timelineData: TimelineEvent[] = [
   {
-    year: '2026 — Present',
-    role: 'Full-Stack Software Engineer',
-    organization: 'Independent & Client Systems Development',
-    description:
-      'Architecting cross-platform Flutter applications (Spendly, Chainly) and AI-powered web systems (Hunch, Hapag).',
+    role: 'Mobile & Web Developer',
+    organization: 'Freelance',
+    period: '2024 — Present',
   },
   {
-    year: '2025',
-    role: 'Competitive Programmer & Cybersecurity Finalist',
-    organization: 'HackForGov 2025 & CodeChum NPC',
-    description:
-      'Finalist in HackForGov CALABARZON and CodeChum NPC 2025. Earned certifications in Databases, Cybersecurity, and HTML/CSS.',
-  },
-  {
-    year: '2024',
-    role: 'Systems & Algorithmic Foundations',
-    organization: 'National Programming Challenge 2024',
-    description:
-      'Competed in National Programming Challenge 2024. Deep-dived into Java OOP, relational database schemas, and web standards.',
+    role: 'BS Information Technology',
+    organization: 'St. Dominic College of Asia',
+    period: '2023',
   },
 ];

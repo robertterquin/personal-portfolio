@@ -1,43 +1,34 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { Icon } from '@iconify/react';
 import { personalData } from '../data/portfolioData';
 
 export const Snapshot: React.FC = () => {
-  const [copied, setCopied] = useState<boolean>(false);
-
-  const handleCopyEmail = async () => {
-    try {
-      await navigator.clipboard.writeText(personalData.email);
-      setCopied(true);
-      setTimeout(() => setCopied(false), 2200);
-    } catch {
-      setCopied(true);
-      setTimeout(() => setCopied(false), 2200);
-    }
-  };
-
   return (
     <section className="studio-connect-strip">
       <div className="connect-strip-inner">
-        {/* Email with 1-click inline copy */}
-        <div className="strip-email-block">
-          <button
-            type="button"
-            className="strip-email-trigger"
-            onClick={handleCopyEmail}
-            aria-label="Copy email address"
+        {/* Direct Contact Links: Email & Phone */}
+        <div className="strip-contact-group">
+          <a
+            href={`mailto:${personalData.email}?subject=Project%20Inquiry%20%2F%20Engineering%20Opportunity`}
+            className="strip-contact-link"
+            title="Compose email to Robert"
           >
             <Icon icon="lucide:mail" width={15} height={15} className="strip-icon" />
-            <span className="strip-email-text">{personalData.email}</span>
-            <span className={`strip-copy-cue ${copied ? 'copied' : ''}`}>
-              {copied ? (
-                <Icon icon="lucide:check" width={12} height={12} />
-              ) : (
-                <Icon icon="lucide:copy" width={12} height={12} />
-              )}
-              <span>{copied ? 'Copied' : 'Copy'}</span>
-            </span>
-          </button>
+            <span className="strip-text">{personalData.email}</span>
+            <Icon icon="lucide:arrow-up-right" width={12} height={12} className="arrow-muted" />
+          </a>
+
+          <span className="strip-item-divider" aria-hidden="true">·</span>
+
+          <a
+            href={`tel:${personalData.phoneRaw}`}
+            className="strip-contact-link"
+            title="Call mobile phone"
+          >
+            <Icon icon="lucide:phone" width={15} height={15} className="strip-icon" />
+            <span className="strip-text">{personalData.phone}</span>
+            <Icon icon="lucide:arrow-up-right" width={12} height={12} className="arrow-muted" />
+          </a>
         </div>
 
         {/* Links: Clean Typographic Line */}

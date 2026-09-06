@@ -11,6 +11,8 @@ export interface PersonalData {
   availability: string;
   shortBio: string;
   email: string;
+  phone: string;
+  phoneRaw: string;
   github: string;
   linkedin: string;
   resumeUrl: string;
@@ -56,10 +58,9 @@ export interface CredentialItem {
 }
 
 export interface TimelineEvent {
-  year: string;
   role: string;
   organization: string;
-  description: string;
+  period: string;
 }
 
 export interface ContributionDay {

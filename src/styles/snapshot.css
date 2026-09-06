@@ -1,9 +1,10 @@
 /* ==========================================================================
    SNAPSHOT / CONNECT STRIP COMPONENT STYLES
+   Direct minimal contact & profile links, zero clutter
    ========================================================================== */
 
 .studio-connect-strip {
-  padding: 32px 0;
+  padding: 28px 0;
   border-bottom: 1px solid var(--line);
 }
 
@@ -11,75 +12,53 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
-  gap: 32px;
+  gap: 28px;
   flex-wrap: wrap;
 }
 
-.strip-email-block {
+/* Contact Group: Email & Mobile */
+.strip-contact-group {
   display: flex;
   align-items: center;
-  gap: 12px;
+  gap: 20px;
+  flex-wrap: wrap;
 }
 
-.strip-email-trigger {
+.strip-contact-link {
   display: inline-flex;
   align-items: center;
-  gap: 10px;
-  background: transparent;
-  border: none;
-  padding: 6px 0;
-  color: var(--ink);
+  gap: 8px;
   font-family: var(--font-mono);
-  font-size: 0.96rem;
-  cursor: pointer;
-  transition: color 0.15s ease;
+  font-size: 0.92rem;
+  font-weight: 500;
+  color: var(--ink);
+  text-decoration: none;
+  transition: all 0.15s ease;
 }
 
-.strip-email-trigger:hover .strip-email-text {
+.strip-contact-link:hover {
   color: var(--accent);
+}
+
+.strip-contact-link:hover .strip-icon,
+.strip-contact-link:hover .arrow-muted {
+  color: var(--accent);
+  transform: translate(1px, -1px);
 }
 
 .strip-icon {
   color: var(--ink-dim);
+  flex-shrink: 0;
   transition: color 0.15s ease;
 }
 
-.strip-email-trigger:hover .strip-icon {
-  color: var(--accent);
+.strip-item-divider {
+  color: var(--line-strong);
+  font-family: var(--font-mono);
+  font-size: 0.90rem;
 }
 
-.strip-email-text {
-  transition: color 0.15s ease;
-  font-weight: 600;
-  letter-spacing: -0.01em;
-}
-
-.strip-copy-cue {
-  display: inline-flex;
-  align-items: center;
-  gap: 5px;
-  font-size: 0.75rem;
-  color: var(--ink-dim);
-  border: 1px solid var(--line-strong);
-  padding: 4px 10px;
-  border-radius: 4px;
-  margin-left: 10px;
-  font-weight: 500;
-  transition: all 0.15s ease;
-}
-
-.strip-email-trigger:hover .strip-copy-cue {
-  border-color: var(--accent);
-  color: var(--accent);
-  background: var(--accent-dim);
-}
-
-.strip-copy-cue.copied {
-  border-color: #10b981;
-  color: #10b981;
-  background: rgba(16, 185, 129, 0.1);
-}
-
+/* Links Block */
 .strip-links-block {
   display: flex;
   align-items: center;
@@ -119,23 +98,39 @@
 }
 
 /* Responsive */
+@media (max-width: 900px) {
+  .strip-contact-group {
+    gap: 16px;
+  }
+}
+
 @media (max-width: 768px) {
   .connect-strip-inner {
     flex-direction: column;
     align-items: flex-start;
     gap: 16px;
   }
+
+  .strip-item-divider {
+    display: none;
+  }
+
+  .strip-contact-group {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 12px;
+    width: 100%;
+  }
 }
 
 @media (max-width: 540px) {
-  .strip-email-block {
-    width: 100%;
-    flex-wrap: wrap;
+  .strip-contact-link {
+    font-size: 0.85rem;
   }
 
   .strip-links-block {
     width: 100%;
     flex-wrap: wrap;
-    gap: 10px;
+    gap: 12px;
   }
 }

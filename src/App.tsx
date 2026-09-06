@@ -5,6 +5,7 @@ import { Masthead } from './components/Masthead';
 import { Snapshot } from './components/Snapshot';
 import { WorkSection } from './components/WorkSection';
 import { ToolkitSection } from './components/ToolkitSection';
+import { TimelineSection } from './components/TimelineSection';
 import { GithubActivity } from './components/GithubActivity';
 import { Footer } from './components/Footer';
 
@@ -27,6 +28,7 @@ function App() {
             <Snapshot />
             <WorkSection />
             <ToolkitSection />
+            <TimelineSection />
             <GithubActivity />
           </div>
         </main>

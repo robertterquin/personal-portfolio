@@ -139,6 +139,47 @@ export const WorkSection: React.FC = () => {
                     </div>
                     <div className="mobile-expanded-body">
                       <p className="mobile-expanded-detail">{project.detail}</p>
+
+                      {project.highlights && project.highlights.length > 0 && (
+                        <div className="mobile-highlights-block">
+                          <span className="mobile-highlights-title">Engineering Highlights</span>
+                          <ul className="mobile-highlights-list">
+                            {project.highlights.map((h, i) => (
+                              <li key={i} className="mobile-highlight-item">
+                                <span className="highlight-bullet" aria-hidden="true">›</span>
+                                <span>{h}</span>
+                              </li>
+                            ))}
+                          </ul>
+                        </div>
+                      )}
+
+                      <div className="mobile-expanded-actions">
+                        {project.demoUrl &&
+                          project.demoUrl.startsWith('http') &&
+                          !project.demoUrl.includes('github') && (
+                            <a
+                              href={project.demoUrl}
+                              target="_blank"
+                              rel="noreferrer"
+                              className="viewer-btn viewer-btn-primary"
+                            >
+                              <Icon icon="lucide:globe" width={13} height={13} />
+                              <span>Live Site</span>
+                              <Icon icon="lucide:arrow-up-right" width={12} height={12} />
+                            </a>
+                          )}
+                        <a
+                          href={project.repoUrl}
+                          target="_blank"
+                          rel="noreferrer"
+                          className="viewer-btn viewer-btn-secondary"
+                        >
+                          <Icon icon="lucide:github" width={13} height={13} />
+                          <span>Source</span>
+                          <Icon icon="lucide:arrow-up-right" width={12} height={12} />
+                        </a>
+                      </div>
                     </div>
                   </motion.div>
                 )}
@@ -147,7 +188,6 @@ export const WorkSection: React.FC = () => {
           );
         })}
       </div>
-
 
       {/* Architectural Project File Viewer Drawer */}
       <AnimatePresence>
@@ -210,10 +250,33 @@ export const WorkSection: React.FC = () => {
                 {/* Right: Project Spec Copy */}
                 <div className="viewer-copy-col">
                   <div className="viewer-copy-header">
-                    <span className="viewer-cat-label">{activeProject.tag}</span>
+                    <div className="viewer-meta-tags">
+                      <span className="viewer-cat-label">{activeProject.tag}</span>
+                      {activeProject.metrics && (
+                        <span className="viewer-metrics-tag">{activeProject.metrics}</span>
+                      )}
+                    </div>
                     <h3 className="viewer-main-title">{activeProject.title}</h3>
                     <p className="viewer-detail-text">{activeProject.detail}</p>
                   </div>
+
+                  {/* Engineering Highlights & Architecture */}
+                  {activeProject.highlights && activeProject.highlights.length > 0 && (
+                    <div className="viewer-highlights-card">
+                      <div className="viewer-highlights-header">
+                        <Icon icon="lucide:layers" width={13} height={13} className="highlights-header-icon" />
+                        <span className="viewer-highlights-title">Engineering Highlights &amp; Solutions</span>
+                      </div>
+                      <ul className="viewer-highlights-list">
+                        {activeProject.highlights.map((highlight, idx) => (
+                          <li key={idx} className="viewer-highlight-item">
+                            <span className="highlight-bullet" aria-hidden="true">›</span>
+                            <span className="highlight-text">{highlight}</span>
+                          </li>
+                        ))}
+                      </ul>
+                    </div>
+                  )}
 
                   <div className="viewer-actions-row">
                     <span className="viewer-stack-label">{activeProject.stack}</span>
