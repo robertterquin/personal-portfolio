@@ -1,7 +1,6 @@
 import React from 'react';
 import { personalData } from '../data/portfolioData';
 import heroImg from '../assets/hero.png';
-import './Masthead.css';
 
 export const Masthead: React.FC = () => {
   return (

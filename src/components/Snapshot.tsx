@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
 import { Icon } from '@iconify/react';
 import { personalData } from '../data/portfolioData';
-import './Snapshot.css';
 
 export const Snapshot: React.FC = () => {
   const [copied, setCopied] = useState<boolean>(false);

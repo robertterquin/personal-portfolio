@@ -1,7 +1,6 @@
 import React from 'react';
 import { Icon } from '@iconify/react';
 import type { Theme } from '../types';
-import './Header.css';
 
 interface HeaderProps {
   theme: Theme;

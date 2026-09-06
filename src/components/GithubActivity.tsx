@@ -3,7 +3,6 @@ import { Icon } from '@iconify/react';
 import type { ContributionDay } from '../types';
 import { personalData } from '../data/portfolioData';
 import verifiedData from '../data/githubContributions.json';
-import './GithubActivity.css';
 
 interface ApiResponse {
   total?: { [key: string]: number };

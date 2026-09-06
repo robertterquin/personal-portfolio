@@ -1,9 +1,23 @@
 /* ==========================================================================
-   APP SHELL & LAYOUT CONTAINER
+   PORTFOLIO STYLESHEET MANIFEST
+   All styles are modularized in src/styles/
    ========================================================================== */
 
+/* 1. Design Tokens & Theme Palettes */
 @import './styles/tokens.css';
 
+/* 2. Section Styles */
+@import './styles/header.css';
+@import './styles/masthead.css';
+@import './styles/snapshot.css';
+@import './styles/work.css';
+@import './styles/toolkit.css';
+@import './styles/github.css';
+@import './styles/footer.css';
+
+/* ==========================================================================
+   APP SHELL & LAYOUT CONTAINER
+   ========================================================================== */
 .dossier-app {
   min-height: 100vh;
   position: relative;
