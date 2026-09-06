@@ -52,6 +52,10 @@
   transition: color 0.15s ease;
 }
 
+.strip-icon.icon-success {
+  color: #10b981;
+}
+
 .strip-item-divider {
   color: var(--line-strong);
   font-family: var(--font-mono);

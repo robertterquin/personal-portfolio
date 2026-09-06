@@ -1,17 +1,45 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Icon } from '@iconify/react';
 import { personalData } from '../data/portfolioData';
 
 export const Snapshot: React.FC = () => {
+  const [phoneFeedback, setPhoneFeedback] = useState<boolean>(false);
+
+  const handleEmailClick = (e: React.MouseEvent<HTMLAnchorElement>) => {
+    const isMobile = /Android|iPhone|iPad|iPod|Mobile/i.test(navigator.userAgent);
+    if (!isMobile) {
+      // On desktop PCs, mailto: often fails silently without an installed mail app (e.g. Outlook).
+      // We directly open Gmail web compose in a new tab for seamless desktop redirection.
+      e.preventDefault();
+      const gmailUrl = `https://mail.google.com/mail/?view=cm&fs=1&to=${encodeURIComponent(personalData.email)}&su=${encodeURIComponent('Project Inquiry / Collaboration')}`;
+      const win = window.open(gmailUrl, '_blank', 'noopener,noreferrer');
+      if (!win) {
+        window.location.href = `mailto:${personalData.email}`;
+      }
+    }
+  };
+
+  const handlePhoneClick = () => {
+    const isMobile = /Android|iPhone|iPad|iPod|Mobile/i.test(navigator.userAgent);
+    if (!isMobile) {
+      // On desktop PCs, copy to clipboard so the user can easily paste into WhatsApp/Viber
+      navigator.clipboard?.writeText(personalData.phoneRaw).then(() => {
+        setPhoneFeedback(true);
+        setTimeout(() => setPhoneFeedback(false), 2200);
+      }).catch(() => {});
+    }
+  };
+
   return (
     <section className="studio-connect-strip">
       <div className="connect-strip-inner">
         {/* Direct Contact Links: Email & Phone */}
         <div className="strip-contact-group">
           <a
-            href={`mailto:${personalData.email}?subject=Project%20Inquiry%20%2F%20Engineering%20Opportunity`}
+            href={`mailto:${personalData.email}`}
+            onClick={handleEmailClick}
             className="strip-contact-link"
-            title="Compose email to Robert"
+            title={`Compose email to ${personalData.email}`}
           >
             <Icon icon="lucide:mail" width={15} height={15} className="strip-icon" />
             <span className="strip-text">{personalData.email}</span>
@@ -22,11 +50,19 @@ export const Snapshot: React.FC = () => {
 
           <a
             href={`tel:${personalData.phoneRaw}`}
+            onClick={handlePhoneClick}
             className="strip-contact-link"
-            title="Call mobile phone"
+            title={phoneFeedback ? 'Copied to clipboard!' : `Call ${personalData.phone}`}
           >
-            <Icon icon="lucide:phone" width={15} height={15} className="strip-icon" />
-            <span className="strip-text">{personalData.phone}</span>
+            <Icon
+              icon={phoneFeedback ? 'lucide:check' : 'lucide:phone'}
+              width={15}
+              height={15}
+              className={`strip-icon ${phoneFeedback ? 'icon-success' : ''}`}
+            />
+            <span className="strip-text">
+              {phoneFeedback ? 'Number copied!' : personalData.phone}
+            </span>
             <Icon icon="lucide:arrow-up-right" width={12} height={12} className="arrow-muted" />
           </a>
         </div>

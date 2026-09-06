@@ -19,7 +19,7 @@ export const personalData: PersonalData = {
     'Full-stack software engineer specializing in cross-platform mobile and web systems with Flutter, React, Node.js, and cloud backends. Focused on building clean, high-performance applications with thoughtful user experiences.',
   email: 'business.treevor@gmail.com',
   phone: '+63 926 029 4838',
-  phoneRaw: '09260294838',
+  phoneRaw: '+639260294838',
   github: 'https://github.com/robertterquin',
   linkedin: 'https://www.linkedin.com/in/robertterquinlaqui/',
   resumeUrl: '/Robert_Terquin_Laqui_Resume.pdf',

@@ -31,7 +31,7 @@
 
 .project-index-row {
   display: grid;
-  grid-template-columns: 80px 1.6fr 1.1fr auto;
+  grid-template-columns: 1.8fr 1.2fr auto;
   align-items: center;
   gap: 28px;
   padding: 26px 16px;
@@ -60,28 +60,7 @@ html.theme-day .project-index-row.row-active {
   background: rgba(158, 107, 56, 0.05);
 }
 
-/* Row Column 1: Index Number */
-.row-col-idx {
-  display: flex;
-  align-items: baseline;
-  gap: 8px;
-  font-family: var(--font-mono);
-}
-
-.row-index-num {
-  font-size: 1.1rem;
-  font-weight: 700;
-  color: var(--ink);
-  letter-spacing: -0.02em;
-  transition: color 0.15s ease;
-}
-
-.project-index-row:hover .row-index-num,
-.project-index-row.row-active .row-index-num {
-  color: var(--accent);
-}
-
-/* Row Column 2: Title & Description */
+/* Row Column: Title & Description */
 .row-col-title {
   display: flex;
   flex-direction: column;
@@ -588,7 +567,7 @@ html.theme-day .viewer-btn-primary:hover {
   }
 
   .project-index-row {
-    grid-template-columns: 60px 1.4fr 1fr auto;
+    grid-template-columns: 1.6fr 1fr auto;
     gap: 16px;
     padding: 18px 12px;
   }
@@ -610,18 +589,18 @@ html.theme-day .viewer-btn-primary:hover {
   }
 
   .project-index-row {
-    grid-template-columns: 44px 1fr;
+    grid-template-columns: 1fr;
     gap: 12px;
     padding: 18px 8px;
   }
 
   .row-col-stack {
-    grid-column: 2 / -1;
+    grid-column: 1 / -1;
     font-size: 0.68rem;
   }
 
   .row-col-actions {
-    grid-column: 2 / -1;
+    grid-column: 1 / -1;
     flex-wrap: wrap;
     gap: 6px;
   }

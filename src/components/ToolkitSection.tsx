@@ -63,7 +63,6 @@ export const ToolkitSection: React.FC = () => {
             {capabilityGroups.map((group) => (
               <div key={group.code} className="spec-group-row">
                 <div className="spec-group-header">
-                  <span className="spec-code">{group.code}</span>
                   <h3 className="spec-cat-title">{group.category}</h3>
                 </div>
                 <p className="spec-focus-desc">{group.focus}</p>

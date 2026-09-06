@@ -81,11 +81,6 @@ export const WorkSection: React.FC = () => {
               }}
               aria-label={`Inspect ${project.title}`}
             >
-              {/* Monospace Number */}
-              <div className="row-col row-col-idx">
-                <span className="row-index-num">{project.number}</span>
-              </div>
-
               {/* Main Title & One-line Summary */}
               <div className="row-col row-col-title">
                 <div className="row-title-wrap">
@@ -204,7 +199,7 @@ export const WorkSection: React.FC = () => {
           >
             <div className="viewer-top-bar">
               <div className="viewer-title-group">
-                <span className="viewer-index-tag">Project {activeProject.number}</span>
+                <span className="viewer-index-tag">{activeProject.tag}</span>
                 <span className="viewer-sep">|</span>
                 <strong className="viewer-name">{activeProject.title}</strong>
               </div>
