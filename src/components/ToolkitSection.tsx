@@ -196,7 +196,7 @@ export const ToolkitSection: React.FC = () => {
                       aria-label="Previous certificate"
                       title="Previous certificate (←)"
                     >
-                      <Icon icon="lucide:chevron-left" width={20} height={20} />
+                      <Icon icon="lucide:chevron-left" width={18} height={18} />
                     </button>
 
                     <div className="cert-modal-image-wrapper">
@@ -214,7 +214,7 @@ export const ToolkitSection: React.FC = () => {
                       aria-label="Next certificate"
                       title="Next certificate (→)"
                     >
-                      <Icon icon="lucide:chevron-right" width={20} height={20} />
+                      <Icon icon="lucide:chevron-right" width={18} height={18} />
                     </button>
                   </div>
 
