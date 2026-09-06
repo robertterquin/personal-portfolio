@@ -42,35 +42,58 @@
   max-width: 580px;
 }
 
-.hero-meta-grid {
-  display: grid;
-  grid-template-columns: auto 1fr;
-  gap: 36px;
-  margin-bottom: 0;
-  padding: 22px 0;
+/* Hero Achievement Strip */
+.hero-achievement-strip {
+  margin-top: 24px;
+  padding: 16px 0;
   border-top: 1px solid var(--line);
   border-bottom: 1px solid var(--line);
   max-width: 560px;
 }
 
-.hero-meta-item {
-  display: flex;
-  flex-direction: column;
-  gap: 3px;
-}
-
-.meta-k {
-  font-family: var(--font-mono);
-  font-size: 0.68rem;
-  color: var(--ink-dim);
-  text-transform: uppercase;
-  letter-spacing: 0.08em;
-}
-
-.meta-v {
-  font-size: 0.92rem;
+.hero-achievement-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
   color: var(--ink);
+  text-decoration: none;
+  font-size: 0.92rem;
   font-weight: 600;
+  letter-spacing: -0.01em;
+  transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+  padding: 4px 0;
+  width: fit-content;
+}
+
+.hero-achievement-icon {
+  color: var(--ink);
+  flex-shrink: 0;
+  transition: transform 0.2s ease, color 0.2s ease;
+}
+
+.hero-achievement-text {
+  color: var(--ink);
+  transition: color 0.2s ease;
+}
+
+.hero-achievement-arrow {
+  color: var(--ink-dim);
+  flex-shrink: 0;
+  transition: transform 0.2s ease, color 0.2s ease;
+}
+
+.hero-achievement-link:hover .hero-achievement-text {
+  color: var(--accent);
+}
+
+.hero-achievement-link:hover .hero-achievement-icon {
+  color: var(--accent);
+  transform: translateY(-1px);
+}
+
+.hero-achievement-link:hover .hero-achievement-arrow {
+  color: var(--accent);
+  transform: translate(2px, -2px);
 }
 
 /* Portrait Frame */
@@ -137,5 +160,12 @@ html.theme-day .portrait-frame {
 
   .hero-portrait-stage {
     justify-content: flex-start;
+  }
+}
+
+@media (max-width: 540px) {
+  .hero-achievement-link {
+    font-size: 0.85rem;
+    gap: 8px;
   }
 }
