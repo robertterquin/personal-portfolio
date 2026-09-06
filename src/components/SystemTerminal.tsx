@@ -51,6 +51,7 @@ export const SystemTerminal: React.FC = () => {
               <span><b>stats</b></span><span>View academic and system background</span>
               <span><b>ping</b></span><span>Test server latency</span>
               <span><b>contact</b></span><span>Display direct email and links</span>
+              <span><b>resume</b></span><span>View official Curriculum Vitae (PDF)</span>
               <span><b>clear</b></span><span>Clear terminal output</span>
             </div>
           </div>
@@ -123,6 +124,26 @@ export const SystemTerminal: React.FC = () => {
             </p>
           </div>
         );
+        break;
+
+      case 'resume':
+      case 'cv':
+        responseNode = (
+          <div className="term-output-block">
+            <p className="term-cmd-header">Curriculum Vitae / Resume:</p>
+            <p className="term-text">
+              <a
+                href={personalData.resumeUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                style={{ color: 'var(--accent)', textDecoration: 'underline' }}
+              >
+                Open Robert Terquin Laqui Resume (PDF) ↗
+              </a>
+            </p>
+          </div>
+        );
+        entryType = 'success';
         break;
 
       case 'clear':
@@ -220,7 +241,7 @@ export const SystemTerminal: React.FC = () => {
 
         <div className="terminal-shortcuts">
           <span className="shortcut-label">COMMANDS:</span>
-          {['help', 'skills', 'projects', 'stats', 'ping', 'contact'].map((cmd) => (
+          {['help', 'skills', 'projects', 'stats', 'resume', 'contact'].map((cmd) => (
             <button
               key={cmd}
               type="button"

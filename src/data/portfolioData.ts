@@ -51,7 +51,7 @@ export const personalData = {
   email: 'business.treevor@gmail.com',
   github: 'https://github.com/robertterquin',
   linkedin: 'https://www.linkedin.com/in/robertterquinlaqui/',
-  resumeUrl: '#',
+  resumeUrl: '/Robert_Terquin_Laqui_Resume.pdf',
   status: 'Available for work',
   year: '2026',
 };

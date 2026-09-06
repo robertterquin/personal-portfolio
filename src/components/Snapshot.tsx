@@ -71,7 +71,7 @@ export const Snapshot: React.FC = () => {
           <a
             href={personalData.resumeUrl}
             target="_blank"
-            rel="noreferrer"
+            rel="noopener noreferrer"
             className="strip-nav-link"
           >
             <Icon icon="lucide:file-text" width={15} height={15} />

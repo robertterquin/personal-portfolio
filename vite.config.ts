@@ -135,5 +135,8 @@ function githubContributionsPlugin(): Plugin {
 // https://vite.dev/config/
 export default defineConfig({
   plugins: [react(), githubContributionsPlugin()],
+  server: {
+    port: 3000,
+  },
 })
 
