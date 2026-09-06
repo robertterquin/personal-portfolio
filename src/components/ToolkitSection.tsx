@@ -93,47 +93,44 @@ export const ToolkitSection: React.FC = () => {
           </div>
 
           <div className="chronological-ledger">
-            {[
-              {
-                year: '2025',
-                items: credentialsData.filter((c) => c.year === '2025'),
-              },
-              {
-                year: '2024',
-                items: credentialsData.filter((c) => c.year === '2024'),
-              },
-            ].map((group) => (
-              <div key={group.year} className="ledger-year-section">
-                <div className="ledger-year-header">
-                  <span className="ledger-year-tag">{group.year}</span>
-                  <span className="ledger-year-rule" aria-hidden="true"></span>
-                </div>
+            {Array.from(new Set(credentialsData.map((c) => c.year)))
+              .sort((a, b) => Number(b) - Number(a))
+              .map((year) => {
+                const items = credentialsData.filter((c) => c.year === year);
+                if (items.length === 0) return null;
+                return (
+                  <div key={year} className="ledger-year-section">
+                    <div className="ledger-year-header">
+                      <span className="ledger-year-tag">{year}</span>
+                      <span className="ledger-year-rule" aria-hidden="true"></span>
+                    </div>
 
-                <div className="ledger-year-list">
-                  {group.items.map((item) => (
-                    <button
-                      key={item.title + item.year}
-                      type="button"
-                      onClick={() => setSelectedCert(item)}
-                      className="ledger-row"
-                      aria-label={`Inspect ${item.title} certificate`}
-                    >
-                      <span className={`ledger-type-tag ${item.type === 'Award' ? 'type-award' : 'type-cert'}`}>
-                        {item.type === 'Award' ? 'HONOR' : 'CERT'}
-                      </span>
+                    <div className="ledger-year-list">
+                      {items.map((item) => (
+                        <button
+                          key={item.title + item.year}
+                          type="button"
+                          onClick={() => setSelectedCert(item)}
+                          className="ledger-row"
+                          aria-label={`Inspect ${item.title} certificate`}
+                        >
+                          <span className={`ledger-type-tag ${item.type === 'Award' ? 'type-award' : 'type-cert'}`}>
+                            {item.type === 'Award' ? 'HONOR' : 'CERT'}
+                          </span>
 
-                      <div className="ledger-text-col">
-                        <strong className="ledger-title">{item.title}</strong>
-                        <span className="ledger-sub-dash">—</span>
-                        <span className="ledger-issuer">{item.institution}</span>
-                      </div>
+                          <div className="ledger-text-col">
+                            <strong className="ledger-title">{item.title}</strong>
+                            <span className="ledger-sub-dash">—</span>
+                            <span className="ledger-issuer">{item.institution}</span>
+                          </div>
 
-                      <Icon icon="lucide:arrow-up-right" width={12} height={12} className="ledger-arrow" />
-                    </button>
-                  ))}
-                </div>
-              </div>
-            ))}
+                          <Icon icon="lucide:arrow-up-right" width={12} height={12} className="ledger-arrow" />
+                        </button>
+                      ))}
+                    </div>
+                  </div>
+                );
+              })}
           </div>
         </div>
       </div>
@@ -165,8 +162,6 @@ export const ToolkitSection: React.FC = () => {
                   {/* Modal Header */}
                   <div className="cert-modal-header">
                     <div className="cert-modal-header-left">
-                      <span className="cert-modal-index">{selectedCert.index}</span>
-                      <span className="cert-modal-sep">|</span>
                       <h3 id="cert-modal-title" className="cert-modal-title">
                         {selectedCert.title}
                       </h3>
