@@ -89,11 +89,6 @@ export const WorkSection: React.FC = () => {
                 <p className="row-description">{project.description}</p>
               </div>
 
-              {/* Tech Stack */}
-              <div className="row-col row-col-stack">
-                <span className="row-stack-text">{project.stack}</span>
-              </div>
-
               {/* Action Column: Minimal Inspect Cue */}
               <div className="row-col-actions">
                 <span className="row-inspect-cue">

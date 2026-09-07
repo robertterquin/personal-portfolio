@@ -31,10 +31,10 @@
 
 .project-index-row {
   display: grid;
-  grid-template-columns: 1.8fr 1.2fr auto;
+  grid-template-columns: 1fr auto;
   align-items: center;
-  gap: 28px;
-  padding: 26px 16px;
+  gap: 32px;
+  padding: 24px 16px;
   border-top: 1px solid var(--line);
   transition: all 0.18s cubic-bezier(0.16, 1, 0.3, 1);
   cursor: pointer;
@@ -89,15 +89,7 @@ html.theme-day .project-index-row.row-active {
   color: var(--ink-muted);
 }
 
-/* Row Column 3: Stack */
-.row-col-stack {
-  font-family: var(--font-mono);
-  font-size: 0.72rem;
-  color: var(--ink-dim);
-  letter-spacing: 0.02em;
-}
-
-/* Row Column 4: Inspect Actions */
+/* Row Column: Inspect Actions */
 .row-col-actions {
   display: flex;
   align-items: center;
@@ -443,14 +435,10 @@ html.theme-day .viewer-btn-primary:hover {
   }
 
   .project-index-row {
-    grid-template-columns: 1fr;
-    gap: 12px;
+    grid-template-columns: 1fr auto;
+    align-items: flex-start;
+    gap: 16px;
     padding: 18px 8px;
-  }
-
-  .row-col-stack {
-    grid-column: 1 / -1;
-    font-size: 0.68rem;
   }
 
   .row-col-actions {
