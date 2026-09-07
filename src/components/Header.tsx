@@ -1,6 +1,7 @@
 import React from 'react';
 import { Icon } from '@iconify/react';
 import type { Theme } from '../types';
+import { AnimatedThemeToggler } from './ui/animated-theme-toggler';
 
 interface HeaderProps {
   theme: Theme;
@@ -22,20 +23,23 @@ export const Header: React.FC<HeaderProps> = ({
       </div>
 
       <div className="header-right">
-        <button
-          type="button"
+        <AnimatedThemeToggler
+          theme={theme}
+          onThemeChange={onToggleTheme}
+          variant="circle"
+          duration={500}
           className="theme-toggle-btn"
-          onClick={onToggleTheme}
           aria-label={`Switch to ${theme === 'night' ? 'Day' : 'Night'} theme`}
           title={`Switch to ${theme === 'night' ? 'Day' : 'Night'} theme`}
         >
-          {theme === 'night' ? (
-            <Icon icon="lucide:sun" width={15} height={15} />
-          ) : (
-            <Icon icon="lucide:moon" width={15} height={15} />
-          )}
+          <Icon
+            icon={theme === 'night' ? 'lucide:sun' : 'lucide:moon'}
+            width={15}
+            height={15}
+            className="theme-toggle-icon"
+          />
           <span className="theme-toggle-label">{theme === 'night' ? 'Day' : 'Night'}</span>
-        </button>
+        </AnimatedThemeToggler>
       </div>
     </header>
   );

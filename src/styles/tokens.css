@@ -138,3 +138,51 @@ button {
   color: var(--ink-muted);
   max-width: 620px;
 }
+
+/* ==========================================================================
+   MAGIC UI ANIMATED THEME TOGGLER (View Transitions API)
+   ========================================================================== */
+::view-transition-old(root),
+::view-transition-new(root) {
+  animation: none;
+  mix-blend-mode: normal;
+}
+
+/* Scoped to AnimatedThemeToggler — sets data-magicui-theme-vt and variable only during transition */
+html[data-magicui-theme-vt="active"]::view-transition-group(root) {
+  animation-duration: var(--magicui-theme-toggle-vt-duration, 500ms);
+}
+
+/* Opening / Light Mode (expand outward from switch) */
+html[data-magicui-theme-vt="active"][data-magicui-theme-direction="out"]::view-transition-new(root) {
+  clip-path: var(--magicui-theme-vt-clip-from);
+  z-index: 9999;
+}
+html[data-magicui-theme-vt="active"][data-magicui-theme-direction="out"]::view-transition-old(root) {
+  z-index: 1;
+}
+
+/* Closing / Dark Mode (zoom in / collapse inward into switch) */
+html[data-magicui-theme-vt="active"][data-magicui-theme-direction="in"]::view-transition-old(root) {
+  clip-path: var(--magicui-theme-vt-clip-from);
+  z-index: 9999;
+}
+html[data-magicui-theme-vt="active"][data-magicui-theme-direction="in"]::view-transition-new(root) {
+  z-index: 1;
+}
+
+/* Disable element background-color transitions during the view transition to prevent muddy snapshot frames */
+html[data-magicui-theme-vt="active"] *,
+html[data-magicui-theme-vt="active"] *::before,
+html[data-magicui-theme-vt="active"] *::after {
+  transition: none !important;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  ::view-transition-group(root),
+  ::view-transition-old(root),
+  ::view-transition-new(root) {
+    animation: none !important;
+  }
+}
+

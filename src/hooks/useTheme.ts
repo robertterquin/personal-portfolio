@@ -21,15 +21,19 @@ export function useTheme() {
   }, [theme]);
 
   const toggleTheme = useCallback(() => {
-    const nextTheme: Theme = theme === 'night' ? 'day' : 'night';
-    if (document.startViewTransition) {
-      document.startViewTransition(() => {
-        setTheme(nextTheme);
-      });
-    } else {
-      setTheme(nextTheme);
-    }
-  }, [theme]);
+    setTheme((prev) => {
+      const next: Theme = prev === 'night' ? 'day' : 'night';
+      if (next === 'day') {
+        document.documentElement.classList.remove('theme-night');
+        document.documentElement.classList.add('theme-day');
+      } else {
+        document.documentElement.classList.add('theme-night');
+        document.documentElement.classList.remove('theme-day');
+      }
+      localStorage.setItem(THEME_STORAGE_KEY, next);
+      return next;
+    });
+  }, []);
 
   return { theme, toggleTheme };
 }
