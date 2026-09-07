@@ -60,55 +60,8 @@ export async function fetchAndSync() {
     console.warn(`  1. Visit https://github.com/${username}`);
     console.warn(`  2. Above the contribution calendar, click "Contribution settings ▾"`);
     console.warn(`  3. Check "Private contributions"\n`);
-    console.log(`Checking local git log to merge any recent commits into the local dataset...`);
-
-    try {
-      const { execSync } = await import('node:child_process');
-      const targetPath = path.resolve(__dirname, '../src/data/githubContributions.json');
-      const base = JSON.parse(fs.readFileSync(targetPath, 'utf-8'));
-
-      const stdout = execSync('git log --date=short --pretty=format:"%ad"', { encoding: 'utf-8' });
-      const gitCounts = new Map();
-      for (const line of stdout.split('\n')) {
-        const d = line.trim();
-        if (/^\d{4}-\d{2}-\d{2}$/.test(d)) {
-          gitCounts.set(d, (gitCounts.get(d) || 0) + 1);
-        }
-      }
-
-      const days = [...base.contributions];
-      const dayIndexMap = new Map();
-      days.forEach((d, idx) => dayIndexMap.set(d.date, idx));
-
-      for (const [date, gitCount] of gitCounts.entries()) {
-        if (dayIndexMap.has(date)) {
-          const idx = dayIndexMap.get(date);
-          if (date >= '2026-09-06' && gitCount > days[idx].count) {
-            days[idx].count = gitCount;
-            days[idx].level = gitCount >= 10 ? 4 : gitCount >= 6 ? 3 : gitCount >= 3 ? 2 : 1;
-          }
-        } else {
-          const level = gitCount >= 10 ? 4 : gitCount >= 6 ? 3 : gitCount >= 3 ? 2 : 1;
-          days.push({ date, count: gitCount, level });
-          dayIndexMap.set(date, days.length - 1);
-        }
-      }
-
-      days.sort((a, b) => a.date.localeCompare(b.date));
-      while (days.length > 371) {
-        days.shift();
-      }
-
-      const newTotal = days.reduce((sum, d) => sum + d.count, 0);
-      const updatedData = { total: { lastYear: newTotal }, contributions: days };
-      fs.writeFileSync(targetPath, JSON.stringify(updatedData, null, 2), 'utf-8');
-      console.log(`✓ Merged local git commits successfully!`);
-      console.log(`  Total: ${newTotal} contributions across ${days.length} days.`);
-      return updatedData;
-    } catch (e) {
-      console.error('Failed to merge local git commits:', e);
-      return null;
-    }
+    console.warn(`Keeping existing verified githubContributions.json untouched.`);
+    return null;
   }
 
   const targetPath = path.resolve(__dirname, '../src/data/githubContributions.json');
