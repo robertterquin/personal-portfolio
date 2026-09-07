@@ -23,11 +23,11 @@ export const Masthead: React.FC = () => {
 
           <div className="hero-achievement-strip">
             <a
-              href="/certificates/hackforgov-2025.jpg"
+              href="https://stdominiccollege.edu.ph/Campus_Life/Article/SDCA-Brute4z-Team-Places-2nd-Runner-Up-in-CALABARZON-HackForGov-2025"
               target="_blank"
               rel="noopener noreferrer"
               className="hero-achievement-link"
-              title="View Hack4Gov 2025 Certificate"
+              title="Read official HackForGov 2025 announcement article"
             >
               <Icon icon="lucide:trophy" className="hero-achievement-icon" width={18} height={18} />
               <span className="hero-achievement-text">Hack4Gov 2025 — 2nd Runner Up</span>
