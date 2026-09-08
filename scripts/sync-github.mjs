@@ -39,8 +39,104 @@ export function parseGithubContributions(html) {
   return { total: { lastYear: total }, contributions: days };
 }
 
+function getGithubToken() {
+  if (process.env.GITHUB_TOKEN) return process.env.GITHUB_TOKEN;
+  for (const file of ['.env.local', '.env']) {
+    const envPath = path.resolve(__dirname, '..', file);
+    if (fs.existsSync(envPath)) {
+      const content = fs.readFileSync(envPath, 'utf-8');
+      const match = content.match(/^GITHUB_TOKEN\s*=\s*(.+)$/m);
+      if (match) {
+        return match[1].trim().replace(/^["']|["']$/g, '');
+      }
+    }
+  }
+  return null;
+}
+
+export async function fetchGraphQLContributions(token) {
+  const levelMap = {
+    'NONE': 0,
+    'FIRST_QUARTILE': 1,
+    'SECOND_QUARTILE': 2,
+    'THIRD_QUARTILE': 3,
+    'FOURTH_QUARTILE': 4,
+  };
+
+  const res = await fetch('https://api.github.com/graphql', {
+    method: 'POST',
+    headers: {
+      'Authorization': `bearer ${token}`,
+      'User-Agent': 'Portfolio-Sync',
+      'Content-Type': 'application/json',
+    },
+    body: JSON.stringify({
+      query: `query {
+        viewer {
+          contributionsCollection {
+            contributionCalendar {
+              totalContributions
+              weeks {
+                contributionDays {
+                  date
+                  contributionCount
+                  contributionLevel
+                }
+              }
+            }
+          }
+        }
+      }`,
+    }),
+  });
+
+  if (!res.ok) {
+    throw new Error(`GitHub GraphQL responded with HTTP ${res.status}`);
+  }
+
+  const json = await res.json();
+  const calendar = json.data?.viewer?.contributionsCollection?.contributionCalendar;
+  if (!calendar) {
+    throw new Error('GraphQL response did not include contributionCalendar: ' + JSON.stringify(json.errors || json));
+  }
+
+  const days = [];
+  for (const week of calendar.weeks) {
+    for (const day of week.contributionDays) {
+      days.push({
+        date: day.date,
+        count: day.contributionCount,
+        level: levelMap[day.contributionLevel] ?? (day.contributionCount > 0 ? 1 : 0),
+      });
+    }
+  }
+
+  return {
+    total: {
+      lastYear: calendar.totalContributions,
+    },
+    contributions: days,
+  };
+}
+
 export async function fetchAndSync() {
-  console.log(`Fetching latest contributions for @${username} directly from GitHub...`);
+  const token = getGithubToken();
+
+  if (token) {
+    console.log(`Fetching latest contributions for @${username} via GitHub GraphQL API (including private repos)...`);
+    try {
+      const data = await fetchGraphQLContributions(token);
+      const targetPath = path.resolve(__dirname, '../src/data/githubContributions.json');
+      fs.writeFileSync(targetPath, JSON.stringify(data, null, 2), 'utf-8');
+      console.log(`✓ Successfully updated githubContributions.json via GitHub GraphQL!`);
+      console.log(`  Total: ${data.total.lastYear} contributions across ${data.contributions.length} days.`);
+      return data;
+    } catch (err) {
+      console.warn(`GraphQL fetch failed (${err.message}). Falling back to public scraping...`);
+    }
+  }
+
+  console.log(`Fetching latest contributions for @${username} directly from GitHub HTML...`);
   const res = await fetch(`https://github.com/users/${username}/contributions`, {
     headers: {
       'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36',
@@ -56,10 +152,6 @@ export async function fetchAndSync() {
 
   if (data.total.lastYear === 0) {
     console.warn(`\n⚠️  [NOTICE] GitHub returned 0 contributions for @${username}.`);
-    console.warn(`If your repositories are private, please enable "Private contributions" on your profile:`);
-    console.warn(`  1. Visit https://github.com/${username}`);
-    console.warn(`  2. Above the contribution calendar, click "Contribution settings ▾"`);
-    console.warn(`  3. Check "Private contributions"\n`);
     console.warn(`Keeping existing verified githubContributions.json untouched.`);
     return null;
   }

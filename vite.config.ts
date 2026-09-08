@@ -37,12 +37,85 @@ function parseGithubHtml(html: string) {
   return { total: { lastYear: total }, contributions: days };
 }
 
+function getGithubToken(): string | null {
+  if (process.env.GITHUB_TOKEN) return process.env.GITHUB_TOKEN;
+  for (const file of ['.env.local', '.env']) {
+    const envPath = path.resolve(process.cwd(), file);
+    if (fs.existsSync(envPath)) {
+      const content = fs.readFileSync(envPath, 'utf-8');
+      const match = content.match(/^GITHUB_TOKEN\s*=\s*(.+)$/m);
+      if (match) {
+        return match[1].trim().replace(/^["']|["']$/g, '');
+      }
+    }
+  }
+  return null;
+}
+
+async function fetchGraphQLContributions(token: string) {
+  const levelMap: Record<string, number> = {
+    'NONE': 0,
+    'FIRST_QUARTILE': 1,
+    'SECOND_QUARTILE': 2,
+    'THIRD_QUARTILE': 3,
+    'FOURTH_QUARTILE': 4,
+  };
+
+  const res = await fetch('https://api.github.com/graphql', {
+    method: 'POST',
+    headers: {
+      'Authorization': `bearer ${token}`,
+      'User-Agent': 'Portfolio-Dev-Proxy',
+      'Content-Type': 'application/json',
+    },
+    body: JSON.stringify({
+      query: `query {
+        viewer {
+          contributionsCollection {
+            contributionCalendar {
+              totalContributions
+              weeks {
+                contributionDays {
+                  date
+                  contributionCount
+                  contributionLevel
+                }
+              }
+            }
+          }
+        }
+      }`,
+    }),
+  });
+
+  if (!res.ok) throw new Error(`GraphQL HTTP ${res.status}`);
+  const json = (await res.json()) as any;
+  const calendar = json.data?.viewer?.contributionsCollection?.contributionCalendar;
+  if (!calendar) throw new Error('No calendar in response');
+
+  const days: Array<{ date: string; count: number; level: number }> = [];
+  for (const week of calendar.weeks) {
+    for (const day of week.contributionDays) {
+      days.push({
+        date: day.date,
+        count: day.contributionCount,
+        level: levelMap[day.contributionLevel] ?? (day.contributionCount > 0 ? 1 : 0),
+      });
+    }
+  }
+
+  return {
+    total: { lastYear: calendar.totalContributions },
+    contributions: days,
+  };
+}
+
 function getVerifiedContributions() {
   const baseFilePath = path.resolve(process.cwd(), 'src/data/githubContributions.json');
   try {
     return JSON.parse(fs.readFileSync(baseFilePath, 'utf-8'));
   } catch {
-    return { total: { lastYear: 855 }, contributions: [] };
+    return { total: { lastYear: 858 }, contributions: [] };
   }
 }
 
@@ -51,6 +124,24 @@ function githubContributionsPlugin(): Plugin {
     name: 'github-contributions-dev-proxy',
     configureServer(server) {
       server.middlewares.use('/api/github-contributions', async (_req, res) => {
+        const token = getGithubToken();
+        if (token) {
+          try {
+            const data = await fetchGraphQLContributions(token);
+            if (data.total.lastYear > 0) {
+              const targetPath = path.resolve(process.cwd(), 'src/data/githubContributions.json');
+              try {
+                fs.writeFileSync(targetPath, JSON.stringify(data, null, 2), 'utf-8');
+              } catch {}
+              res.setHeader('Content-Type', 'application/json');
+              res.end(JSON.stringify(data));
+              return;
+            }
+          } catch {
+            // fallback if token fails
+          }
+        }
+
         try {
           const ghRes = await fetch('https://github.com/users/robertterquin/contributions', {
             headers: {
@@ -74,7 +165,7 @@ function githubContributionsPlugin(): Plugin {
           // GitHub fetch failed or timed out
         }
 
-        // Clean fallback: serve verified contributions directly without inflation
+        // Clean fallback: serve verified contributions directly
         const cleanData = getVerifiedContributions();
         res.setHeader('Content-Type', 'application/json');
         res.end(JSON.stringify(cleanData));

@@ -191,6 +191,17 @@ html.theme-day .heatmap-cell {
   z-index: 10;
 }
 
+.heatmap-cell.cell-today {
+  outline: 1.5px solid var(--accent);
+  outline-offset: 1px;
+}
+
+.heatmap-cell.cell-future {
+  opacity: 0.22;
+  cursor: default;
+  pointer-events: none;
+}
+
 /* Warm Studio Saddle Leather Levels */
 .heatmap-cell.level-0 { background: #1c1917; }
 html.theme-day .heatmap-cell.level-0 { background: #ebe5db; }

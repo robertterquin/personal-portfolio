@@ -87,6 +87,34 @@ export const GithubActivity: React.FC = () => {
     };
   }, [username]);
 
+  const todayEntry = contributions[contributions.length - 1];
+
+  const displayDays = React.useMemo(() => {
+    if (!contributions || contributions.length === 0) return [];
+    const list = [...contributions];
+    const last = list[list.length - 1];
+    if (!last) return list;
+
+    const [y, m, d] = last.date.split('-').map((n) => parseInt(n, 10));
+    const lastDate = new Date(Date.UTC(y, m - 1, d));
+    const dayOfWeek = lastDate.getUTCDay();
+
+    if (dayOfWeek < 6) {
+      for (let i = dayOfWeek + 1; i <= 6; i++) {
+        const nextDate = new Date(lastDate);
+        nextDate.setUTCDate(lastDate.getUTCDate() + (i - dayOfWeek));
+        const dateStr = nextDate.toISOString().split('T')[0];
+        list.push({
+          date: dateStr,
+          count: 0,
+          level: 0,
+          isFuture: true,
+        } as ContributionDay & { isFuture?: boolean });
+      }
+    }
+    return list;
+  }, [contributions]);
+
   const formatDate = (dateStr: string) => {
     try {
       const [year, month, day] = dateStr.split('-');
@@ -170,18 +198,27 @@ export const GithubActivity: React.FC = () => {
 
               {/* 53 Columns Grid */}
               <div className="heatmap-grid" role="region" aria-label="Contribution Calendar">
-                {contributions.map((day) => (
-                  <div
-                    key={day.date}
-                    className={`heatmap-cell level-${day.level}`}
-                    onMouseEnter={() => setHoveredDay(day)}
-                    onMouseLeave={() => setHoveredDay(null)}
-                    tabIndex={0}
-                    onFocus={() => setHoveredDay(day)}
-                    onBlur={() => setHoveredDay(null)}
-                    aria-label={`${day.count} contributions on ${formatDate(day.date)}`}
-                  />
-                ))}
+                {displayDays.map((day) => {
+                  const isToday = day.date === todayEntry?.date;
+                  const isFuture = (day as any).isFuture;
+
+                  return (
+                    <div
+                      key={day.date}
+                      className={`heatmap-cell level-${day.level}${isToday ? ' cell-today' : ''}${isFuture ? ' cell-future' : ''}`}
+                      onMouseEnter={() => !isFuture && setHoveredDay(day)}
+                      onMouseLeave={() => setHoveredDay(null)}
+                      tabIndex={isFuture ? -1 : 0}
+                      onFocus={() => !isFuture && setHoveredDay(day)}
+                      onBlur={() => setHoveredDay(null)}
+                      aria-label={
+                        isFuture
+                          ? undefined
+                          : `${day.count} contributions on ${formatDate(day.date)}${isToday ? ' (Today)' : ''}`
+                      }
+                    />
+                  );
+                })}
               </div>
             </div>
           </div>
@@ -198,6 +235,11 @@ export const GithubActivity: React.FC = () => {
               {hoveredDay ? (
                 <>
                   <strong>{hoveredDay.count}</strong> {hoveredDay.count === 1 ? 'contribution' : 'contributions'} · {formatDate(hoveredDay.date)}
+                  {hoveredDay.date === todayEntry?.date && ' (Today)'}
+                </>
+              ) : todayEntry ? (
+                <>
+                  <strong>{todayEntry.count}</strong> {todayEntry.count === 1 ? 'contribution' : 'contributions'} today · {formatDate(todayEntry.date)}
                 </>
               ) : (
                 <span className="inspection-cue">Hover a square to inspect a day</span>
