@@ -2,18 +2,18 @@ import React from 'react';
 import { Icon } from '@iconify/react';
 import type { Theme } from '../types';
 import { AnimatedThemeToggler } from './AnimatedThemeToggler';
+import { useManilaClock } from '../hooks';
 
 interface HeaderProps {
   theme: Theme;
   onToggleTheme: () => void;
-  manilaTime: string;
 }
 
 export const Header: React.FC<HeaderProps> = ({
   theme,
   onToggleTheme,
-  manilaTime,
 }) => {
+  const manilaTime = useManilaClock();
   return (
     <header className="site-header">
       <div className="header-left">

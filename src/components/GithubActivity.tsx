@@ -20,25 +20,6 @@ const MONTH_LABELS = [
   { col: 47, label: 'Aug' },
 ];
 
-const cellVariants: Variants = {
-  hidden: {
-    opacity: 0,
-    scale: 0.35,
-  },
-  visible: (i: number) => {
-    const col = Math.floor(i / 7);
-    const row = i % 7;
-    return {
-      opacity: 1,
-      scale: 1,
-      transition: {
-        delay: col * 0.012 + row * 0.003,
-        duration: 0.22,
-        ease: [0.16, 1, 0.3, 1] as const,
-      },
-    };
-  },
-};
 
 const monthVariants: Variants = {
   hidden: { opacity: 0, y: -4 },
@@ -57,6 +38,7 @@ export const GithubActivity: React.FC = () => {
   const shouldReduceMotion = useReducedMotion();
   const isReducedMotion = Boolean(shouldReduceMotion);
 
+  const [isGridRevealed, setIsGridRevealed] = useState<boolean>(false);
   const [contributions, setContributions] = useState<ContributionDay[]>(
     verifiedData.contributions as ContributionDay[]
   );
@@ -259,24 +241,24 @@ export const GithubActivity: React.FC = () => {
                 <span className="weekday-label" />
               </motion.div>
 
-              {/* 53 Columns Grid with Cascading Wave Entrance */}
               <motion.div
-                className="heatmap-grid"
+                className={`heatmap-grid ${isGridRevealed || isReducedMotion ? 'revealed' : ''}`}
                 role="region"
                 aria-label="Contribution Calendar"
-                initial={isReducedMotion ? false : 'hidden'}
-                whileInView="visible"
+                onViewportEnter={() => setIsGridRevealed(true)}
                 viewport={{ once: true, amount: 0.15 }}
               >
                 {displayDays.map((day, index) => {
                   const isToday = day.date === todayEntry?.date;
                   const isFuture = day.isFuture;
+                  const col = Math.floor(index / 7);
+                  const row = index % 7;
+                  const delay = (col * 0.012 + row * 0.003).toFixed(3);
 
                   return (
-                    <motion.div
+                    <div
                       key={day.date}
-                      custom={index}
-                      variants={isReducedMotion ? undefined : cellVariants}
+                      style={{ '--cell-delay': `${delay}s` } as React.CSSProperties}
                       className={`heatmap-cell level-${day.level}${isToday ? ' cell-today' : ''}${isFuture ? ' cell-future' : ''}`}
                       onMouseEnter={() => !isFuture && setHoveredDay(day)}
                       onMouseLeave={() => setHoveredDay(null)}

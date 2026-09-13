@@ -1,5 +1,5 @@
 import './App.css';
-import { useTheme, useManilaClock } from './hooks';
+import { useTheme } from './hooks';
 import { Header } from './components/Header';
 import { Masthead } from './components/Masthead';
 import { Snapshot } from './components/Snapshot';
@@ -11,7 +11,6 @@ import { Footer } from './components/Footer';
 
 function App() {
   const { theme, toggleTheme } = useTheme();
-  const manilaTime = useManilaClock();
 
   return (
     <div className="dossier-app">
@@ -19,7 +18,6 @@ function App() {
         <Header
           theme={theme}
           onToggleTheme={toggleTheme}
-          manilaTime={manilaTime}
         />
 
         <main id="main-content">
