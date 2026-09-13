@@ -1,8 +1,12 @@
 import React, { useState } from 'react';
 import { Icon } from '@iconify/react';
+import { motion, useReducedMotion } from 'motion/react';
 import { personalData } from '../data/portfolioData';
 
 export const Snapshot: React.FC = () => {
+  const shouldReduceMotion = useReducedMotion();
+  const isReducedMotion = Boolean(shouldReduceMotion);
+
   const [phoneFeedback, setPhoneFeedback] = useState<boolean>(false);
 
   const handleEmailClick = (e: React.MouseEvent<HTMLAnchorElement>) => {
@@ -31,7 +35,18 @@ export const Snapshot: React.FC = () => {
   };
 
   return (
-    <section className="studio-connect-strip">
+    <motion.section
+      className="studio-connect-strip"
+      initial={isReducedMotion ? false : { opacity: 0, y: 16 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ once: true, amount: 0.2 }}
+      transition={{
+        type: 'spring',
+        stiffness: 240,
+        damping: 28,
+        mass: 0.7,
+      }}
+    >
       <div className="connect-strip-inner">
         {/* Direct Contact Links: Email & Phone */}
         <div className="strip-contact-group">
@@ -107,6 +122,6 @@ export const Snapshot: React.FC = () => {
           </a>
         </div>
       </div>
-    </section>
+    </motion.section>
   );
 };

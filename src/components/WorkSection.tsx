@@ -1,11 +1,41 @@
 import React, { useState, useRef, useEffect } from 'react';
 import { Icon } from '@iconify/react';
-import { motion, AnimatePresence } from 'motion/react';
+import { motion, AnimatePresence, useReducedMotion, type Variants } from 'motion/react';
 import type { Project } from '../types';
 import { projectsData } from '../data/portfolioData';
 import { TiltCard } from './TiltCard';
 
+const rowListVariants: Variants = {
+  hidden: {},
+  visible: {
+    transition: {
+      staggerChildren: 0.07,
+      delayChildren: 0.05,
+    },
+  },
+};
+
+const rowItemVariants: Variants = {
+  hidden: {
+    opacity: 0,
+    y: 20,
+  },
+  visible: {
+    opacity: 1,
+    y: 0,
+    transition: {
+      type: 'spring',
+      stiffness: 260,
+      damping: 28,
+      mass: 0.7,
+    },
+  },
+};
+
 export const WorkSection: React.FC = () => {
+  const shouldReduceMotion = useReducedMotion();
+  const isReducedMotion = Boolean(shouldReduceMotion);
+
   const [selectedIndex, setSelectedIndex] = useState<number>(0);
   const [isViewerOpen, setIsViewerOpen] = useState<boolean>(false);
   const [mobileExpandedId, setMobileExpandedId] = useState<string | null>(null);
@@ -54,22 +84,40 @@ export const WorkSection: React.FC = () => {
   return (
     <section id="work" className="work-index-section">
       {/* Section Header */}
-      <div className="work-index-header">
+      <motion.div
+        className="work-index-header"
+        initial={isReducedMotion ? false : { opacity: 0, y: 22 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true, amount: 0.2 }}
+        transition={{
+          type: 'spring',
+          stiffness: 240,
+          damping: 28,
+          mass: 0.7,
+        }}
+      >
         <div className="work-index-title-group">
           <span className="section-label">Selected Work</span>
           <h2 className="section-title">Systems &amp; Applications</h2>
         </div>
-      </div>
+      </motion.div>
 
       {/* Interactive Project Index Table / List */}
-      <div className="project-index-list">
+      <motion.div
+        className="project-index-list"
+        initial={isReducedMotion ? false : 'hidden'}
+        whileInView="visible"
+        viewport={{ once: true, amount: 0.08 }}
+        variants={isReducedMotion ? undefined : rowListVariants}
+      >
         {projectsData.map((project) => {
           const isSelected = isViewerOpen && projectsData[selectedIndex]?.id === project.id;
           const isMobileExpanded = mobileExpandedId === project.id;
 
           return (
-            <div
+            <motion.div
               key={project.id}
+              variants={isReducedMotion ? undefined : rowItemVariants}
               className={`project-index-row ${isSelected ? 'row-active' : ''}`}
               onClick={() => handleSelectProject(project)}
               role="button"
@@ -167,10 +215,10 @@ export const WorkSection: React.FC = () => {
                   </motion.div>
                 )}
               </AnimatePresence>
-            </div>
+            </motion.div>
           );
         })}
-      </div>
+      </motion.div>
 
       {/* Architectural Project File Viewer Drawer */}
       <AnimatePresence>

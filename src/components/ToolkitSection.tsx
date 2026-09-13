@@ -1,11 +1,41 @@
 import React, { useState, useEffect, useCallback } from 'react';
 import { createPortal } from 'react-dom';
 import { Icon } from '@iconify/react';
-import { motion, AnimatePresence } from 'motion/react';
+import { motion, AnimatePresence, useReducedMotion, type Variants } from 'motion/react';
 import type { CredentialItem } from '../types';
 import { capabilityGroups, credentialsData } from '../data/portfolioData';
 
+const toolkitListVariants: Variants = {
+  hidden: {},
+  visible: {
+    transition: {
+      staggerChildren: 0.08,
+      delayChildren: 0.05,
+    },
+  },
+};
+
+const toolkitItemVariants: Variants = {
+  hidden: {
+    opacity: 0,
+    y: 18,
+  },
+  visible: {
+    opacity: 1,
+    y: 0,
+    transition: {
+      type: 'spring',
+      stiffness: 260,
+      damping: 28,
+      mass: 0.7,
+    },
+  },
+};
+
 export const ToolkitSection: React.FC = () => {
+  const shouldReduceMotion = useReducedMotion();
+  const isReducedMotion = Boolean(shouldReduceMotion);
+
   const [selectedCert, setSelectedCert] = useState<CredentialItem | null>(null);
 
   const selectedIndex = selectedCert
@@ -54,14 +84,35 @@ export const ToolkitSection: React.FC = () => {
       <div className="toolkit-two-col">
         {/* Left Column: Architectural Capability Spec Sheet */}
         <div className="toolkit-col toolkit-tools-col">
-          <div className="section-title-wrap">
+          <motion.div
+            className="section-title-wrap"
+            initial={isReducedMotion ? false : { opacity: 0, y: 22 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, amount: 0.2 }}
+            transition={{
+              type: 'spring',
+              stiffness: 240,
+              damping: 28,
+              mass: 0.7,
+            }}
+          >
             <span className="section-label">Technical Stack</span>
             <h2 className="section-title">Capabilities &amp; Tools</h2>
-          </div>
+          </motion.div>
 
-          <div className="spec-ledger">
+          <motion.div
+            className="spec-ledger"
+            initial={isReducedMotion ? false : 'hidden'}
+            whileInView="visible"
+            viewport={{ once: true, amount: 0.1 }}
+            variants={isReducedMotion ? undefined : toolkitListVariants}
+          >
             {capabilityGroups.map((group) => (
-              <div key={group.code} className="spec-group-row">
+              <motion.div
+                key={group.code}
+                className="spec-group-row"
+                variants={isReducedMotion ? undefined : toolkitItemVariants}
+              >
                 <div className="spec-group-header">
                   <h3 className="spec-cat-title">{group.category}</h3>
                 </div>
@@ -77,26 +128,47 @@ export const ToolkitSection: React.FC = () => {
                     </React.Fragment>
                   ))}
                 </div>
-              </div>
+              </motion.div>
             ))}
-          </div>
+          </motion.div>
         </div>
 
         {/* Right Column: Verified Credentials */}
         <div className="toolkit-col toolkit-cred-col">
-          <div className="section-title-wrap">
+          <motion.div
+            className="section-title-wrap"
+            initial={isReducedMotion ? false : { opacity: 0, y: 22 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, amount: 0.2 }}
+            transition={{
+              type: 'spring',
+              stiffness: 240,
+              damping: 28,
+              mass: 0.7,
+            }}
+          >
             <span className="section-label">Credentials</span>
             <h2 className="section-title">Certifications &amp; Honors</h2>
-          </div>
+          </motion.div>
 
-          <div className="chronological-ledger">
+          <motion.div
+            className="chronological-ledger"
+            initial={isReducedMotion ? false : 'hidden'}
+            whileInView="visible"
+            viewport={{ once: true, amount: 0.1 }}
+            variants={isReducedMotion ? undefined : toolkitListVariants}
+          >
             {Array.from(new Set(credentialsData.map((c) => c.year)))
               .sort((a, b) => Number(b) - Number(a))
               .map((year) => {
                 const items = credentialsData.filter((c) => c.year === year);
                 if (items.length === 0) return null;
                 return (
-                  <div key={year} className="ledger-year-section">
+                  <motion.div
+                    key={year}
+                    className="ledger-year-section"
+                    variants={isReducedMotion ? undefined : toolkitItemVariants}
+                  >
                     <div className="ledger-year-header">
                       <span className="ledger-year-tag">{year}</span>
                       <span className="ledger-year-rule" aria-hidden="true"></span>
@@ -125,10 +197,10 @@ export const ToolkitSection: React.FC = () => {
                         </button>
                       ))}
                     </div>
-                  </div>
+                  </motion.div>
                 );
               })}
-          </div>
+          </motion.div>
         </div>
       </div>
 

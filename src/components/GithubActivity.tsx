@@ -164,7 +164,18 @@ export const GithubActivity: React.FC = () => {
   return (
     <section id="activity" className="github-activity-section">
       {/* Section Header */}
-      <div className="github-activity-header">
+      <motion.div
+        className="github-activity-header"
+        initial={isReducedMotion ? false : { opacity: 0, y: 22 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true, amount: 0.2 }}
+        transition={{
+          type: 'spring',
+          stiffness: 240,
+          damping: 28,
+          mass: 0.7,
+        }}
+      >
         <div className="activity-title-col">
           <span className="section-label">GitHub Activity</span>
           <h2 className="section-title">Contribution Activity</h2>
@@ -173,7 +184,7 @@ export const GithubActivity: React.FC = () => {
         <p className="activity-desc">
           Public contribution activity recorded across GitHub repositories.
         </p>
-      </div>
+      </motion.div>
 
       {/* Main Architectural Heatmap Box */}
       <motion.div
