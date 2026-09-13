@@ -67,27 +67,8 @@ export const projectsData: Project[] = [
     repoUrl: 'https://github.com/robertterquin/Chainly',
   },
   {
-    id: 'ridetrack',
-    number: '03',
-    title: 'RideTrack',
-    tag: 'FITNESS & TELEMETRY',
-    category: 'mobile',
-    description: 'Real-time GPS cycling telemetry and workout analytics platform with battery-optimized tracking.',
-    detail:
-      'Performance telemetry platform engineered in Flutter to process real-time geospatial streams, velocity curves, and workout duration without draining mobile battery during long-distance rides. Includes interactive distance pacing targets and persistent performance ledgers.',
-    stack: 'Flutter · Dart · Supabase · Geolocation',
-    image: '/projects/ridetrack-showcase.webp',
-    highlights: [
-      'Battery-conscious geospatial tracking engine recording real-time velocity, distance, and elevation',
-      'Dynamic weekly distance pacing bars with reactive milestone feedback loops',
-      'Historical telemetry ledger for comparative endurance benchmarking and workout analysis',
-    ],
-    demoUrl: 'https://github.com/robertterquin/RideTrack',
-    repoUrl: 'https://github.com/robertterquin/RideTrack',
-  },
-  {
     id: 'spendly',
-    number: '04',
+    number: '03',
     title: 'Spendly',
     tag: 'FINTECH & BUDGET',
     category: 'mobile',
@@ -106,7 +87,7 @@ export const projectsData: Project[] = [
   },
   {
     id: 'hunch',
-    number: '05',
+    number: '04',
     title: 'Hunch',
     tag: 'AI SECURITY & EDTECH',
     category: 'web',
@@ -125,7 +106,7 @@ export const projectsData: Project[] = [
   },
   {
     id: 'hapag',
-    number: '06',
+    number: '05',
     title: 'Hapag',
     tag: 'AI CULINARY ASSISTANT',
     category: 'web',
