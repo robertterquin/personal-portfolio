@@ -2,6 +2,7 @@ import React from 'react';
 import { Icon } from '@iconify/react';
 import type { Theme } from '../types';
 import { AnimatedThemeToggler } from './AnimatedThemeToggler';
+import { Magnetic } from './Magnetic';
 import { useManilaClock } from '../hooks';
 
 interface HeaderProps {
@@ -23,23 +24,25 @@ export const Header: React.FC<HeaderProps> = ({
       </div>
 
       <div className="header-right">
-        <AnimatedThemeToggler
-          theme={theme}
-          onThemeChange={onToggleTheme}
-          variant="circle"
-          duration={500}
-          className="theme-toggle-btn"
-          aria-label={`Switch to ${theme === 'night' ? 'Day' : 'Night'} theme`}
-          title={`Switch to ${theme === 'night' ? 'Day' : 'Night'} theme`}
-        >
-          <Icon
-            icon={theme === 'night' ? 'lucide:sun' : 'lucide:moon'}
-            width={15}
-            height={15}
-            className="theme-toggle-icon"
-          />
-          <span className="theme-toggle-label">{theme === 'night' ? 'Day' : 'Night'}</span>
-        </AnimatedThemeToggler>
+        <Magnetic strength={0.28} maxDistance={8}>
+          <AnimatedThemeToggler
+            theme={theme}
+            onThemeChange={onToggleTheme}
+            variant="circle"
+            duration={500}
+            className="theme-toggle-btn"
+            aria-label={`Switch to ${theme === 'night' ? 'Day' : 'Night'} theme`}
+            title={`Switch to ${theme === 'night' ? 'Day' : 'Night'} theme`}
+          >
+            <Icon
+              icon={theme === 'night' ? 'lucide:sun' : 'lucide:moon'}
+              width={15}
+              height={15}
+              className="theme-toggle-icon"
+            />
+            <span className="theme-toggle-label">{theme === 'night' ? 'Day' : 'Night'}</span>
+          </AnimatedThemeToggler>
+        </Magnetic>
       </div>
     </header>
   );

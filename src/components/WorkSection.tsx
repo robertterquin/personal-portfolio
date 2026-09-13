@@ -4,6 +4,7 @@ import { motion, AnimatePresence, useReducedMotion, type Variants } from 'motion
 import type { Project } from '../types';
 import { projectsData } from '../data/portfolioData';
 import { TiltCard } from './TiltCard';
+import { Magnetic } from './Magnetic';
 
 const rowListVariants: Variants = {
   hidden: {},
@@ -189,16 +190,18 @@ export const WorkSection: React.FC = () => {
                         project.demoUrl.startsWith('http') &&
                         !project.demoUrl.includes('github') && (
                           <div className="mobile-expanded-actions">
-                            <a
-                              href={project.demoUrl}
-                              target="_blank"
-                              rel="noreferrer"
-                              className="viewer-btn viewer-btn-primary"
-                            >
-                              <Icon icon="lucide:globe" width={13} height={13} />
-                              <span>Live Site</span>
-                              <Icon icon="lucide:arrow-up-right" width={12} height={12} />
-                            </a>
+                            <Magnetic strength={0.25} maxDistance={6}>
+                              <a
+                                href={project.demoUrl}
+                                target="_blank"
+                                rel="noreferrer"
+                                className="viewer-btn viewer-btn-primary"
+                              >
+                                <Icon icon="lucide:globe" width={13} height={13} />
+                                <span>Live Site</span>
+                                <Icon icon="lucide:arrow-up-right" width={12} height={12} />
+                              </a>
+                            </Magnetic>
                           </div>
                         )}
                     </div>
@@ -229,15 +232,17 @@ export const WorkSection: React.FC = () => {
               </div>
 
               <div className="viewer-controls-group">
-                <button
-                  type="button"
-                  className="viewer-close"
-                  onClick={() => setIsViewerOpen(false)}
-                  aria-label="Close viewer"
-                >
-                  <span>Close</span>
-                  <Icon icon="lucide:x" width={14} height={14} />
-                </button>
+                <Magnetic strength={0.28} maxDistance={8}>
+                  <button
+                    type="button"
+                    className="viewer-close"
+                    onClick={() => setIsViewerOpen(false)}
+                    aria-label="Close viewer"
+                  >
+                    <span>Close</span>
+                    <Icon icon="lucide:x" width={14} height={14} />
+                  </button>
+                </Magnetic>
               </div>
             </div>
 
@@ -248,7 +253,9 @@ export const WorkSection: React.FC = () => {
                 onClick={handlePrevProject}
                 aria-label="Previous project"
               >
-                <Icon icon="lucide:chevron-left" width={18} height={18} />
+                <Magnetic strength={0.4} maxDistance={10} innerOnly>
+                  <Icon icon="lucide:chevron-left" width={18} height={18} />
+                </Magnetic>
               </button>
 
               <div className="viewer-grid">
@@ -287,16 +294,18 @@ export const WorkSection: React.FC = () => {
                       activeProject.demoUrl.startsWith('http') &&
                       !activeProject.demoUrl.includes('github') && (
                         <div className="viewer-links">
-                          <a
-                            href={activeProject.demoUrl}
-                            target="_blank"
-                            rel="noreferrer"
-                            className="viewer-btn viewer-btn-primary"
-                          >
-                            <Icon icon="lucide:globe" width={13} height={13} />
-                            <span>Live Site</span>
-                            <Icon icon="lucide:arrow-up-right" width={12} height={12} />
-                          </a>
+                          <Magnetic strength={0.28} maxDistance={8}>
+                            <a
+                              href={activeProject.demoUrl}
+                              target="_blank"
+                              rel="noreferrer"
+                              className="viewer-btn viewer-btn-primary"
+                            >
+                              <Icon icon="lucide:globe" width={13} height={13} />
+                              <span>Live Site</span>
+                              <Icon icon="lucide:arrow-up-right" width={12} height={12} />
+                            </a>
+                          </Magnetic>
                         </div>
                       )}
                   </div>
@@ -309,7 +318,9 @@ export const WorkSection: React.FC = () => {
                 onClick={handleNextProject}
                 aria-label="Next project"
               >
-                <Icon icon="lucide:chevron-right" width={18} height={18} />
+                <Magnetic strength={0.4} maxDistance={10} innerOnly>
+                  <Icon icon="lucide:chevron-right" width={18} height={18} />
+                </Magnetic>
               </button>
             </div>
 
