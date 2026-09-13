@@ -89,14 +89,10 @@ html.theme-day .github-heatmap-container {
 .heatmap-scroll-stage {
   padding: 24px 20px;
   overflow-x: auto;
-  background: #0d0c0b;
+  background: var(--bg);
   display: flex;
   align-items: center;
   width: 100%;
-}
-
-html.theme-day .heatmap-scroll-stage {
-  background: #f7f4ed;
 }
 
 .heatmap-board {

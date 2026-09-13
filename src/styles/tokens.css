@@ -26,6 +26,7 @@
   /* Rich Roasted Saddle Leather Accents */
   --accent: #b88252;
   --accent-hover: #cb9767;
+  --accent-contrast: #0e0d0c;
   --accent-dim: rgba(184, 130, 82, 0.12);
   --accent-glow: rgba(184, 130, 82, 0.22);
 
@@ -36,6 +37,7 @@
   --radius-sm: 4px;
   --radius-md: 8px;
   --radius-lg: 12px;
+  --scrollbar-thumb: #544d44;
 
   /* GitHub Heatmap Grid Metrics */
   --gh-cell-size: clamp(20px, 1.6vw, 24px);
@@ -59,8 +61,10 @@ html.theme-day body {
 
   --accent: #8e582e;
   --accent-hover: #71421e;
+  --accent-contrast: #ffffff;
   --accent-dim: rgba(142, 88, 46, 0.1);
   --accent-glow: rgba(142, 88, 46, 0.18);
+  --scrollbar-thumb: #c2b7a9;
 
   --leather: #8e582e;
   --leather-subtle: rgba(142, 88, 46, 0.08);

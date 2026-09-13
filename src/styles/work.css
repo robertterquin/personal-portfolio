@@ -152,7 +152,7 @@ html.theme-day .project-index-row.row-active {
   border-radius: var(--radius-sm);
   overflow: hidden;
   border: 1px solid var(--card-border);
-  background: #000;
+  background: var(--bg-subtle);
 }
 
 .mobile-expanded-img {
@@ -275,7 +275,7 @@ html.theme-day .project-index-row.row-active {
   width: 100%;
   max-height: 380px;
   position: relative;
-  background: #000000;
+  background: var(--bg-subtle);
   border: 1px solid var(--card-border);
   border-radius: var(--radius-sm);
   overflow: hidden;
@@ -349,26 +349,15 @@ html.theme-day .project-index-row.row-active {
 
 .viewer-btn-primary {
   background: var(--accent);
-  color: #0e0d0c;
+  color: var(--accent-contrast);
   border: 1px solid var(--accent);
   font-weight: 700;
-}
-
-html.theme-day .viewer-btn-primary {
-  background: var(--accent);
-  color: #ffffff;
-  border-color: var(--accent);
 }
 
 .viewer-btn-primary:hover {
   background: var(--accent-hover);
   border-color: var(--accent-hover);
-  color: #0e0d0c;
-}
-
-html.theme-day .viewer-btn-primary:hover {
-  background: var(--accent-hover);
-  color: #ffffff;
+  color: var(--accent-contrast);
 }
 
 .viewer-btn-secondary {
