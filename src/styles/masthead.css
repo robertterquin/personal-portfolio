@@ -125,10 +125,21 @@
   border-radius: 2px;
   overflow: hidden;
   box-shadow: 0 16px 36px rgba(0, 0, 0, 0.4);
+  transition: box-shadow 0.3s cubic-bezier(0.16, 1, 0.3, 1), border-color 0.3s ease;
+}
+
+.portrait-frame:hover {
+  border-color: var(--accent);
+  box-shadow: 0 24px 52px rgba(0, 0, 0, 0.55);
 }
 
 html.theme-day .portrait-frame {
   box-shadow: 0 12px 28px rgba(158, 107, 56, 0.12);
+}
+
+html.theme-day .portrait-frame:hover {
+  border-color: var(--accent);
+  box-shadow: 0 20px 44px rgba(158, 107, 56, 0.2);
 }
 
 /* Corner Registration Marks */

@@ -34,44 +34,29 @@
   grid-template-columns: 1fr auto;
   align-items: center;
   gap: 32px;
-  padding: 24px 18px;
+  padding: 24px 16px;
   border-top: 1px solid var(--line);
+  transition: all 0.18s cubic-bezier(0.16, 1, 0.3, 1);
   cursor: pointer;
   position: relative;
   background: transparent;
   border-left: 2px solid transparent;
-  transition: border-color 0.18s ease;
 }
 
 .project-index-list .project-index-row:last-child {
   border-bottom: 1px solid var(--line);
 }
 
-/* Linear / Apple Style Sliding Spotlight Pill */
-.project-row-spotlight {
-  position: absolute;
-  inset: 0;
-  background: var(--card-hover);
-  border-left: 2px solid var(--accent);
-  border-radius: var(--radius-sm);
-  z-index: 0;
-  pointer-events: none;
-}
-
-html.theme-day .project-row-spotlight {
-  background: rgba(158, 107, 56, 0.07);
-}
-
+.project-index-row:hover,
 .project-index-row.row-active {
+  background: var(--card-hover);
   border-left-color: var(--accent);
-  background: var(--leather-subtle);
+  padding-left: 22px;
 }
 
-.project-index-row .row-col,
-.project-index-row .row-col-actions,
-.project-index-row .row-mobile-expanded {
-  position: relative;
-  z-index: 1;
+html.theme-day .project-index-row:hover,
+html.theme-day .project-index-row.row-active {
+  background: rgba(158, 107, 56, 0.05);
 }
 
 /* Row Column: Title & Description */
@@ -293,6 +278,22 @@ html.theme-day .project-row-spotlight {
   border: 1px solid var(--card-border);
   border-radius: var(--radius-sm);
   overflow: hidden;
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.35);
+  transition: box-shadow 0.3s cubic-bezier(0.16, 1, 0.3, 1), border-color 0.3s ease;
+}
+
+.viewer-img-frame:hover {
+  border-color: var(--accent);
+  box-shadow: 0 22px 50px rgba(0, 0, 0, 0.5);
+}
+
+html.theme-day .viewer-img-frame {
+  box-shadow: 0 8px 24px rgba(158, 107, 56, 0.1);
+}
+
+html.theme-day .viewer-img-frame:hover {
+  border-color: var(--accent);
+  box-shadow: 0 18px 40px rgba(158, 107, 56, 0.2);
 }
 
 .viewer-img {

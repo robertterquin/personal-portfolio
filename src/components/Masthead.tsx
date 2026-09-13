@@ -3,6 +3,7 @@ import { Icon } from '@iconify/react';
 import { motion } from 'motion/react';
 import { personalData } from '../data/portfolioData';
 import heroImg from '../assets/hero.webp';
+import { TiltCard } from './TiltCard';
 
 const ease = [0.16, 1, 0.3, 1] as const;
 
@@ -83,7 +84,12 @@ export const Masthead: React.FC = () => {
           animate={{ opacity: 1, scale: 1 }}
           transition={{ duration: 0.85, delay: 0.2, ease }}
         >
-          <div className="portrait-frame">
+          <TiltCard
+            className="portrait-tilt-wrap"
+            innerClassName="portrait-frame"
+            maxTilt={7.5}
+            glare
+          >
             {/* Architectural registration corner marks */}
             <span className="portrait-corner portrait-corner-tl" aria-hidden="true">+</span>
             <span className="portrait-corner portrait-corner-tr" aria-hidden="true">+</span>
@@ -101,7 +107,7 @@ export const Masthead: React.FC = () => {
                 (e.target as HTMLImageElement).style.display = 'none';
               }}
             />
-          </div>
+          </TiltCard>
         </motion.div>
       </div>
     </section>

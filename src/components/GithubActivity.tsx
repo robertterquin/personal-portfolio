@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { Icon } from '@iconify/react';
+import { motion, useReducedMotion, type Variants } from 'motion/react';
 import type { ContributionDay, GithubApiResponse } from '../types';
 import { personalData } from '../data/portfolioData';
 import verifiedData from '../data/githubContributions.json';
@@ -19,7 +20,43 @@ const MONTH_LABELS = [
   { col: 47, label: 'Aug' },
 ];
 
+const cellVariants: Variants = {
+  hidden: {
+    opacity: 0,
+    scale: 0.35,
+  },
+  visible: (i: number) => {
+    const col = Math.floor(i / 7);
+    const row = i % 7;
+    return {
+      opacity: 1,
+      scale: 1,
+      transition: {
+        delay: col * 0.012 + row * 0.003,
+        duration: 0.22,
+        ease: [0.16, 1, 0.3, 1] as const,
+      },
+    };
+  },
+};
+
+const monthVariants: Variants = {
+  hidden: { opacity: 0, y: -4 },
+  visible: (col: number) => ({
+    opacity: 1,
+    y: 0,
+    transition: {
+      delay: col * 0.012,
+      duration: 0.25,
+      ease: [0.16, 1, 0.3, 1] as const,
+    },
+  }),
+};
+
 export const GithubActivity: React.FC = () => {
+  const shouldReduceMotion = useReducedMotion();
+  const isReducedMotion = Boolean(shouldReduceMotion);
+
   const [contributions, setContributions] = useState<ContributionDay[]>(
     verifiedData.contributions as ContributionDay[]
   );
@@ -139,7 +176,13 @@ export const GithubActivity: React.FC = () => {
       </div>
 
       {/* Main Architectural Heatmap Box */}
-      <div className="github-heatmap-container">
+      <motion.div
+        className="github-heatmap-container"
+        initial={isReducedMotion ? false : { opacity: 0, y: 16 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true, amount: 0.15 }}
+        transition={{ duration: 0.5, ease: [0.16, 1, 0.3, 1] }}
+      >
         {/* Top Status Bar */}
         <div className="heatmap-top-bar">
           <div className="heatmap-user-meta">
@@ -165,23 +208,37 @@ export const GithubActivity: React.FC = () => {
             {/* Months Header Line */}
             <div className="heatmap-months-row" aria-hidden="true">
               <span className="heatmap-month-spacer" />
-              <div className="heatmap-months-track">
+              <motion.div
+                className="heatmap-months-track"
+                initial={isReducedMotion ? false : 'hidden'}
+                whileInView="visible"
+                viewport={{ once: true, amount: 0.15 }}
+              >
                 {MONTH_LABELS.map((m) => (
-                  <span
+                  <motion.span
                     key={m.label + m.col}
                     className="heatmap-month-tag"
                     style={{ gridColumnStart: m.col + 1 }}
+                    custom={m.col}
+                    variants={isReducedMotion ? undefined : monthVariants}
                   >
                     {m.label}
-                  </span>
+                  </motion.span>
                 ))}
-              </div>
+              </motion.div>
             </div>
 
             {/* Weekdays and 53-column Grid */}
             <div className="heatmap-body-row">
               {/* Day Labels */}
-              <div className="heatmap-weekdays-col" aria-hidden="true">
+              <motion.div
+                className="heatmap-weekdays-col"
+                aria-hidden="true"
+                initial={isReducedMotion ? false : { opacity: 0 }}
+                whileInView={{ opacity: 1 }}
+                viewport={{ once: true, amount: 0.2 }}
+                transition={{ duration: 0.35, ease: 'easeOut' }}
+              >
                 <span className="weekday-label" />
                 <span className="weekday-label">Mon</span>
                 <span className="weekday-label" />
@@ -189,17 +246,26 @@ export const GithubActivity: React.FC = () => {
                 <span className="weekday-label" />
                 <span className="weekday-label">Fri</span>
                 <span className="weekday-label" />
-              </div>
+              </motion.div>
 
-              {/* 53 Columns Grid */}
-              <div className="heatmap-grid" role="region" aria-label="Contribution Calendar">
-                {displayDays.map((day) => {
+              {/* 53 Columns Grid with Cascading Wave Entrance */}
+              <motion.div
+                className="heatmap-grid"
+                role="region"
+                aria-label="Contribution Calendar"
+                initial={isReducedMotion ? false : 'hidden'}
+                whileInView="visible"
+                viewport={{ once: true, amount: 0.15 }}
+              >
+                {displayDays.map((day, index) => {
                   const isToday = day.date === todayEntry?.date;
                   const isFuture = day.isFuture;
 
                   return (
-                    <div
+                    <motion.div
                       key={day.date}
+                      custom={index}
+                      variants={isReducedMotion ? undefined : cellVariants}
                       className={`heatmap-cell level-${day.level}${isToday ? ' cell-today' : ''}${isFuture ? ' cell-future' : ''}`}
                       onMouseEnter={() => !isFuture && setHoveredDay(day)}
                       onMouseLeave={() => setHoveredDay(null)}
@@ -214,13 +280,19 @@ export const GithubActivity: React.FC = () => {
                     />
                   );
                 })}
-              </div>
+              </motion.div>
             </div>
           </div>
         </div>
 
         {/* Bottom Inspection Bar */}
-        <div className="heatmap-bottom-bar">
+        <motion.div
+          className="heatmap-bottom-bar"
+          initial={isReducedMotion ? false : { opacity: 0, y: 6 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, amount: 0.2 }}
+          transition={{ duration: 0.4, delay: 0.15, ease: 'easeOut' }}
+        >
           <span className="heatmap-total-label">
             {totalCount} {totalCount === 1 ? 'contribution' : 'contributions'} in the last year.
           </span>
@@ -252,8 +324,8 @@ export const GithubActivity: React.FC = () => {
               <span>More</span>
             </div>
           </div>
-        </div>
-      </div>
+        </motion.div>
+      </motion.div>
     </section>
   );
 };

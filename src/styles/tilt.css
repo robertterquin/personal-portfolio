@@ -1,0 +1,63 @@
+/* ==========================================================================
+   3D PERSPECTIVE TILT & SPECULAR LIGHTING STYLES
+   ========================================================================== */
+
+.tilt-card-root {
+  position: relative;
+  display: block;
+  transform-style: preserve-3d;
+}
+
+.tilt-card-inner {
+  position: relative;
+  transform-style: preserve-3d;
+  will-change: transform;
+}
+
+/* Dynamic Specular Lighting Glare Overlay */
+.tilt-glare-overlay {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  border-radius: inherit;
+  z-index: 8;
+  opacity: 0;
+  transition: opacity 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+  background: radial-gradient(
+    circle 340px at var(--glare-x, 50%) var(--glare-y, 50%),
+    rgba(255, 255, 255, 0.16) 0%,
+    rgba(229, 154, 88, 0.08) 40%,
+    transparent 70%
+  );
+  mix-blend-mode: overlay;
+}
+
+html.theme-day .tilt-glare-overlay {
+  background: radial-gradient(
+    circle 340px at var(--glare-x, 50%) var(--glare-y, 50%),
+    rgba(255, 255, 255, 0.55) 0%,
+    rgba(158, 107, 56, 0.14) 40%,
+    transparent 70%
+  );
+  mix-blend-mode: soft-light;
+}
+
+.tilt-card-root:hover .tilt-glare-overlay {
+  opacity: 1;
+}
+
+/* Specific stage wrappers */
+.portrait-tilt-wrap {
+  width: 100%;
+  max-width: 360px;
+}
+
+.viewer-tilt-wrap {
+  width: 100%;
+  max-height: 380px;
+}
+
+.mobile-tilt-wrap {
+  width: 100%;
+  max-height: 220px;
+}

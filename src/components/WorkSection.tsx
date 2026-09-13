@@ -3,13 +3,12 @@ import { Icon } from '@iconify/react';
 import { motion, AnimatePresence } from 'motion/react';
 import type { Project } from '../types';
 import { projectsData } from '../data/portfolioData';
+import { TiltCard } from './TiltCard';
 
 export const WorkSection: React.FC = () => {
   const [selectedIndex, setSelectedIndex] = useState<number>(0);
   const [isViewerOpen, setIsViewerOpen] = useState<boolean>(false);
   const [mobileExpandedId, setMobileExpandedId] = useState<string | null>(null);
-
-  const [hoveredId, setHoveredId] = useState<string | null>(null);
 
   const viewerRef = useRef<HTMLDivElement>(null);
 
@@ -63,18 +62,16 @@ export const WorkSection: React.FC = () => {
       </div>
 
       {/* Interactive Project Index Table / List */}
-      <div className="project-index-list" onMouseLeave={() => setHoveredId(null)}>
+      <div className="project-index-list">
         {projectsData.map((project) => {
           const isSelected = isViewerOpen && projectsData[selectedIndex]?.id === project.id;
           const isMobileExpanded = mobileExpandedId === project.id;
-          const isHovered = hoveredId === project.id;
 
           return (
             <div
               key={project.id}
               className={`project-index-row ${isSelected ? 'row-active' : ''}`}
               onClick={() => handleSelectProject(project)}
-              onMouseEnter={() => setHoveredId(project.id)}
               role="button"
               tabIndex={0}
               onKeyDown={(e) => {
@@ -85,20 +82,6 @@ export const WorkSection: React.FC = () => {
               }}
               aria-label={`Inspect ${project.title}`}
             >
-              {isHovered && (
-                <motion.div
-                  layoutId="project-row-spotlight"
-                  className="project-row-spotlight"
-                  initial={{ opacity: 0 }}
-                  animate={{ opacity: 1 }}
-                  exit={{ opacity: 0 }}
-                  transition={{
-                    type: 'spring',
-                    stiffness: 420,
-                    damping: 34,
-                  }}
-                />
-              )}
               {/* Main Title & One-line Summary */}
               <div className="row-col row-col-title">
                 <div className="row-title-wrap">
@@ -137,7 +120,12 @@ export const WorkSection: React.FC = () => {
                     transition={{ duration: 0.25, ease: [0.16, 1, 0.3, 1] }}
                     style={{ overflow: 'hidden' }}
                   >
-                    <div className="mobile-expanded-img-wrap">
+                    <TiltCard
+                      className="mobile-tilt-wrap"
+                      innerClassName="mobile-expanded-img-wrap"
+                      maxTilt={5}
+                      glare
+                    >
                       <img
                         src={project.image}
                         alt={`${project.title} preview`}
@@ -145,7 +133,7 @@ export const WorkSection: React.FC = () => {
                         loading="lazy"
                         decoding="async"
                       />
-                    </div>
+                    </TiltCard>
                     <div className="mobile-expanded-body">
                       <p className="mobile-expanded-detail">{project.detail}</p>
 
@@ -228,7 +216,12 @@ export const WorkSection: React.FC = () => {
               <div className="viewer-grid">
                 {/* Left: Showcase Image Preview */}
                 <div className="viewer-image-col">
-                  <div className="viewer-img-frame">
+                  <TiltCard
+                    className="viewer-tilt-wrap"
+                    innerClassName="viewer-img-frame"
+                    maxTilt={6.5}
+                    glare
+                  >
                     <img
                       src={activeProject.image}
                       alt={`${activeProject.title} preview`}
@@ -239,7 +232,7 @@ export const WorkSection: React.FC = () => {
                         (e.target as HTMLImageElement).style.display = 'none';
                       }}
                     />
-                  </div>
+                  </TiltCard>
                 </div>
 
                 {/* Right: Project Spec Copy */}
