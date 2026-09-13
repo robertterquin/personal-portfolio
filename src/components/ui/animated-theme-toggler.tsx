@@ -46,8 +46,8 @@ function getThemeTransitionClipPaths(
   const toRadius = (r: number) =>
     `${(r / (Math.hypot(viewportWidth, viewportHeight) / Math.SQRT2)) * 100}%`;
 
-  let startClip = '';
-  let endClip = '';
+  let startClip: string;
+  let endClip: string;
 
   switch (variant) {
     case 'circle':

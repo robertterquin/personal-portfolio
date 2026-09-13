@@ -89,7 +89,24 @@ async function fetchGraphQLContributions(token: string) {
   });
 
   if (!res.ok) throw new Error(`GraphQL HTTP ${res.status}`);
-  const json = (await res.json()) as any;
+  const json = (await res.json()) as {
+    data?: {
+      viewer?: {
+        contributionsCollection?: {
+          contributionCalendar?: {
+            totalContributions: number;
+            weeks: Array<{
+              contributionDays: Array<{
+                date: string;
+                contributionCount: number;
+                contributionLevel: string;
+              }>;
+            }>;
+          };
+        };
+      };
+    };
+  };
   const calendar = json.data?.viewer?.contributionsCollection?.contributionCalendar;
   if (!calendar) throw new Error('No calendar in response');
 
@@ -132,13 +149,15 @@ function githubContributionsPlugin(): Plugin {
               const targetPath = path.resolve(process.cwd(), 'src/data/githubContributions.json');
               try {
                 fs.writeFileSync(targetPath, JSON.stringify(data, null, 2), 'utf-8');
-              } catch {}
+              } catch {
+                // Ignore dev cache write errors
+              }
               res.setHeader('Content-Type', 'application/json');
               res.end(JSON.stringify(data));
               return;
             }
           } catch {
-            // fallback if token fails
+            // Fallback if token fails
           }
         }
 
@@ -155,7 +174,9 @@ function githubContributionsPlugin(): Plugin {
               const targetPath = path.resolve(process.cwd(), 'src/data/githubContributions.json');
               try {
                 fs.writeFileSync(targetPath, JSON.stringify(data, null, 2), 'utf-8');
-              } catch {}
+              } catch {
+                // Ignore dev cache write errors
+              }
               res.setHeader('Content-Type', 'application/json');
               res.end(JSON.stringify(data));
               return;

@@ -1,13 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import { Icon } from '@iconify/react';
-import type { ContributionDay } from '../types';
+import type { ContributionDay, GithubApiResponse } from '../types';
 import { personalData } from '../data/portfolioData';
 import verifiedData from '../data/githubContributions.json';
-
-interface ApiResponse {
-  total?: { [key: string]: number };
-  contributions?: ContributionDay[];
-}
 
 const MONTH_LABELS = [
   { col: 0, label: 'Sep' },
@@ -38,14 +33,14 @@ export const GithubActivity: React.FC = () => {
 
     const fetchLiveContributions = async () => {
       try {
-        let liveData: ApiResponse | null = null;
+        let liveData: GithubApiResponse | null = null;
         let liveTotal = 0;
 
         // 1. Try local dev direct proxy (fastest, zero cache lag)
         try {
           const devRes = await fetch('/api/github-contributions');
           if (devRes.ok) {
-            const devData: ApiResponse = await devRes.json();
+            const devData: GithubApiResponse = await devRes.json();
             const count = devData.total?.lastYear ?? (devData.contributions ? devData.contributions.reduce((acc, c) => acc + c.count, 0) : 0);
             if (count > 0 && devData.contributions && devData.contributions.length > 0) {
               liveData = devData;
@@ -60,7 +55,7 @@ export const GithubActivity: React.FC = () => {
         if (!liveData || liveTotal === 0) {
           const res = await fetch(`https://github-contributions-api.jogruber.de/v4/${username}?y=last`);
           if (res.ok) {
-            const apiData: ApiResponse = await res.json();
+            const apiData: GithubApiResponse = await res.json();
             const count =
               apiData.total?.lastYear ??
               (apiData.contributions ? apiData.contributions.reduce((acc, c) => acc + c.count, 0) : 0);
@@ -200,7 +195,7 @@ export const GithubActivity: React.FC = () => {
               <div className="heatmap-grid" role="region" aria-label="Contribution Calendar">
                 {displayDays.map((day) => {
                   const isToday = day.date === todayEntry?.date;
-                  const isFuture = (day as any).isFuture;
+                  const isFuture = day.isFuture;
 
                   return (
                     <div

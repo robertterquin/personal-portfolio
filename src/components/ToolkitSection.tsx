@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useCallback } from 'react';
 import { createPortal } from 'react-dom';
 import { Icon } from '@iconify/react';
 import { motion, AnimatePresence } from 'motion/react';
@@ -12,19 +12,19 @@ export const ToolkitSection: React.FC = () => {
     ? credentialsData.findIndex((c) => c.index === selectedCert.index)
     : -1;
 
-  const handlePrevCert = (e?: React.MouseEvent) => {
+  const handlePrevCert = useCallback((e?: React.MouseEvent) => {
     e?.stopPropagation();
     if (selectedIndex === -1) return;
     const prevIndex = selectedIndex === 0 ? credentialsData.length - 1 : selectedIndex - 1;
     setSelectedCert(credentialsData[prevIndex]);
-  };
+  }, [selectedIndex]);
 
-  const handleNextCert = (e?: React.MouseEvent) => {
+  const handleNextCert = useCallback((e?: React.MouseEvent) => {
     e?.stopPropagation();
     if (selectedIndex === -1) return;
     const nextIndex = selectedIndex === credentialsData.length - 1 ? 0 : selectedIndex + 1;
     setSelectedCert(credentialsData[nextIndex]);
-  };
+  }, [selectedIndex]);
 
   useEffect(() => {
     if (!selectedCert) return;
@@ -47,7 +47,7 @@ export const ToolkitSection: React.FC = () => {
       document.body.style.overflow = originalOverflow;
       window.removeEventListener('keydown', handleKeyDown);
     };
-  }, [selectedCert, selectedIndex]);
+  }, [selectedCert, handlePrevCert, handleNextCert]);
 
   return (
     <section id="toolkit" className="minimal-toolkit-section">

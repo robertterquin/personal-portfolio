@@ -65,4 +65,11 @@ export interface ContributionDay {
   date: string;
   count: number;
   level: 0 | 1 | 2 | 3 | 4;
+  isFuture?: boolean;
 }
+
+export interface GithubApiResponse {
+  total?: { [key: string]: number };
+  contributions?: ContributionDay[];
+}
+
