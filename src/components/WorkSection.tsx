@@ -9,6 +9,8 @@ export const WorkSection: React.FC = () => {
   const [isViewerOpen, setIsViewerOpen] = useState<boolean>(false);
   const [mobileExpandedId, setMobileExpandedId] = useState<string | null>(null);
 
+  const [hoveredId, setHoveredId] = useState<string | null>(null);
+
   const viewerRef = useRef<HTMLDivElement>(null);
 
   const activeProject: Project = projectsData[selectedIndex] || projectsData[0];
@@ -61,16 +63,18 @@ export const WorkSection: React.FC = () => {
       </div>
 
       {/* Interactive Project Index Table / List */}
-      <div className="project-index-list">
+      <div className="project-index-list" onMouseLeave={() => setHoveredId(null)}>
         {projectsData.map((project) => {
           const isSelected = isViewerOpen && projectsData[selectedIndex]?.id === project.id;
           const isMobileExpanded = mobileExpandedId === project.id;
+          const isHovered = hoveredId === project.id;
 
           return (
             <div
               key={project.id}
               className={`project-index-row ${isSelected ? 'row-active' : ''}`}
               onClick={() => handleSelectProject(project)}
+              onMouseEnter={() => setHoveredId(project.id)}
               role="button"
               tabIndex={0}
               onKeyDown={(e) => {
@@ -81,6 +85,20 @@ export const WorkSection: React.FC = () => {
               }}
               aria-label={`Inspect ${project.title}`}
             >
+              {isHovered && (
+                <motion.div
+                  layoutId="project-row-spotlight"
+                  className="project-row-spotlight"
+                  initial={{ opacity: 0 }}
+                  animate={{ opacity: 1 }}
+                  exit={{ opacity: 0 }}
+                  transition={{
+                    type: 'spring',
+                    stiffness: 420,
+                    damping: 34,
+                  }}
+                />
+              )}
               {/* Main Title & One-line Summary */}
               <div className="row-col row-col-title">
                 <div className="row-title-wrap">

@@ -34,30 +34,44 @@
   grid-template-columns: 1fr auto;
   align-items: center;
   gap: 32px;
-  padding: 24px 16px;
+  padding: 24px 18px;
   border-top: 1px solid var(--line);
-  transition: all 0.18s cubic-bezier(0.16, 1, 0.3, 1);
   cursor: pointer;
   position: relative;
   background: transparent;
-  border-radius: 0;
   border-left: 2px solid transparent;
+  transition: border-color 0.18s ease;
 }
 
 .project-index-list .project-index-row:last-child {
   border-bottom: 1px solid var(--line);
 }
 
-.project-index-row:hover,
-.project-index-row.row-active {
+/* Linear / Apple Style Sliding Spotlight Pill */
+.project-row-spotlight {
+  position: absolute;
+  inset: 0;
   background: var(--card-hover);
-  border-left-color: var(--accent);
-  padding-left: 22px;
+  border-left: 2px solid var(--accent);
+  border-radius: var(--radius-sm);
+  z-index: 0;
+  pointer-events: none;
 }
 
-html.theme-day .project-index-row:hover,
-html.theme-day .project-index-row.row-active {
-  background: rgba(158, 107, 56, 0.05);
+html.theme-day .project-row-spotlight {
+  background: rgba(158, 107, 56, 0.07);
+}
+
+.project-index-row.row-active {
+  border-left-color: var(--accent);
+  background: var(--leather-subtle);
+}
+
+.project-index-row .row-col,
+.project-index-row .row-col-actions,
+.project-index-row .row-mobile-expanded {
+  position: relative;
+  z-index: 1;
 }
 
 /* Row Column: Title & Description */

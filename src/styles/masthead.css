@@ -27,6 +27,19 @@
   line-height: 0.92;
   letter-spacing: -0.035em;
   color: var(--accent);
+  display: flex;
+  flex-direction: column;
+}
+
+.hero-title-line-mask {
+  display: block;
+  overflow: hidden;
+  line-height: 0.96;
+}
+
+.hero-title-line {
+  display: block;
+  will-change: transform;
 }
 
 .hero-title-dot {
