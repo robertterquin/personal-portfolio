@@ -1,7 +1,7 @@
 import React from 'react';
 import { Icon } from '@iconify/react';
 import type { Theme } from '../types';
-import { AnimatedThemeToggler } from './ui/animated-theme-toggler';
+import { AnimatedThemeToggler } from './AnimatedThemeToggler';
 
 interface HeaderProps {
   theme: Theme;
