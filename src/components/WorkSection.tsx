@@ -124,6 +124,8 @@ export const WorkSection: React.FC = () => {
                         src={project.image}
                         alt={`${project.title} preview`}
                         className="mobile-expanded-img"
+                        loading="lazy"
+                        decoding="async"
                       />
                     </div>
                     <div className="mobile-expanded-body">
@@ -213,6 +215,8 @@ export const WorkSection: React.FC = () => {
                       src={activeProject.image}
                       alt={`${activeProject.title} preview`}
                       className="viewer-img"
+                      loading="lazy"
+                      decoding="async"
                       onError={(e) => {
                         (e.target as HTMLImageElement).style.display = 'none';
                       }}

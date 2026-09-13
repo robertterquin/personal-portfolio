@@ -195,6 +195,8 @@ export const ToolkitSection: React.FC = () => {
                         src={selectedCert.image}
                         alt={`${selectedCert.title} - ${selectedCert.institution}`}
                         className="cert-modal-image"
+                        loading="lazy"
+                        decoding="async"
                       />
                     </div>
 

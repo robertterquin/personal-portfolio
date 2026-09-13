@@ -38,7 +38,7 @@ export const projectsData: Project[] = [
     detail:
       'A cross-platform Flutter application engineered to bridge public health literacy gaps through daily preventative routines, structured educational pathways, and actionable health guidance. Built with Supabase for secure cloud synchronization and resilient offline caching, ensuring accessibility even in low-connectivity healthcare environments.',
     stack: 'Flutter · Dart · Supabase · Cloud DB',
-    image: '/projects/oncosense-showcase.png',
+    image: '/projects/oncosense-showcase.webp',
     highlights: [
       'Structured cancer prevention curriculum and daily wellness habit tracker with persistent progress state',
       'Offline-first local caching paired with Supabase cloud sync for reliable low-bandwidth access',
@@ -57,7 +57,7 @@ export const projectsData: Project[] = [
     detail:
       'Engineered for endurance cyclists and home mechanics to mitigate roadside mechanical failures. Features algorithmic component wear modeling based on cumulative riding mileage, granular workshop maintenance expenditure tracking, and automated service threshold alerts.',
     stack: 'Flutter · Dart · Supabase · Local Sync',
-    image: '/projects/chainly-showcase.png',
+    image: '/projects/chainly-showcase.webp',
     highlights: [
       'Algorithmic component wear tracking calculating replacement intervals from mileage and riding conditions',
       'Complete workshop ledger with granular maintenance cost accounting and service history logs',
@@ -76,7 +76,7 @@ export const projectsData: Project[] = [
     detail:
       'Performance telemetry platform engineered in Flutter to process real-time geospatial streams, velocity curves, and workout duration without draining mobile battery during long-distance rides. Includes interactive distance pacing targets and persistent performance ledgers.',
     stack: 'Flutter · Dart · Supabase · Geolocation',
-    image: '/projects/ridetrack-showcase.png',
+    image: '/projects/ridetrack-showcase.webp',
     highlights: [
       'Battery-conscious geospatial tracking engine recording real-time velocity, distance, and elevation',
       'Dynamic weekly distance pacing bars with reactive milestone feedback loops',
@@ -95,7 +95,7 @@ export const projectsData: Project[] = [
     detail:
       'Built to give users transparent control over personal cashflow across checking, savings, and digital wallets. Integrates instant offline transaction logging, automated categorical expense breakdown, and an AI advisory layer that evaluates spending trends to forecast monthly budget thresholds.',
     stack: 'Flutter · Supabase · AI Assistant',
-    image: '/projects/spendly-showcase.png',
+    image: '/projects/spendly-showcase.webp',
     highlights: [
       'Multi-account ledger supporting instantaneous offline logging and background cloud reconciliation',
       'Automated categorical expense classification with proactive monthly budget threshold alerts',
@@ -114,7 +114,7 @@ export const projectsData: Project[] = [
     detail:
       'A security-focused web platform developed with React and TypeScript to shield students and fresh graduates from deceptive recruitment schemes. Leverages natural language evaluation models to analyze job descriptions against known scam heuristics, deceptive fee requests, and exploitative contract clauses.',
     stack: 'React · TypeScript · AI Integration',
-    image: '/projects/hunch-showcase.png',
+    image: '/projects/hunch-showcase.webp',
     highlights: [
       'Natural language risk engine evaluating recruitment listings against deceptive patterns and phishing markers',
       'Multi-point safety scorecard delivering actionable risk assessments and verification guidance',
@@ -133,7 +133,7 @@ export const projectsData: Project[] = [
     detail:
       'An intelligent culinary platform dedicated to Filipino cuisine, designed to eliminate kitchen food waste. Employs prompt-engineered LLM workflows and an ingredient-matching algorithm that maps user-provided pantry staples to regional Filipino recipes, complete with local substitutions and tailored cooking steps.',
     stack: 'React · TypeScript · AI Integration',
-    image: '/projects/hapag-showcase.png',
+    image: '/projects/hapag-showcase.webp',
     highlights: [
       'Pantry-matching heuristic mapping on-hand ingredients to authentic regional Filipino dishes',
       'Dynamic recipe synthesizer adapting preparation steps to dietary restrictions and portion sizes',
@@ -211,7 +211,7 @@ export const credentialsData: CredentialItem[] = [
     title: 'National Programming Challenge 2025',
     institution: 'CodeChum National Programming Competition',
     year: '2025',
-    image: '/certificates/codechum-2025.jpg',
+    image: '/certificates/codechum-2025.webp',
     type: 'Award',
   },
   {
@@ -219,7 +219,7 @@ export const credentialsData: CredentialItem[] = [
     title: 'National Programming Challenge 2024',
     institution: 'CodeChum National Programming Competition',
     year: '2024',
-    image: '/certificates/codechum-2024.png',
+    image: '/certificates/codechum-2024.webp',
     type: 'Award',
   },
   {
@@ -227,7 +227,7 @@ export const credentialsData: CredentialItem[] = [
     title: 'IT Specialist in Databases',
     institution: 'Certiport Industry Certification',
     year: '2025',
-    image: '/certificates/it-specialist-databases.png',
+    image: '/certificates/it-specialist-databases.webp',
     type: 'Certification',
   },
   {
@@ -235,7 +235,7 @@ export const credentialsData: CredentialItem[] = [
     title: 'Cybersecurity Specialist',
     institution: 'Industry Certified Track',
     year: '2026',
-    image: '/certificates/cybersecurity-specialist.png',
+    image: '/certificates/cybersecurity-specialist.webp',
     type: 'Certification',
   },
   {
@@ -243,7 +243,7 @@ export const credentialsData: CredentialItem[] = [
     title: 'HTML and CSS Specialist',
     institution: 'Certiport Web Standards Certification',
     year: '2026',
-    image: '/certificates/html-css-specialist.png',
+    image: '/certificates/html-css-specialist.webp',
     type: 'Certification',
   },
   {
@@ -251,7 +251,7 @@ export const credentialsData: CredentialItem[] = [
     title: 'Oracle Java Foundations',
     institution: 'Oracle Certified Foundations Associate',
     year: '2024',
-    image: '/certificates/oracle-java-foundations.jpg',
+    image: '/certificates/oracle-java-foundations.webp',
     type: 'Certification',
   },
   {
@@ -259,7 +259,7 @@ export const credentialsData: CredentialItem[] = [
     title: 'PowerPoint 2019 Associate',
     institution: 'Microsoft Office Specialist',
     year: '2024',
-    image: '/certificates/microsoft-powerpoint-2019.jpg',
+    image: '/certificates/microsoft-powerpoint-2019.webp',
     type: 'Certification',
   },
 ];

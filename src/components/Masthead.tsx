@@ -1,7 +1,7 @@
 import React from 'react';
 import { Icon } from '@iconify/react';
 import { personalData } from '../data/portfolioData';
-import heroImg from '../assets/hero.png';
+import heroImg from '../assets/hero.webp';
 
 export const Masthead: React.FC = () => {
   return (
@@ -49,6 +49,9 @@ export const Masthead: React.FC = () => {
               src={heroImg}
               alt="Robert Terquin"
               className="portrait-img"
+              loading="eager"
+              fetchPriority="high"
+              decoding="async"
               onError={(e) => {
                 (e.target as HTMLImageElement).style.display = 'none';
               }}
