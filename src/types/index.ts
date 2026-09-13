@@ -31,8 +31,8 @@ export interface Project {
   stack: string;
   image: string;
   highlights: string[];
-  demoUrl: string;
-  repoUrl: string;
+  demoUrl?: string;
+  repoUrl?: string;
 }
 
 export interface CapabilityTool {

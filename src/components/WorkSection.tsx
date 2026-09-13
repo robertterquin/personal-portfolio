@@ -185,10 +185,10 @@ export const WorkSection: React.FC = () => {
                     <div className="mobile-expanded-body">
                       <p className="mobile-expanded-detail">{project.detail}</p>
 
-                      <div className="mobile-expanded-actions">
-                        {project.demoUrl &&
-                          project.demoUrl.startsWith('http') &&
-                          !project.demoUrl.includes('github') && (
+                      {project.demoUrl &&
+                        project.demoUrl.startsWith('http') &&
+                        !project.demoUrl.includes('github') && (
+                          <div className="mobile-expanded-actions">
                             <a
                               href={project.demoUrl}
                               target="_blank"
@@ -199,18 +199,8 @@ export const WorkSection: React.FC = () => {
                               <span>Live Site</span>
                               <Icon icon="lucide:arrow-up-right" width={12} height={12} />
                             </a>
-                          )}
-                        <a
-                          href={project.repoUrl}
-                          target="_blank"
-                          rel="noreferrer"
-                          className="viewer-btn viewer-btn-secondary"
-                        >
-                          <Icon icon="lucide:github" width={13} height={13} />
-                          <span>Source</span>
-                          <Icon icon="lucide:arrow-up-right" width={12} height={12} />
-                        </a>
-                      </div>
+                          </div>
+                        )}
                     </div>
                   </motion.div>
                 )}
@@ -293,10 +283,10 @@ export const WorkSection: React.FC = () => {
                   <div className="viewer-actions-row">
                     <span className="viewer-stack-label">{activeProject.stack}</span>
 
-                    <div className="viewer-links">
-                      {activeProject.demoUrl &&
-                        activeProject.demoUrl.startsWith('http') &&
-                        !activeProject.demoUrl.includes('github') && (
+                    {activeProject.demoUrl &&
+                      activeProject.demoUrl.startsWith('http') &&
+                      !activeProject.demoUrl.includes('github') && (
+                        <div className="viewer-links">
                           <a
                             href={activeProject.demoUrl}
                             target="_blank"
@@ -307,18 +297,8 @@ export const WorkSection: React.FC = () => {
                             <span>Live Site</span>
                             <Icon icon="lucide:arrow-up-right" width={12} height={12} />
                           </a>
-                        )}
-                      <a
-                        href={activeProject.repoUrl}
-                        target="_blank"
-                        rel="noreferrer"
-                        className="viewer-btn viewer-btn-secondary"
-                      >
-                        <Icon icon="lucide:github" width={13} height={13} />
-                        <span>Source</span>
-                        <Icon icon="lucide:arrow-up-right" width={12} height={12} />
-                      </a>
-                    </div>
+                        </div>
+                      )}
                   </div>
                 </div>
               </div>
