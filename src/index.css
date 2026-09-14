@@ -1,14 +1,13 @@
 #root { min-height:100vh; }
 
 /* ==========================================================================
-   MINIMALIST SCROLLBAR ARCHITECTURE (ROOT BASELINE)
-   Inspired by cjsacdalan.com — Hairline 4px Minimalist Design
+   MINIMALIST SCROLLBAR — 2px Hairline Rectangle
    ========================================================================== */
 ::-webkit-scrollbar,
 html::-webkit-scrollbar,
 body::-webkit-scrollbar {
-  width: 4px;
-  height: 4px;
+  width: 2px;
+  height: 2px;
 }
 
 ::-webkit-scrollbar-button,
@@ -35,8 +34,7 @@ body::-webkit-scrollbar-track-piece {
 html::-webkit-scrollbar-thumb,
 body::-webkit-scrollbar-thumb {
   background: var(--scrollbar-thumb, #544d44);
-  border-radius: 9999px;
-  transition: background-color 0.15s ease;
+  border-radius: 0 !important;
 }
 
 ::-webkit-scrollbar-thumb:hover,
