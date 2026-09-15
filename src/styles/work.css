@@ -267,7 +267,9 @@ html.theme-day .project-index-row.row-active {
   display: flex;
   align-items: center;
   justify-content: center;
-  background: var(--bg);
+  background-color: var(--bg);
+  background-image: var(--bg-texture);
+  background-size: 6px 6px;
 }
 
 .viewer-img-frame {

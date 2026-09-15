@@ -42,6 +42,13 @@
   /* GitHub Heatmap Grid Metrics */
   --gh-cell-size: clamp(20px, 1.6vw, 24px);
   --gh-cell-gap: clamp(4px, 0.35vw, 5px);
+
+  /* Tactile Architectural Background Pattern (3px Micro-Weave) */
+  --bg-pattern: rgba(206, 191, 171, 0.045);
+  --bg-texture: repeating-conic-gradient(
+    var(--bg-pattern) 0% 25%,
+    transparent 0% 50%
+  );
 }
 
 /* Day Mode Tokens — Architectural Travertine Linen, Rich Espresso & Saddle Leather */
@@ -69,6 +76,12 @@ html.theme-day body {
   --leather: #8e582e;
   --leather-subtle: rgba(142, 88, 46, 0.08);
   --leather-border: rgba(142, 88, 46, 0.25);
+
+  --bg-pattern: rgba(22, 19, 17, 0.035);
+  --bg-texture: repeating-conic-gradient(
+    var(--bg-pattern) 0% 25%,
+    transparent 0% 50%
+  );
 }
 
 /* Global Reset & Base Layout */
@@ -77,7 +90,9 @@ html.theme-day body {
 }
 
 html {
-  background: var(--bg);
+  background-color: var(--bg);
+  background-image: var(--bg-texture);
+  background-size: 6px 6px;
   color: var(--ink);
   scroll-behavior: smooth;
   -webkit-font-smoothing: antialiased;
@@ -86,7 +101,7 @@ html {
 
 body {
   margin: 0;
-  background: var(--bg);
+  background-color: transparent;
   color: var(--ink);
   font-family: var(--font-sans);
   min-width: 320px;

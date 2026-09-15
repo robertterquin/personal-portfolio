@@ -23,7 +23,7 @@
 .dossier-app {
   min-height: 100vh;
   position: relative;
-  background: var(--bg);
+  background: transparent;
 }
 
 .dossier-container {
