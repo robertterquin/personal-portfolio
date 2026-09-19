@@ -264,7 +264,9 @@ html.theme-day .ledger-row:hover {
 }
 
 html.theme-day .cert-modal-overlay {
-  background: rgba(26, 22, 18, 0.82);
+  background: rgba(38, 30, 22, 0.45);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
 }
 
 .cert-modal-container {
@@ -367,14 +369,18 @@ html.theme-day .cert-modal-container {
   display: grid;
   grid-template-columns: 44px 1fr 44px;
   align-items: stretch;
-  background: #090807;
+  background-color: var(--bg);
+  background-image: var(--bg-texture);
+  background-size: 6px 6px;
   flex: 1 1 auto;
   min-height: 0;
   overflow: hidden;
 }
 
 html.theme-day .cert-modal-stage {
-  background: #181614;
+  background-color: var(--bg);
+  background-image: var(--bg-texture);
+  background-size: 6px 6px;
 }
 
 .cert-modal-image-wrapper {
@@ -402,6 +408,11 @@ html.theme-day .cert-modal-stage {
   display: block;
 }
 
+html.theme-day .cert-modal-image {
+  box-shadow: 0 12px 32px rgba(45, 35, 25, 0.12), 0 2px 6px rgba(45, 35, 25, 0.06);
+  border: 1px solid var(--line);
+}
+
 /* Nav Arrows — Full-height architectural side rails matching Project Viewer Drawer */
 .cert-nav-arrow {
   display: flex;
@@ -419,6 +430,15 @@ html.theme-day .cert-modal-stage {
 .cert-nav-arrow:hover {
   color: var(--ink);
   background: var(--accent-dim);
+}
+
+html.theme-day .cert-nav-arrow {
+  color: var(--ink-muted);
+}
+
+html.theme-day .cert-nav-arrow:hover {
+  color: var(--accent);
+  background: rgba(142, 88, 46, 0.08);
 }
 
 .cert-modal-footer {
