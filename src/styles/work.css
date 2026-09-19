@@ -259,6 +259,15 @@ html.theme-day .minimal-viewer {
   background: var(--accent-dim);
 }
 
+html.theme-day .stage-nav-arrow {
+  color: var(--ink-muted);
+}
+
+html.theme-day .stage-nav-arrow:hover {
+  color: var(--accent);
+  background: rgba(142, 88, 46, 0.08);
+}
+
 .viewer-grid {
   display: grid;
   grid-template-columns: 1.15fr 1fr;
@@ -406,13 +415,13 @@ html.theme-day .viewer-img-frame:hover {
   width: 6px;
   height: 6px;
   border-radius: 50%;
-  background: var(--ink-dim);
-  transition: all 0.15s ease;
+  background: var(--line-strong);
+  transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
 .progress-dot.active {
-  width: 22px;
-  border-radius: 4px;
+  width: 18px;
+  border-radius: 3px;
   background: var(--accent);
 }
 

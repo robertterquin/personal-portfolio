@@ -89,6 +89,11 @@ html.theme-day body {
   box-sizing: border-box;
 }
 
+::selection {
+  background: var(--accent);
+  color: var(--accent-contrast);
+}
+
 html {
   background-color: var(--bg);
   background-image: var(--bg-texture);

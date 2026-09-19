@@ -44,7 +44,7 @@
 }
 
 .back-to-top-btn:hover {
-  color: var(--ink);
+  color: var(--accent);
 }
 
 /* Responsive */

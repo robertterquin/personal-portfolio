@@ -191,6 +191,11 @@ html.theme-day .ledger-row:hover {
   border: 1px solid var(--line-strong);
 }
 
+html.theme-day .type-cert {
+  color: var(--ink-muted);
+  background: rgba(22, 19, 17, 0.03);
+}
+
 .ledger-text-col {
   flex: 1;
   display: flex;
