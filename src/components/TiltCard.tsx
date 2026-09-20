@@ -7,8 +7,8 @@ export interface TiltCardProps {
   innerClassName?: string;
   maxTilt?: number; 
   scale?: number;
-  perspective?: number; // Perspective distance in px (default: 1000)
-  glare?: boolean; // Enable dynamic specular lighting highlight (default: true)
+  perspective?: number; 
+  glare?: boolean; 
   style?: React.CSSProperties;
   innerStyle?: React.CSSProperties;
 }
