@@ -1,7 +1,3 @@
-/* ==========================================================================
-   3D PERSPECTIVE TILT & SPECULAR LIGHTING STYLES
-   ========================================================================== */
-
 .tilt-card-root {
   position: relative;
   display: block;
@@ -14,7 +10,6 @@
   will-change: transform;
 }
 
-/* Dynamic Specular Lighting Glare Overlay */
 .tilt-glare-overlay {
   position: absolute;
   inset: 0;
@@ -46,7 +41,6 @@ html.theme-day .tilt-glare-overlay {
   opacity: 1;
 }
 
-/* Specific stage wrappers */
 .portrait-tilt-wrap {
   width: 100%;
   max-width: 360px;

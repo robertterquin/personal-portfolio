@@ -1,12 +1,5 @@
-/* ==========================================================================
-   PORTFOLIO STYLESHEET MANIFEST
-   All styles are modularized in src/styles/
-   ========================================================================== */
-
-/* 1. Design Tokens & Theme Palettes */
 @import './styles/tokens.css';
 
-/* 2. Section Styles */
 @import './styles/header.css';
 @import './styles/masthead.css';
 @import './styles/snapshot.css';
@@ -17,9 +10,6 @@
 @import './styles/footer.css';
 @import './styles/tilt.css';
 
-/* ==========================================================================
-   APP SHELL & LAYOUT CONTAINER
-   ========================================================================== */
 .dossier-app {
   min-height: 100vh;
   position: relative;
@@ -47,7 +37,6 @@
   }
 }
 
-/* App Responsive Container */
 @media (max-width: 768px) {
   .dossier-container {
     padding: 0 24px 80px 24px;

@@ -12,8 +12,6 @@ export const Snapshot: React.FC = () => {
   const handleEmailClick = (e: React.MouseEvent<HTMLAnchorElement>) => {
     const isMobile = /Android|iPhone|iPad|iPod|Mobile/i.test(navigator.userAgent);
     if (!isMobile) {
-      // On desktop PCs, mailto: often fails silently without an installed mail app (e.g. Outlook).
-      // We directly open Gmail web compose in a new tab for seamless desktop redirection.
       e.preventDefault();
       const gmailUrl = `https://mail.google.com/mail/?view=cm&fs=1&to=${encodeURIComponent(personalData.email)}&su=${encodeURIComponent('Project Inquiry / Collaboration')}`;
       const win = window.open(gmailUrl, '_blank', 'noopener,noreferrer');
@@ -26,7 +24,6 @@ export const Snapshot: React.FC = () => {
   const handlePhoneClick = () => {
     const isMobile = /Android|iPhone|iPad|iPod|Mobile/i.test(navigator.userAgent);
     if (!isMobile) {
-      // On desktop PCs, copy to clipboard so the user can easily paste into WhatsApp/Viber
       navigator.clipboard?.writeText(personalData.phoneRaw).then(() => {
         setPhoneFeedback(true);
         setTimeout(() => setPhoneFeedback(false), 2200);
@@ -48,7 +45,6 @@ export const Snapshot: React.FC = () => {
       }}
     >
       <div className="connect-strip-inner">
-        {/* Direct Contact Links: Email & Phone */}
         <div className="strip-contact-group">
           <a
             href={`mailto:${personalData.email}`}
@@ -82,7 +78,6 @@ export const Snapshot: React.FC = () => {
           </a>
         </div>
 
-        {/* Links: Clean Typographic Line */}
         <div className="strip-links-block">
           <a
             href={personalData.github}

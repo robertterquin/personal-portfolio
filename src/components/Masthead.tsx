@@ -11,7 +11,6 @@ export const Masthead: React.FC = () => {
   return (
     <section id="top" className="architectural-hero">
       <div className="hero-grid">
-        {/* Left Column (60%): Bio & Headline */}
         <div className="hero-content">
           <h1 className="hero-title" aria-label="Robert Terquin Laqui">
             <span className="hero-title-line-mask">
@@ -77,7 +76,6 @@ export const Masthead: React.FC = () => {
           </motion.div>
         </div>
 
-        {/* Right Column (40%): Clean Framed Portrait */}
         <motion.div
           className="hero-portrait-stage"
           initial={{ opacity: 0, scale: 0.96 }}
@@ -90,7 +88,6 @@ export const Masthead: React.FC = () => {
             maxTilt={7.5}
             glare
           >
-            {/* Architectural registration corner marks */}
             <span className="portrait-corner portrait-corner-tl" aria-hidden="true">+</span>
             <span className="portrait-corner portrait-corner-tr" aria-hidden="true">+</span>
             <span className="portrait-corner portrait-corner-bl" aria-hidden="true">+</span>

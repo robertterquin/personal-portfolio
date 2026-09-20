@@ -1,7 +1,3 @@
-/* ==========================================================================
-   FOOTER COMPONENT STYLES
-   ========================================================================== */
-
 .dossier-footer {
   padding: 64px 0 40px 0;
   display: flex;
@@ -47,7 +43,6 @@
   color: var(--accent);
 }
 
-/* Responsive */
 @media (max-width: 768px) {
   .dossier-footer {
     flex-direction: column;

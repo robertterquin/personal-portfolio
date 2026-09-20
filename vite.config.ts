@@ -149,15 +149,15 @@ function githubContributionsPlugin(): Plugin {
               const targetPath = path.resolve(process.cwd(), 'src/data/githubContributions.json');
               try {
                 fs.writeFileSync(targetPath, JSON.stringify(data, null, 2), 'utf-8');
-              } catch {
-                // Ignore dev cache write errors
+              } catch (_err) {
+                void _err;
               }
               res.setHeader('Content-Type', 'application/json');
               res.end(JSON.stringify(data));
               return;
             }
-          } catch {
-            // Fallback if token fails
+          } catch (_err) {
+            void _err;
           }
         }
 
@@ -174,19 +174,18 @@ function githubContributionsPlugin(): Plugin {
               const targetPath = path.resolve(process.cwd(), 'src/data/githubContributions.json');
               try {
                 fs.writeFileSync(targetPath, JSON.stringify(data, null, 2), 'utf-8');
-              } catch {
-                // Ignore dev cache write errors
+              } catch (_err) {
+                void _err;
               }
               res.setHeader('Content-Type', 'application/json');
               res.end(JSON.stringify(data));
               return;
             }
           }
-        } catch {
-          // GitHub fetch failed or timed out
+        } catch (_err) {
+          void _err;
         }
 
-        // Clean fallback: serve verified contributions directly
         const cleanData = getVerifiedContributions();
         res.setHeader('Content-Type', 'application/json');
         res.end(JSON.stringify(cleanData));
@@ -195,7 +194,6 @@ function githubContributionsPlugin(): Plugin {
   };
 }
 
-// https://vite.dev/config/
 export default defineConfig({
   plugins: [react(), githubContributionsPlugin()],
   server: {

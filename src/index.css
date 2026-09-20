@@ -1,8 +1,5 @@
 #root { min-height:100vh; }
 
-/* ==========================================================================
-   MINIMALIST SCROLLBAR — 2px Hairline Rectangle
-   ========================================================================== */
 ::-webkit-scrollbar,
 html::-webkit-scrollbar,
 body::-webkit-scrollbar {

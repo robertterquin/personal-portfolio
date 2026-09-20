@@ -83,7 +83,6 @@ export const ToolkitSection: React.FC = () => {
   return (
     <section id="toolkit" className="minimal-toolkit-section">
       <div className="toolkit-two-col">
-        {/* Left Column: Architectural Capability Spec Sheet */}
         <div className="toolkit-col toolkit-tools-col">
           <motion.div
             className="section-title-wrap"
@@ -134,7 +133,6 @@ export const ToolkitSection: React.FC = () => {
           </motion.div>
         </div>
 
-        {/* Right Column: Verified Credentials */}
         <div className="toolkit-col toolkit-cred-col">
           <motion.div
             className="section-title-wrap"
@@ -205,7 +203,6 @@ export const ToolkitSection: React.FC = () => {
         </div>
       </div>
 
-      {/* Certificate Inspection Modal Lightbox */}
       {typeof document !== 'undefined' &&
         createPortal(
           <AnimatePresence>
@@ -229,7 +226,6 @@ export const ToolkitSection: React.FC = () => {
                   exit={{ opacity: 0, scale: 0.97, y: 8 }}
                   transition={{ duration: 0.22, ease: [0.16, 1, 0.3, 1] }}
                 >
-                  {/* Modal Header */}
                   <div className="cert-modal-header">
                     <div className="cert-modal-header-left">
                       <h3 id="cert-modal-title" className="cert-modal-title">
@@ -253,7 +249,6 @@ export const ToolkitSection: React.FC = () => {
                     </div>
                   </div>
 
-                  {/* Modal Stage / Image Preview */}
                   <div className="cert-modal-stage">
                     <button
                       type="button"
@@ -290,7 +285,6 @@ export const ToolkitSection: React.FC = () => {
                     </button>
                   </div>
 
-                  {/* Modal Footer */}
                   <div className="cert-modal-footer">
                     <span className="cert-modal-institution">
                       {selectedCert.institution} · {selectedCert.year}

@@ -69,7 +69,6 @@ export const WorkSection: React.FC = () => {
     setSelectedIndex((prev) => (prev === projectsData.length - 1 ? 0 : prev + 1));
   };
 
-  // Keyboard navigation for viewer
   useEffect(() => {
     const handleKeyDown = (e: KeyboardEvent) => {
       if (!isViewerOpen) return;
@@ -84,7 +83,6 @@ export const WorkSection: React.FC = () => {
 
   return (
     <section id="work" className="work-index-section">
-      {/* Section Header */}
       <motion.div
         className="work-index-header"
         initial={isReducedMotion ? false : { opacity: 0, y: 22 }}
@@ -103,7 +101,6 @@ export const WorkSection: React.FC = () => {
         </div>
       </motion.div>
 
-      {/* Interactive Project Index Table / List */}
       <motion.div
         className="project-index-list"
         initial={isReducedMotion ? false : 'hidden'}
@@ -131,7 +128,6 @@ export const WorkSection: React.FC = () => {
               }}
               aria-label={`Inspect ${project.title}`}
             >
-              {/* Main Title & One-line Summary */}
               <div className="row-col row-col-title">
                 <div className="row-title-wrap">
                   <h3 className="row-title">{project.title}</h3>
@@ -139,14 +135,12 @@ export const WorkSection: React.FC = () => {
                 <p className="row-description">{project.description}</p>
               </div>
 
-              {/* Action Column: Minimal Inspect Cue */}
               <div className="row-col-actions">
                 <span className="row-inspect-cue">
                   <span>Inspect</span>
                   <Icon icon="lucide:arrow-up-right" width={13} height={13} />
                 </span>
 
-                {/* Mobile Inline Toggle Button */}
                 <button
                   type="button"
                   className="row-mobile-toggle"
@@ -157,7 +151,6 @@ export const WorkSection: React.FC = () => {
                 </button>
               </div>
 
-              {/* Mobile Inline Expanded Spec (Visible only on mobile when toggled) */}
               <AnimatePresence>
                 {isMobileExpanded && (
                   <motion.div
@@ -213,7 +206,6 @@ export const WorkSection: React.FC = () => {
         })}
       </motion.div>
 
-      {/* Architectural Project File Viewer Drawer */}
       <AnimatePresence>
         {isViewerOpen && (
           <motion.div
@@ -259,7 +251,6 @@ export const WorkSection: React.FC = () => {
               </button>
 
               <div className="viewer-grid">
-                {/* Left: Showcase Image Preview */}
                 <div className="viewer-image-col">
                   <TiltCard
                     className="viewer-tilt-wrap"
@@ -280,7 +271,6 @@ export const WorkSection: React.FC = () => {
                   </TiltCard>
                 </div>
 
-                {/* Right: Project Spec Copy */}
                 <div className="viewer-copy-col">
                   <div className="viewer-copy-header">
                     <h3 className="viewer-main-title">{activeProject.title}</h3>

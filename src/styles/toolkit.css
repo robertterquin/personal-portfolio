@@ -1,7 +1,3 @@
-/* ==========================================================================
-   TOOLKIT & CERTIFICATIONS COMPONENT STYLES
-   ========================================================================== */
-
 .minimal-toolkit-section {
   padding: 92px 0;
   border-bottom: 1px solid var(--line);
@@ -23,7 +19,6 @@
   padding-right: 64px;
 }
 
-/* Capabilities Spec Ledger */
 .spec-ledger {
   display: flex;
   flex-direction: column;
@@ -102,7 +97,6 @@
   user-select: none;
 }
 
-/* Chronological Proof Ledger */
 .chronological-ledger {
   display: flex;
   flex-direction: column;
@@ -245,7 +239,6 @@ html.theme-day .type-cert {
   transform: translate(2px, -2px);
 }
 
-/* Certificate Inspection Modal Lightbox */
 .cert-modal-overlay {
   position: fixed;
   top: 0;
@@ -418,7 +411,6 @@ html.theme-day .cert-modal-image {
   border: 1px solid var(--line);
 }
 
-/* Nav Arrows — Full-height architectural side rails matching Project Viewer Drawer */
 .cert-nav-arrow {
   display: flex;
   align-items: center;
@@ -496,7 +488,6 @@ html.theme-day .cert-nav-arrow:hover {
   background: var(--accent);
 }
 
-/* Responsive */
 @media (max-width: 1024px) {
   .toolkit-two-col {
     grid-template-columns: 1fr;

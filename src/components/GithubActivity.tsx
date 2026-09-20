@@ -55,7 +55,6 @@ export const GithubActivity: React.FC = () => {
         let liveData: GithubApiResponse | null = null;
         let liveTotal = 0;
 
-        // 1. Try local dev direct proxy (fastest, zero cache lag)
         try {
           const devRes = await fetch('/api/github-contributions');
           if (devRes.ok) {
@@ -66,11 +65,10 @@ export const GithubActivity: React.FC = () => {
               liveTotal = count;
             }
           }
-        } catch {
-          // Dev proxy unavailable in static production builds
+        } catch (_err) {
+          void _err;
         }
 
-        // 2. Fallback to public live API (for deployed builds)
         if (!liveData || liveTotal === 0) {
           const res = await fetch(`https://github-contributions-api.jogruber.de/v4/${username}?y=last`);
           if (res.ok) {
@@ -89,8 +87,8 @@ export const GithubActivity: React.FC = () => {
           setContributions(liveData.contributions);
           setTotalCount(liveTotal);
         }
-      } catch {
-        // Keeps verifiedData silently
+      } catch (_err) {
+        void _err;
       }
     };
 
@@ -145,7 +143,6 @@ export const GithubActivity: React.FC = () => {
 
   return (
     <section id="activity" className="github-activity-section">
-      {/* Section Header */}
       <motion.div
         className="github-activity-header"
         initial={isReducedMotion ? false : { opacity: 0, y: 22 }}
@@ -168,7 +165,6 @@ export const GithubActivity: React.FC = () => {
         </p>
       </motion.div>
 
-      {/* Main Architectural Heatmap Box */}
       <motion.div
         className="github-heatmap-container"
         initial={isReducedMotion ? false : { opacity: 0, y: 16 }}
@@ -176,7 +172,6 @@ export const GithubActivity: React.FC = () => {
         viewport={{ once: true, amount: 0.15 }}
         transition={{ duration: 0.5, ease: [0.16, 1, 0.3, 1] }}
       >
-        {/* Top Status Bar */}
         <div className="heatmap-top-bar">
           <div className="heatmap-user-meta">
             <Icon icon="lucide:github" width={14} height={14} className="github-brand-icon" />
@@ -195,10 +190,8 @@ export const GithubActivity: React.FC = () => {
           </a>
         </div>
 
-        {/* Heatmap Grid Viewport */}
         <div className="heatmap-scroll-stage">
           <div className="heatmap-board">
-            {/* Months Header Line */}
             <div className="heatmap-months-row" aria-hidden="true">
               <span className="heatmap-month-spacer" />
               <motion.div
@@ -221,9 +214,7 @@ export const GithubActivity: React.FC = () => {
               </motion.div>
             </div>
 
-            {/* Weekdays and 53-column Grid */}
             <div className="heatmap-body-row">
-              {/* Day Labels */}
               <motion.div
                 className="heatmap-weekdays-col"
                 aria-hidden="true"
@@ -278,7 +269,6 @@ export const GithubActivity: React.FC = () => {
           </div>
         </div>
 
-        {/* Bottom Inspection Bar */}
         <motion.div
           className="heatmap-bottom-bar"
           initial={isReducedMotion ? false : { opacity: 0, y: 6 }}
@@ -306,7 +296,6 @@ export const GithubActivity: React.FC = () => {
               )}
             </span>
 
-            {/* Legend */}
             <div className="heatmap-legend" aria-hidden="true">
               <span>Less</span>
               <span className="legend-cell level-0" />

@@ -1,16 +1,11 @@
-/* ==========================================================================
-   DESIGN TOKENS & BASE THEME ARCHITECTURE
-   Palette: Warm Studio (Obsidian Espresso, Warm Limestone & Saddle Leather)
-   ========================================================================== */
-
 :root {
-  /* Typography */
+  
   --font-sans: 'DM Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
   --font-display: 'Instrument Sans', -apple-system, BlinkMacSystemFont, sans-serif;
   --font-serif: 'Instrument Serif', Georgia, serif;
   --font-mono: 'JetBrains Mono', monospace;
 
-  /* Night Mode Tokens — Deep Obsidian Espresso, Warm Travertine & Roasted Saddle Leather */
+  
   --bg: #11100f;
   --bg-subtle: #181615;
   --card-bg: #1e1b19;
@@ -23,7 +18,7 @@
   --ink-muted: #aca59c;
   --ink-dim: #7a7369;
 
-  /* Rich Roasted Saddle Leather Accents */
+  
   --accent: #b88252;
   --accent-hover: #cb9767;
   --accent-contrast: #0e0d0c;
@@ -39,11 +34,11 @@
   --radius-lg: 12px;
   --scrollbar-thumb: #544d44;
 
-  /* GitHub Heatmap Grid Metrics */
+  
   --gh-cell-size: clamp(20px, 1.6vw, 24px);
   --gh-cell-gap: clamp(4px, 0.35vw, 5px);
 
-  /* Tactile Architectural Background Pattern (3px Micro-Weave) */
+  
   --bg-pattern: rgba(206, 191, 171, 0.045);
   --bg-texture: repeating-conic-gradient(
     var(--bg-pattern) 0% 25%,
@@ -51,7 +46,6 @@
   );
 }
 
-/* Day Mode Tokens — Architectural Travertine Linen, Rich Espresso & Saddle Leather */
 html.theme-day,
 html.theme-day body {
   --bg: #f4f0e8;
@@ -84,7 +78,6 @@ html.theme-day body {
   );
 }
 
-/* Global Reset & Base Layout */
 * {
   box-sizing: border-box;
 }
@@ -126,7 +119,6 @@ button {
   background: transparent;
 }
 
-/* Shared Typography & Utility Classes */
 .section-label {
   font-family: var(--font-mono);
   font-size: 0.72rem;
@@ -163,21 +155,16 @@ button {
   max-width: 620px;
 }
 
-/* ==========================================================================
-   MAGIC UI ANIMATED THEME TOGGLER (View Transitions API)
-   ========================================================================== */
 ::view-transition-old(root),
 ::view-transition-new(root) {
   animation: none;
   mix-blend-mode: normal;
 }
 
-/* Scoped to AnimatedThemeToggler — sets data-magicui-theme-vt and variable only during transition */
 html[data-magicui-theme-vt="active"]::view-transition-group(root) {
   animation-duration: var(--magicui-theme-toggle-vt-duration, 500ms);
 }
 
-/* Opening / Light Mode (expand outward from switch) */
 html[data-magicui-theme-vt="active"][data-magicui-theme-direction="out"]::view-transition-new(root) {
   clip-path: var(--magicui-theme-vt-clip-from);
   z-index: 9999;
@@ -186,7 +173,6 @@ html[data-magicui-theme-vt="active"][data-magicui-theme-direction="out"]::view-t
   z-index: 1;
 }
 
-/* Closing / Dark Mode (zoom in / collapse inward into switch) */
 html[data-magicui-theme-vt="active"][data-magicui-theme-direction="in"]::view-transition-old(root) {
   clip-path: var(--magicui-theme-vt-clip-from);
   z-index: 9999;
@@ -195,7 +181,6 @@ html[data-magicui-theme-vt="active"][data-magicui-theme-direction="in"]::view-tr
   z-index: 1;
 }
 
-/* Disable element background-color transitions during the view transition to prevent muddy snapshot frames */
 html[data-magicui-theme-vt="active"] *,
 html[data-magicui-theme-vt="active"] *::before,
 html[data-magicui-theme-vt="active"] *::after {
@@ -209,4 +194,3 @@ html[data-magicui-theme-vt="active"] *::after {
     animation: none !important;
   }
 }
-

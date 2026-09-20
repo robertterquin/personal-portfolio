@@ -14,11 +14,8 @@ export type TransitionVariant =
 export interface AnimatedThemeTogglerProps extends React.ComponentPropsWithoutRef<'button'> {
   duration?: number;
   variant?: TransitionVariant;
-  /** When true, the transition expands/collapses from the viewport center instead of the button center. */
   fromCenter?: boolean;
-  /** Controlled theme value ('day' | 'night' | 'light' | 'dark'). */
   theme?: 'day' | 'night' | 'light' | 'dark';
-  /** Called on toggle. Pair with `theme` for controlled usage. */
   onThemeChange?: (nextTheme: 'day' | 'night' | 'light' | 'dark') => void;
   children?: React.ReactNode;
 }
@@ -28,8 +25,6 @@ function polygonCollapsed(point: string, vertexCount: number): string {
   return `polygon(${pairs})`;
 }
 
-// All coordinates are percentages of the snapshot reference box:
-// Resolving coordinates as percentages avoids scaling bugs on Windows fractional display scaling (125%, 150%).
 function getThemeTransitionClipPaths(
   variant: TransitionVariant,
   cx: number,
@@ -42,7 +37,6 @@ function getThemeTransitionClipPaths(
   const toX = (x: number) => `${(x / viewportWidth) * 100}%`;
   const toY = (y: number) => `${(y / viewportHeight) * 100}%`;
   const point = (x: number, y: number) => `${toX(x)} ${toY(y)}`;
-  // circle() percentage radii resolve against hypot(w, h) / sqrt(2) of the reference box
   const toRadius = (r: number) =>
     `${(r / (Math.hypot(viewportWidth, viewportHeight) / Math.SQRT2)) * 100}%`;
 
@@ -145,14 +139,10 @@ function getThemeTransitionClipPaths(
       break;
   }
 
-  // When direction is 'in' (closing / turning to dark mode):
-  // The animation starts at full screen (endClip) and collapses/zooms in to the button (startClip).
   if (direction === 'in') {
     return [endClip, startClip];
   }
 
-  // When direction is 'out' (opening / turning to light mode):
-  // The animation expands outward from the button (startClip) to full screen (endClip).
   return [startClip, endClip];
 }
 
@@ -237,7 +227,6 @@ export const AnimatedThemeToggler: React.FC<AnimatedThemeTogglerProps> = ({
         x = viewportWidth / 2;
         y = viewportHeight / 2;
       } else {
-        // Use click event coordinates if available, fallback to button center
         if (e.clientX && e.clientY) {
           x = e.clientX;
           y = e.clientY;
@@ -253,9 +242,6 @@ export const AnimatedThemeToggler: React.FC<AnimatedThemeTogglerProps> = ({
         Math.max(y, viewportHeight - y)
       );
 
-      // Determine animation direction:
-      // If currently dark, switching to light -> "out" (open / expand outward from switch)
-      // If currently light, switching to dark -> "in" (close / zoom in toward switch)
       const nextIsDark = !isDark;
       const direction: 'out' | 'in' = nextIsDark ? 'in' : 'out';
 
@@ -272,7 +258,6 @@ export const AnimatedThemeToggler: React.FC<AnimatedThemeTogglerProps> = ({
 
       const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
-      // Fallback for browsers without View Transitions API or if user prefers reduced motion
       if (typeof document.startViewTransition !== 'function' || prefersReducedMotion) {
         applyTheme();
         return;
@@ -318,8 +303,6 @@ export const AnimatedThemeToggler: React.FC<AnimatedThemeTogglerProps> = ({
       if (ready && typeof ready.then === 'function') {
         ready
           .then(() => {
-            // When direction is 'in' (close / dark mode): animate ::view-transition-old(root) shrinking into the switch.
-            // When direction is 'out' (open / light mode): animate ::view-transition-new(root) expanding outward from switch.
             const targetPseudo =
               direction === 'in'
                 ? '::view-transition-old(root)'

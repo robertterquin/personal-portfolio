@@ -28,11 +28,9 @@ export const TiltCard: React.FC<TiltCardProps> = ({
   const shouldReduceMotion = useReducedMotion();
   const [isHovered, setIsHovered] = useState<boolean>(false);
 
-  // Normalized mouse coordinates from center: [-0.5, 0.5]
   const mouseX = useMotionValue(0);
   const mouseY = useMotionValue(0);
 
-  // Natural spring mechanics with damping for physical weight
   const springConfig = { damping: 22, stiffness: 260, mass: 0.5 };
   const rotateX = useSpring(
     useTransform(mouseY, [-0.5, 0.5], [-maxTilt, maxTilt]),
@@ -43,7 +41,6 @@ export const TiltCard: React.FC<TiltCardProps> = ({
     springConfig
   );
 
-  // If user prefers reduced motion, render clean static element
   if (shouldReduceMotion) {
     return (
       <div className={`tilt-card-root ${className}`} style={style}>
