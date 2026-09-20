@@ -6,7 +6,7 @@ export interface TiltCardProps {
   className?: string;
   innerClassName?: string;
   maxTilt?: number; 
-  scale?: number; // Subtle hover scale elevation (default: 1.02)
+  scale?: number;
   perspective?: number; // Perspective distance in px (default: 1000)
   glare?: boolean; // Enable dynamic specular lighting highlight (default: true)
   style?: React.CSSProperties;
