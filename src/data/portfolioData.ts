@@ -123,6 +123,25 @@ export const projectsData: Project[] = [
     demoUrl: 'https://hapagg.vercel.app/',
     repoUrl: 'https://github.com/robertterquin',
   },
+  {
+    id: 'bakas',
+    number: '06',
+    title: 'Bakas',
+    tag: 'CIVIC TECH & ROAD RADAR',
+    category: 'web',
+    description: 'Crowdsourced urban road hazard radar with offline-first spatial synchronization, zero-barrier reporting, and dynamic hazard decay.',
+    detail:
+      'A lightweight, mobile-first progressive web application built to crowdsource live road hazard intelligence across Metro Manila. Features 1-tap zero-login hazard reporting, PostGIS spatial radius filtering, and full offline resilience via IndexedDB with automated background synchronization. Powered by dynamic TTL decay models and community validation upvotes to maintain accurate, self-cleaning hazard data.',
+    stack: 'React · TypeScript · Supabase · PostGIS · Leaflet',
+    image: '/projects/bakas-showcase.webp',
+    highlights: [
+      'Zero-barrier 1-tap hazard reporting with optimistic UI updates and anti-spam proximity thresholds',
+      'Offline-first resilience powered by IndexedDB with automated background sync and CartoDB Dark Matter mapping',
+      'PostGIS spatial radius querying with dynamic community-validated TTL decay and self-cleaning lifecycle management',
+    ],
+    demoUrl: 'https://bakass.vercel.app/',
+    repoUrl: 'https://github.com/robertterquin/Bakas',
+  },
 ];
 
 export const capabilityGroups: CapabilityGroup[] = [
