@@ -5,7 +5,7 @@ export interface TiltCardProps {
   children: React.ReactNode;
   className?: string;
   innerClassName?: string;
-  maxTilt?: number; // Maximum tilt angle in degrees (default: 7)
+  maxTilt?: number; 
   scale?: number; // Subtle hover scale elevation (default: 1.02)
   perspective?: number; // Perspective distance in px (default: 1000)
   glare?: boolean; // Enable dynamic specular lighting highlight (default: true)
