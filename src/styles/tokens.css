@@ -6,10 +6,10 @@
   --font-mono: 'JetBrains Mono', monospace;
 
   
-  --bg: #11100f;
-  --bg-subtle: #181615;
-  --card-bg: #1e1b19;
-  --card-hover: #262220;
+  --bg: #0c0b0a;
+  --bg-subtle: #131211;
+  --card-bg: #171514;
+  --card-hover: #201d1b;
   --card-border: rgba(206, 191, 171, 0.12);
   --line: rgba(206, 191, 171, 0.08);
   --line-strong: rgba(206, 191, 171, 0.22);
@@ -21,7 +21,7 @@
   
   --accent: #b88252;
   --accent-hover: #cb9767;
-  --accent-contrast: #0e0d0c;
+  --accent-contrast: #0c0b0a;
   --accent-dim: rgba(184, 130, 82, 0.12);
   --accent-glow: rgba(184, 130, 82, 0.22);
 
@@ -32,7 +32,7 @@
   --radius-sm: 4px;
   --radius-md: 8px;
   --radius-lg: 12px;
-  --scrollbar-thumb: #544d44;
+  --scrollbar-thumb: #453f38;
 
   
   --gh-cell-size: clamp(20px, 1.6vw, 24px);
