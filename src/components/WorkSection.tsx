@@ -130,6 +130,7 @@ export const WorkSection: React.FC = () => {
             >
               <div className="row-col row-col-title">
                 <div className="row-title-wrap">
+                  <span className="row-index-num">{project.number}</span>
                   <h3 className="row-title">{project.title}</h3>
                 </div>
                 <p className="row-description">{project.description}</p>
@@ -177,12 +178,23 @@ export const WorkSection: React.FC = () => {
                       />
                     </TiltCard>
                     <div className="mobile-expanded-body">
+                      <div className="viewer-meta-row">
+                        <span className="viewer-tag-pill">{project.tag}</span>
+                      </div>
                       <p className="mobile-expanded-detail">{project.detail}</p>
 
-                      {project.demoUrl &&
-                        project.demoUrl.startsWith('http') &&
-                        !project.demoUrl.includes('github') && (
-                          <div className="mobile-expanded-actions">
+                      <div className="viewer-stack-tags">
+                        {project.stack.split('·').map((tech, i) => (
+                          <span key={i} className="viewer-stack-tag">
+                            {tech.trim()}
+                          </span>
+                        ))}
+                      </div>
+
+                      <div className="mobile-expanded-actions">
+                        {project.demoUrl &&
+                          project.demoUrl.startsWith('http') &&
+                          !project.demoUrl.includes('github') && (
                             <Magnetic strength={0.25} maxDistance={6}>
                               <a
                                 href={project.demoUrl}
@@ -195,8 +207,23 @@ export const WorkSection: React.FC = () => {
                                 <Icon icon="lucide:arrow-up-right" width={12} height={12} />
                               </a>
                             </Magnetic>
-                          </div>
+                          )}
+
+                        {project.repoUrl && (
+                          <Magnetic strength={0.25} maxDistance={6}>
+                            <a
+                              href={project.repoUrl}
+                              target="_blank"
+                              rel="noreferrer"
+                              className="viewer-btn viewer-btn-secondary"
+                            >
+                              <Icon icon="lucide:github" width={13} height={13} />
+                              <span>GitHub</span>
+                              <Icon icon="lucide:arrow-up-right" width={12} height={12} />
+                            </a>
+                          </Magnetic>
                         )}
+                      </div>
                     </div>
                   </motion.div>
                 )}
@@ -220,7 +247,12 @@ export const WorkSection: React.FC = () => {
           >
             <div className="viewer-top-bar">
               <div className="viewer-title-group">
+                <span className="viewer-status-dot" aria-hidden="true" />
                 <span className="viewer-bar-label">Project Overview</span>
+                <span className="viewer-bar-separator" aria-hidden="true">·</span>
+                <span className="viewer-bar-index">
+                  {activeProject.number} / {String(projectsData.length).padStart(2, '0')}
+                </span>
               </div>
 
               <div className="viewer-controls-group">
@@ -255,7 +287,7 @@ export const WorkSection: React.FC = () => {
                   <TiltCard
                     className="viewer-tilt-wrap"
                     innerClassName="viewer-img-frame"
-                    maxTilt={6.5}
+                    maxTilt={5}
                     glare
                   >
                     <img
@@ -273,17 +305,26 @@ export const WorkSection: React.FC = () => {
 
                 <div className="viewer-copy-col">
                   <div className="viewer-copy-header">
+                    <div className="viewer-meta-row">
+                      <span className="viewer-tag-pill">{activeProject.tag}</span>
+                    </div>
                     <h3 className="viewer-main-title">{activeProject.title}</h3>
                     <p className="viewer-detail-text">{activeProject.detail}</p>
                   </div>
 
                   <div className="viewer-actions-row">
-                    <span className="viewer-stack-label">{activeProject.stack}</span>
+                    <div className="viewer-stack-tags">
+                      {activeProject.stack.split('·').map((tech, i) => (
+                        <span key={i} className="viewer-stack-tag">
+                          {tech.trim()}
+                        </span>
+                      ))}
+                    </div>
 
-                    {activeProject.demoUrl &&
-                      activeProject.demoUrl.startsWith('http') &&
-                      !activeProject.demoUrl.includes('github') && (
-                        <div className="viewer-links">
+                    <div className="viewer-links">
+                      {activeProject.demoUrl &&
+                        activeProject.demoUrl.startsWith('http') &&
+                        !activeProject.demoUrl.includes('github') && (
                           <Magnetic strength={0.28} maxDistance={8}>
                             <a
                               href={activeProject.demoUrl}
@@ -296,8 +337,23 @@ export const WorkSection: React.FC = () => {
                               <Icon icon="lucide:arrow-up-right" width={12} height={12} />
                             </a>
                           </Magnetic>
-                        </div>
+                        )}
+
+                      {activeProject.repoUrl && (
+                        <Magnetic strength={0.28} maxDistance={8}>
+                          <a
+                            href={activeProject.repoUrl}
+                            target="_blank"
+                            rel="noreferrer"
+                            className="viewer-btn viewer-btn-secondary"
+                          >
+                            <Icon icon="lucide:github" width={13} height={13} />
+                            <span>GitHub</span>
+                            <Icon icon="lucide:arrow-up-right" width={12} height={12} />
+                          </a>
+                        </Magnetic>
                       )}
+                    </div>
                   </div>
                 </div>
               </div>
