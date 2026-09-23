@@ -228,9 +228,12 @@ export const ToolkitSection: React.FC = () => {
                 >
                   <div className="cert-modal-header">
                     <div className="cert-modal-header-left">
-                      <h3 id="cert-modal-title" className="cert-modal-title">
-                        {selectedCert.title}
-                      </h3>
+                      <span className="cert-modal-status-dot" aria-hidden="true" />
+                      <span className="cert-modal-bar-label">Credential Overview</span>
+                      <span className="cert-modal-bar-separator" aria-hidden="true">·</span>
+                      <span className="cert-modal-bar-index">
+                        {selectedCert.index} / {String(credentialsData.length).padStart(2, '0')}
+                      </span>
                     </div>
 
                     <div className="cert-modal-header-right">
@@ -286,9 +289,18 @@ export const ToolkitSection: React.FC = () => {
                   </div>
 
                   <div className="cert-modal-footer">
-                    <span className="cert-modal-institution">
-                      {selectedCert.institution} · {selectedCert.year}
-                    </span>
+                    <div className="cert-modal-info-col">
+                      <div className="cert-modal-meta-row">
+                        <span className="cert-modal-tag-pill">{selectedCert.type}</span>
+                        <span className="cert-modal-year">{selectedCert.year}</span>
+                      </div>
+                      <h3 id="cert-modal-title" className="cert-modal-title">
+                        {selectedCert.title}
+                      </h3>
+                      <p className="cert-modal-institution">
+                        {selectedCert.institution}
+                      </p>
+                    </div>
 
                     <div className="cert-modal-nav-dots" aria-label="Certificate navigation">
                       {credentialsData.map((c) => (
