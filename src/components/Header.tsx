@@ -34,11 +34,11 @@ export const Header: React.FC<HeaderProps> = ({
         >
           <Icon
             icon={theme === 'night' ? 'lucide:sun' : 'lucide:moon'}
-            width={15}
-            height={15}
+            width={16}
+            height={16}
             className="theme-toggle-icon"
           />
-          <span className="theme-toggle-label">{theme === 'night' ? 'Day' : 'Night'}</span>
+          <span className="sr-only">Switch to {theme === 'night' ? 'Day' : 'Night'} theme</span>
         </AnimatedThemeToggler>
       </div>
     </header>

@@ -48,21 +48,29 @@
 .theme-toggle-btn {
   display: inline-flex;
   align-items: center;
-  gap: 6px;
-  padding: 6px 12px;
+  justify-content: center;
+  width: 34px;
+  height: 34px;
+  padding: 0;
   border: 1px solid var(--line);
   border-radius: var(--radius-sm);
   color: var(--ink);
-  font-family: var(--font-mono);
-  font-size: 0.72rem;
-  transition: all 0.15s ease;
+  background: transparent;
+  transition: border-color 0.15s ease, background-color 0.15s ease, color 0.15s ease;
+  cursor: pointer;
 }
 
 .theme-toggle-btn:hover {
   border-color: var(--line-strong);
   background: var(--accent-dim);
+  color: var(--accent);
 }
 
-.theme-toggle-label {
-  letter-spacing: 0.05em;
+.theme-toggle-icon {
+  flex-shrink: 0;
+  transition: transform 0.2s ease;
+}
+
+.theme-toggle-btn:hover .theme-toggle-icon {
+  transform: rotate(12deg);
 }
