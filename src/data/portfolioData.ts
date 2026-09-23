@@ -102,7 +102,7 @@ export const projectsData: Project[] = [
       'Production deployment on Vercel with responsive desktop and mobile inspection workflows',
     ],
     demoUrl: 'https://hunchh.vercel.app/',
-    repoUrl: 'https://github.com/robertterquin',
+    repoUrl: 'https://github.com/robertterquin/Hunch',
   },
   {
     id: 'hapag',
@@ -121,7 +121,7 @@ export const projectsData: Project[] = [
       'Intelligent local ingredient substitution guide tailored for Filipino domestic cooking',
     ],
     demoUrl: 'https://hapagg.vercel.app/',
-    repoUrl: 'https://github.com/robertterquin',
+    repoUrl: 'https://github.com/robertterquin/Hapag',
   },
   {
     id: 'bakas',
