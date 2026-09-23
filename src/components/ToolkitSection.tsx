@@ -4,7 +4,6 @@ import { Icon } from '@iconify/react';
 import { motion, AnimatePresence, useReducedMotion, type Variants } from 'motion/react';
 import type { CredentialItem } from '../types';
 import { capabilityGroups, credentialsData } from '../data/portfolioData';
-import { Magnetic } from './Magnetic';
 
 const toolkitListVariants: Variants = {
   hidden: {},
@@ -239,18 +238,16 @@ export const ToolkitSection: React.FC = () => {
                     </div>
 
                     <div className="cert-modal-header-right">
-                      <Magnetic strength={0.28} maxDistance={8}>
-                        <button
-                          type="button"
-                          className="cert-modal-close-btn"
-                          onClick={() => setSelectedCert(null)}
-                          aria-label="Close modal (ESC)"
-                          title="Close (Esc)"
-                        >
-                          <span>Close</span>
-                          <Icon icon="lucide:x" width={14} height={14} />
-                        </button>
-                      </Magnetic>
+                      <button
+                        type="button"
+                        className="cert-modal-close-btn"
+                        onClick={() => setSelectedCert(null)}
+                        aria-label="Close modal (ESC)"
+                        title="Close (Esc)"
+                      >
+                        <span>Close</span>
+                        <Icon icon="lucide:x" width={14} height={14} />
+                      </button>
                     </div>
                   </div>
 
@@ -262,9 +259,7 @@ export const ToolkitSection: React.FC = () => {
                       aria-label="Previous certificate"
                       title="Previous certificate (←)"
                     >
-                      <Magnetic strength={0.4} maxDistance={10} innerOnly>
-                        <Icon icon="lucide:chevron-left" width={18} height={18} />
-                      </Magnetic>
+                      <Icon icon="lucide:chevron-left" width={18} height={18} />
                     </button>
 
                     <div className="cert-modal-image-wrapper">
@@ -284,9 +279,7 @@ export const ToolkitSection: React.FC = () => {
                       aria-label="Next certificate"
                       title="Next certificate (→)"
                     >
-                      <Magnetic strength={0.4} maxDistance={10} innerOnly>
-                        <Icon icon="lucide:chevron-right" width={18} height={18} />
-                      </Magnetic>
+                      <Icon icon="lucide:chevron-right" width={18} height={18} />
                     </button>
                   </div>
 
