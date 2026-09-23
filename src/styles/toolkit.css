@@ -303,7 +303,9 @@ html.theme-day .cert-modal-container {
 .cert-modal-header-left {
   display: flex;
   align-items: center;
-  gap: 8px;
+  gap: 10px;
+  min-width: 0;
+  overflow: hidden;
 }
 
 .cert-modal-status-dot {
@@ -313,28 +315,34 @@ html.theme-day .cert-modal-container {
   background: var(--accent);
   display: inline-block;
   box-shadow: 0 0 8px var(--accent-glow);
-}
-
-.cert-modal-bar-label {
-  font-family: var(--font-mono);
-  font-size: 0.72rem;
-  color: var(--ink);
-  text-transform: uppercase;
-  letter-spacing: 0.08em;
-  font-weight: 600;
-}
-
-.cert-modal-bar-separator {
-  color: var(--ink-dim);
-  font-size: 0.72rem;
+  flex-shrink: 0;
 }
 
 .cert-modal-bar-index {
   font-family: var(--font-mono);
-  font-size: 0.7rem;
+  font-size: 0.72rem;
   color: var(--accent);
   letter-spacing: 0.05em;
   font-weight: 600;
+  flex-shrink: 0;
+}
+
+.cert-modal-bar-separator {
+  color: var(--line-strong);
+  font-size: 0.75rem;
+  flex-shrink: 0;
+}
+
+.cert-modal-title {
+  margin: 0;
+  font-family: var(--font-display);
+  font-size: 0.95rem;
+  font-weight: 700;
+  letter-spacing: -0.015em;
+  color: var(--ink);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 
 .cert-modal-header-right {
@@ -440,58 +448,11 @@ html.theme-day .cert-nav-arrow:hover {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 16px 24px;
+  padding: 14px 24px;
   background: var(--bg-subtle);
   border-top: 1px solid var(--line);
   gap: 20px;
   flex-shrink: 0;
-}
-
-.cert-modal-info-col {
-  display: flex;
-  flex-direction: column;
-  gap: 4px;
-  min-width: 0;
-  flex: 1;
-}
-
-.cert-modal-meta-row {
-  display: flex;
-  align-items: center;
-  gap: 8px;
-}
-
-.cert-modal-tag-pill {
-  display: inline-flex;
-  align-items: center;
-  font-family: var(--font-mono);
-  font-size: 0.66rem;
-  font-weight: 600;
-  letter-spacing: 0.08em;
-  text-transform: uppercase;
-  color: var(--accent);
-  background: var(--leather-subtle);
-  border: 1px solid var(--leather-border);
-  padding: 2px 8px;
-  border-radius: 4px;
-}
-
-.cert-modal-year {
-  font-family: var(--font-mono);
-  font-size: 0.7rem;
-  color: var(--ink-dim);
-}
-
-.cert-modal-title {
-  margin: 2px 0 0 0;
-  font-family: var(--font-display);
-  font-size: 1.05rem;
-  font-weight: 700;
-  letter-spacing: -0.02em;
-  color: var(--ink);
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
 }
 
 .cert-modal-institution {
