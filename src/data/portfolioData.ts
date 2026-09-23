@@ -82,8 +82,8 @@ export const projectsData: Project[] = [
       'Conversational AI assistant parsing natural language to add, edit, and query financial records',
       'Clean dashboard interface with account summaries and transaction history views',
     ],
-    demoUrl: 'https://github.com/robertterquin',
-    repoUrl: 'https://github.com/robertterquin',
+    demoUrl: 'https://github.com/robertterquin/Spendly',
+    repoUrl: 'https://github.com/robertterquin/Spendly',
   },
   {
     id: 'hunch',
