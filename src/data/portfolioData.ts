@@ -36,7 +36,7 @@ export const projectsData: Project[] = [
     category: 'mobile',
     description: 'Cancer awareness platform providing structured educational resources, patient journey tracking, and community support.',
     detail:
-      'A cross-platform Flutter application built to support cancer education, patient milestone tracking, and community engagement. Features structured prevention content, a personal cancer journey diary for recording diagnoses, treatments, and recovery milestones, and a discussion forum. Integrated with Supabase for user authentication and cloud data persistence.',
+      'Engineered with Flutter and Dart, integrating Supabase Auth and PostgreSQL for secure medical milestone logging. Implements local SQLite caching for reliable offline diary entries and consumes the GNews API for real-time cancer research feeds.',
     stack: 'Flutter · Dart · Supabase · Cloud DB',
     image: '/projects/oncosense-showcase.webp',
     highlights: [
@@ -55,7 +55,7 @@ export const projectsData: Project[] = [
     category: 'mobile',
     description: 'Cycling maintenance companion tracking service records, component mileage alerts, and multi-bike garage profiles.',
     detail:
-      'A Flutter mobile companion for cyclists to log rides, track cumulative bike mileage, and manage maintenance schedules. Features distance-based and time-based service reminders, a maintenance cost ledger, and multi-bike garage profiling with individual component status tracking. Built with Supabase for cloud data storage.',
+      'Architected around an algorithmic component lifecycle tracker that computes cumulative wear thresholds per bicycle. Integrates local device push notifications for scheduled workshop service alerts and Supabase for cross-device garage data synchronization.',
     stack: 'Flutter · Dart · Supabase · Notifications',
     image: '/projects/chainly-showcase.webp',
     highlights: [
@@ -74,7 +74,7 @@ export const projectsData: Project[] = [
     category: 'mobile',
     description: 'Personal finance tracker with multi-account management, categorical expense breakdowns, and a conversational AI assistant.',
     detail:
-      'Built to give users transparent control over personal cashflow across multiple accounts and digital wallets. Features categorized transaction logging, balance tracking across accounts, and an AI-powered chatbot (via Groq LLaMA) that can parse natural language to add, edit, and query transactions conversationally.',
+      'Features an AI chatbot powered by Groq LLaMA running function-calling heuristics to parse natural language queries directly into structured transactions. Built with reactive Riverpod state management and Supabase cloud persistence for real-time balance calculations.',
     stack: 'Flutter · Dart · Supabase · Groq AI',
     image: '/projects/spendly-showcase.webp',
     highlights: [
@@ -93,7 +93,7 @@ export const projectsData: Project[] = [
     category: 'web',
     description: 'AI security tool analyzing student internship and job postings to detect predatory terms and scam patterns.',
     detail:
-      'A security-focused web platform developed with React and TypeScript to shield students and fresh graduates from deceptive recruitment schemes. Leverages natural language evaluation models to analyze job descriptions against known scam heuristics, deceptive fee requests, and exploitative contract clauses.',
+      'Processes unformatted recruitment copy through custom LLM evaluation prompts to identify fee requests, phishing links, and deceptive contract terms. Generates a multi-point risk scorecard with real-time verification advice for students.',
     stack: 'React · TypeScript · AI Integration',
     image: '/projects/hunch-showcase.webp',
     highlights: [
@@ -112,7 +112,7 @@ export const projectsData: Project[] = [
     category: 'web',
     description: 'Algorithmic culinary platform generating authentic Filipino recipes from available pantry ingredients.',
     detail:
-      'An intelligent culinary platform dedicated to Filipino cuisine, designed to eliminate kitchen food waste. Employs prompt-engineered LLM workflows and an ingredient-matching algorithm that maps user-provided pantry staples to regional Filipino recipes, complete with local substitutions and tailored cooking steps.',
+      'Combines a deterministic ingredient-matching algorithm with prompt-engineered LLMs to generate contextual Filipino recipes from on-hand pantry items. Dynamically handles local ingredient substitutions and adapts step-by-step instructions to dietary constraints.',
     stack: 'React · TypeScript · AI Integration',
     image: '/projects/hapag-showcase.webp',
     highlights: [
@@ -131,7 +131,7 @@ export const projectsData: Project[] = [
     category: 'web',
     description: 'Crowdsourced urban road hazard radar with offline-first spatial synchronization, zero-barrier reporting, and dynamic hazard decay.',
     detail:
-      'A lightweight, mobile-first progressive web application built to crowdsource live road hazard intelligence across Metro Manila. Features 1-tap zero-login hazard reporting, PostGIS spatial radius filtering, and full offline resilience via IndexedDB with automated background synchronization. Powered by dynamic TTL decay models and community validation upvotes to maintain accurate, self-cleaning hazard data.',
+      'Built as an offline-first PWA using IndexedDB for zero-latency 1-tap reporting and background queue sync. Leverages Supabase with PostGIS spatial radius filtering for geo-fenced hazard alerts, alongside community upvoting to dynamically calculate hazard TTL decay.',
     stack: 'React · TypeScript · Supabase · PostGIS · Leaflet',
     image: '/projects/bakas-showcase.webp',
     highlights: [
