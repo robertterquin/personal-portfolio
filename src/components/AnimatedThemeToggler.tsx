@@ -243,7 +243,7 @@ export const AnimatedThemeToggler: React.FC<AnimatedThemeTogglerProps> = ({
       );
 
       const nextIsDark = !isDark;
-      const direction: 'out' | 'in' = nextIsDark ? 'in' : 'out';
+      const direction: 'out' | 'in' = 'out';
 
       const applyTheme = () => {
         if (isControlled) {
@@ -303,10 +303,7 @@ export const AnimatedThemeToggler: React.FC<AnimatedThemeTogglerProps> = ({
       if (ready && typeof ready.then === 'function') {
         ready
           .then(() => {
-            const targetPseudo =
-              direction === 'in'
-                ? '::view-transition-old(root)'
-                : '::view-transition-new(root)';
+            const targetPseudo = '::view-transition-new(root)';
 
             const anim = document.documentElement.animate(
               {
