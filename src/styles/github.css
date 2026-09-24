@@ -4,25 +4,12 @@
 }
 
 .github-activity-header {
-  display: flex;
-  align-items: flex-end;
-  justify-content: space-between;
-  margin-bottom: 36px;
-  gap: 24px;
+  margin-bottom: 32px;
 }
 
 .activity-title-col {
   display: flex;
   flex-direction: column;
-}
-
-.activity-desc {
-  margin: 0;
-  font-size: 0.88rem;
-  line-height: 1.6;
-  color: var(--ink-dim);
-  max-width: 380px;
-  text-align: right;
 }
 
 .github-heatmap-container {
@@ -305,14 +292,7 @@ html.theme-day .legend-cell.level-4 { background: #5f3414; }
 
 @media (max-width: 768px) {
   .github-activity-header {
-    flex-direction: column;
-    align-items: flex-start;
-    gap: 12px;
-  }
-
-  .activity-desc {
-    text-align: left;
-    max-width: 100%;
+    margin-bottom: 24px;
   }
 
   .heatmap-scroll-stage {

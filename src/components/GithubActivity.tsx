@@ -156,13 +156,9 @@ export const GithubActivity: React.FC = () => {
         }}
       >
         <div className="activity-title-col">
-          <span className="section-label">GitHub Activity</span>
-          <h2 className="section-title">Contribution Activity</h2>
+          <span className="section-label">Activity</span>
+          <h2 className="section-title">Open Source Contributions</h2>
         </div>
-
-        <p className="activity-desc">
-          Public contribution activity recorded across GitHub repositories.
-        </p>
       </motion.div>
 
       <motion.div
