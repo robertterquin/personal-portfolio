@@ -6,13 +6,13 @@
   --font-mono: 'JetBrains Mono', monospace;
 
   
-  --bg: #0c0b0a;
-  --bg-subtle: #131211;
-  --card-bg: #171514;
-  --card-hover: #201d1b;
-  --card-border: rgba(206, 191, 171, 0.12);
-  --line: rgba(206, 191, 171, 0.08);
-  --line-strong: rgba(206, 191, 171, 0.22);
+  --bg: #070606;
+  --bg-subtle: #0d0c0b;
+  --card-bg: #121110;
+  --card-hover: #1a1817;
+  --card-border: rgba(206, 191, 171, 0.10);
+  --line: rgba(206, 191, 171, 0.07);
+  --line-strong: rgba(206, 191, 171, 0.20);
 
   --ink: #f7f5f2;
   --ink-muted: #aca59c;
@@ -21,7 +21,7 @@
   
   --accent: #b88252;
   --accent-hover: #cb9767;
-  --accent-contrast: #0c0b0a;
+  --accent-contrast: #070606;
   --accent-dim: rgba(184, 130, 82, 0.12);
   --accent-glow: rgba(184, 130, 82, 0.22);
 
@@ -32,14 +32,14 @@
   --radius-sm: 4px;
   --radius-md: 8px;
   --radius-lg: 12px;
-  --scrollbar-thumb: #453f38;
+  --scrollbar-thumb: #332f2a;
 
   
   --gh-cell-size: clamp(20px, 1.6vw, 24px);
   --gh-cell-gap: clamp(4px, 0.35vw, 5px);
 
   
-  --bg-pattern: rgba(206, 191, 171, 0.045);
+  --bg-pattern: rgba(206, 191, 171, 0.02);
   --bg-texture: repeating-conic-gradient(
     var(--bg-pattern) 0% 25%,
     transparent 0% 50%
