@@ -273,13 +273,9 @@ export const AnimatedThemeToggler: React.FC<AnimatedThemeTogglerProps> = ({
         direction
       );
 
-      const animDuration = direction === 'in' ? 550 : duration;
+      const animDuration = duration;
       const animEasing =
-        direction === 'in'
-          ? 'cubic-bezier(0.4, 0, 0.2, 1)'
-          : variant === 'star'
-            ? 'linear'
-            : 'cubic-bezier(0.16, 1, 0.3, 1)';
+        variant === 'star' ? 'linear' : 'cubic-bezier(0.4, 0, 0.2, 1)';
 
       const root = document.documentElement;
       root.dataset.magicuiThemeVt = 'active';
