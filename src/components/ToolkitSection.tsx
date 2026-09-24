@@ -95,8 +95,7 @@ export const ToolkitSection: React.FC = () => {
               mass: 0.7,
             }}
           >
-            <span className="section-label">Technical Stack</span>
-            <h2 className="section-title">Capabilities &amp; Tools</h2>
+            <h2 className="section-title">Technical Stack</h2>
           </motion.div>
 
           <motion.div
@@ -145,7 +144,6 @@ export const ToolkitSection: React.FC = () => {
               mass: 0.7,
             }}
           >
-            <span className="section-label">Credentials</span>
             <h2 className="section-title">Certifications &amp; Honors</h2>
           </motion.div>
 

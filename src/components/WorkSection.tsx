@@ -95,8 +95,7 @@ export const WorkSection: React.FC = () => {
         }}
       >
         <div className="work-index-title-group">
-          <span className="section-label">Selected Work</span>
-          <h2 className="section-title">Systems &amp; Applications</h2>
+          <h2 className="section-title">Selected Work</h2>
         </div>
       </motion.div>
 

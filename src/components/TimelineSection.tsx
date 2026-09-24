@@ -47,7 +47,6 @@ export const TimelineSection: React.FC = () => {
           mass: 0.7,
         }}
       >
-        <span className="section-label">Experience</span>
         <h2 className="section-title">Career &amp; Education</h2>
       </motion.div>
 
