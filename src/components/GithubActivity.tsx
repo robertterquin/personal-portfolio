@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { Icon } from '@iconify/react';
 import { motion, useReducedMotion, type Variants } from 'motion/react';
 import type { ContributionDay, GithubApiResponse } from '../types';
+import { personalData } from '../data/portfolioData';
 import verifiedData from '../data/githubContributions.json';
 
 const MONTH_LABELS = [
@@ -172,10 +173,16 @@ export const GithubActivity: React.FC = () => {
         transition={{ duration: 0.5, ease: [0.16, 1, 0.3, 1] }}
       >
         <div className="heatmap-top-bar">
-          <div className="heatmap-user-meta">
+          <a
+            href={personalData.github}
+            target="_blank"
+            rel="noreferrer"
+            className="heatmap-user-meta"
+            title={`View @${username} on GitHub`}
+          >
             <Icon icon="lucide:github" width={14} height={14} className="github-brand-icon" />
             <span className="heatmap-username">@{username}</span>
-          </div>
+          </a>
         </div>
 
         <div className="heatmap-scroll-stage">
