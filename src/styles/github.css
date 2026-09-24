@@ -65,19 +65,6 @@ html.theme-day .github-heatmap-container {
   color: var(--ink-muted);
 }
 
-.heatmap-profile-link {
-  display: inline-flex;
-  align-items: center;
-  gap: 4px;
-  font-family: var(--font-mono);
-  font-size: 0.72rem;
-  color: var(--ink-dim);
-  transition: color 0.15s ease;
-}
-
-.heatmap-profile-link:hover {
-  color: var(--accent);
-}
 
 .heatmap-scroll-stage {
   padding: 24px 20px;
