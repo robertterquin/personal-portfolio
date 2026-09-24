@@ -90,10 +90,13 @@
 }
 
 .spec-flow-sep {
-  color: var(--accent);
-  opacity: 0.55;
-  font-weight: 700;
-  font-size: 0.9rem;
+  display: inline-block;
+  width: 4px;
+  height: 4px;
+  border-radius: 50%;
+  background-color: var(--accent);
+  opacity: 0.75;
+  flex-shrink: 0;
   user-select: none;
 }
 

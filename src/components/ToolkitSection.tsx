@@ -119,7 +119,7 @@ export const ToolkitSection: React.FC = () => {
                 <div className="spec-tools-flow">
                   {group.tools.map((tool, idx) => (
                     <React.Fragment key={tool.name}>
-                      {idx > 0 && <span className="spec-flow-sep" aria-hidden="true">·</span>}
+                      {idx > 0 && <span className="spec-flow-sep" aria-hidden="true" />}
                       <span className="spec-tool-item">
                         <span className="tool-text">{tool.name}</span>
                       </span>
