@@ -46,7 +46,7 @@ function getThemeTransitionClipPaths(
   switch (variant) {
     case 'circle':
       startClip = `circle(0% at ${point(cx, cy)})`;
-      endClip = `circle(${toRadius(maxRadius)} at ${point(cx, cy)})`;
+      endClip = `circle(${toRadius(maxRadius * 1.05)} at ${point(cx, cy)})`;
       break;
     case 'square': {
       const halfW = Math.max(cx, viewportWidth - cx);
@@ -243,7 +243,7 @@ export const AnimatedThemeToggler: React.FC<AnimatedThemeTogglerProps> = ({
       );
 
       const nextIsDark = !isDark;
-      const direction: 'out' | 'in' = 'out';
+      const direction: 'out' | 'in' = nextIsDark ? 'in' : 'out';
 
       const applyTheme = () => {
         if (isControlled) {
@@ -273,10 +273,18 @@ export const AnimatedThemeToggler: React.FC<AnimatedThemeTogglerProps> = ({
         direction
       );
 
+      const animDuration = direction === 'in' ? 550 : duration;
+      const animEasing =
+        direction === 'in'
+          ? 'cubic-bezier(0.4, 0, 0.2, 1)'
+          : variant === 'star'
+            ? 'linear'
+            : 'cubic-bezier(0.16, 1, 0.3, 1)';
+
       const root = document.documentElement;
       root.dataset.magicuiThemeVt = 'active';
       root.dataset.magicuiThemeDirection = direction;
-      root.style.setProperty('--magicui-theme-toggle-vt-duration', `${duration}ms`);
+      root.style.setProperty('--magicui-theme-toggle-vt-duration', `${animDuration}ms`);
       root.style.setProperty('--magicui-theme-vt-clip-from', clipPath[0]);
 
       const cleanup = () => {
@@ -303,15 +311,18 @@ export const AnimatedThemeToggler: React.FC<AnimatedThemeTogglerProps> = ({
       if (ready && typeof ready.then === 'function') {
         ready
           .then(() => {
-            const targetPseudo = '::view-transition-new(root)';
+            const targetPseudo =
+              direction === 'in'
+                ? '::view-transition-old(root)'
+                : '::view-transition-new(root)';
 
             const anim = document.documentElement.animate(
               {
                 clipPath,
               },
               {
-                duration,
-                easing: variant === 'star' ? 'linear' : 'cubic-bezier(0.16, 1, 0.3, 1)',
+                duration: animDuration,
+                easing: animEasing,
                 fill: 'forwards',
                 pseudoElement: targetPseudo,
               }
