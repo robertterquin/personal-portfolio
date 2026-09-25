@@ -156,7 +156,7 @@ export const GithubActivity: React.FC = () => {
         }}
       >
         <div className="activity-title-col">
-          <h2 className="section-title">Open Source Contributions</h2>
+          <h2 className="section-title">GitHub Contributions</h2>
         </div>
       </motion.div>
 
