@@ -177,7 +177,7 @@ export const ToolkitSection: React.FC = () => {
                           type="button"
                           onClick={() => setSelectedCert(item)}
                           className="ledger-row"
-                          aria-label={`Inspect ${item.title} certificate`}
+                          aria-label={`View ${item.title} certificate`}
                         >
                           <span className={`ledger-type-tag ${item.type === 'Award' ? 'type-award' : 'type-cert'}`}>
                             {item.type === 'Award' ? 'HONOR' : 'CERT'}

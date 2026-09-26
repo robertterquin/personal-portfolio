@@ -124,7 +124,7 @@ export const WorkSection: React.FC = () => {
                   handleSelectProject(project);
                 }
               }}
-              aria-label={`Inspect ${project.title}`}
+              aria-label={`View ${project.title}`}
             >
               <div className="row-col row-col-title">
                 <div className="row-title-wrap">
@@ -136,7 +136,7 @@ export const WorkSection: React.FC = () => {
 
               <div className="row-col-actions">
                 <span className="row-inspect-cue">
-                  <span>Inspect</span>
+                  <span>View</span>
                   <Icon icon="lucide:arrow-up-right" width={13} height={13} />
                 </span>
 
