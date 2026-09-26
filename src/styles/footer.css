@@ -45,7 +45,20 @@
 
 @media (max-width: 768px) {
   .dossier-footer {
+    padding: 48px 0 36px 0;
     flex-direction: column;
     align-items: flex-start;
+    gap: 18px;
+  }
+}
+
+@media (max-width: 540px) {
+  .dossier-footer {
+    padding: 36px 0 28px 0;
+  }
+
+  .footer-left {
+    flex-wrap: wrap;
+    gap: 6px;
   }
 }

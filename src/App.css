@@ -48,3 +48,9 @@
     padding: 0 16px 60px 16px;
   }
 }
+
+@media (max-width: 360px) {
+  .dossier-container {
+    padding: 0 12px 48px 12px;
+  }
+}

@@ -72,3 +72,9 @@
 .theme-toggle-btn:hover .theme-toggle-icon {
   transform: rotate(12deg);
 }
+
+@media (max-width: 640px) {
+  .site-header {
+    height: 64px;
+  }
+}

@@ -510,28 +510,36 @@ html.theme-day .cert-nav-arrow:hover {
   }
 }
 
+@media (max-width: 768px) {
+  .minimal-toolkit-section {
+    padding: 60px 0;
+  }
+}
+
 @media (max-width: 640px) {
   .cert-modal-overlay {
-    padding: 12px;
+    padding: 10px;
   }
 
   .cert-modal-header {
-    padding: 12px 16px;
+    padding: 12px 14px;
   }
 
   .cert-modal-stage {
     grid-template-columns: 36px 1fr 36px;
     padding: 0;
-    min-height: 220px;
-    max-height: 52vh;
+    min-height: 180px;
+    max-height: 50vh;
+    max-height: 50dvh;
   }
 
   .cert-modal-image-wrapper {
-    padding: 12px 6px;
+    padding: 10px 4px;
   }
 
   .cert-modal-image {
-    max-height: 48vh;
+    max-height: 46vh;
+    max-height: 46dvh;
   }
 
   .cert-nav-arrow {
@@ -542,11 +550,16 @@ html.theme-day .cert-nav-arrow:hover {
   .cert-modal-footer {
     flex-direction: column;
     align-items: flex-start;
-    gap: 12px;
-    padding: 14px 16px;
+    gap: 10px;
+    padding: 12px 14px;
   }
 
-  .cert-modal-title,
+  .cert-modal-title {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+
   .cert-modal-institution {
     white-space: normal;
   }
@@ -571,7 +584,45 @@ html.theme-day .cert-nav-arrow:hover {
     display: none;
   }
 
+  .ledger-title {
+    white-space: normal;
+    line-height: 1.35;
+    font-size: 0.84rem;
+  }
+
   .ledger-issuer {
     white-space: normal;
+    font-size: 0.76rem;
+  }
+}
+
+@media (max-width: 540px) {
+  .minimal-toolkit-section {
+    padding: 48px 0;
+  }
+
+  .spec-group-row {
+    padding: 18px 0;
+  }
+
+  .spec-cat-title {
+    font-size: 1rem;
+  }
+
+  .spec-focus-desc {
+    font-size: 0.8rem;
+  }
+
+  .spec-tool-item {
+    font-size: 0.86rem;
+  }
+
+  .ledger-row {
+    padding: 11px 4px;
+    gap: 10px;
+  }
+
+  .ledger-row:hover {
+    padding-left: 8px;
   }
 }

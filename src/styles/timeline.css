@@ -63,27 +63,33 @@
   color: var(--ink);
 }
 
+@media (max-width: 768px) {
+  .minimal-experience-section {
+    padding: 60px 0;
+  }
+}
+
 @media (max-width: 640px) {
   .minimal-experience-section {
-    padding: 64px 0;
+    padding: 48px 0;
   }
 
   .experience-row {
     flex-direction: column;
     align-items: flex-start;
     gap: 6px;
-    padding: 20px 0;
+    padding: 18px 0;
   }
 
   .experience-role {
-    font-size: 1.05rem;
+    font-size: 1.02rem;
   }
 
   .experience-org {
-    font-size: 0.84rem;
+    font-size: 0.82rem;
   }
 
   .experience-period {
-    font-size: 0.78rem;
+    font-size: 0.76rem;
   }
 }
