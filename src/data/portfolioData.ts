@@ -9,14 +9,14 @@ import type {
 export const personalData: PersonalData = {
   name: 'Robert Terquin Laqui',
   monogram: 'RT',
-  role: 'Full-Stack Software Engineer & Mobile Developer',
+  role: 'Software Engineer',
   focus: 'Cross-Platform Mobile · Web Architecture · Cloud Systems',
   location: 'Philippines',
   timezone: 'Asia/Manila',
   coordinates: '14.2829° N, 120.9167° E',
   availability: 'Available for new opportunities',
   shortBio:
-    'Full-stack software engineer specializing in cross-platform mobile and web systems with Flutter, React, Node.js, and cloud backends. Focused on building clean, high-performance applications with thoughtful user experiences.',
+    'Software engineer specializing in cross-platform mobile and web systems with Flutter, React, Node.js, and cloud backends. Focused on building clean, high-performance applications with thoughtful user experiences.',
   email: 'terquinlaqui@gmail.com',
   phone: '+63 926 029 4838',
   phoneRaw: '+639260294838',
