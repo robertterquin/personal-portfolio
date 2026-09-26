@@ -37,13 +37,6 @@
   
   --gh-cell-size: clamp(20px, 1.6vw, 24px);
   --gh-cell-gap: clamp(4px, 0.35vw, 5px);
-
-  
-  --bg-pattern: rgba(206, 191, 171, 0.02);
-  --bg-texture: repeating-conic-gradient(
-    var(--bg-pattern) 0% 25%,
-    transparent 0% 50%
-  );
 }
 
 html.theme-day,
@@ -70,12 +63,6 @@ html.theme-day body {
   --leather: #8e582e;
   --leather-subtle: rgba(142, 88, 46, 0.08);
   --leather-border: rgba(142, 88, 46, 0.25);
-
-  --bg-pattern: rgba(22, 19, 17, 0.035);
-  --bg-texture: repeating-conic-gradient(
-    var(--bg-pattern) 0% 25%,
-    transparent 0% 50%
-  );
 }
 
 * {
@@ -89,8 +76,6 @@ html.theme-day body {
 
 html {
   background-color: var(--bg);
-  background-image: var(--bg-texture);
-  background-size: 6px 6px;
   color: var(--ink);
   scroll-behavior: smooth;
   -webkit-font-smoothing: antialiased;

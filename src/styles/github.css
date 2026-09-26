@@ -67,8 +67,6 @@ html.theme-day .github-heatmap-container {
   padding: 24px 20px;
   overflow-x: auto;
   background-color: var(--bg);
-  background-image: var(--bg-texture);
-  background-size: 6px 6px;
   display: flex;
   align-items: center;
   width: 100%;
