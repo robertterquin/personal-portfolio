@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { Icon } from '@iconify/react';
 import { motion, useReducedMotion } from 'motion/react';
 import { personalData } from '../data/portfolioData';
@@ -6,8 +6,6 @@ import { personalData } from '../data/portfolioData';
 export const Snapshot: React.FC = () => {
   const shouldReduceMotion = useReducedMotion();
   const isReducedMotion = Boolean(shouldReduceMotion);
-
-  const [phoneFeedback, setPhoneFeedback] = useState<boolean>(false);
 
   const handleEmailClick = (e: React.MouseEvent<HTMLAnchorElement>) => {
     const isMobile = /Android|iPhone|iPad|iPod|Mobile/i.test(navigator.userAgent);
@@ -18,16 +16,6 @@ export const Snapshot: React.FC = () => {
       if (!win) {
         window.location.href = `mailto:${personalData.email}`;
       }
-    }
-  };
-
-  const handlePhoneClick = () => {
-    const isMobile = /Android|iPhone|iPad|iPod|Mobile/i.test(navigator.userAgent);
-    if (!isMobile) {
-      navigator.clipboard?.writeText(personalData.phoneRaw).then(() => {
-        setPhoneFeedback(true);
-        setTimeout(() => setPhoneFeedback(false), 2200);
-      }).catch(() => {});
     }
   };
 
@@ -60,20 +48,19 @@ export const Snapshot: React.FC = () => {
           <span className="strip-item-divider" aria-hidden="true">·</span>
 
           <a
-            href={`tel:${personalData.phoneRaw}`}
-            onClick={handlePhoneClick}
+            href={personalData.whatsapp}
+            target="_blank"
+            rel="noreferrer"
             className="strip-contact-link"
-            title={phoneFeedback ? 'Copied to clipboard!' : `Call ${personalData.phone}`}
+            title={`Message on WhatsApp (${personalData.phone})`}
           >
             <Icon
-              icon={phoneFeedback ? 'lucide:check' : 'lucide:phone'}
+              icon="simple-icons:whatsapp"
               width={15}
               height={15}
-              className={`strip-icon ${phoneFeedback ? 'icon-success' : ''}`}
+              className="strip-icon"
             />
-            <span className="strip-text">
-              {phoneFeedback ? 'Number copied!' : personalData.phone}
-            </span>
+            <span className="strip-text">{personalData.phone}</span>
             <Icon icon="lucide:arrow-up-right" width={12} height={12} className="arrow-muted" />
           </a>
         </div>

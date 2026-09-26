@@ -20,6 +20,7 @@ export const personalData: PersonalData = {
   email: 'terquinlaqui@gmail.com',
   phone: '+63 926 029 4838',
   phoneRaw: '+639260294838',
+  whatsapp: 'https://wa.me/639260294838',
   github: 'https://github.com/robertterquin',
   linkedin: 'https://www.linkedin.com/in/robertterquinlaqui/',
   resumeUrl: '/Robert_Terquin_Laqui_Resume.pdf',

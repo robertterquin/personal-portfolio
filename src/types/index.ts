@@ -13,6 +13,7 @@ export interface PersonalData {
   email: string;
   phone: string;
   phoneRaw: string;
+  whatsapp: string;
   github: string;
   linkedin: string;
   resumeUrl: string;
