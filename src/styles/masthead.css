@@ -30,7 +30,8 @@
 .hero-title-line-mask {
   display: block;
   overflow: hidden;
-  line-height: 0.96;
+  line-height: 1;
+  padding-bottom: 2px;
 }
 
 .hero-title-line {
@@ -186,6 +187,10 @@ html.theme-day .portrait-frame:hover {
 
   .hero-grid {
     gap: 36px;
+  }
+
+  .hero-portrait-stage {
+    justify-content: center;
   }
 
   .hero-bio {
