@@ -14,6 +14,7 @@ export interface PersonalData {
   phone: string;
   phoneRaw: string;
   whatsapp: string;
+  website?: string;
   github: string;
   linkedin: string;
   resumeUrl: string;
