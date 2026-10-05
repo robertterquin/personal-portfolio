@@ -200,8 +200,8 @@ html.theme-day .portrait-frame:hover {
   }
 
   .hero-title {
-    font-size: clamp(2.2rem, 11.5vw, 3.2rem);
-    margin-bottom: 20px;
+    font-size: clamp(2.8rem, 12.5vw, 4.2rem);
+    margin-bottom: 22px;
   }
 
   .hero-achievement-strip {
@@ -210,8 +210,8 @@ html.theme-day .portrait-frame:hover {
   }
 
   .hero-achievement-link {
-    font-size: 0.82rem;
-    gap: 8px;
+    font-size: 0.88rem;
+    gap: 9px;
     width: 100%;
   }
 
@@ -222,6 +222,6 @@ html.theme-day .portrait-frame:hover {
   }
 
   .portrait-frame {
-    max-width: 280px;
+    max-width: 330px;
   }
 }

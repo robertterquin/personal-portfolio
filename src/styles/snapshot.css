@@ -125,18 +125,22 @@
 
 @media (max-width: 540px) {
   .studio-connect-strip {
-    padding: 18px 0;
+    padding: 20px 0;
   }
 
   .strip-contact-link {
-    font-size: 0.84rem;
+    font-size: 0.90rem;
     word-break: break-all;
+  }
+
+  .strip-nav-link {
+    font-size: 0.90rem;
   }
 
   .strip-links-block {
     width: 100%;
     flex-wrap: wrap;
-    gap: 14px 18px;
+    gap: 14px 20px;
   }
 
   .strip-divider {

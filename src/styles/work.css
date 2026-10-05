@@ -158,6 +158,9 @@ html.theme-day .project-index-row.row-active {
 .mobile-expanded-img {
   width: 100%;
   height: auto;
+  max-height: 320px;
+  object-fit: cover;
+  object-position: top center;
   display: block;
 }
 
@@ -613,17 +616,18 @@ html.theme-day .viewer-stack-tag {
   }
 
   .row-title {
-    font-size: 1.12rem;
+    font-size: 1.28rem;
   }
 
   .row-description {
-    font-size: 0.82rem;
-    line-height: 1.45;
+    font-size: 0.88rem;
+    line-height: 1.55;
   }
 
   .row-mobile-toggle {
-    padding: 5px 12px;
-    font-size: 0.68rem;
+    padding: 6px 14px;
+    font-size: 0.78rem;
+    font-weight: 600;
   }
 
   .viewer-top-bar {
@@ -631,13 +635,13 @@ html.theme-day .viewer-stack-tag {
   }
 
   .viewer-main-title {
-    font-size: 1.4rem;
-    margin-bottom: 10px;
+    font-size: 1.55rem;
+    margin-bottom: 12px;
   }
 
   .viewer-detail-text {
-    font-size: 0.86rem;
-    line-height: 1.6;
+    font-size: 0.90rem;
+    line-height: 1.65;
   }
 
   .viewer-actions-row {
@@ -652,12 +656,21 @@ html.theme-day .viewer-stack-tag {
     flex-wrap: wrap;
   }
 
+  .viewer-stack-tag {
+    font-size: 0.76rem;
+    padding: 5px 10px;
+  }
+
   .viewer-btn {
+    font-size: 0.78rem;
+    padding: 9px 16px;
     flex: 1 1 auto;
     justify-content: center;
   }
 
   .mobile-expanded-actions .viewer-btn {
+    font-size: 0.78rem;
+    padding: 9px 16px;
     flex: 1 1 auto;
     justify-content: center;
   }
