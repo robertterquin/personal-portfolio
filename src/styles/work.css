@@ -501,14 +501,61 @@ html.theme-day .viewer-stack-tag {
   transform: translateY(-1px);
 }
 
+.viewer-bottom-bar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 10px 16px;
+  background: var(--bg-subtle);
+  border-top: 1px solid var(--line);
+  gap: 12px;
+}
+
+.viewer-nav-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 6px 14px;
+  border-radius: var(--radius-sm);
+  font-family: var(--font-mono);
+  font-size: 0.74rem;
+  font-weight: 600;
+  color: var(--ink-muted);
+  background: var(--card-bg);
+  border: 1px solid var(--card-border);
+  cursor: pointer;
+  transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+  user-select: none;
+}
+
+.viewer-nav-btn:hover {
+  color: var(--accent);
+  border-color: var(--leather-border);
+  background: var(--accent-dim);
+  transform: translateY(-1px);
+}
+
+.viewer-nav-btn:active {
+  transform: translateY(0);
+}
+
+html.theme-day .viewer-nav-btn {
+  background: #faf8f4;
+  border-color: var(--line-strong);
+}
+
+html.theme-day .viewer-nav-btn:hover {
+  background: var(--accent-dim);
+  border-color: var(--accent);
+  color: var(--accent);
+}
+
 .viewer-progress-dots {
   display: flex;
   align-items: center;
   justify-content: center;
   gap: 8px;
-  padding: 12px;
-  background: var(--bg-subtle);
-  border-top: 1px solid var(--line);
+  flex: 1;
 }
 
 .progress-dot {
@@ -680,5 +727,14 @@ html.theme-day .viewer-stack-tag {
     padding: 9px 16px;
     flex: 1 1 auto;
     justify-content: center;
+  }
+
+  .viewer-bottom-bar {
+    padding: 8px 12px;
+  }
+
+  .viewer-nav-btn {
+    padding: 6px 11px;
+    font-size: 0.72rem;
   }
 }

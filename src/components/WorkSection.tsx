@@ -354,16 +354,38 @@ export const WorkSection: React.FC = () => {
               </button>
             </div>
 
-            <div className="viewer-progress-dots">
-              {projectsData.map((project, idx) => (
-                <button
-                  type="button"
-                  key={project.id}
-                  className={`progress-dot ${idx === selectedIndex ? 'active' : ''}`}
-                  onClick={() => setSelectedIndex(idx)}
-                  aria-label={`Jump to ${project.title}`}
-                />
-              ))}
+            <div className="viewer-bottom-bar">
+              <button
+                type="button"
+                className="viewer-nav-btn viewer-nav-prev"
+                onClick={handlePrevProject}
+                aria-label="Previous project"
+              >
+                <Icon icon="lucide:chevron-left" width={15} height={15} />
+                <span>Prev</span>
+              </button>
+
+              <div className="viewer-progress-dots">
+                {projectsData.map((project, idx) => (
+                  <button
+                    type="button"
+                    key={project.id}
+                    className={`progress-dot ${idx === selectedIndex ? 'active' : ''}`}
+                    onClick={() => setSelectedIndex(idx)}
+                    aria-label={`Jump to ${project.title}`}
+                  />
+                ))}
+              </div>
+
+              <button
+                type="button"
+                className="viewer-nav-btn viewer-nav-next"
+                onClick={handleNextProject}
+                aria-label="Next project"
+              >
+                <span>Next</span>
+                <Icon icon="lucide:chevron-right" width={15} height={15} />
+              </button>
             </div>
           </motion.div>
         )}
