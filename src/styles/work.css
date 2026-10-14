@@ -501,61 +501,14 @@ html.theme-day .viewer-stack-tag {
   transform: translateY(-1px);
 }
 
-.viewer-bottom-bar {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  padding: 10px 16px;
-  background: var(--bg-subtle);
-  border-top: 1px solid var(--line);
-  gap: 12px;
-}
-
-.viewer-nav-btn {
-  display: inline-flex;
-  align-items: center;
-  gap: 6px;
-  padding: 6px 14px;
-  border-radius: var(--radius-sm);
-  font-family: var(--font-mono);
-  font-size: 0.74rem;
-  font-weight: 600;
-  color: var(--ink-muted);
-  background: var(--card-bg);
-  border: 1px solid var(--card-border);
-  cursor: pointer;
-  transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
-  user-select: none;
-}
-
-.viewer-nav-btn:hover {
-  color: var(--accent);
-  border-color: var(--leather-border);
-  background: var(--accent-dim);
-  transform: translateY(-1px);
-}
-
-.viewer-nav-btn:active {
-  transform: translateY(0);
-}
-
-html.theme-day .viewer-nav-btn {
-  background: #faf8f4;
-  border-color: var(--line-strong);
-}
-
-html.theme-day .viewer-nav-btn:hover {
-  background: var(--accent-dim);
-  border-color: var(--accent);
-  color: var(--accent);
-}
-
 .viewer-progress-dots {
   display: flex;
   align-items: center;
   justify-content: center;
   gap: 8px;
-  flex: 1;
+  padding: 12px;
+  background: var(--bg-subtle);
+  border-top: 1px solid var(--line);
 }
 
 .progress-dot {
@@ -603,17 +556,19 @@ html.theme-day .viewer-nav-btn:hover {
   }
 
   .stage-nav-arrow {
-    display: none;
+    display: flex;
+    width: 100%;
+    height: 100%;
   }
 
   .viewer-body-stage {
-    grid-template-columns: 1fr;
+    grid-template-columns: 32px 1fr 32px;
   }
 
   .viewer-grid {
     grid-template-columns: 1fr;
-    border-left: none;
-    border-right: none;
+    border-left: 1px solid var(--line);
+    border-right: 1px solid var(--line);
   }
 
   .project-index-row {
@@ -729,12 +684,5 @@ html.theme-day .viewer-nav-btn:hover {
     justify-content: center;
   }
 
-  .viewer-bottom-bar {
-    padding: 8px 12px;
-  }
 
-  .viewer-nav-btn {
-    padding: 6px 11px;
-    font-size: 0.72rem;
-  }
 }
