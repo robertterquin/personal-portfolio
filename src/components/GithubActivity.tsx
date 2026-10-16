@@ -70,6 +70,27 @@ export const GithubActivity: React.FC = () => {
         }
 
         if (!liveData || liveTotal === 0) {
+          try {
+            const rawRes = await fetch(
+              `https://raw.githubusercontent.com/${username}/personal-portfolio/main/src/data/githubContributions.json`,
+              { cache: 'no-store' }
+            );
+            if (rawRes.ok) {
+              const rawData: GithubApiResponse = await rawRes.json();
+              const count =
+                rawData.total?.lastYear ??
+                (rawData.contributions ? rawData.contributions.reduce((acc, c) => acc + c.count, 0) : 0);
+              if (count > 0 && rawData.contributions && rawData.contributions.length > 0) {
+                liveData = rawData;
+                liveTotal = count;
+              }
+            }
+          } catch (_err) {
+            void _err;
+          }
+        }
+
+        if (!liveData || liveTotal === 0) {
           const res = await fetch(`https://github-contributions-api.jogruber.de/v4/${username}?y=last`);
           if (res.ok) {
             const apiData: GithubApiResponse = await res.json();

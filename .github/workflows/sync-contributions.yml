@@ -1,0 +1,51 @@
+name: Sync GitHub Contributions
+
+on:
+  schedule:
+    - cron: '*/30 * * * *'
+  push:
+    branches:
+      - main
+    paths-ignore:
+      - 'src/data/githubContributions.json'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: sync-github-contributions
+  cancel-in-progress: false
+
+jobs:
+  sync:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        with:
+          token: ${{ secrets.GH_PAT || secrets.GITHUB_TOKEN }}
+          fetch-depth: 1
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+
+      - name: Fetch and update GitHub contributions
+        env:
+          GITHUB_TOKEN: ${{ secrets.GH_PAT || secrets.GITHUB_TOKEN }}
+        run: node scripts/sync-github.mjs
+
+      - name: Commit and push if updated
+        run: |
+          if git diff --quiet src/data/githubContributions.json; then
+            echo "No changes to githubContributions.json"
+            exit 0
+          fi
+          git config user.name "Robert Terquin Laqui"
+          git config user.email "terquinlaqui@gmail.com"
+          git add src/data/githubContributions.json
+          git commit -m "chore: auto-sync github contributions"
+          git pull --rebase origin main
+          git push origin HEAD:main
