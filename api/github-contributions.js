@@ -11,10 +11,20 @@ export default async function handler(req, res) {
   res.setHeader('Access-Control-Allow-Methods', 'GET');
   res.setHeader('Cache-Control', 's-maxage=300, stale-while-revalidate=600');
 
-  const token = process.env.GITHUB_TOKEN;
+  const rawToken = process.env.GITHUB_TOKEN;
+
+  if (!rawToken) {
+    return res.status(500).json({ error: 'GITHUB_TOKEN not configured' });
+  }
+
+  // Sanitize token: remove whitespace, wrapping quotes, and accidental "GITHUB_TOKEN=" prefix
+  let token = rawToken.trim().replace(/^["']|["']$/g, '');
+  if (token.startsWith('GITHUB_TOKEN=')) {
+    token = token.replace(/^GITHUB_TOKEN=/, '').trim().replace(/^["']|["']$/g, '');
+  }
 
   if (!token) {
-    return res.status(500).json({ error: 'GITHUB_TOKEN not configured' });
+    return res.status(500).json({ error: 'GITHUB_TOKEN is empty after sanitization' });
   }
 
   try {
@@ -46,10 +56,15 @@ export default async function handler(req, res) {
     });
 
     if (!response.ok) {
-      throw new Error(`GitHub GraphQL responded with HTTP ${response.status}`);
+      const errText = await response.text().catch(() => '');
+      throw new Error(`GitHub GraphQL responded with HTTP ${response.status}: ${errText.slice(0, 200)}`);
     }
 
     const json = await response.json();
+    if (json.errors && json.errors.length > 0) {
+      throw new Error(`GitHub GraphQL error: ${json.errors.map((e) => e.message).join('; ')}`);
+    }
+
     const calendar = json.data?.viewer?.contributionsCollection?.contributionCalendar;
 
     if (!calendar) {
@@ -75,6 +90,10 @@ export default async function handler(req, res) {
     return res.status(200).json(result);
   } catch (err) {
     console.error('GitHub contributions fetch failed:', err.message);
-    return res.status(500).json({ error: 'Failed to fetch contributions' });
+    const safeError = err.message ? err.message.replace(token, '[REDACTED]') : 'Unknown error';
+    return res.status(500).json({
+      error: 'Failed to fetch contributions',
+      detail: safeError,
+    });
   }
 }
