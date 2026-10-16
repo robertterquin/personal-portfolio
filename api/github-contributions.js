@@ -9,7 +9,7 @@ const LEVEL_MAP = {
 export default async function handler(req, res) {
   res.setHeader('Access-Control-Allow-Origin', '*');
   res.setHeader('Access-Control-Allow-Methods', 'GET');
-  res.setHeader('Cache-Control', 's-maxage=300, stale-while-revalidate=600');
+  res.setHeader('Cache-Control', 'no-store, max-age=0');
 
   const rawToken = process.env.GITHUB_TOKEN;
   let token = rawToken ? rawToken.trim().replace(/^["']|["']$/g, '') : '';
