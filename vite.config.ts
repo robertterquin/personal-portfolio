@@ -146,12 +146,6 @@ function githubContributionsPlugin(): Plugin {
           try {
             const data = await fetchGraphQLContributions(token);
             if (data.total.lastYear > 0) {
-              const targetPath = path.resolve(process.cwd(), 'src/data/githubContributions.json');
-              try {
-                fs.writeFileSync(targetPath, JSON.stringify(data, null, 2), 'utf-8');
-              } catch (_err) {
-                void _err;
-              }
               res.setHeader('Content-Type', 'application/json');
               res.end(JSON.stringify(data));
               return;
@@ -171,12 +165,6 @@ function githubContributionsPlugin(): Plugin {
             const html = await ghRes.text();
             const data = parseGithubHtml(html);
             if (data.total.lastYear > 0) {
-              const targetPath = path.resolve(process.cwd(), 'src/data/githubContributions.json');
-              try {
-                fs.writeFileSync(targetPath, JSON.stringify(data, null, 2), 'utf-8');
-              } catch (_err) {
-                void _err;
-              }
               res.setHeader('Content-Type', 'application/json');
               res.end(JSON.stringify(data));
               return;
