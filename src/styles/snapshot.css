@@ -50,6 +50,28 @@
   color: #10b981;
 }
 
+.strip-email-group {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.strip-copy-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  padding: 4px;
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  color: var(--ink-dim);
+  transition: color 0.15s ease;
+}
+
+.strip-copy-btn:hover,
+.strip-copy-btn.is-copied {
+  color: var(--accent);
+}
+
 .strip-item-divider {
   color: var(--line-strong);
   font-family: var(--font-mono);

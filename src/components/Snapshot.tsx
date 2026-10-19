@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { Icon } from '@iconify/react';
 import { motion, useReducedMotion } from 'motion/react';
 import { personalData } from '../data/portfolioData';
@@ -6,6 +6,31 @@ import { personalData } from '../data/portfolioData';
 export const Snapshot: React.FC = () => {
   const shouldReduceMotion = useReducedMotion();
   const isReducedMotion = Boolean(shouldReduceMotion);
+  const [isCopied, setIsCopied] = useState(false);
+
+  useEffect(() => {
+    if (!isCopied) return;
+    const timer = setTimeout(() => setIsCopied(false), 1600);
+    return () => clearTimeout(timer);
+  }, [isCopied]);
+
+  const handleCopyEmail = async () => {
+    try {
+      await navigator.clipboard.writeText(personalData.email);
+      setIsCopied(true);
+    } catch {
+      const field = document.createElement('textarea');
+      field.value = personalData.email;
+      field.setAttribute('readonly', '');
+      field.style.position = 'fixed';
+      field.style.opacity = '0';
+      document.body.appendChild(field);
+      field.select();
+      const didCopy = document.execCommand('copy');
+      field.remove();
+      if (didCopy) setIsCopied(true);
+    }
+  };
 
   const handleEmailClick = (e: React.MouseEvent<HTMLAnchorElement>) => {
     const isMobile = /Android|iPhone|iPad|iPod|Mobile/i.test(navigator.userAgent);
@@ -34,16 +59,32 @@ export const Snapshot: React.FC = () => {
     >
       <div className="connect-strip-inner">
         <div className="strip-contact-group">
-          <a
-            href={`mailto:${personalData.email}`}
-            onClick={handleEmailClick}
-            className="strip-contact-link"
-            title={`Compose email to ${personalData.email}`}
-          >
-            <Icon icon="lucide:mail" width={15} height={15} className="strip-icon" />
-            <span className="strip-text">{personalData.email}</span>
-            <Icon icon="lucide:arrow-up-right" width={12} height={12} className="arrow-muted" />
-          </a>
+          <span className="strip-email-group">
+            <a
+              href={`mailto:${personalData.email}`}
+              onClick={handleEmailClick}
+              className="strip-contact-link"
+              title={`Compose email to ${personalData.email}`}
+            >
+              <Icon icon="lucide:mail" width={15} height={15} className="strip-icon" />
+              <span className="strip-text">{personalData.email}</span>
+              <Icon icon="lucide:arrow-up-right" width={12} height={12} className="arrow-muted" />
+            </a>
+
+            <button
+              type="button"
+              className={`strip-copy-btn${isCopied ? ' is-copied' : ''}`}
+              onClick={handleCopyEmail}
+              aria-label={isCopied ? 'Email copied' : 'Copy email address'}
+              title={isCopied ? 'Copied' : 'Copy email'}
+            >
+              <Icon icon={isCopied ? 'lucide:check' : 'lucide:copy'} width={13} height={13} />
+              {isCopied && <span className="strip-copy-label">Copied</span>}
+            </button>
+            <span className="sr-only" aria-live="polite">
+              {isCopied ? 'Email address copied to clipboard' : ''}
+            </span>
+          </span>
 
           <span className="strip-item-divider" aria-hidden="true">·</span>
 
