@@ -51,7 +51,7 @@ html.theme-day .github-heatmap-container {
 
 .heatmap-username {
   font-family: var(--font-mono);
-  font-size: 0.78rem;
+  font-size: var(--text-sm);
   font-weight: 600;
   color: var(--ink-muted);
   transition: color 0.15s ease;
@@ -101,7 +101,7 @@ html.theme-day .github-heatmap-container {
 
 .heatmap-month-tag {
   font-family: var(--font-mono);
-  font-size: 0.8rem;
+  font-size: var(--text-sm);
   font-weight: 500;
   color: var(--ink-dim);
   text-align: left;
@@ -124,7 +124,7 @@ html.theme-day .github-heatmap-container {
 
 .weekday-label {
   font-family: var(--font-mono);
-  font-size: 0.78rem;
+  font-size: var(--text-sm);
   color: var(--ink-dim);
   display: flex;
   align-items: center;
@@ -236,7 +236,7 @@ html.theme-day .heatmap-cell.level-4 {
   background: var(--bg-subtle);
   border-top: 1px solid var(--line);
   font-family: var(--font-mono);
-  font-size: 0.74rem;
+  font-size: var(--text-xs);
   color: var(--ink-dim);
   gap: 16px;
   flex-wrap: wrap;
@@ -266,7 +266,7 @@ html.theme-day .heatmap-cell.level-4 {
   align-items: center;
   gap: 4px;
   font-family: var(--font-mono);
-  font-size: 0.66rem;
+  font-size: var(--text-2xs);
   color: var(--ink-dim);
 }
 
@@ -328,11 +328,11 @@ html.theme-day .legend-cell.level-4 { background: #5f3414; }
   }
 
   .heatmap-inspection-status {
-    font-size: 0.76rem;
+    font-size: var(--text-xs);
   }
 
   .heatmap-legend {
-    font-size: 0.70rem;
+    font-size: var(--text-xs);
   }
 }
 

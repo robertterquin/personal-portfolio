@@ -68,7 +68,7 @@ html.theme-day .project-index-row.row-active {
 
 .row-index-num {
   font-family: var(--font-mono);
-  font-size: 0.72rem;
+  font-size: var(--text-xs);
   color: var(--accent);
   letter-spacing: 0.06em;
   font-weight: 600;
@@ -77,7 +77,7 @@ html.theme-day .project-index-row.row-active {
 
 .row-title {
   margin: 0;
-  font-size: 1.25rem;
+  font-size: var(--text-xl);
   font-weight: 700;
   letter-spacing: -0.02em;
   color: var(--ink);
@@ -86,7 +86,7 @@ html.theme-day .project-index-row.row-active {
 
 .row-description {
   margin: 0;
-  font-size: 0.86rem;
+  font-size: var(--text-base);
   line-height: 1.45;
   color: var(--ink-muted);
 }
@@ -102,7 +102,7 @@ html.theme-day .project-index-row.row-active {
   align-items: center;
   gap: 5px;
   font-family: var(--font-mono);
-  font-size: 0.74rem;
+  font-size: var(--text-xs);
   font-weight: 600;
   color: var(--ink-dim);
   transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
@@ -133,7 +133,7 @@ html.theme-day .project-index-row.row-active {
   border: 1px solid var(--line);
   border-radius: var(--radius-sm);
   font-family: var(--font-mono);
-  font-size: 0.7rem;
+  font-size: var(--text-xs);
   color: var(--ink);
 }
 
@@ -172,7 +172,7 @@ html.theme-day .project-index-row.row-active {
 
 .mobile-expanded-detail {
   margin: 0;
-  font-size: 0.85rem;
+  font-size: var(--text-base);
   line-height: 1.5;
   color: var(--ink-muted);
 }
@@ -226,7 +226,7 @@ html.theme-day .minimal-viewer {
 
 .viewer-bar-label {
   font-family: var(--font-mono);
-  font-size: 0.72rem;
+  font-size: var(--text-xs);
   color: var(--ink);
   text-transform: uppercase;
   letter-spacing: 0.08em;
@@ -235,12 +235,12 @@ html.theme-day .minimal-viewer {
 
 .viewer-bar-separator {
   color: var(--ink-dim);
-  font-size: 0.72rem;
+  font-size: var(--text-xs);
 }
 
 .viewer-bar-index {
   font-family: var(--font-mono);
-  font-size: 0.7rem;
+  font-size: var(--text-xs);
   color: var(--accent);
   letter-spacing: 0.05em;
   font-weight: 600;
@@ -257,7 +257,7 @@ html.theme-day .minimal-viewer {
   align-items: center;
   gap: 6px;
   font-family: var(--font-mono);
-  font-size: 0.72rem;
+  font-size: var(--text-xs);
   color: var(--ink-muted);
   padding: 5px 10px;
   border-radius: var(--radius-sm);
@@ -380,7 +380,7 @@ html.theme-day .viewer-img-frame:hover {
   display: inline-flex;
   align-items: center;
   font-family: var(--font-mono);
-  font-size: 0.68rem;
+  font-size: var(--text-xs);
   font-weight: 600;
   letter-spacing: 0.08em;
   text-transform: uppercase;
@@ -403,7 +403,7 @@ html.theme-day .viewer-img-frame:hover {
 
 .viewer-detail-text {
   margin: 0;
-  font-size: 0.94rem;
+  font-size: var(--text-base);
   line-height: 1.72;
   color: var(--ink-muted);
 }
@@ -427,7 +427,7 @@ html.theme-day .viewer-img-frame:hover {
 
 .viewer-stack-tag {
   font-family: var(--font-mono);
-  font-size: 0.7rem;
+  font-size: var(--text-xs);
   color: var(--ink-dim);
   background: var(--bg-subtle);
   border: 1px solid var(--card-border);
@@ -461,7 +461,7 @@ html.theme-day .viewer-stack-tag {
   padding: 7px 14px;
   border-radius: var(--radius-sm);
   font-family: var(--font-mono);
-  font-size: 0.72rem;
+  font-size: var(--text-xs);
   font-weight: 600;
   letter-spacing: 0.02em;
   transition: all 0.15s ease;
@@ -619,17 +619,17 @@ html.theme-day .viewer-stack-tag {
   }
 
   .row-title {
-    font-size: 1.28rem;
+    font-size: var(--text-xl);
   }
 
   .row-description {
-    font-size: 0.88rem;
+    font-size: var(--text-base);
     line-height: 1.55;
   }
 
   .row-mobile-toggle {
     padding: 6px 14px;
-    font-size: 0.78rem;
+    font-size: var(--text-sm);
     font-weight: 600;
   }
 
@@ -638,12 +638,12 @@ html.theme-day .viewer-stack-tag {
   }
 
   .viewer-main-title {
-    font-size: 1.55rem;
+    font-size: var(--text-2xl);
     margin-bottom: 12px;
   }
 
   .viewer-detail-text {
-    font-size: 0.90rem;
+    font-size: var(--text-base);
     line-height: 1.65;
   }
 
@@ -660,19 +660,19 @@ html.theme-day .viewer-stack-tag {
   }
 
   .viewer-stack-tag {
-    font-size: 0.76rem;
+    font-size: var(--text-xs);
     padding: 5px 10px;
   }
 
   .viewer-btn {
-    font-size: 0.78rem;
+    font-size: var(--text-sm);
     padding: 9px 16px;
     flex: 1 1 auto;
     justify-content: center;
   }
 
   .mobile-expanded-actions .viewer-btn {
-    font-size: 0.78rem;
+    font-size: var(--text-sm);
     padding: 9px 16px;
     flex: 1 1 auto;
     justify-content: center;

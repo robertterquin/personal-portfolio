@@ -2,8 +2,16 @@
   
   --font-sans: 'DM Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
   --font-display: 'Instrument Sans', -apple-system, BlinkMacSystemFont, sans-serif;
-  --font-serif: 'Instrument Serif', Georgia, serif;
   --font-mono: 'JetBrains Mono', monospace;
+
+  --text-2xs: 0.64rem;
+  --text-xs: 0.72rem;
+  --text-sm: 0.8rem;
+  --text-base: 0.9rem;
+  --text-md: 1rem;
+  --text-lg: 1.15rem;
+  --text-xl: 1.25rem;
+  --text-2xl: 1.55rem;
 
   
   --bg: #070606;
