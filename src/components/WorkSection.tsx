@@ -9,7 +9,7 @@ const rowListVariants: Variants = {
   hidden: {},
   visible: {
     transition: {
-      staggerChildren: 0.07,
+      staggerChildren: 0.04,
       delayChildren: 0.05,
     },
   },
@@ -18,17 +18,12 @@ const rowListVariants: Variants = {
 const rowItemVariants: Variants = {
   hidden: {
     opacity: 0,
-    y: 20,
+    y: 6,
   },
   visible: {
     opacity: 1,
     y: 0,
-    transition: {
-      type: 'spring',
-      stiffness: 260,
-      damping: 28,
-      mass: 0.7,
-    },
+    transition: { duration: 0.35, ease: 'easeOut' },
   },
 };
 
@@ -84,15 +79,10 @@ export const WorkSection: React.FC = () => {
     <section id="work" className="work-index-section">
       <motion.div
         className="work-index-header"
-        initial={isReducedMotion ? false : { opacity: 0, y: 22 }}
+        initial={isReducedMotion ? false : { opacity: 0, y: 8 }}
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true, amount: 0.2 }}
-        transition={{
-          type: 'spring',
-          stiffness: 240,
-          damping: 28,
-          mass: 0.7,
-        }}
+        transition={{ duration: 0.4, ease: 'easeOut' }}
       >
         <div className="work-index-title-group">
           <h2 className="section-title">Selected Work</h2>

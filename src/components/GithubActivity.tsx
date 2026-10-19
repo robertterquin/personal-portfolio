@@ -166,15 +166,10 @@ export const GithubActivity: React.FC = () => {
     <section id="activity" className="github-activity-section">
       <motion.div
         className="github-activity-header"
-        initial={isReducedMotion ? false : { opacity: 0, y: 22 }}
+        initial={isReducedMotion ? false : { opacity: 0, y: 8 }}
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true, amount: 0.2 }}
-        transition={{
-          type: 'spring',
-          stiffness: 240,
-          damping: 28,
-          mass: 0.7,
-        }}
+        transition={{ duration: 0.4, ease: 'easeOut' }}
       >
         <div className="activity-title-col">
           <h2 className="section-title">GitHub Contributions</h2>
@@ -183,7 +178,7 @@ export const GithubActivity: React.FC = () => {
 
       <motion.div
         className="github-heatmap-container"
-        initial={isReducedMotion ? false : { opacity: 0, y: 16 }}
+        initial={isReducedMotion ? false : { opacity: 0, y: 8 }}
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true, amount: 0.15 }}
         transition={{ duration: 0.5, ease: [0.16, 1, 0.3, 1] }}

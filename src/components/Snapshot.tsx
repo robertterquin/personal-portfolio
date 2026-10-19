@@ -47,15 +47,10 @@ export const Snapshot: React.FC = () => {
   return (
     <motion.section
       className="studio-connect-strip"
-      initial={isReducedMotion ? false : { opacity: 0, y: 16 }}
+      initial={isReducedMotion ? false : { opacity: 0, y: 8 }}
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true, amount: 0.2 }}
-      transition={{
-        type: 'spring',
-        stiffness: 240,
-        damping: 28,
-        mass: 0.7,
-      }}
+      transition={{ duration: 0.4, ease: 'easeOut' }}
     >
       <div className="connect-strip-inner">
         <div className="strip-contact-group">

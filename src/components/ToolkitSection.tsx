@@ -9,7 +9,7 @@ const toolkitListVariants: Variants = {
   hidden: {},
   visible: {
     transition: {
-      staggerChildren: 0.08,
+      staggerChildren: 0.04,
       delayChildren: 0.05,
     },
   },
@@ -18,17 +18,12 @@ const toolkitListVariants: Variants = {
 const toolkitItemVariants: Variants = {
   hidden: {
     opacity: 0,
-    y: 18,
+    y: 6,
   },
   visible: {
     opacity: 1,
     y: 0,
-    transition: {
-      type: 'spring',
-      stiffness: 260,
-      damping: 28,
-      mass: 0.7,
-    },
+    transition: { duration: 0.35, ease: 'easeOut' },
   },
 };
 
@@ -85,15 +80,10 @@ export const ToolkitSection: React.FC = () => {
         <div className="toolkit-col toolkit-tools-col">
           <motion.div
             className="section-title-wrap"
-            initial={isReducedMotion ? false : { opacity: 0, y: 22 }}
+            initial={isReducedMotion ? false : { opacity: 0, y: 8 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, amount: 0.2 }}
-            transition={{
-              type: 'spring',
-              stiffness: 240,
-              damping: 28,
-              mass: 0.7,
-            }}
+            transition={{ duration: 0.4, ease: 'easeOut' }}
           >
             <h2 className="section-title">Technical Stack</h2>
           </motion.div>
@@ -134,15 +124,10 @@ export const ToolkitSection: React.FC = () => {
         <div className="toolkit-col toolkit-cred-col">
           <motion.div
             className="section-title-wrap"
-            initial={isReducedMotion ? false : { opacity: 0, y: 22 }}
+            initial={isReducedMotion ? false : { opacity: 0, y: 8 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, amount: 0.2 }}
-            transition={{
-              type: 'spring',
-              stiffness: 240,
-              damping: 28,
-              mass: 0.7,
-            }}
+            transition={{ duration: 0.4, ease: 'easeOut' }}
           >
             <h2 className="section-title">Certifications &amp; Honors</h2>
           </motion.div>

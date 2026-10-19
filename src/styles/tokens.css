@@ -51,7 +51,7 @@ html.theme-day body {
 
   --ink: #161311;
   --ink-muted: #5e564d;
-  --ink-dim: #857d72;
+  --ink-dim: #6f675d;
 
   --accent: #8e582e;
   --accent-hover: #71421e;
@@ -78,6 +78,7 @@ html {
   background-color: var(--bg);
   color: var(--ink);
   scroll-behavior: smooth;
+  scroll-padding-top: 40px;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
