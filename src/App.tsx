@@ -14,13 +14,15 @@ function App() {
 
   return (
     <div className="dossier-app">
+      <a href="#main-content" className="skip-link">Skip to content</a>
+
       <div className="dossier-container">
         <Header
           theme={theme}
           onToggleTheme={toggleTheme}
         />
 
-        <main id="main-content">
+        <main id="main-content" tabIndex={-1}>
           <div className="view-fade-in">
             <Masthead />
             <Snapshot />
