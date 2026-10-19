@@ -26,7 +26,8 @@ The dev server runs at `http://localhost:3000`.
 | `npm run build` | Type-check and build to `dist/` |
 | `npm run preview` | Serve the production build locally |
 | `npm run lint` | Run ESLint |
-| `npm run sync:github` | Refresh the GitHub contributions snapshot |
+| `npm test` | Run the unit tests (Vitest) |
+| `npm run sync:github` | Refresh the GitHub contributions snapshot (add `-- --dry-run` to preview without writing) |
 
 ## Project structure
 
@@ -36,6 +37,8 @@ src/
   data/         portfolioData.ts (all site content) and the contributions snapshot
   hooks/        Theme and Manila clock hooks
   styles/       One stylesheet per section, plus tokens.css and print.css
+  utils/        Small pure helpers (e.g. heatmap month labels)
+lib/            Shared GitHub contributions logic (dev server, sync script, API)
 api/            Vercel function serving live GitHub contributions
 scripts/        Contributions sync script
 public/         Images, resume, 404 page, sitemap
