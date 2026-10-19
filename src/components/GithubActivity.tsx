@@ -5,20 +5,24 @@ import type { ContributionDay, GithubApiResponse } from '../types';
 import { personalData } from '../data/portfolioData';
 import verifiedData from '../data/githubContributions.json';
 
-const MONTH_LABELS = [
-  { col: 0, label: 'Sep' },
-  { col: 4, label: 'Oct' },
-  { col: 8, label: 'Nov' },
-  { col: 13, label: 'Dec' },
-  { col: 17, label: 'Jan' },
-  { col: 22, label: 'Feb' },
-  { col: 26, label: 'Mar' },
-  { col: 30, label: 'Apr' },
-  { col: 34, label: 'May' },
-  { col: 39, label: 'Jun' },
-  { col: 43, label: 'Jul' },
-  { col: 47, label: 'Aug' },
-];
+const MONTH_NAMES = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
+
+// One label per month, placed on the first week column that starts in it.
+// A label is dropped when the next month begins less than 3 columns later.
+function buildMonthLabels(days: ContributionDay[]) {
+  const labels: Array<{ col: number; label: string }> = [];
+  let prevMonth = -1;
+  for (let i = 0; i < days.length; i += 7) {
+    const month = parseInt(days[i].date.slice(5, 7), 10) - 1;
+    if (month === prevMonth) continue;
+    prevMonth = month;
+    const col = i / 7;
+    const last = labels[labels.length - 1];
+    if (last && col - last.col < 3) labels.pop();
+    labels.push({ col, label: MONTH_NAMES[month] });
+  }
+  return labels;
+}
 
 
 const monthVariants: Variants = {
@@ -148,6 +152,8 @@ export const GithubActivity: React.FC = () => {
     return list;
   }, [contributions]);
 
+  const monthLabels = React.useMemo(() => buildMonthLabels(displayDays), [displayDays]);
+
   const formatDate = (dateStr: string) => {
     try {
       const [year, month, day] = dateStr.split('-');
@@ -206,7 +212,7 @@ export const GithubActivity: React.FC = () => {
                 whileInView="visible"
                 viewport={{ once: true, amount: 0.15 }}
               >
-                {MONTH_LABELS.map((m) => (
+                {monthLabels.map((m) => (
                   <motion.span
                     key={m.label + m.col}
                     className="heatmap-month-tag"

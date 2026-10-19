@@ -2,24 +2,14 @@ export type Theme = 'night' | 'day';
 
 export interface PersonalData {
   name: string;
-  monogram: string;
-  role: string;
-  focus: string;
   location: string;
-  timezone: string;
-  coordinates: string;
-  availability: string;
   shortBio: string;
   email: string;
   phone: string;
-  phoneRaw: string;
   whatsapp: string;
-  website?: string;
   github: string;
   linkedin: string;
   resumeUrl: string;
-  status: string;
-  year: string;
 }
 
 export interface Project {

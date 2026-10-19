@@ -1,75 +1,60 @@
-# React + TypeScript + Vite
+# robertterquin.com
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Personal portfolio of **Robert Terquin Laqui**, a software engineer focused on cross-platform mobile and web systems.
 
-Currently, two official plugins are available:
+**Live:** [robertterquin.com](https://robertterquin.com)
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+## Stack
 
-## React Compiler
+- React 19 + TypeScript, built with Vite
+- [Motion](https://motion.dev) for animation, [Iconify](https://iconify.design) for icons
+- Plain CSS with design tokens and a day/night theme
+- Hosted on Vercel, with one serverless function for GitHub data
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+## Getting started
 
-## Expanding the ESLint configuration
-
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
-
-```js
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
-
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-
+```bash
+npm install
+npm run dev
 ```
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+The dev server runs at `http://localhost:3000`.
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
+| Script | What it does |
+| --- | --- |
+| `npm run dev` | Start the dev server |
+| `npm run build` | Type-check and build to `dist/` |
+| `npm run preview` | Serve the production build locally |
+| `npm run lint` | Run ESLint |
+| `npm run sync:github` | Refresh the GitHub contributions snapshot |
 
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+## Project structure
 
 ```
+src/
+  components/   One component per page section
+  data/         portfolioData.ts (all site content) and the contributions snapshot
+  hooks/        Theme and Manila clock hooks
+  styles/       One stylesheet per section, plus tokens.css and print.css
+api/            Vercel function serving live GitHub contributions
+scripts/        Contributions sync script
+public/         Images, resume, 404 page, sitemap
+```
+
+To update the site's content (projects, stack, certifications, timeline), edit `src/data/portfolioData.ts`.
+
+## GitHub contributions
+
+The heatmap shows the last year of GitHub activity, including private repositories.
+
+1. A snapshot is bundled in `src/data/githubContributions.json`, so the heatmap renders immediately.
+2. On load, the page fetches fresh data from `/api/github-contributions`, which queries the GitHub GraphQL API.
+3. A GitHub Action (`.github/workflows/sync-contributions.yml`) refreshes the snapshot every 15 minutes and commits it to `main`.
+
+Live data needs a `GITHUB_TOKEN` (a GitHub personal access token):
+
+- **Locally:** add `GITHUB_TOKEN=...` to `.env.local`
+- **Vercel:** set it as an environment variable
+- **GitHub Action:** add it as the `GH_PAT` repository secret
+
+Without a token, the sync script falls back to the public contributions page (public activity only), and the API serves the committed snapshot.

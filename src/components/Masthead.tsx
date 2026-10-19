@@ -70,7 +70,7 @@ export const Masthead: React.FC = () => {
               title="Read official HackForGov 2025 announcement article"
             >
               <Icon icon="lucide:trophy" className="hero-achievement-icon" width={18} height={18} />
-              <span className="hero-achievement-text">Hack4Gov 2025 — 2nd Runner Up</span>
+              <span className="hero-achievement-text">HackForGov 2025 — 2nd Runner-Up</span>
               <Icon icon="lucide:arrow-up-right" className="hero-achievement-arrow" width={16} height={16} />
             </a>
           </motion.div>

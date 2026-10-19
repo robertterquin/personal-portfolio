@@ -46,10 +46,6 @@
   transition: color 0.15s ease;
 }
 
-.strip-icon.icon-success {
-  color: #10b981;
-}
-
 .strip-email-group {
   display: inline-flex;
   align-items: center;

@@ -8,25 +8,15 @@ import type {
 
 export const personalData: PersonalData = {
   name: 'Robert Terquin Laqui',
-  monogram: 'RT',
-  role: 'Software Engineer',
-  focus: 'Cross-Platform Mobile · Web Architecture · Cloud Systems',
   location: 'Philippines',
-  timezone: 'Asia/Manila',
-  coordinates: '14.2829° N, 120.9167° E',
-  availability: 'Available for new opportunities',
   shortBio:
     'Software engineer specializing in cross-platform mobile and web systems with Flutter, React, Node.js, and cloud backends. Focused on building clean, high-performance applications with thoughtful user experiences.',
   email: 'terquinlaqui@gmail.com',
   phone: '+63 926 029 4838',
-  phoneRaw: '+639260294838',
   whatsapp: 'https://wa.me/639260294838',
-  website: 'https://robertterquin.com',
   github: 'https://github.com/robertterquin',
   linkedin: 'https://www.linkedin.com/in/robertterquinlaqui/',
   resumeUrl: '/Robert_Terquin_Laqui_Resume.pdf',
-  status: 'Available for work',
-  year: '2026',
 };
 
 export const projectsData: Project[] = [
@@ -155,7 +145,7 @@ export const capabilityGroups: CapabilityGroup[] = [
       { name: 'Flutter & Dart' },
       { name: 'React Native' },
       { name: 'Android Studio & SDKs' },
-      { name: 'SQLite Sync' },
+      { name: 'SQLite' },
       { name: 'Riverpod & Provider' },
     ],
   },
@@ -182,6 +172,7 @@ export const capabilityGroups: CapabilityGroup[] = [
       { name: 'PostgreSQL' },
       { name: 'MySQL' },
       { name: 'JWT & OAuth' },
+      { name: 'Vercel' },
     ],
   },
   {
@@ -194,7 +185,6 @@ export const capabilityGroups: CapabilityGroup[] = [
       { name: 'C Programming' },
       { name: 'Cybersecurity Fundamentals' },
       { name: 'Git & GitHub' },
-      { name: 'Vercel Edge' },
     ],
   },
 ];
@@ -234,8 +224,8 @@ export const credentialsData: CredentialItem[] = [
   },
   {
     index: '05',
-    title: 'Cybersecurity Specialist',
-    institution: 'Industry Certified Track',
+    title: 'IT Specialist in Cybersecurity',
+    institution: 'Certiport Industry Certification',
     year: '2026',
     image: '/certificates/cybersecurity-specialist.webp',
     type: 'Certification',
@@ -256,14 +246,6 @@ export const credentialsData: CredentialItem[] = [
     image: '/certificates/oracle-java-foundations.webp',
     type: 'Certification',
   },
-  {
-    index: '08',
-    title: 'PowerPoint 2019 Associate',
-    institution: 'Microsoft Office Specialist',
-    year: '2024',
-    image: '/certificates/microsoft-powerpoint-2019.webp',
-    type: 'Certification',
-  },
 ];
 
 export const timelineData: TimelineEvent[] = [
@@ -275,6 +257,6 @@ export const timelineData: TimelineEvent[] = [
   {
     role: 'BS Information Technology',
     organization: 'St. Dominic College of Asia',
-    period: '2023',
+    period: '2023 — 2027',
   },
 ];
