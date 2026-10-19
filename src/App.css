@@ -9,6 +9,7 @@
 @import './styles/github.css';
 @import './styles/footer.css';
 @import './styles/tilt.css';
+@import './styles/print.css';
 
 .dossier-app {
   min-height: 100vh;

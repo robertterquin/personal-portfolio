@@ -1,0 +1,135 @@
+@media print {
+  @page {
+    margin: 14mm 14mm 16mm;
+  }
+
+  html,
+  html.theme-day,
+  html.theme-night,
+  html.theme-day body,
+  html.theme-night body {
+    --bg: #ffffff;
+    --bg-subtle: #ffffff;
+    --card-bg: #ffffff;
+    --card-hover: #ffffff;
+    --card-border: #d9d9d9;
+    --line: #e2e2e2;
+    --line-strong: #bdbdbd;
+    --ink: #111111;
+    --ink-muted: #3d3d3d;
+    --ink-dim: #6b6b6b;
+    --accent: #111111;
+    --accent-dim: transparent;
+    --leather-border: #d9d9d9;
+    background: #ffffff !important;
+    color: #111111;
+  }
+
+  *,
+  *::before,
+  *::after {
+    opacity: 1 !important;
+    transform: none !important;
+    animation: none !important;
+    transition: none !important;
+    box-shadow: none !important;
+  }
+
+  .skip-link,
+  .site-header,
+  .scroll-progress,
+  .hero-portrait-stage,
+  .row-col-actions,
+  .row-mobile-expanded,
+  .minimal-viewer,
+  .github-activity-section,
+  .cert-modal-overlay,
+  .ledger-arrow,
+  .back-to-top-btn,
+  .strip-copy-btn,
+  .arrow-muted,
+  .hero-achievement-arrow {
+    display: none !important;
+  }
+
+  .dossier-container {
+    max-width: none;
+    padding: 0;
+  }
+
+  .architectural-hero,
+  .work-index-section,
+  .minimal-toolkit-section,
+  .minimal-experience-section {
+    padding: 18px 0 !important;
+  }
+
+  .hero-grid,
+  .toolkit-two-col {
+    display: block !important;
+  }
+
+  .hero-title {
+    font-size: 34pt !important;
+    margin-bottom: 10px !important;
+  }
+
+  .hero-bio {
+    font-size: 10.5pt !important;
+    max-width: none !important;
+    margin-bottom: 6px !important;
+  }
+
+  .section-title {
+    font-size: 16pt !important;
+  }
+
+  .section-title-wrap,
+  .work-index-header,
+  .experience-header {
+    margin-bottom: 8px !important;
+  }
+
+  .toolkit-tools-col {
+    border-right: none !important;
+    padding-right: 0 !important;
+    margin-bottom: 18px;
+  }
+
+  .project-index-row,
+  .spec-group-row,
+  .ledger-row,
+  .experience-row {
+    padding: 8px 0 !important;
+    break-inside: avoid;
+  }
+
+  .project-index-row {
+    display: block !important;
+    border-left: none !important;
+  }
+
+  .work-index-section,
+  .minimal-toolkit-section,
+  .minimal-experience-section {
+    break-inside: auto;
+  }
+
+  .section-title,
+  .ledger-year-header {
+    break-after: avoid;
+  }
+
+  .ledger-text-col {
+    white-space: normal !important;
+  }
+
+  a {
+    color: inherit !important;
+    text-decoration: none !important;
+  }
+
+  .dossier-footer {
+    padding: 16px 0 0 !important;
+  }
+}
