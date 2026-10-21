@@ -1,8 +1,0 @@
-{
-  "rewrites": [
-    {
-      "source": "/api/github-contributions",
-      "destination": "/api/github-contributions"
-    }
-  ]
-}

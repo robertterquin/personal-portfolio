@@ -24,7 +24,7 @@ const timelineItemVariants: Variants = {
   },
 };
 
-export const TimelineSection: React.FC = () => {
+export const ExperienceSection: React.FC = () => {
   const shouldReduceMotion = useReducedMotion();
   const isReducedMotion = Boolean(shouldReduceMotion);
 

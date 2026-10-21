@@ -61,7 +61,6 @@ export const Header: React.FC<HeaderProps> = ({
         <AnimatedThemeToggler
           theme={theme}
           onThemeChange={onToggleTheme}
-          variant="circle"
           duration={500}
           className="theme-toggle-btn"
           aria-label={`Switch to ${theme === 'night' ? 'Day' : 'Night'} theme`}

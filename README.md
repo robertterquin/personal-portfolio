@@ -36,7 +36,7 @@ src/
   components/   One component per page section
   data/         portfolioData.ts (all site content) and the contributions snapshot
   hooks/        Theme and Manila clock hooks
-  styles/       One stylesheet per section, plus tokens.css and print.css
+  styles/       One stylesheet per section, plus tokens.css (variables), base.css (global styles) and print.css
   utils/        Small pure helpers (e.g. heatmap month labels)
 lib/            Shared GitHub contributions logic (dev server, sync script, API)
 api/            Vercel function serving live GitHub contributions

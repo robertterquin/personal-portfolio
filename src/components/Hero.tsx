@@ -7,7 +7,7 @@ import { TiltCard } from './TiltCard';
 
 const ease = [0.16, 1, 0.3, 1] as const;
 
-export const Masthead: React.FC = () => {
+export const Hero: React.FC = () => {
   return (
     <section id="top" className="architectural-hero">
       <div className="hero-grid">

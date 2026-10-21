@@ -1,11 +1,11 @@
 import './App.css';
 import { useTheme } from './hooks';
 import { Header } from './components/Header';
-import { Masthead } from './components/Masthead';
-import { Snapshot } from './components/Snapshot';
+import { Hero } from './components/Hero';
+import { ContactStrip } from './components/ContactStrip';
 import { WorkSection } from './components/WorkSection';
 import { ToolkitSection } from './components/ToolkitSection';
-import { TimelineSection } from './components/TimelineSection';
+import { ExperienceSection } from './components/ExperienceSection';
 import { GithubActivity } from './components/GithubActivity';
 import { Footer } from './components/Footer';
 
@@ -24,11 +24,11 @@ function App() {
 
         <main id="main-content" tabIndex={-1}>
           <div className="view-fade-in">
-            <Masthead />
-            <Snapshot />
+            <Hero />
+            <ContactStrip />
             <WorkSection />
             <ToolkitSection />
-            <TimelineSection />
+            <ExperienceSection />
             <GithubActivity />
           </div>
         </main>

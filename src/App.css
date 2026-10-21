@@ -1,14 +1,15 @@
 @import './styles/tokens.css';
+@import './styles/base.css';
 
 @import './styles/header.css';
-@import './styles/masthead.css';
-@import './styles/snapshot.css';
+@import './styles/hero.css';
+@import './styles/contact-strip.css';
 @import './styles/work.css';
 @import './styles/toolkit.css';
-@import './styles/timeline.css';
-@import './styles/github.css';
+@import './styles/experience.css';
+@import './styles/github-activity.css';
 @import './styles/footer.css';
-@import './styles/tilt.css';
+@import './styles/tilt-card.css';
 @import './styles/print.css';
 
 .dossier-app {

@@ -63,7 +63,7 @@ export interface ContributionDay {
 }
 
 export interface GithubApiResponse {
-  total?: { [key: string]: number };
+  total?: { lastYear?: number };
   contributions?: ContributionDay[];
 }
 

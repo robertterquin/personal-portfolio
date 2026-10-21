@@ -3,7 +3,7 @@ import { Icon } from '@iconify/react';
 import { motion, useReducedMotion } from 'motion/react';
 import { personalData } from '../data/portfolioData';
 
-export const Snapshot: React.FC = () => {
+export const ContactStrip: React.FC = () => {
   const shouldReduceMotion = useReducedMotion();
   const isReducedMotion = Boolean(shouldReduceMotion);
   const [isCopied, setIsCopied] = useState(false);

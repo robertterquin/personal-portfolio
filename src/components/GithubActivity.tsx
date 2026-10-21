@@ -36,70 +36,33 @@ export const GithubActivity: React.FC = () => {
   useEffect(() => {
     let isMounted = true;
 
-    const fetchLiveContributions = async () => {
-      try {
-        let liveData: GithubApiResponse | null = null;
-        let liveTotal = 0;
+    // Live API first (Vercel function, or the Vite proxy in dev), then the latest committed snapshot.
+    const sources = [
+      '/api/github-contributions',
+      `https://raw.githubusercontent.com/${username}/personal-portfolio/main/src/data/githubContributions.json`,
+    ];
 
+    const loadLatest = async () => {
+      for (const url of sources) {
         try {
-          const devRes = await fetch('/api/github-contributions');
-          if (devRes.ok) {
-            const devData: GithubApiResponse = await devRes.json();
-            const count = devData.total?.lastYear ?? (devData.contributions ? devData.contributions.reduce((acc, c) => acc + c.count, 0) : 0);
-            if (count > 0 && devData.contributions && devData.contributions.length > 0) {
-              liveData = devData;
-              liveTotal = count;
+          const res = await fetch(url, { cache: 'no-store' });
+          if (!res.ok) continue;
+          const data: GithubApiResponse = await res.json();
+          const total = data.total?.lastYear ?? 0;
+          if (total > 0 && data.contributions?.length) {
+            if (isMounted) {
+              setContributions(data.contributions);
+              setTotalCount(total);
             }
+            return;
           }
         } catch (_err) {
           void _err;
         }
-
-        if (!liveData || liveTotal === 0) {
-          try {
-            const rawRes = await fetch(
-              `https://raw.githubusercontent.com/${username}/personal-portfolio/main/src/data/githubContributions.json`,
-              { cache: 'no-store' }
-            );
-            if (rawRes.ok) {
-              const rawData: GithubApiResponse = await rawRes.json();
-              const count =
-                rawData.total?.lastYear ??
-                (rawData.contributions ? rawData.contributions.reduce((acc, c) => acc + c.count, 0) : 0);
-              if (count > 0 && rawData.contributions && rawData.contributions.length > 0) {
-                liveData = rawData;
-                liveTotal = count;
-              }
-            }
-          } catch (_err) {
-            void _err;
-          }
-        }
-
-        if (!liveData || liveTotal === 0) {
-          const res = await fetch(`https://github-contributions-api.jogruber.de/v4/${username}?y=last`);
-          if (res.ok) {
-            const apiData: GithubApiResponse = await res.json();
-            const count =
-              apiData.total?.lastYear ??
-              (apiData.contributions ? apiData.contributions.reduce((acc, c) => acc + c.count, 0) : 0);
-            if (count > 0 && apiData.contributions && apiData.contributions.length > 0) {
-              liveData = apiData;
-              liveTotal = count;
-            }
-          }
-        }
-
-        if (isMounted && liveData && liveTotal > 0 && liveData.contributions && liveData.contributions.length > 0) {
-          setContributions(liveData.contributions);
-          setTotalCount(liveTotal);
-        }
-      } catch (_err) {
-        void _err;
       }
     };
 
-    fetchLiveContributions();
+    loadLatest();
 
     return () => {
       isMounted = false;
@@ -125,12 +88,7 @@ export const GithubActivity: React.FC = () => {
         const nextDate = new Date(lastDate);
         nextDate.setUTCDate(lastDate.getUTCDate() + (i - dayOfWeek));
         const dateStr = nextDate.toISOString().split('T')[0];
-        list.push({
-          date: dateStr,
-          count: 0,
-          level: 0,
-          isFuture: true,
-        } as ContributionDay & { isFuture?: boolean });
+        list.push({ date: dateStr, count: 0, level: 0, isFuture: true });
       }
     }
     return list;
