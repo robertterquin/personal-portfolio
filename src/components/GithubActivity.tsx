@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { Icon } from '@iconify/react';
 import { motion, useReducedMotion, type Variants } from 'motion/react';
 import type { ContributionDay, GithubApiResponse } from '../types';
@@ -30,6 +30,7 @@ export const GithubActivity: React.FC = () => {
   );
   const [totalCount, setTotalCount] = useState<number>(verifiedData.total.lastYear);
   const [hoveredDay, setHoveredDay] = useState<ContributionDay | null>(null);
+  const scrollStageRef = useRef<HTMLDivElement>(null);
 
   const username = 'robertterquin';
 
@@ -72,6 +73,12 @@ export const GithubActivity: React.FC = () => {
   const todayEntry = contributions[contributions.length - 1];
 
   const stats = React.useMemo(() => computeContributionStats(contributions), [contributions]);
+
+  // On narrow screens the grid scrolls sideways; start at the most recent weeks.
+  useEffect(() => {
+    const stage = scrollStageRef.current;
+    if (stage) stage.scrollLeft = stage.scrollWidth;
+  }, [contributions]);
 
   const displayDays = React.useMemo(() => {
     if (!contributions || contributions.length === 0) return [];
@@ -119,147 +126,139 @@ export const GithubActivity: React.FC = () => {
         viewport={{ once: true, amount: 0.2 }}
         transition={{ duration: 0.4, ease: 'easeOut' }}
       >
-        <div className="activity-title-col">
-          <h2 className="section-title">GitHub Contributions</h2>
-        </div>
+        <h2 className="section-title">GitHub Contributions</h2>
+        <a
+          href={personalData.github}
+          target="_blank"
+          rel="noreferrer"
+          className="heatmap-user-meta"
+          title={`View @${username} on GitHub`}
+        >
+          <span>@{username}</span>
+          <Icon icon="lucide:arrow-up-right" width={13} height={13} />
+        </a>
       </motion.div>
 
       <motion.div
-        className="github-heatmap-container"
+        className="github-heatmap"
         initial={isReducedMotion ? false : { opacity: 0, y: 8 }}
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true, amount: 0.15 }}
         transition={{ duration: 0.5, ease: [0.16, 1, 0.3, 1] }}
       >
-        <div className="heatmap-top-bar">
-          <a
-            href={personalData.github}
-            target="_blank"
-            rel="noreferrer"
-            className="heatmap-user-meta"
-            title={`View @${username} on GitHub`}
-          >
-            <Icon icon="lucide:github" width={14} height={14} className="github-brand-icon" />
-            <span className="heatmap-username">@{username}</span>
-          </a>
-        </div>
-
-        <dl className="heatmap-stats">
-          <div className="heatmap-stat">
-            <dt>Contributions · last year</dt>
-            <dd>{totalCount.toLocaleString('en-US')}</dd>
-          </div>
-          <div className="heatmap-stat">
-            <dt>Longest streak</dt>
-            <dd>
-              {stats.longestStreak}
-              <span className="heatmap-stat-unit">{stats.longestStreak === 1 ? 'day' : 'days'}</span>
-            </dd>
-          </div>
-          <div className="heatmap-stat">
-            <dt>Current streak</dt>
-            <dd>
-              {stats.currentStreak}
-              <span className="heatmap-stat-unit">{stats.currentStreak === 1 ? 'day' : 'days'}</span>
-            </dd>
-          </div>
-          <div className="heatmap-stat">
-            <dt>Most active day</dt>
-            <dd>{stats.mostActiveWeekday ?? '—'}</dd>
-          </div>
-        </dl>
-
-        <div className="heatmap-scroll-stage">
-          <div className="heatmap-board">
-            <div className="heatmap-months-row" aria-hidden="true">
-              <span className="heatmap-month-spacer" />
-              <motion.div
-                className="heatmap-months-track"
-                initial={isReducedMotion ? false : 'hidden'}
-                whileInView="visible"
-                viewport={{ once: true, amount: 0.15 }}
-              >
-                {monthLabels.map((m) => (
-                  <motion.span
-                    key={m.label + m.col}
-                    className="heatmap-month-tag"
-                    style={{ gridColumnStart: m.col + 1 }}
-                    custom={m.col}
-                    variants={isReducedMotion ? undefined : monthVariants}
-                  >
-                    {m.label}
-                  </motion.span>
-                ))}
-              </motion.div>
-            </div>
-
-            <div className="heatmap-body-row">
-              <motion.div
-                className="heatmap-weekdays-col"
-                aria-hidden="true"
-                initial={isReducedMotion ? false : { opacity: 0 }}
-                whileInView={{ opacity: 1 }}
-                viewport={{ once: true, amount: 0.2 }}
-                transition={{ duration: 0.35, ease: 'easeOut' }}
-              >
-                <span className="weekday-label" />
-                <span className="weekday-label">Mon</span>
-                <span className="weekday-label" />
-                <span className="weekday-label">Wed</span>
-                <span className="weekday-label" />
-                <span className="weekday-label">Fri</span>
-                <span className="weekday-label" />
-              </motion.div>
-
-              <motion.div
-                className={`heatmap-grid ${isGridRevealed || isReducedMotion ? 'revealed' : ''}`}
-                role="region"
-                aria-label="Contribution Calendar"
-                onViewportEnter={() => setIsGridRevealed(true)}
-                viewport={{ once: true, amount: 0.15 }}
-              >
-                {displayDays.map((day, index) => {
-                  const isToday = day.date === todayEntry?.date;
-                  const isFuture = day.isFuture;
-                  const col = Math.floor(index / 7);
-                  const row = index % 7;
-                  const delay = (col * 0.012 + row * 0.003).toFixed(3);
-
-                  return (
-                    <div
-                      key={day.date}
-                      style={{ '--cell-delay': `${delay}s` } as React.CSSProperties}
-                      className={`heatmap-cell level-${day.level}${isToday ? ' cell-today' : ''}${isFuture ? ' cell-future' : ''}`}
-                      onMouseEnter={() => !isFuture && setHoveredDay(day)}
-                      onMouseLeave={() => setHoveredDay(null)}
-                      tabIndex={isFuture ? -1 : 0}
-                      onFocus={() => !isFuture && setHoveredDay(day)}
-                      onBlur={() => setHoveredDay(null)}
-                      aria-label={
-                        isFuture
-                          ? undefined
-                          : `${day.count} contributions on ${formatDate(day.date)}${isToday ? ' (Today)' : ''}`
-                      }
-                    />
-                  );
-                })}
-              </motion.div>
-            </div>
-          </div>
-        </div>
-
-        <motion.div
-          className="heatmap-bottom-bar"
-          initial={isReducedMotion ? false : { opacity: 0, y: 6 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, amount: 0.2 }}
-          transition={{ duration: 0.4, delay: 0.15, ease: 'easeOut' }}
-        >
-          <span className="heatmap-total-label">
-            {totalCount} {totalCount === 1 ? 'contribution' : 'contributions'} in the last year.
+        <p className="heatmap-summary">
+          <span>
+            <strong>{totalCount.toLocaleString('en-US')}</strong>{' '}
+            {totalCount === 1 ? 'contribution' : 'contributions'} in the last year
           </span>
+          <span className="heatmap-summary-sep" aria-hidden="true">/</span>
+          <span>
+            <strong>{stats.longestStreak}</strong>-day longest streak
+          </span>
+          <span className="heatmap-summary-sep" aria-hidden="true">/</span>
+          <span>
+            <strong>{stats.currentStreak}</strong>-day current streak
+          </span>
+          {stats.mostActiveWeekday && (
+            <>
+              <span className="heatmap-summary-sep" aria-hidden="true">/</span>
+              <span>
+                most active on <strong>{stats.mostActiveWeekday}s</strong>
+              </span>
+            </>
+          )}
+        </p>
 
-          <div className="heatmap-bottom-right">
+        <div className="heatmap-card">
+          <div className="heatmap-scroll-stage" ref={scrollStageRef}>
+            <div
+              className="heatmap-board"
+              style={{ '--weeks': Math.ceil(displayDays.length / 7) } as React.CSSProperties}
+            >
+              <div className="heatmap-months-row" aria-hidden="true">
+                <span className="heatmap-month-spacer" />
+                <motion.div
+                  className="heatmap-months-track"
+                  initial={isReducedMotion ? false : 'hidden'}
+                  whileInView="visible"
+                  viewport={{ once: true, amount: 0.15 }}
+                >
+                  {monthLabels.map((m) => (
+                    <motion.span
+                      key={m.label + m.col}
+                      className="heatmap-month-tag"
+                      style={{ gridColumnStart: m.col + 1 }}
+                      custom={m.col}
+                      variants={isReducedMotion ? undefined : monthVariants}
+                    >
+                      {m.label}
+                    </motion.span>
+                  ))}
+                </motion.div>
+              </div>
+
+              <div className="heatmap-body-row">
+                <motion.div
+                  className="heatmap-weekdays-col"
+                  aria-hidden="true"
+                  initial={isReducedMotion ? false : { opacity: 0 }}
+                  whileInView={{ opacity: 1 }}
+                  viewport={{ once: true, amount: 0.2 }}
+                  transition={{ duration: 0.35, ease: 'easeOut' }}
+                >
+                  <span className="weekday-label" />
+                  <span className="weekday-label">Mon</span>
+                  <span className="weekday-label" />
+                  <span className="weekday-label">Wed</span>
+                  <span className="weekday-label" />
+                  <span className="weekday-label">Fri</span>
+                  <span className="weekday-label" />
+                </motion.div>
+
+                <motion.div
+                  className={`heatmap-grid ${isGridRevealed || isReducedMotion ? 'revealed' : ''}`}
+                  role="region"
+                  aria-label="Contribution Calendar"
+                  onViewportEnter={() => setIsGridRevealed(true)}
+                  viewport={{ once: true, amount: 0.15 }}
+                >
+                  {displayDays.map((day, index) => {
+                    const isToday = day.date === todayEntry?.date;
+                    const isFuture = day.isFuture;
+                    const col = Math.floor(index / 7);
+                    const row = index % 7;
+                    const delay = (col * 0.012 + row * 0.003).toFixed(3);
+
+                    return (
+                      <div
+                        key={day.date}
+                        style={{ '--cell-delay': `${delay}s` } as React.CSSProperties}
+                        className={`heatmap-cell level-${day.level}${isToday ? ' cell-today' : ''}${isFuture ? ' cell-future' : ''}`}
+                        onMouseEnter={() => !isFuture && setHoveredDay(day)}
+                        onMouseLeave={() => setHoveredDay(null)}
+                        tabIndex={isFuture ? -1 : 0}
+                        onFocus={() => !isFuture && setHoveredDay(day)}
+                        onBlur={() => setHoveredDay(null)}
+                        aria-label={
+                          isFuture
+                            ? undefined
+                            : `${day.count} contributions on ${formatDate(day.date)}${isToday ? ' (Today)' : ''}`
+                        }
+                      />
+                    );
+                  })}
+                </motion.div>
+              </div>
+            </div>
+          </div>
+
+          <motion.div
+            className="heatmap-bottom-bar"
+            initial={isReducedMotion ? false : { opacity: 0, y: 6 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, amount: 0.2 }}
+            transition={{ duration: 0.4, delay: 0.15, ease: 'easeOut' }}
+          >
             <span className="heatmap-inspection-status">
               {hoveredDay ? (
                 <>
@@ -284,8 +283,8 @@ export const GithubActivity: React.FC = () => {
               <span className="legend-cell level-4" />
               <span>More</span>
             </div>
-          </div>
-        </motion.div>
+          </motion.div>
+        </div>
       </motion.div>
     </section>
   );

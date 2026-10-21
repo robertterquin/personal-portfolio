@@ -43,8 +43,9 @@
   --scrollbar-thumb: #332f2a;
 
   
-  --gh-cell-size: clamp(20px, 1.6vw, 24px);
-  --gh-cell-gap: clamp(4px, 0.35vw, 5px);
+  --gh-cell-gap: 4px;
+  --heat-base: #161412;
+  --heat: #d4945c;
 }
 
 html.theme-day,
@@ -67,6 +68,8 @@ html.theme-day body {
   --accent-dim: rgba(142, 88, 46, 0.1);
   --accent-glow: rgba(142, 88, 46, 0.18);
   --scrollbar-thumb: #c2b7a9;
+  --heat-base: #ebe5db;
+  --heat: #8e582e;
 
   --leather: #8e582e;
   --leather-subtle: rgba(142, 88, 46, 0.08);
