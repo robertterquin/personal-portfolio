@@ -2,6 +2,8 @@ export type Theme = 'night' | 'day';
 
 export interface PersonalData {
   name: string;
+  role: string;
+  specialty: string;
   location: string;
   shortBio: string;
   email: string;

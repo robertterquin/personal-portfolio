@@ -44,6 +44,21 @@
   opacity: 0.85;
 }
 
+.hero-role {
+  margin: -8px 0 16px 0;
+  font-family: var(--font-display);
+  font-size: var(--text-xl);
+  font-weight: 600;
+  letter-spacing: -0.01em;
+  line-height: 1.35;
+  color: var(--ink);
+}
+
+.hero-role-specialty {
+  font-weight: 500;
+  color: var(--ink-dim);
+}
+
 .hero-bio {
   margin: 0 0 34px 0;
   font-size: var(--text-md);
@@ -207,6 +222,11 @@ html.theme-day .portrait-frame:hover {
   .hero-title {
     font-size: clamp(2.8rem, 12.5vw, 4.2rem);
     margin-bottom: 22px;
+  }
+
+  .hero-role {
+    margin-top: -6px;
+    font-size: var(--text-lg);
   }
 
   .hero-achievement-strip {

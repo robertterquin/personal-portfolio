@@ -122,6 +122,11 @@ export const WorkSection: React.FC = () => {
                   <h3 className="row-title">{project.title}</h3>
                 </div>
                 <p className="row-description">{project.description}</p>
+                <ul className="row-tags" aria-label={`${project.title} tech stack`}>
+                  {project.stack.split('·').map((tech) => (
+                    <li key={tech.trim()}>{tech.trim()}</li>
+                  ))}
+                </ul>
               </div>
 
               <div className="row-col-actions">
@@ -170,14 +175,6 @@ export const WorkSection: React.FC = () => {
                         <span className="viewer-tag-pill">{project.tag}</span>
                       </div>
                       <p className="mobile-expanded-detail">{project.detail}</p>
-
-                      <div className="viewer-stack-tags">
-                        {project.stack.split('·').map((tech, i) => (
-                          <span key={i} className="viewer-stack-tag">
-                            {tech.trim()}
-                          </span>
-                        ))}
-                      </div>
 
                       <div className="mobile-expanded-actions">
                         {project.demoUrl &&
@@ -293,14 +290,6 @@ export const WorkSection: React.FC = () => {
                   </div>
 
                   <div className="viewer-actions-row">
-                    <div className="viewer-stack-tags">
-                      {activeProject.stack.split('·').map((tech, i) => (
-                        <span key={i} className="viewer-stack-tag">
-                          {tech.trim()}
-                        </span>
-                      ))}
-                    </div>
-
                     <div className="viewer-links">
                       {activeProject.demoUrl &&
                         activeProject.demoUrl.startsWith('http') &&

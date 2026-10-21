@@ -8,9 +8,11 @@ import type {
 
 export const personalData: PersonalData = {
   name: 'Robert Terquin Laqui',
+  role: 'Software Engineer',
+  specialty: 'Flutter, React & AI-powered tools',
   location: 'Philippines',
   shortBio:
-    'Software engineer specializing in cross-platform mobile and web systems with Flutter, React, Node.js, and cloud backends. Focused on building clean, high-performance applications with thoughtful user experiences.',
+    'I build cross-platform apps end to end, from Flutter mobile apps to offline-first PWAs and AI-assisted web tools, backed by Supabase and Firebase. I care about clean code and interfaces that feel effortless to use.',
   email: 'terquinlaqui@gmail.com',
   phone: '+63 926 029 4838',
   whatsapp: 'https://wa.me/639260294838',

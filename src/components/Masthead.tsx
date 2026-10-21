@@ -48,6 +48,16 @@ export const Masthead: React.FC = () => {
           </h1>
 
           <motion.p
+            className="hero-role"
+            initial={{ opacity: 0, y: 14 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.65, delay: 0.32, ease }}
+          >
+            {personalData.role}
+            <span className="hero-role-specialty"> — {personalData.specialty}</span>
+          </motion.p>
+
+          <motion.p
             className="hero-bio"
             initial={{ opacity: 0, y: 14 }}
             animate={{ opacity: 1, y: 0 }}

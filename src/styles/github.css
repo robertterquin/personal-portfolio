@@ -26,6 +26,50 @@ html.theme-day .github-heatmap-container {
   box-shadow: 0 10px 30px rgba(158, 107, 56, 0.08);
 }
 
+.heatmap-stats {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  margin: 0;
+  border-bottom: 1px solid var(--line);
+}
+
+.heatmap-stat {
+  display: flex;
+  flex-direction: column-reverse;
+  gap: 6px;
+  padding: 18px 24px;
+  border-right: 1px solid var(--line);
+}
+
+.heatmap-stat:last-child {
+  border-right: none;
+}
+
+.heatmap-stat dt {
+  font-family: var(--font-mono);
+  font-size: var(--text-2xs);
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--ink-dim);
+}
+
+.heatmap-stat dd {
+  margin: 0;
+  font-family: var(--font-display);
+  font-size: var(--text-2xl);
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  line-height: 1.1;
+  color: var(--ink);
+}
+
+.heatmap-stat-unit {
+  margin-left: 5px;
+  font-size: var(--text-sm);
+  font-weight: 500;
+  color: var(--ink-dim);
+}
+
 .heatmap-top-bar {
   display: flex;
   align-items: center;
@@ -289,6 +333,22 @@ html.theme-day .legend-cell.level-3 { background: #8e582e; }
 html.theme-day .legend-cell.level-4 { background: #5f3414; }
 
 @media (max-width: 768px) {
+  .heatmap-stats {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .heatmap-stat {
+    padding: 14px 16px;
+  }
+
+  .heatmap-stat:nth-child(2) {
+    border-right: none;
+  }
+
+  .heatmap-stat:nth-child(-n + 2) {
+    border-bottom: 1px solid var(--line);
+  }
+
   .github-activity-section {
     padding: 60px 0;
   }

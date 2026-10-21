@@ -91,6 +91,24 @@ html.theme-day .project-index-row.row-active {
   color: var(--ink-muted);
 }
 
+.row-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 4px 14px;
+  margin: 6px 0 0 0;
+  padding: 0;
+  list-style: none;
+  font-family: var(--font-mono);
+  font-size: var(--text-xs);
+  color: var(--ink-dim);
+  transition: color 0.15s ease;
+}
+
+.project-index-row:hover .row-tags,
+.project-index-row.row-active .row-tags {
+  color: var(--ink-muted);
+}
+
 .row-col-actions {
   display: flex;
   align-items: center;
@@ -418,36 +436,6 @@ html.theme-day .viewer-img-frame:hover {
   flex-wrap: wrap;
 }
 
-.viewer-stack-tags {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 6px;
-  align-items: center;
-}
-
-.viewer-stack-tag {
-  font-family: var(--font-mono);
-  font-size: var(--text-xs);
-  color: var(--ink-dim);
-  background: var(--bg-subtle);
-  border: 1px solid var(--card-border);
-  padding: 4px 9px;
-  border-radius: 4px;
-  letter-spacing: 0.02em;
-  transition: all 0.15s ease;
-}
-
-.viewer-stack-tag:hover {
-  color: var(--ink);
-  border-color: var(--line-strong);
-}
-
-html.theme-day .viewer-stack-tag {
-  background: #faf8f4;
-  border-color: #e4dcd0;
-  color: var(--ink-muted);
-}
-
 .viewer-links {
   display: flex;
   align-items: center;
@@ -657,11 +645,6 @@ html.theme-day .viewer-stack-tag {
   .viewer-links {
     width: 100%;
     flex-wrap: wrap;
-  }
-
-  .viewer-stack-tag {
-    font-size: var(--text-xs);
-    padding: 5px 10px;
   }
 
   .viewer-btn {

@@ -5,6 +5,7 @@ import type { ContributionDay, GithubApiResponse } from '../types';
 import { personalData } from '../data/portfolioData';
 import verifiedData from '../data/githubContributions.json';
 import { buildMonthLabels } from '../utils/monthLabels';
+import { computeContributionStats } from '../utils/contributionStats';
 
 const monthVariants: Variants = {
   hidden: { opacity: 0, y: -4 },
@@ -107,6 +108,8 @@ export const GithubActivity: React.FC = () => {
 
   const todayEntry = contributions[contributions.length - 1];
 
+  const stats = React.useMemo(() => computeContributionStats(contributions), [contributions]);
+
   const displayDays = React.useMemo(() => {
     if (!contributions || contributions.length === 0) return [];
     const list = [...contributions];
@@ -182,6 +185,31 @@ export const GithubActivity: React.FC = () => {
             <span className="heatmap-username">@{username}</span>
           </a>
         </div>
+
+        <dl className="heatmap-stats">
+          <div className="heatmap-stat">
+            <dt>Contributions · last year</dt>
+            <dd>{totalCount.toLocaleString('en-US')}</dd>
+          </div>
+          <div className="heatmap-stat">
+            <dt>Longest streak</dt>
+            <dd>
+              {stats.longestStreak}
+              <span className="heatmap-stat-unit">{stats.longestStreak === 1 ? 'day' : 'days'}</span>
+            </dd>
+          </div>
+          <div className="heatmap-stat">
+            <dt>Current streak</dt>
+            <dd>
+              {stats.currentStreak}
+              <span className="heatmap-stat-unit">{stats.currentStreak === 1 ? 'day' : 'days'}</span>
+            </dd>
+          </div>
+          <div className="heatmap-stat">
+            <dt>Most active day</dt>
+            <dd>{stats.mostActiveWeekday ?? '—'}</dd>
+          </div>
+        </dl>
 
         <div className="heatmap-scroll-stage">
           <div className="heatmap-board">
