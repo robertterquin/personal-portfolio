@@ -114,7 +114,7 @@ export const projectsData: Project[] = [
       'Full-screen cooking mode with step timers, read-aloud steps, and a screen that stays awake',
       'Saved recipes, kusina staples synced to your account, and leftover-to-new-meal suggestions',
     ],
-    demoUrl: 'https://hapagg.vercel.app/',
+    demoUrl: 'https://hapag.site',
     repoUrl: 'https://github.com/robertterquin/Hapag',
   },
   {
