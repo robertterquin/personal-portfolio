@@ -136,6 +136,23 @@ export const projectsData: Project[] = [
     demoUrl: 'https://bakass.vercel.app/',
     repoUrl: 'https://github.com/robertterquin/Bakas',
   },
+  {
+    id: 'skillora',
+    number: '07',
+    title: 'Skillora',
+    tag: 'AI MICRO-LEARNING',
+    category: 'web',
+    description: 'Micro-learning studio where an AI owl breaks any skill, from guitar to Russian to knife sharpening, into step-by-step practice plans.',
+    detail:
+      'Learners ask Archimedes, the learning owl, for any skill by chat or microphone, and OpenAI GPT-4o-mini deconstructs it into a curriculum with realistic time horizons and vetted resources that lands in their Studio. Built on Next.js 14 and Supabase with row-level security, a per-learner daily AI limit, and a Supabase Edge Function that sends Resend email reminders and weekly recaps.',
+    stack: 'Next.js · TypeScript · Tailwind · Supabase · OpenAI',
+    image: '/projects/skillora-showcase.png',
+    highlights: [
+      '3D flashcards with diagram aids and spoken pronunciation, plus a checklist mode for step-by-step practice',
+      'Technique coach, Whisper-graded pronunciation, mnemonic generator, and a daily 15-minute workout built from enrolled skills',
+      'AI-generated assessments that award certificates with shareable public links, plus streaks and practice stats',
+    ],
+  },
 ];
 
 export const capabilityGroups: CapabilityGroup[] = [
