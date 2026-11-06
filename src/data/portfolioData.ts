@@ -32,7 +32,7 @@ export const projectsData: Project[] = [
     detail:
       'Built with Flutter and Riverpod on Supabase Auth and PostgreSQL. Journey data is cached on the device and synced to Supabase, scheduled local notifications deliver daily health tips and reminders, and the GNews API powers a live cancer news feed.',
     stack: 'Flutter · Dart · Riverpod · Supabase',
-    image: '/projects/oncosense-showcase.webp',
+    image: '/projects/oncosense-showcase.png',
     highlights: [
       'Journey tracker for diagnosis, treatments with session counts and side effects, daily mood, pain and symptoms, and cancer-free milestones',
       'Prevention tips, self-check guides, and a cancer type library, backed by scheduled health tips and reminders',
