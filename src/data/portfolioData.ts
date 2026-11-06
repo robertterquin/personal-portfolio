@@ -32,7 +32,7 @@ export const projectsData: Project[] = [
     detail:
       'Built with Flutter and Riverpod on Supabase Auth and PostgreSQL. Journey data is cached on the device and synced to Supabase, scheduled local notifications deliver daily health tips and reminders, and the GNews API powers a live cancer news feed.',
     stack: 'Flutter · Dart · Riverpod · Supabase',
-    image: '/projects/oncosense-showcase.png',
+    image: '/projects/oncosense-showcase.webp',
     highlights: [
       'Journey tracker for diagnosis, treatments with session counts and side effects, daily mood, pain and symptoms, and cancer-free milestones',
       'Prevention tips, self-check guides, and a cancer type library, backed by scheduled health tips and reminders',
@@ -51,7 +51,7 @@ export const projectsData: Project[] = [
     detail:
       'Logged rides add to each bike\'s total mileage, which is checked against built-in service intervals, from chain lubrication every 100 km to chain replacement around 2,500 km, to raise usage-based and time-based reminders. Built with Flutter, Riverpod, and Supabase, with Firebase Cloud Messaging and local notifications for service alerts.',
     stack: 'Flutter · Dart · Riverpod · Supabase · Firebase',
-    image: '/projects/chainly-showcase.webp',
+    image: '/projects/chainly-showcase.png',
     highlights: [
       'Usage-based (km) and time-based maintenance reminders driven by recommended service intervals',
       'Service history log with costs, categorized by chain, brakes, tires, and general service',
