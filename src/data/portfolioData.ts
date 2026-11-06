@@ -152,6 +152,7 @@ export const projectsData: Project[] = [
       'Technique coach, Whisper-graded pronunciation, mnemonic generator, and a daily 15-minute workout built from enrolled skills',
       'AI-generated assessments that award certificates with shareable public links, plus streaks and practice stats',
     ],
+    demoUrl: 'https://skillora-studio.vercel.app/',
   },
 ];
 
