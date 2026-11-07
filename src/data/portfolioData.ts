@@ -154,6 +154,25 @@ export const projectsData: Project[] = [
     ],
     demoUrl: 'https://skillora-studio.vercel.app/',
   },
+  {
+    id: 'ridetrack',
+    number: '08',
+    title: 'RideTrack',
+    tag: 'CYCLING & GPS TRACKING',
+    category: 'mobile',
+    description: 'Cycling tracker that records rides with live GPS, plans bike-friendly routes, and tracks weekly and monthly goals.',
+    detail:
+      'Rides are recorded from a high-accuracy GPS stream that updates every 5 meters, then saved to Firestore with the full route, distance, duration, and average speed. Routes come from OSRM\'s bicycle profile, which avoids expressways, and calories are estimated with a speed-based MET formula and the rider\'s weight. Built with Flutter, Firebase, and OpenStreetMap.',
+    stack: 'Flutter · Dart · Firebase · OpenStreetMap',
+    image: '/projects/ridetrack-showcase.png',
+    highlights: [
+      'Live ride recording on an OpenStreetMap map, with address search and commute or recreation ride types',
+      'Distance, ride-count, and calorie goals set per week or per month',
+      'Weekly and all-time statistics including total distance, time, calories, averages, and longest ride',
+    ],
+    demoUrl: 'https://github.com/robertterquin/RideTrack',
+    repoUrl: 'https://github.com/robertterquin/RideTrack',
+  },
 ];
 
 export const capabilityGroups: CapabilityGroup[] = [
