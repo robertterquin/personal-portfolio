@@ -102,7 +102,11 @@ export const ToolkitSection: React.FC = () => {
                 variants={isReducedMotion ? undefined : toolkitItemVariants}
               >
                 <h3 className="spec-cat-title">{group.category}</h3>
-                <p className="spec-tools-line">{group.tools.map((tool) => tool.name).join(', ')}</p>
+                <ul className="spec-chips" aria-label={`${group.category} tools`}>
+                  {group.tools.map((tool) => (
+                    <li key={tool.name}>{tool.name}</li>
+                  ))}
+                </ul>
               </motion.div>
             ))}
           </motion.div>
