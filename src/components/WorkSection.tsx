@@ -41,7 +41,6 @@ function ProjectRow({ project }: { project: Project }) {
   const live = liveUrl(project);
   const primaryUrl = live ?? project.videoUrl ?? project.repoUrl;
   const primaryLabel = live ? 'live site' : project.videoUrl ? 'demo video' : 'on GitHub';
-  const opensVideo = !live && Boolean(project.videoUrl);
 
   const image = (
     <img
@@ -100,11 +99,6 @@ function ProjectRow({ project }: { project: Project }) {
           aria-label={`Open ${project.title} ${primaryLabel}`}
         >
           {image}
-          {opensVideo && (
-            <span className="row-media-play" aria-hidden="true">
-              <Icon icon="lucide:play" width={22} height={22} />
-            </span>
-          )}
         </a>
       ) : (
         <div className="row-col-media">{image}</div>
