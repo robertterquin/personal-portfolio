@@ -237,6 +237,32 @@ export const projectsData: Project[] = [
     ],
     demoUrl: 'https://skillora-studio.vercel.app/',
   },
+  {
+    id: 'suri',
+    number: '09',
+    title: 'Suri',
+    tag: 'OFFLINE AI & SCAM DEFENSE',
+    category: 'mobile',
+    award: 'PocketDevs People\'s Choice Award · Top 15 of 281 projects, AppBuildersPH Hackathon 2026',
+    description: 'Offline iPhone app that checks messages for scam warning signs on the device and shows the exact words behind each warning.',
+    detail:
+      'Built with my team in under 24 hours for the AppBuildersPH Hackathon. Suri reads a screenshot or pasted message with Apple Vision, runs a small Qwen3 1.7B model through llama.cpp on the phone, and quotes the exact words behind each warning, so nothing is uploaded. Incoming texts are checked automatically through App Intents and iOS Shortcuts.',
+    story: {
+      problem:
+        'Scammers use SMS to reach people, so the tools to fight back should work the same way, without needing the internet.',
+      approach:
+        'An on-device model reads the message and quotes the exact words behind each warning, then drafts a short note to a trusted family member.',
+      takeaway:
+        'Running a small language model on an iPhone with llama.cpp, and reading screenshots with Apple Vision text recognition.',
+    },
+    stack: 'Swift · SwiftUI · llama.cpp · Qwen3 1.7B · Apple Vision · App Intents · iOS Shortcuts',
+    image: '/projects/suri-showcase.png',
+    highlights: [
+      'Choose a screenshot or paste text, then fix any text the reader missed before checking',
+      'Each warning quotes the exact words behind it, with a plain what-to-do step that can be read aloud',
+      'Private by default: the message stays on the phone, with an optional Ask my family note and a history of checks',
+    ],
+  },
 ];
 
 export const capabilityGroups: CapabilityGroup[] = [

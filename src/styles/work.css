@@ -84,6 +84,23 @@ html.theme-day .project-index-row.row-active {
   transition: color 0.15s ease;
 }
 
+.award-line {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  margin: 0 0 2px;
+  font-size: var(--text-sm);
+  color: var(--accent);
+}
+
+.award-line svg {
+  flex-shrink: 0;
+}
+
+.viewer-copy-header .award-line {
+  margin: 0 0 12px;
+}
+
 .row-description {
   margin: 0;
   font-size: var(--text-base);

@@ -28,6 +28,7 @@ export interface Project {
   category: 'web' | 'mobile' | 'system' | 'tool';
   description: string;
   detail: string;
+  award?: string;
   story: ProjectStory;
   stack: string;
   image: string;

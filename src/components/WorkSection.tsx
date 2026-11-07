@@ -46,6 +46,16 @@ function StoryList({ story }: { story: ProjectStory }) {
   );
 }
 
+function AwardLine({ text }: { text?: string }) {
+  if (!text) return null;
+  return (
+    <p className="award-line">
+      <Icon icon="lucide:trophy" width={13} height={13} aria-hidden="true" />
+      <span>{text}</span>
+    </p>
+  );
+}
+
 export const WorkSection: React.FC = () => {
   const shouldReduceMotion = useReducedMotion();
   const isReducedMotion = Boolean(shouldReduceMotion);
@@ -140,6 +150,7 @@ export const WorkSection: React.FC = () => {
                   <span className="row-index-num">{project.number}</span>
                   <h3 className="row-title">{project.title}</h3>
                 </div>
+                <AwardLine text={project.award} />
                 <p className="row-description">{project.description}</p>
                 <ul className="row-tags" aria-label={`${project.title} tech stack`}>
                   {project.stack.split('·').map((tech) => (
@@ -193,6 +204,7 @@ export const WorkSection: React.FC = () => {
                       <div className="viewer-meta-row">
                         <span className="viewer-tag-pill">{project.tag}</span>
                       </div>
+                      <AwardLine text={project.award} />
                       <p className="mobile-expanded-detail">{project.detail}</p>
                       <StoryList story={project.story} />
 
@@ -306,6 +318,7 @@ export const WorkSection: React.FC = () => {
                       <span className="viewer-tag-pill">{activeProject.tag}</span>
                     </div>
                     <h3 className="viewer-main-title">{activeProject.title}</h3>
+                    <AwardLine text={activeProject.award} />
                     <p className="viewer-detail-text">{activeProject.detail}</p>
                     <StoryList story={activeProject.story} />
                   </div>
