@@ -45,13 +45,3 @@ html.theme-day .tilt-glare-overlay {
   width: 100%;
   max-width: 360px;
 }
-
-.viewer-tilt-wrap {
-  width: 100%;
-  max-height: 380px;
-}
-
-.mobile-tilt-wrap {
-  width: 100%;
-  max-height: 320px;
-}
