@@ -14,6 +14,12 @@ export interface PersonalData {
   resumeUrl: string;
 }
 
+export interface ProjectStory {
+  problem: string;
+  approach: string;
+  takeaway: string;
+}
+
 export interface Project {
   id: string;
   number: string;
@@ -22,6 +28,7 @@ export interface Project {
   category: 'web' | 'mobile' | 'system' | 'tool';
   description: string;
   detail: string;
+  story: ProjectStory;
   stack: string;
   image: string;
   highlights: string[];
