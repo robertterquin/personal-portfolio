@@ -26,7 +26,7 @@
 
 .project-index-row {
   display: grid;
-  grid-template-columns: minmax(0, 1.5fr) minmax(0, 1fr);
+  grid-template-columns: minmax(0, 2fr) minmax(0, 1fr);
   align-items: center;
   gap: 48px;
   padding: 28px 0;
@@ -35,7 +35,7 @@
 
 /* Alternate sides on wider screens; phones stack image-first below. */
 .project-index-row:nth-child(even) {
-  grid-template-columns: minmax(0, 1fr) minmax(0, 1.5fr);
+  grid-template-columns: minmax(0, 1fr) minmax(0, 2fr);
 }
 
 .project-index-row:nth-child(even) .row-col-media {
