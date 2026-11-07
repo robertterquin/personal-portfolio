@@ -8,8 +8,8 @@ import type {
 
 export const personalData: PersonalData = {
   name: 'Robert Terquin Laqui',
-  role: 'Software Engineer',
-  specialty: 'Flutter, React & AI-powered tools',
+  role: 'Full-Stack Developer',
+  specialty: 'Web Platforms & Cross-Platform Mobile',
   location: 'Philippines',
   shortBio:
     'I build cross-platform apps end to end, from Flutter mobile apps to offline-first PWAs and AI-assisted web tools, backed by Supabase and Firebase. I care about clean code and interfaces that feel effortless to use.',
@@ -225,7 +225,7 @@ export const credentialsData: CredentialItem[] = [
   {
     index: '02',
     title: 'National Programming Challenge 2025',
-    institution: 'CodeChum National Programming Competition',
+    institution: '5th Place · CodeChum National Programming Competition',
     year: '2025',
     image: '/certificates/codechum-2025.webp',
     type: 'Award',
@@ -233,7 +233,7 @@ export const credentialsData: CredentialItem[] = [
   {
     index: '03',
     title: 'National Programming Challenge 2024',
-    institution: 'CodeChum National Programming Competition',
+    institution: '6th Place · CodeChum National Programming Competition',
     year: '2024',
     image: '/certificates/codechum-2024.webp',
     type: 'Award',
@@ -274,7 +274,7 @@ export const credentialsData: CredentialItem[] = [
 
 export const timelineData: TimelineEvent[] = [
   {
-    role: 'Mobile & Web Developer',
+    role: 'Full-Stack Developer',
     organization: 'Freelance',
     period: '2024 — Present',
   },
