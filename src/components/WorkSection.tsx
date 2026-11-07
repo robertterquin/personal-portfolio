@@ -1,7 +1,7 @@
 import React, { useState, useRef, useEffect } from 'react';
 import { Icon } from '@iconify/react';
 import { motion, AnimatePresence, useReducedMotion, type Variants } from 'motion/react';
-import type { Project, ProjectStory } from '../types';
+import type { Project } from '../types';
 import { projectsData } from '../data/portfolioData';
 import { TiltCard } from './TiltCard';
 
@@ -26,25 +26,6 @@ const rowItemVariants: Variants = {
     transition: { duration: 0.35, ease: 'easeOut' },
   },
 };
-
-const STORY_LABELS: [keyof ProjectStory, string][] = [
-  ['problem', 'The problem'],
-  ['approach', 'The approach'],
-  ['takeaway', 'Takeaway'],
-];
-
-function StoryList({ story }: { story: ProjectStory }) {
-  return (
-    <dl className="viewer-story">
-      {STORY_LABELS.map(([key, label]) => (
-        <div key={key}>
-          <dt>{label}</dt>
-          <dd>{story[key]}</dd>
-        </div>
-      ))}
-    </dl>
-  );
-}
 
 function AwardLine({ text }: { text?: string }) {
   if (!text) return null;
@@ -206,7 +187,6 @@ export const WorkSection: React.FC = () => {
                       </div>
                       <AwardLine text={project.award} />
                       <p className="mobile-expanded-detail">{project.detail}</p>
-                      <StoryList story={project.story} />
 
                       <div className="mobile-expanded-actions">
                         {project.demoUrl &&
@@ -320,7 +300,6 @@ export const WorkSection: React.FC = () => {
                     <h3 className="viewer-main-title">{activeProject.title}</h3>
                     <AwardLine text={activeProject.award} />
                     <p className="viewer-detail-text">{activeProject.detail}</p>
-                    <StoryList story={activeProject.story} />
                   </div>
 
                   <div className="viewer-actions-row">

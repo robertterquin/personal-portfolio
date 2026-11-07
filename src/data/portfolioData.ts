@@ -29,17 +29,9 @@ export const projectsData: Project[] = [
     tag: 'OFFLINE AI & SCAM DEFENSE',
     category: 'mobile',
     award: 'PocketDevs People\'s Choice Award · Top 15 of 281 projects, AppBuildersPH Hackathon 2026',
-    description: 'Offline iPhone app that checks messages for scam warning signs on the device and shows the exact words behind each warning.',
+    description: 'If scammers can use SMS to scam us, why can\'t we use our own tools to stop them? My team of four and I built Suri in under 24 hours for the AppBuildersPH Hackathon: an offline iPhone app that checks messages right on the phone and shows the exact words behind each warning. Getting a small language model to run fully offline on an iPhone was the toughest part.',
     detail:
       'Built with my team in under 24 hours for the AppBuildersPH Hackathon. Suri reads a screenshot or pasted message with Apple Vision, runs a small Qwen3 1.7B model through llama.cpp on the phone, and quotes the exact words behind each warning, so nothing is uploaded. Incoming texts are checked automatically through App Intents and iOS Shortcuts.',
-    story: {
-      problem:
-        'Scammers use SMS to reach people, so the tools to fight back should work the same way, without needing the internet.',
-      approach:
-        'An on-device model reads the message and quotes the exact words behind each warning, then drafts a short note to a trusted family member.',
-      takeaway:
-        'Running a small language model on an iPhone with llama.cpp, and reading screenshots with Apple Vision text recognition.',
-    },
     stack: 'Swift · SwiftUI · llama.cpp · Qwen3 1.7B · Apple Vision · App Intents · iOS Shortcuts',
     image: '/projects/suri-showcase.png',
     highlights: [
@@ -54,17 +46,9 @@ export const projectsData: Project[] = [
     title: 'OncoSense',
     tag: 'HEALTHCARE MOBILE APP',
     category: 'mobile',
-    description: 'Cancer awareness and support app combining prevention guides, a personal treatment journey tracker, and a community Q&A forum.',
+    description: 'I lost my mom to breast cancer, so I know how hard this disease is, both for patients and for the people around them. I built OncoSense to raise cancer awareness for everyone, with prevention guides, a treatment journey tracker, and a community where people can ask questions. It was my first time building with Flutter, and I learned how to keep journey data saved on the phone while syncing it to the cloud.',
     detail:
       'Built with Flutter and Riverpod on Supabase Auth and PostgreSQL. Journey data is cached on the device and synced to Supabase, scheduled local notifications deliver daily health tips and reminders, and the GNews API powers a live cancer news feed.',
-    story: {
-      problem:
-        'Cancer information, treatment tracking, and peer support are scattered across different apps and sites.',
-      approach:
-        'One Flutter app with prevention guides, a personal journey tracker, and a community Q&A forum, with reminders and a live news feed.',
-      takeaway:
-        'Caching journey data on the device and syncing it to Supabase, plus scheduling local notifications that fire without a connection.',
-    },
     stack: 'Flutter · Dart · Riverpod · Supabase',
     image: '/projects/oncosense-showcase.webp',
     highlights: [
@@ -81,17 +65,9 @@ export const projectsData: Project[] = [
     title: 'Spendly',
     tag: 'FINTECH & BUDGET',
     category: 'mobile',
-    description: 'Personal finance tracker with multiple accounts, category charts, and an AI assistant that manages transactions from plain-language chat.',
+    description: 'I can\'t always control my spending when I have money, so I built Spendly to keep track of my daily expenses. Instead of filling in forms, I tell the AI assistant what I spent and it updates the right account. It taught me how to integrate AI with Groq, and how to get a chatbot to reply with actions the app can safely apply.',
     detail:
       'The assistant runs on Groq\'s Llama 3.3 70B. Each message is sent with the user\'s accounts and recent transactions, and the model replies with a structured JSON action (add, edit, or delete a transaction, set a balance, or transfer between accounts) that the app then applies. Built feature-first with Riverpod and Supabase.',
-    story: {
-      problem:
-        'Logging every expense through forms is tedious, so tracking tends to quietly stop.',
-      approach:
-        'Describe what happened in plain language, like spent 200 on food, and an AI assistant applies it to the right account.',
-      takeaway:
-        'Getting an LLM to reply with strict JSON actions the app can safely apply, using Llama 3.3 70B on Groq.',
-    },
     stack: 'Flutter · Dart · Riverpod · Supabase · Groq',
     image: '/projects/spendly-showcase.webp',
     highlights: [
@@ -108,17 +84,9 @@ export const projectsData: Project[] = [
     title: 'Chainly',
     tag: 'CYCLING & MAINTENANCE',
     category: 'mobile',
-    description: 'Bike maintenance companion that tracks rides, service history, and mileage-based reminders across a multi-bike garage.',
+    description: 'I\'m a cyclist, and keeping track of bike maintenance from memory doesn\'t work. I built Chainly to log my rides and service history and remind me when parts are due, from chain lube every 100 km to a new chain around 2,500 km. The trickiest bit was turning ride distance into reminders and delivering them as notifications.',
     detail:
       'Logged rides add to each bike\'s total mileage, which is checked against built-in service intervals, from chain lubrication every 100 km to chain replacement around 2,500 km, to raise usage-based and time-based reminders. Built with Flutter, Riverpod, and Supabase, with Firebase Cloud Messaging and local notifications for service alerts.',
-    story: {
-      problem:
-        'Bike parts wear out by mileage, but maintenance is usually tracked from memory, or not at all.',
-      approach:
-        'Each logged ride adds to a bike\'s total distance, which is checked against service intervals, from chain lube at 100 km to a new chain near 2,500 km.',
-      takeaway:
-        'Turning raw ride distance into usage-based and time-based reminders, delivered through Firebase Cloud Messaging and local notifications.',
-    },
     stack: 'Flutter · Dart · Riverpod · Supabase · Firebase',
     image: '/projects/chainly-showcase.png',
     highlights: [
@@ -135,17 +103,9 @@ export const projectsData: Project[] = [
     title: 'RideTrack',
     tag: 'CYCLING & GPS TRACKING',
     category: 'mobile',
-    description: 'Cycling tracker that records rides with live GPS, plans bike-friendly routes, and tracks weekly and monthly goals.',
+    description: 'I built RideTrack for fun, because I wanted to make my own version of Strava. It records rides with live GPS, plans bike-friendly routes, and tracks weekly and monthly goals. It\'s one of my first projects and I learned a lot from it, including adding a map to an app for the first time, using OpenStreetMap.',
     detail:
       'Rides are recorded from a high-accuracy GPS stream that updates every 5 meters, then saved to Firestore with the full route, distance, duration, and average speed. Routes come from OSRM\'s bicycle profile, which avoids expressways, and calories are estimated with a speed-based MET formula and the rider\'s weight. Built with Flutter, Firebase, and OpenStreetMap.',
-    story: {
-      problem:
-        'Cyclists want to record rides, plan routes, and follow goals without juggling several apps.',
-      approach:
-        'A Flutter app that logs a GPS route every 5 meters to Firestore, plans bike routes with OSRM, and tracks weekly or monthly goals.',
-      takeaway:
-        'Working with live GPS streams and free OpenStreetMap data, and estimating calories from speed and weight with a MET formula.',
-    },
     stack: 'Flutter · Dart · Firebase · OpenStreetMap',
     image: '/projects/ridetrack-showcase.png',
     highlights: [
@@ -162,17 +122,9 @@ export const projectsData: Project[] = [
     title: 'Hunch',
     tag: 'AI SECURITY & EDTECH',
     category: 'web',
-    description: 'Scam checker that helps students review internship and OJT listings for warning signs before they apply.',
+    description: 'I\'m starting to look for OJT opportunities myself, so I built Hunch to help students like me check whether a listing is legit before applying. It scores a post across eight warning signs and shows the exact words behind each one. The hardest part was opening listing links safely on the server, with limits on redirects, page size, and private addresses.',
     detail:
       'A deterministic rule engine scores each listing from 0 to 100 across eight warning signs, including fees before starting, requests for IDs or bank details, urgency pressure, and chat-only hiring, and highlights the evidence in the text. OpenAI then writes a plain-language explanation using structured outputs, with a rules-only fallback when the AI is unavailable.',
-    story: {
-      problem:
-        'Students looking for internships and OJT run into fake listings that ask for fees or ID details up front.',
-      approach:
-        'A rule engine scores each listing across eight warning signs and highlights the evidence, and OpenAI only writes the plain-language explanation.',
-      takeaway:
-        'Keeping the score deterministic and tested, with AI as the explainer and a rules-only fallback when it is unavailable.',
-    },
     stack: 'React · TypeScript · OpenAI · Supabase · Vercel',
     image: '/projects/hunch-showcase.webp',
     highlights: [
@@ -189,17 +141,9 @@ export const projectsData: Project[] = [
     title: 'Hapag',
     tag: 'AI CULINARY ASSISTANT',
     category: 'web',
-    description: 'Filipino cooking assistant that turns the ingredients you already have into ulam ideas with recipes, peso cost estimates, and substitutions.',
+    description: 'Ano\'ng ulam? I built Hapag for families and anyone who can\'t decide what to cook based on their budget, their taste, and the sangkap they already have. Type your ingredients in English, Tagalog, or Taglish, and it suggests Filipino dishes with recipes and peso cost estimates. I learned how to keep the AI tied to a real dish catalog, so every recipe matches an actual Filipino dish.',
     detail:
       'Ingredients typed in English, Tagalog, or Taglish are normalized and matched against a catalog of Filipino dishes, then OpenAI, called through a Supabase Edge Function, writes full recipes grounded in those matches. Each result includes Filipino measurements, step-by-step instructions, serving-size scaling, dietary notes, and a per-ingredient cost breakdown.',
-    story: {
-      problem:
-        'Deciding what to cook from what is already in the kitchen, on a budget, takes more effort than it should.',
-      approach:
-        'Typed ingredients in English, Tagalog, or Taglish are matched to a catalog of Filipino dishes, then OpenAI writes recipes with peso costs from those matches.',
-      takeaway:
-        'Grounding AI output in a real dish catalog through a Supabase Edge Function, so recipes stay tied to dishes that exist.',
-    },
     stack: 'React · TypeScript · OpenAI · Supabase',
     image: '/projects/hapag-showcase.webp',
     highlights: [
@@ -216,17 +160,9 @@ export const projectsData: Project[] = [
     title: 'Bakas',
     tag: 'CIVIC TECH & ROAD RADAR',
     category: 'web',
-    description: 'Crowdsourced road hazard map with no-login 1-tap reporting, offline-first sync, and hazards that expire unless the community confirms them.',
+    description: 'Road hazards like potholes and floods are easy to spot but hard to report on the go. Bakas makes it one tap with no account needed, and hazards fade from the map unless other people confirm them. Making it work offline was the real challenge: reports wait on the phone and sync once you\'re back online.',
     detail:
       'An offline-first PWA that queues reports in IndexedDB and syncs them in the background once back online. Supabase and PostGIS load only hazards within 5 km, and each hazard type has its own lifetime, from 24 hours for road obstructions to 7 days for potholes, extended by community upvotes and cleared by resolve votes.',
-    story: {
-      problem:
-        'Many people see road hazards, but reporting often needs an account and a signal, and old reports linger after the hazard is gone.',
-      approach:
-        'One-tap reporting with no login, an offline queue that syncs later, and hazards that expire per type unless the community confirms them.',
-      takeaway:
-        'Offline-first sync with an IndexedDB queue and background sync, and PostGIS queries that load only hazards within 5 km.',
-    },
     stack: 'React · TypeScript · Supabase · PostGIS · Leaflet',
     image: '/projects/bakas-showcase.webp',
     highlights: [
@@ -243,17 +179,9 @@ export const projectsData: Project[] = [
     title: 'Skillora',
     tag: 'AI MICRO-LEARNING',
     category: 'web',
-    description: 'Micro-learning studio where an AI owl breaks any skill, from guitar to Russian to knife sharpening, into step-by-step practice plans.',
+    description: 'Skillora turns any skill, from guitar to Russian to knife sharpening, into short, ordered steps you can practice. You ask Archimedes the owl and it builds the plan, then helps you practice with flashcards, a technique coach, and voice grading. Along the way I learned to run several AI features, including Whisper for pronunciation, while keeping each learner within a daily limit.',
     detail:
       'Learners ask Archimedes, the learning owl, for any skill by chat or microphone, and OpenAI GPT-4o-mini deconstructs it into a curriculum with realistic time horizons and vetted resources that lands in their Studio. Built on Next.js 14 and Supabase with row-level security, a per-learner daily AI limit, and a Supabase Edge Function that sends Resend email reminders and weekly recaps.',
-    story: {
-      problem:
-        'Learning a new skill means piecing together plans and resources from scattered sources, then guessing what to practice.',
-      approach:
-        'Archimedes the owl turns any skill into a short ordered curriculum, then drives practice with flashcards, a technique coach, and voice grading.',
-      takeaway:
-        'Running several OpenAI features, GPT-4o-mini and Whisper, behind per-learner daily limits and Supabase row-level security.',
-    },
     stack: 'Next.js · TypeScript · Tailwind · Supabase · OpenAI',
     image: '/projects/skillora-showcase.png',
     highlights: [
