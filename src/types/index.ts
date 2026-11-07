@@ -18,14 +18,10 @@ export interface Project {
   id: string;
   number: string;
   title: string;
-  tag: string;
-  category: 'web' | 'mobile' | 'system' | 'tool';
   description: string;
-  detail: string;
   award?: string;
   stack: string;
   image: string;
-  highlights: string[];
   demoUrl?: string;
   repoUrl?: string;
 }
