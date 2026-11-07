@@ -171,14 +171,6 @@ export const capabilityGroups: CapabilityGroup[] = [
 export const credentialsData: CredentialItem[] = [
   {
     index: '01',
-    title: 'AppBuildersPH Hackathon 2026',
-    institution: 'PocketDevs People\'s Choice Award · Top 15 of 281 projects',
-    year: '2026',
-    image: '/projects/suri-showcase.png',
-    type: 'Award',
-  },
-  {
-    index: '02',
     title: 'HackForGov 2025: CALABARZON',
     institution: '2nd Runner-Up · DICT Cybersecurity Challenge',
     year: '2025',
@@ -186,7 +178,7 @@ export const credentialsData: CredentialItem[] = [
     type: 'Award',
   },
   {
-    index: '03',
+    index: '02',
     title: 'National Programming Challenge 2025',
     institution: '5th Place · CodeChum National Programming Competition',
     year: '2025',
@@ -194,7 +186,7 @@ export const credentialsData: CredentialItem[] = [
     type: 'Award',
   },
   {
-    index: '04',
+    index: '03',
     title: 'National Programming Challenge 2024',
     institution: '6th Place · CodeChum National Programming Competition',
     year: '2024',
@@ -202,7 +194,7 @@ export const credentialsData: CredentialItem[] = [
     type: 'Award',
   },
   {
-    index: '05',
+    index: '04',
     title: 'IT Specialist in Databases',
     institution: 'Certiport Industry Certification',
     year: '2025',
@@ -210,7 +202,7 @@ export const credentialsData: CredentialItem[] = [
     type: 'Certification',
   },
   {
-    index: '06',
+    index: '05',
     title: 'IT Specialist in Cybersecurity',
     institution: 'Certiport Industry Certification',
     year: '2026',
@@ -218,7 +210,7 @@ export const credentialsData: CredentialItem[] = [
     type: 'Certification',
   },
   {
-    index: '07',
+    index: '06',
     title: 'HTML and CSS Specialist',
     institution: 'Certiport Web Standards Certification',
     year: '2026',
@@ -226,7 +218,7 @@ export const credentialsData: CredentialItem[] = [
     type: 'Certification',
   },
   {
-    index: '08',
+    index: '07',
     title: 'Oracle Java Foundations',
     institution: 'Oracle Certified Foundations Associate',
     year: '2024',
