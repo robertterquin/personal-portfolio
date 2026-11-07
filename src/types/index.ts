@@ -23,6 +23,7 @@ export interface Project {
   stack: string;
   image: string;
   demoUrl?: string;
+  videoUrl?: string;
   repoUrl?: string;
 }
 

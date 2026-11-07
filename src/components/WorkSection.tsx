@@ -39,7 +39,8 @@ function AwardLine({ text }: { text?: string }) {
 
 function ProjectRow({ project }: { project: Project }) {
   const live = liveUrl(project);
-  const primaryUrl = live ?? project.repoUrl;
+  const primaryUrl = live ?? project.videoUrl ?? project.repoUrl;
+  const primaryLabel = live ? 'live site' : project.videoUrl ? 'demo video' : 'on GitHub';
 
   const image = (
     <img
@@ -65,11 +66,17 @@ function ProjectRow({ project }: { project: Project }) {
             <li key={tech.trim()}>{tech.trim()}</li>
           ))}
         </ul>
-        {(live || project.repoUrl) && (
+        {(live || project.videoUrl || project.repoUrl) && (
           <div className="row-links">
             {live && (
               <a href={live} target="_blank" rel="noreferrer">
                 <span>Live site</span>
+                <Icon icon="lucide:arrow-up-right" width={12} height={12} aria-hidden="true" />
+              </a>
+            )}
+            {project.videoUrl && (
+              <a href={project.videoUrl} target="_blank" rel="noreferrer">
+                <span>Watch demo</span>
                 <Icon icon="lucide:arrow-up-right" width={12} height={12} aria-hidden="true" />
               </a>
             )}
@@ -89,7 +96,7 @@ function ProjectRow({ project }: { project: Project }) {
           href={primaryUrl}
           target="_blank"
           rel="noreferrer"
-          aria-label={`Open ${project.title} ${live ? 'live site' : 'on GitHub'}`}
+          aria-label={`Open ${project.title} ${primaryLabel}`}
         >
           {image}
         </a>

@@ -30,6 +30,7 @@ export const projectsData: Project[] = [
     description: 'If scammers can use SMS to scam us, why can\'t we use our own tools to stop them? My team of four and I built Suri in under 24 hours for the AppBuildersPH Hackathon: an offline iPhone app that checks messages right on the phone and shows the exact words behind each warning. Getting a small language model to run fully offline on an iPhone was the toughest part.',
     stack: 'Swift · SwiftUI · llama.cpp · Qwen3 1.7B · Apple Vision · App Intents · iOS Shortcuts',
     image: '/projects/suri-showcase.png',
+    videoUrl: 'https://www.youtube.com/watch?v=cyMo31DR3WI',
   },
   {
     id: 'oncosense',
