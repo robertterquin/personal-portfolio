@@ -23,8 +23,34 @@ export const personalData: PersonalData = {
 
 export const projectsData: Project[] = [
   {
-    id: 'oncosense',
+    id: 'suri',
     number: '01',
+    title: 'Suri',
+    tag: 'OFFLINE AI & SCAM DEFENSE',
+    category: 'mobile',
+    award: 'PocketDevs People\'s Choice Award · Top 15 of 281 projects, AppBuildersPH Hackathon 2026',
+    description: 'Offline iPhone app that checks messages for scam warning signs on the device and shows the exact words behind each warning.',
+    detail:
+      'Built with my team in under 24 hours for the AppBuildersPH Hackathon. Suri reads a screenshot or pasted message with Apple Vision, runs a small Qwen3 1.7B model through llama.cpp on the phone, and quotes the exact words behind each warning, so nothing is uploaded. Incoming texts are checked automatically through App Intents and iOS Shortcuts.',
+    story: {
+      problem:
+        'Scammers use SMS to reach people, so the tools to fight back should work the same way, without needing the internet.',
+      approach:
+        'An on-device model reads the message and quotes the exact words behind each warning, then drafts a short note to a trusted family member.',
+      takeaway:
+        'Running a small language model on an iPhone with llama.cpp, and reading screenshots with Apple Vision text recognition.',
+    },
+    stack: 'Swift · SwiftUI · llama.cpp · Qwen3 1.7B · Apple Vision · App Intents · iOS Shortcuts',
+    image: '/projects/suri-showcase.png',
+    highlights: [
+      'Choose a screenshot or paste text, then fix any text the reader missed before checking',
+      'Each warning quotes the exact words behind it, with a plain what-to-do step that can be read aloud',
+      'Private by default: the message stays on the phone, with an optional Ask my family note and a history of checks',
+    ],
+  },
+  {
+    id: 'oncosense',
+    number: '02',
     title: 'OncoSense',
     tag: 'HEALTHCARE MOBILE APP',
     category: 'mobile',
@@ -51,7 +77,7 @@ export const projectsData: Project[] = [
   },
   {
     id: 'spendly',
-    number: '02',
+    number: '03',
     title: 'Spendly',
     tag: 'FINTECH & BUDGET',
     category: 'mobile',
@@ -78,7 +104,7 @@ export const projectsData: Project[] = [
   },
   {
     id: 'chainly',
-    number: '03',
+    number: '04',
     title: 'Chainly',
     tag: 'CYCLING & MAINTENANCE',
     category: 'mobile',
@@ -105,7 +131,7 @@ export const projectsData: Project[] = [
   },
   {
     id: 'ridetrack',
-    number: '04',
+    number: '05',
     title: 'RideTrack',
     tag: 'CYCLING & GPS TRACKING',
     category: 'mobile',
@@ -132,7 +158,7 @@ export const projectsData: Project[] = [
   },
   {
     id: 'hunch',
-    number: '05',
+    number: '06',
     title: 'Hunch',
     tag: 'AI SECURITY & EDTECH',
     category: 'web',
@@ -159,7 +185,7 @@ export const projectsData: Project[] = [
   },
   {
     id: 'hapag',
-    number: '06',
+    number: '07',
     title: 'Hapag',
     tag: 'AI CULINARY ASSISTANT',
     category: 'web',
@@ -186,7 +212,7 @@ export const projectsData: Project[] = [
   },
   {
     id: 'bakas',
-    number: '07',
+    number: '08',
     title: 'Bakas',
     tag: 'CIVIC TECH & ROAD RADAR',
     category: 'web',
@@ -213,7 +239,7 @@ export const projectsData: Project[] = [
   },
   {
     id: 'skillora',
-    number: '08',
+    number: '09',
     title: 'Skillora',
     tag: 'AI MICRO-LEARNING',
     category: 'web',
@@ -236,32 +262,6 @@ export const projectsData: Project[] = [
       'AI-generated assessments that award certificates with shareable public links, plus streaks and practice stats',
     ],
     demoUrl: 'https://skillora-studio.vercel.app/',
-  },
-  {
-    id: 'suri',
-    number: '09',
-    title: 'Suri',
-    tag: 'OFFLINE AI & SCAM DEFENSE',
-    category: 'mobile',
-    award: 'PocketDevs People\'s Choice Award · Top 15 of 281 projects, AppBuildersPH Hackathon 2026',
-    description: 'Offline iPhone app that checks messages for scam warning signs on the device and shows the exact words behind each warning.',
-    detail:
-      'Built with my team in under 24 hours for the AppBuildersPH Hackathon. Suri reads a screenshot or pasted message with Apple Vision, runs a small Qwen3 1.7B model through llama.cpp on the phone, and quotes the exact words behind each warning, so nothing is uploaded. Incoming texts are checked automatically through App Intents and iOS Shortcuts.',
-    story: {
-      problem:
-        'Scammers use SMS to reach people, so the tools to fight back should work the same way, without needing the internet.',
-      approach:
-        'An on-device model reads the message and quotes the exact words behind each warning, then drafts a short note to a trusted family member.',
-      takeaway:
-        'Running a small language model on an iPhone with llama.cpp, and reading screenshots with Apple Vision text recognition.',
-    },
-    stack: 'Swift · SwiftUI · llama.cpp · Qwen3 1.7B · Apple Vision · App Intents · iOS Shortcuts',
-    image: '/projects/suri-showcase.png',
-    highlights: [
-      'Choose a screenshot or paste text, then fix any text the reader missed before checking',
-      'Each warning quotes the exact words behind it, with a plain what-to-do step that can be read aloud',
-      'Private by default: the message stays on the phone, with an optional Ask my family note and a history of checks',
-    ],
   },
 ];
 
