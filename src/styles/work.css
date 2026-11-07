@@ -158,6 +158,27 @@ a.row-col-media:hover .row-media-img {
   transform: scale(1.02);
 }
 
+.work-toggle {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin: 32px auto 0;
+  padding: 10px 20px;
+  font-family: var(--font-mono);
+  font-size: var(--text-sm);
+  color: var(--ink);
+  background: transparent;
+  border: 1px solid var(--line-strong);
+  border-radius: 999px;
+  cursor: pointer;
+  transition: border-color 0.15s ease, color 0.15s ease;
+}
+
+.work-toggle:hover {
+  border-color: var(--accent);
+  color: var(--accent);
+}
+
 @media (prefers-reduced-motion: reduce) {
   a.row-col-media:hover .row-media-img {
     transform: none;

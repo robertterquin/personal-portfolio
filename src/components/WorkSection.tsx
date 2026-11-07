@@ -1,8 +1,13 @@
-import React from 'react';
+import React, { useRef, useState } from 'react';
+import { flushSync } from 'react-dom';
 import { Icon } from '@iconify/react';
 import { motion, useReducedMotion, type Variants } from 'motion/react';
 import type { Project } from '../types';
 import { projectsData } from '../data/portfolioData';
+import { keepInPlace } from '../hooks';
+
+/** Projects shown before "Show all"; the data is ordered with the featured ones first. */
+const FEATURED_COUNT = 4;
 
 const rowListVariants: Variants = {
   hidden: {},
@@ -107,6 +112,18 @@ function ProjectRow({ project }: { project: Project }) {
 
 export const WorkSection: React.FC = () => {
   const isReducedMotion = Boolean(useReducedMotion());
+  const [showAll, setShowAll] = useState(false);
+  const toggleRef = useRef<HTMLButtonElement>(null);
+  const visibleProjects = showAll ? projectsData : projectsData.slice(0, FEATURED_COUNT);
+  const hasMore = projectsData.length > FEATURED_COUNT;
+
+  const handleToggle = () => {
+    const button = toggleRef.current;
+    const topBefore = button?.getBoundingClientRect().top;
+    flushSync(() => setShowAll((prev) => !prev));
+    // Collapsing removes rows above the button; keep it under the visitor's cursor.
+    if (showAll && button && topBefore !== undefined) keepInPlace(button, topBefore);
+  };
 
   return (
     <section id="work" className="work-index-section">
@@ -123,13 +140,14 @@ export const WorkSection: React.FC = () => {
       </motion.div>
 
       <motion.div
+        id="project-list"
         className="project-index-list"
         initial={isReducedMotion ? false : 'hidden'}
         whileInView="visible"
         viewport={{ once: true, amount: 0.08 }}
         variants={isReducedMotion ? undefined : rowListVariants}
       >
-        {projectsData.map((project) => (
+        {visibleProjects.map((project) => (
           <motion.article
             key={project.id}
             variants={isReducedMotion ? undefined : rowItemVariants}
@@ -139,6 +157,25 @@ export const WorkSection: React.FC = () => {
           </motion.article>
         ))}
       </motion.div>
+
+      {hasMore && (
+        <button
+          ref={toggleRef}
+          type="button"
+          className="work-toggle"
+          onClick={handleToggle}
+          aria-expanded={showAll}
+          aria-controls="project-list"
+        >
+          <span>{showAll ? 'Show fewer' : `Show all ${projectsData.length} projects`}</span>
+          <Icon
+            icon={showAll ? 'lucide:chevron-up' : 'lucide:chevron-down'}
+            width={14}
+            height={14}
+            aria-hidden="true"
+          />
+        </button>
+      )}
     </section>
   );
 };

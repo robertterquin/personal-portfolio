@@ -5,6 +5,21 @@ import { ScrollSmoother } from 'gsap/ScrollSmoother';
 
 gsap.registerPlugin(ScrollTrigger, ScrollSmoother);
 
+/**
+ * Keep `el` at the viewport position it had before a layout change above it.
+ * Call right after the DOM change is committed (e.g. inside/after flushSync).
+ */
+export function keepInPlace(el: HTMLElement, topBefore: number): void {
+  const smoother = ScrollSmoother.get();
+  if (!smoother) {
+    window.scrollBy(0, el.getBoundingClientRect().top - topBefore);
+    return;
+  }
+  // Re-measure first: a refresh after our jump would restore the smoother's old position.
+  ScrollTrigger.refresh();
+  smoother.scrollTo(smoother.scrollTop() + el.getBoundingClientRect().top - topBefore, false);
+}
+
 /** GSAP ScrollSmoother on #smooth-wrapper / #smooth-content. Skipped for reduced motion. */
 export function useSmoothScroll(): void {
   useEffect(() => {
@@ -38,7 +53,12 @@ export function useSmoothScroll(): void {
     };
     document.addEventListener('click', onClick);
 
+    // The smoother sizes the page once; re-measure when content grows or shrinks (e.g. "Show all projects").
+    const resizeObserver = new ResizeObserver(() => ScrollTrigger.refresh());
+    resizeObserver.observe(smoother.content());
+
     return () => {
+      resizeObserver.disconnect();
       document.removeEventListener('click', onClick);
       smoother.kill();
       if (header) gsap.set(header, { clearProps: 'transform' });
