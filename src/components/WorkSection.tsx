@@ -9,16 +9,6 @@ import { keepInPlace } from '../hooks';
 /** Projects shown before "Show all"; the data is ordered with the featured ones first. */
 const FEATURED_COUNT = 4;
 
-const rowListVariants: Variants = {
-  hidden: {},
-  visible: {
-    transition: {
-      staggerChildren: 0.04,
-      delayChildren: 0.05,
-    },
-  },
-};
-
 const rowItemVariants: Variants = {
   hidden: {
     opacity: 0,
@@ -139,24 +129,21 @@ export const WorkSection: React.FC = () => {
         </div>
       </motion.div>
 
-      <motion.div
-        id="project-list"
-        className="project-index-list"
-        initial={isReducedMotion ? false : 'hidden'}
-        whileInView="visible"
-        viewport={{ once: true, amount: 0.08 }}
-        variants={isReducedMotion ? undefined : rowListVariants}
-      >
+      <div id="project-list" className="project-index-list">
         {visibleProjects.map((project) => (
+          // Each row animates itself, so rows added by "Show all" fade in too.
           <motion.article
             key={project.id}
+            initial={isReducedMotion ? false : 'hidden'}
+            whileInView="visible"
+            viewport={{ once: true, amount: 0.15 }}
             variants={isReducedMotion ? undefined : rowItemVariants}
             className="project-index-row"
           >
             <ProjectRow project={project} />
           </motion.article>
         ))}
-      </motion.div>
+      </div>
 
       {hasMore && (
         <button
