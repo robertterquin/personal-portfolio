@@ -116,8 +116,7 @@ export const projectsData: Project[] = [
 export const capabilityGroups: CapabilityGroup[] = [
   {
     code: '01',
-    category: 'Mobile Systems & Architecture',
-    focus: 'Cross-platform engineering, offline-first synchronization, and state management.',
+    category: 'Mobile',
     tools: [
       { name: 'Flutter & Dart' },
       { name: 'Android Studio & SDKs' },
@@ -128,8 +127,7 @@ export const capabilityGroups: CapabilityGroup[] = [
   },
   {
     code: '02',
-    category: 'Web & Full-Stack Interfaces',
-    focus: 'Component architecture, strict typing, and high-performance rendering.',
+    category: 'Web',
     tools: [
       { name: 'React' },
       { name: 'TypeScript' },
@@ -143,8 +141,7 @@ export const capabilityGroups: CapabilityGroup[] = [
   },
   {
     code: '03',
-    category: 'Backend & Data Infrastructure',
-    focus: 'Relational schema modeling, REST APIs, AI integrations, and secure authentication.',
+    category: 'Backend & Data',
     tools: [
       { name: 'Node.js & Express' },
       { name: 'MongoDB' },
@@ -157,8 +154,7 @@ export const capabilityGroups: CapabilityGroup[] = [
   },
   {
     code: '04',
-    category: 'Core Engineering & Security',
-    focus: 'Defensive cybersecurity standards, version control, and automated testing.',
+    category: 'Core & Security',
     tools: [
       { name: 'Java' },
       { name: 'Python' },

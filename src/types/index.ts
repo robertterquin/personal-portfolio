@@ -34,7 +34,6 @@ export interface CapabilityTool {
 export interface CapabilityGroup {
   code: string;
   category: string;
-  focus: string;
   tools: CapabilityTool[];
 }
 

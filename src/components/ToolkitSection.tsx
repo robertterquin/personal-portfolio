@@ -101,21 +101,8 @@ export const ToolkitSection: React.FC = () => {
                 className="spec-group-row"
                 variants={isReducedMotion ? undefined : toolkitItemVariants}
               >
-                <div className="spec-group-header">
-                  <h3 className="spec-cat-title">{group.category}</h3>
-                </div>
-                <p className="spec-focus-desc">{group.focus}</p>
-
-                <div className="spec-tools-flow">
-                  {group.tools.map((tool, idx) => (
-                    <React.Fragment key={tool.name}>
-                      {idx > 0 && <span className="spec-flow-sep" aria-hidden="true" />}
-                      <span className="spec-tool-item">
-                        <span className="tool-text">{tool.name}</span>
-                      </span>
-                    </React.Fragment>
-                  ))}
-                </div>
+                <h3 className="spec-cat-title">{group.category}</h3>
+                <p className="spec-tools-line">{group.tools.map((tool) => tool.name).join(', ')}</p>
               </motion.div>
             ))}
           </motion.div>

@@ -25,77 +25,38 @@
 }
 
 .spec-group-row {
-  padding: 24px 0;
+  display: grid;
+  grid-template-columns: 132px minmax(0, 1fr);
+  align-items: baseline;
+  gap: 20px;
+  padding: 16px 0;
   border-top: 1px solid var(--line);
-  display: flex;
-  flex-direction: column;
-  gap: 8px;
 }
 
 .spec-group-row:last-child {
   border-bottom: 1px solid var(--line);
 }
 
-.spec-group-header {
-  display: flex;
-  align-items: baseline;
-  gap: 10px;
-}
-
 .spec-cat-title {
   margin: 0;
   font-family: var(--font-display);
-  font-size: var(--text-md);
+  font-size: var(--text-base);
   font-weight: 700;
   color: var(--ink);
   letter-spacing: -0.01em;
 }
 
-.spec-focus-desc {
-  margin: 0 0 10px 0;
-  font-size: var(--text-sm);
-  line-height: 1.5;
-  color: var(--ink-muted);
-}
-
-.spec-tools-flow {
-  display: flex;
-  flex-wrap: wrap;
-  align-items: center;
-  gap: 8px;
-  line-height: 1.7;
-}
-
-.spec-tool-item {
-  display: inline-flex;
-  align-items: center;
-  gap: 6px;
+.spec-tools-line {
+  margin: 0;
   font-size: var(--text-base);
-  color: var(--ink);
-  font-weight: 600;
-  transition: color 0.15s ease;
-  cursor: default;
-}
-
-.spec-tool-item:hover {
-  color: var(--accent);
-}
-
-.spec-flow-sep {
-  display: inline-block;
-  width: 4px;
-  height: 4px;
-  border-radius: 50%;
-  background-color: var(--accent);
-  opacity: 0.75;
-  flex-shrink: 0;
-  user-select: none;
+  line-height: 1.6;
+  color: var(--ink-muted);
 }
 
 .chronological-ledger {
   display: flex;
   flex-direction: column;
-  gap: 28px;
+  gap: 20px;
 }
 
 .ledger-year-section {
@@ -133,7 +94,7 @@
   display: flex;
   align-items: center;
   gap: 14px;
-  padding: 13px 10px;
+  padding: 10px 10px;
   border: none;
   border-bottom: 1px solid var(--line);
   transition: all 0.16s ease;
@@ -599,24 +560,13 @@ html.theme-day .cert-nav-arrow:hover {
   }
 
   .spec-group-row {
-    padding: 18px 0;
-  }
-
-  .spec-cat-title {
-    font-size: var(--text-lg);
-  }
-
-  .spec-focus-desc {
-    font-size: var(--text-base);
-    line-height: 1.55;
-  }
-
-  .spec-tool-item {
-    font-size: var(--text-base);
+    grid-template-columns: 1fr;
+    gap: 4px;
+    padding: 14px 0;
   }
 
   .ledger-row {
-    padding: 12px 4px;
+    padding: 10px 4px;
     gap: 12px;
   }
 
