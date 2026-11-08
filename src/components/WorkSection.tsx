@@ -9,7 +9,7 @@ import { keepInPlace, smoothScrollBy } from '../hooks';
 /** Projects shown before "Show all"; the data is ordered with the featured ones first. */
 const FEATURED_COUNT = 4;
 const ARCHIVE_EASE = [0.16, 1, 0.3, 1] as const;
-const STAGGER_STEP_MS = 90;
+const STAGGER_STEP_MS = 125;
 const CLOSE_STEP_S = 0.035;
 const CLOSE_ROW_DURATION_S = 0.2;
 const CLOSE_GLIDE_DURATION_S = 0.36;
@@ -22,7 +22,7 @@ const rowItemVariants: Variants = {
   visible: {
     opacity: 1,
     y: 0,
-    transition: { duration: 0.32, ease: ARCHIVE_EASE },
+    transition: { duration: 0.42, ease: ARCHIVE_EASE },
   },
 };
 
@@ -34,7 +34,7 @@ const archiveRowVariants: Variants = {
   visible: {
     opacity: 1,
     y: 0,
-    transition: { duration: 0.32, ease: ARCHIVE_EASE },
+    transition: { duration: 0.42, ease: ARCHIVE_EASE },
   },
   closing: (revIdx: number) => ({
     opacity: 0,
