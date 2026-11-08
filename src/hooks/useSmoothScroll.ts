@@ -20,6 +20,35 @@ export function keepInPlace(el: HTMLElement, topBefore: number): void {
   smoother.scrollTo(smoother.scrollTop() + el.getBoundingClientRect().top - topBefore, false);
 }
 
+/**
+ * Smoothly glide the scroll position by `deltaY` on GSAP's ticker while DOM height is constant,
+ * then invoke `onComplete` once the camera has come to rest.
+ */
+export function smoothScrollBy(
+  deltaY: number,
+  duration: number,
+  onComplete: () => void,
+): gsap.core.Tween {
+  const smoother = ScrollSmoother.get();
+  const startScroll = smoother ? smoother.scrollTop() : window.scrollY;
+  const targetScroll = Math.max(0, startScroll + deltaY);
+  const proxy = { y: startScroll };
+
+  return gsap.to(proxy, {
+    y: targetScroll,
+    duration,
+    ease: 'power3.inOut',
+    onUpdate: () => {
+      if (smoother) {
+        smoother.scrollTo(proxy.y, false);
+      } else {
+        window.scrollTo(0, proxy.y);
+      }
+    },
+    onComplete,
+  });
+}
+
 /** GSAP ScrollSmoother on #smooth-wrapper / #smooth-content. Skipped for reduced motion. */
 export function useSmoothScroll(): void {
   useEffect(() => {

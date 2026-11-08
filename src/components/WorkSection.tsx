@@ -4,14 +4,15 @@ import { Icon } from '@iconify/react';
 import { motion, useReducedMotion, type Variants } from 'motion/react';
 import type { Project } from '../types';
 import { projectsData } from '../data/portfolioData';
-import { keepInPlace } from '../hooks';
+import { keepInPlace, smoothScrollBy } from '../hooks';
 
 /** Projects shown before "Show all"; the data is ordered with the featured ones first. */
 const FEATURED_COUNT = 4;
 const ARCHIVE_EASE = [0.16, 1, 0.3, 1] as const;
 const STAGGER_STEP_MS = 160;
-const CLOSE_STEP_S = 0.055;
-const CLOSE_ROW_DURATION_S = 0.22;
+const CLOSE_STEP_S = 0.06;
+const CLOSE_ROW_DURATION_S = 0.28;
+const CLOSE_GLIDE_DURATION_S = 0.52;
 
 const rowItemVariants: Variants = {
   hidden: {
@@ -138,8 +139,10 @@ export const WorkSection: React.FC = () => {
   const [isClosing, setIsClosing] = useState(false);
   const [revealedCount, setRevealedCount] = useState(0);
   const toggleRef = useRef<HTMLButtonElement>(null);
+  const toggleWrapRef = useRef<HTMLDivElement>(null);
   const featuredGroupRef = useRef<HTMLDivElement>(null);
-  const closeTimerRef = useRef<number | null>(null);
+  const archiveDrawerRef = useRef<HTMLDivElement>(null);
+  const closeTweenRef = useRef<{ kill: () => void } | null>(null);
   const cooldownTimerRef = useRef<number | null>(null);
   const inViewSetRef = useRef<Set<number>>(new Set());
   const revealedCountRef = useRef(0);
@@ -151,9 +154,9 @@ export const WorkSection: React.FC = () => {
   const isExpandedUI = showAll && !isClosing;
 
   const clearQueueTimers = () => {
-    if (closeTimerRef.current !== null) {
-      window.clearTimeout(closeTimerRef.current);
-      closeTimerRef.current = null;
+    if (closeTweenRef.current !== null) {
+      closeTweenRef.current.kill();
+      closeTweenRef.current = null;
     }
     if (cooldownTimerRef.current !== null) {
       window.clearTimeout(cooldownTimerRef.current);
@@ -211,17 +214,16 @@ export const WorkSection: React.FC = () => {
     }
 
     clearQueueTimers();
-    // Phase 1: GPU-only reverse one-by-one fade/slide of archive rows (document height stays constant, zero flicker).
+    const drawerHeight = archiveDrawerRef.current?.offsetHeight ?? 0;
+
+    // Phase 1: Smoothly glide scroll up to Row 04 while archive rows dissolve one-by-one (document height stays constant, zero flicker).
     setIsClosing(true);
 
-    const totalCloseMs = Math.round(
-      ((archiveProjects.length - 1) * CLOSE_STEP_S + CLOSE_ROW_DURATION_S) * 1000,
-    );
+    closeTweenRef.current = smoothScrollBy(-drawerHeight, CLOSE_GLIDE_DURATION_S, () => {
+      const featuredEl = featuredGroupRef.current;
+      const featuredTopBefore = featuredEl?.getBoundingClientRect().top;
 
-    // Phase 2: Once exit completes, atomically unmount + anchor scroll before paint, then settle featured rows.
-    closeTimerRef.current = window.setTimeout(() => {
-      const currentButton = toggleRef.current;
-      const topBefore = currentButton?.getBoundingClientRect().top;
+      // Phase 2: Camera is now resting on Row 04; unmount archive rows below it with 0px shift.
       flushSync(() => {
         setShowAll(false);
         setIsClosing(false);
@@ -229,18 +231,21 @@ export const WorkSection: React.FC = () => {
         revealedCountRef.current = 0;
         inViewSetRef.current.clear();
       });
-      if (currentButton && topBefore !== undefined) {
-        keepInPlace(currentButton, topBefore);
+
+      if (featuredEl && featuredTopBefore !== undefined) {
+        keepInPlace(featuredEl, featuredTopBefore);
       }
-      featuredGroupRef.current?.animate(
+
+      toggleWrapRef.current?.animate(
         [
-          { opacity: 0.65, transform: 'translateY(-16px)' },
+          { opacity: 0, transform: 'translateY(8px)' },
           { opacity: 1, transform: 'translateY(0)' },
         ],
-        { duration: 380, easing: 'cubic-bezier(0.16, 1, 0.3, 1)' },
+        { duration: 280, easing: 'cubic-bezier(0.16, 1, 0.3, 1)' },
       );
-      closeTimerRef.current = null;
-    }, totalCloseMs);
+
+      closeTweenRef.current = null;
+    });
   };
 
   return (
@@ -274,7 +279,7 @@ export const WorkSection: React.FC = () => {
         </div>
 
         {showAll && (
-          <div className="project-archive-drawer">
+          <div ref={archiveDrawerRef} className="project-archive-drawer">
             {archiveProjects.map((project, index) => {
               const isRevealed = index < revealedCount;
               const revIdx = archiveProjects.length - 1 - index;
@@ -304,7 +309,7 @@ export const WorkSection: React.FC = () => {
       </div>
 
       {hasMore && (
-        <div className="work-toggle-wrap">
+        <div ref={toggleWrapRef} className="work-toggle-wrap">
           <span className="work-toggle-line" aria-hidden="true" />
           <button
             ref={toggleRef}
