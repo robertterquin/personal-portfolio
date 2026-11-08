@@ -3,7 +3,7 @@ import { Icon } from '@iconify/react';
 import { motion } from 'motion/react';
 import { personalData } from '../data/portfolioData';
 import heroImg from '../assets/hero.webp';
-import { TiltCard } from './TiltCard';
+import { TiltCard } from './ui/TiltCard';
 
 const ease = [0.16, 1, 0.3, 1] as const;
 

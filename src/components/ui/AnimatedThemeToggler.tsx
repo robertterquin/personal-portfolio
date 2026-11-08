@@ -1,6 +1,6 @@
 import React, { useCallback, useEffect, useRef } from 'react';
 import { flushSync } from 'react-dom';
-import type { Theme } from '../types';
+import type { Theme } from '../../types';
 
 interface AnimatedThemeTogglerProps extends React.ComponentPropsWithoutRef<'button'> {
   theme: Theme;

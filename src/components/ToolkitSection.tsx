@@ -134,7 +134,6 @@ export const ToolkitSection: React.FC = () => {
               .sort((a, b) => Number(b) - Number(a))
               .map((year) => {
                 const items = credentialsData.filter((c) => c.year === year);
-                if (items.length === 0) return null;
                 return (
                   <motion.div
                     key={year}
@@ -176,111 +175,110 @@ export const ToolkitSection: React.FC = () => {
         </div>
       </div>
 
-      {typeof document !== 'undefined' &&
-        createPortal(
-          <AnimatePresence>
-            {selectedCert && (
+      {createPortal(
+        <AnimatePresence>
+          {selectedCert && (
+            <motion.div
+              className="cert-modal-overlay"
+              onClick={() => setSelectedCert(null)}
+              role="dialog"
+              aria-modal="true"
+              aria-labelledby="cert-modal-title"
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              exit={{ opacity: 0 }}
+              transition={{ duration: 0.2 }}
+            >
               <motion.div
-                className="cert-modal-overlay"
-                onClick={() => setSelectedCert(null)}
-                role="dialog"
-                aria-modal="true"
-                aria-labelledby="cert-modal-title"
-                initial={{ opacity: 0 }}
-                animate={{ opacity: 1 }}
-                exit={{ opacity: 0 }}
-                transition={{ duration: 0.2 }}
+                className="cert-modal-container"
+                onClick={(e) => e.stopPropagation()}
+                initial={{ opacity: 0, scale: 0.97, y: 8 }}
+                animate={{ opacity: 1, scale: 1, y: 0 }}
+                exit={{ opacity: 0, scale: 0.97, y: 8 }}
+                transition={{ duration: 0.22, ease: [0.16, 1, 0.3, 1] }}
               >
-                <motion.div
-                  className="cert-modal-container"
-                  onClick={(e) => e.stopPropagation()}
-                  initial={{ opacity: 0, scale: 0.97, y: 8 }}
-                  animate={{ opacity: 1, scale: 1, y: 0 }}
-                  exit={{ opacity: 0, scale: 0.97, y: 8 }}
-                  transition={{ duration: 0.22, ease: [0.16, 1, 0.3, 1] }}
-                >
-                  <div className="cert-modal-header">
-                    <div className="cert-modal-header-left">
-                      <span className="cert-modal-status-dot" aria-hidden="true" />
-                      <span className="cert-modal-bar-index">
-                        {selectedCert.index} / {String(credentialsData.length).padStart(2, '0')}
-                      </span>
-                      <span className="cert-modal-bar-separator" aria-hidden="true">·</span>
-                      <h3 id="cert-modal-title" className="cert-modal-title">
-                        {selectedCert.title}
-                      </h3>
-                    </div>
-
-                    <div className="cert-modal-header-right">
-                      <button
-                        type="button"
-                        className="cert-modal-close-btn"
-                        onClick={() => setSelectedCert(null)}
-                        aria-label="Close modal (ESC)"
-                        title="Close (Esc)"
-                      >
-                        <span>Close</span>
-                        <Icon icon="lucide:x" width={14} height={14} />
-                      </button>
-                    </div>
-                  </div>
-
-                  <div className="cert-modal-stage">
-                    <button
-                      type="button"
-                      className="cert-nav-arrow cert-nav-prev"
-                      onClick={handlePrevCert}
-                      aria-label="Previous certificate"
-                      title="Previous certificate (←)"
-                    >
-                      <Icon icon="lucide:chevron-left" width={18} height={18} />
-                    </button>
-
-                    <div className="cert-modal-image-wrapper">
-                      <img
-                        src={selectedCert.image}
-                        alt={`${selectedCert.title} - ${selectedCert.institution}`}
-                        className="cert-modal-image"
-                        loading="lazy"
-                        decoding="async"
-                      />
-                    </div>
-
-                    <button
-                      type="button"
-                      className="cert-nav-arrow cert-nav-next"
-                      onClick={handleNextCert}
-                      aria-label="Next certificate"
-                      title="Next certificate (→)"
-                    >
-                      <Icon icon="lucide:chevron-right" width={18} height={18} />
-                    </button>
-                  </div>
-
-                  <div className="cert-modal-footer">
-                    <span className="cert-modal-institution">
-                      {selectedCert.institution}
+                <div className="cert-modal-header">
+                  <div className="cert-modal-header-left">
+                    <span className="cert-modal-status-dot" aria-hidden="true" />
+                    <span className="cert-modal-bar-index">
+                      {selectedCert.index} / {String(credentialsData.length).padStart(2, '0')}
                     </span>
-
-                    <div className="cert-modal-nav-dots" aria-label="Certificate navigation">
-                      {credentialsData.map((c) => (
-                        <button
-                          key={c.index}
-                          type="button"
-                          className={`cert-dot-btn ${c.index === selectedCert.index ? 'active' : ''}`}
-                          onClick={() => setSelectedCert(c)}
-                          aria-label={`Switch to ${c.title}`}
-                          title={`${c.title} (${c.year})`}
-                        />
-                      ))}
-                    </div>
+                    <span className="cert-modal-bar-separator" aria-hidden="true">·</span>
+                    <h3 id="cert-modal-title" className="cert-modal-title">
+                      {selectedCert.title}
+                    </h3>
                   </div>
-                </motion.div>
+
+                  <div className="cert-modal-header-right">
+                    <button
+                      type="button"
+                      className="cert-modal-close-btn"
+                      onClick={() => setSelectedCert(null)}
+                      aria-label="Close modal (ESC)"
+                      title="Close (Esc)"
+                    >
+                      <span>Close</span>
+                      <Icon icon="lucide:x" width={14} height={14} />
+                    </button>
+                  </div>
+                </div>
+
+                <div className="cert-modal-stage">
+                  <button
+                    type="button"
+                    className="cert-nav-arrow cert-nav-prev"
+                    onClick={handlePrevCert}
+                    aria-label="Previous certificate"
+                    title="Previous certificate (←)"
+                  >
+                    <Icon icon="lucide:chevron-left" width={18} height={18} />
+                  </button>
+
+                  <div className="cert-modal-image-wrapper">
+                    <img
+                      src={selectedCert.image}
+                      alt={`${selectedCert.title} - ${selectedCert.institution}`}
+                      className="cert-modal-image"
+                      loading="lazy"
+                      decoding="async"
+                    />
+                  </div>
+
+                  <button
+                    type="button"
+                    className="cert-nav-arrow cert-nav-next"
+                    onClick={handleNextCert}
+                    aria-label="Next certificate"
+                    title="Next certificate (→)"
+                  >
+                    <Icon icon="lucide:chevron-right" width={18} height={18} />
+                  </button>
+                </div>
+
+                <div className="cert-modal-footer">
+                  <span className="cert-modal-institution">
+                    {selectedCert.institution}
+                  </span>
+
+                  <div className="cert-modal-nav-dots" aria-label="Certificate navigation">
+                    {credentialsData.map((c) => (
+                      <button
+                        key={c.index}
+                        type="button"
+                        className={`cert-dot-btn ${c.index === selectedCert.index ? 'active' : ''}`}
+                        onClick={() => setSelectedCert(c)}
+                        aria-label={`Switch to ${c.title}`}
+                        title={`${c.title} (${c.year})`}
+                      />
+                    ))}
+                  </div>
+                </div>
               </motion.div>
-            )}
-          </AnimatePresence>,
-          document.body
-        )}
+            </motion.div>
+          )}
+        </AnimatePresence>,
+        document.body
+      )}
     </section>
   );
 };

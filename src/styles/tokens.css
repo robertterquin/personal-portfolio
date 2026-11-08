@@ -11,7 +11,6 @@
   --text-md: 1rem;
   --text-lg: 1.15rem;
   --text-xl: 1.25rem;
-  --text-2xl: 1.55rem;
 
   
   --bg: #070606;
@@ -28,13 +27,11 @@
 
   
   --accent: #b88252;
-  --accent-hover: #cb9767;
   --accent-contrast: #070606;
   --accent-dim: rgba(184, 130, 82, 0.12);
   --accent-glow: rgba(184, 130, 82, 0.22);
 
   --leather: #b88252;
-  --leather-subtle: rgba(184, 130, 82, 0.09);
   --leather-border: rgba(184, 130, 82, 0.28);
 
   --radius-sm: 4px;
@@ -63,7 +60,6 @@ html.theme-day body {
   --ink-dim: #6f675d;
 
   --accent: #8e582e;
-  --accent-hover: #71421e;
   --accent-contrast: #ffffff;
   --accent-dim: rgba(142, 88, 46, 0.1);
   --accent-glow: rgba(142, 88, 46, 0.18);
@@ -72,6 +68,5 @@ html.theme-day body {
   --heat: #8e582e;
 
   --leather: #8e582e;
-  --leather-subtle: rgba(142, 88, 46, 0.08);
   --leather-border: rgba(142, 88, 46, 0.25);
 }

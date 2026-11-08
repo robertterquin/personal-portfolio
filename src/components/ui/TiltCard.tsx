@@ -1,16 +1,12 @@
 import React, { useRef, useState } from 'react';
 import { motion, useMotionValue, useSpring, useTransform, useReducedMotion } from 'motion/react';
 
-export interface TiltCardProps {
+interface TiltCardProps {
   children: React.ReactNode;
   className?: string;
   innerClassName?: string;
-  maxTilt?: number; 
-  scale?: number;
-  perspective?: number; 
-  glare?: boolean; 
-  style?: React.CSSProperties;
-  innerStyle?: React.CSSProperties;
+  maxTilt?: number;
+  glare?: boolean;
 }
 
 export const TiltCard: React.FC<TiltCardProps> = ({
@@ -18,11 +14,7 @@ export const TiltCard: React.FC<TiltCardProps> = ({
   className = '',
   innerClassName = '',
   maxTilt = 7,
-  scale = 1.02,
-  perspective = 1000,
   glare = true,
-  style,
-  innerStyle,
 }) => {
   const cardRef = useRef<HTMLDivElement>(null);
   const shouldReduceMotion = useReducedMotion();
@@ -43,8 +35,8 @@ export const TiltCard: React.FC<TiltCardProps> = ({
 
   if (shouldReduceMotion) {
     return (
-      <div className={`tilt-card-root ${className}`} style={style}>
-        <div className={`tilt-card-inner ${innerClassName}`} style={innerStyle}>
+      <div className={`tilt-card-root ${className}`}>
+        <div className={`tilt-card-inner ${innerClassName}`}>
           {children}
         </div>
       </div>
@@ -87,10 +79,7 @@ export const TiltCard: React.FC<TiltCardProps> = ({
       onMouseMove={handleMouseMove}
       onMouseEnter={handleMouseEnter}
       onMouseLeave={handleMouseLeave}
-      style={{
-        perspective: `${perspective}px`,
-        ...style,
-      }}
+      style={{ perspective: '1000px' }}
     >
       <motion.div
         className={`tilt-card-inner ${innerClassName}`}
@@ -98,10 +87,9 @@ export const TiltCard: React.FC<TiltCardProps> = ({
           rotateX,
           rotateY,
           transformStyle: 'preserve-3d',
-          ...innerStyle,
         }}
         animate={{
-          scale: isHovered ? scale : 1,
+          scale: isHovered ? 1.02 : 1,
         }}
         transition={{
           duration: 0.28,

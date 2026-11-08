@@ -7,7 +7,7 @@ Personal portfolio of **Robert Terquin Laqui**, a software engineer focused on c
 ## Stack
 
 - React 19 + TypeScript, built with Vite
-- [Motion](https://motion.dev) for animation, [Iconify](https://iconify.design) for icons
+- [Motion](https://motion.dev) for animation, [GSAP ScrollSmoother](https://gsap.com) for smooth scrolling, [Iconify](https://iconify.design) for icons
 - Plain CSS with design tokens and a day/night theme
 - Hosted on Vercel, with one serverless function for GitHub data
 
@@ -34,9 +34,10 @@ The dev server runs at `http://localhost:3000`.
 ```
 src/
   components/   One component per page section
+    ui/         Shared building blocks (tilt card, theme toggle)
   data/         portfolioData.ts (all site content) and the contributions snapshot
-  hooks/        Theme and Manila clock hooks
-  styles/       One stylesheet per section, plus tokens.css (variables), base.css (global styles) and print.css
+  hooks/        Theme, Manila clock and smooth-scroll hooks
+  styles/       app.css (entry and page layout), one stylesheet per section, tokens.css (variables), base.css (global styles) and print.css
   utils/        Small pure helpers (e.g. heatmap month labels)
 lib/            Shared GitHub contributions logic (dev server, sync script, API)
 api/            Vercel function serving live GitHub contributions

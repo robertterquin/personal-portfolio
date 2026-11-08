@@ -1,4 +1,4 @@
-import './App.css';
+import './styles/app.css';
 import { useTheme, useSmoothScroll } from './hooks';
 import { Header } from './components/Header';
 import { Hero } from './components/Hero';

@@ -1,4 +1,4 @@
-import { useState, useEffect, useCallback } from 'react';
+import { useState, useLayoutEffect, useCallback } from 'react';
 import type { Theme } from '../types';
 
 const THEME_STORAGE_KEY = 'rt_theme';
@@ -9,30 +9,15 @@ export function useTheme() {
     return saved === 'day' ? 'day' : 'night';
   });
 
-  useEffect(() => {
-    if (theme === 'day') {
-      document.documentElement.classList.remove('theme-night');
-      document.documentElement.classList.add('theme-day');
-    } else {
-      document.documentElement.classList.add('theme-night');
-      document.documentElement.classList.remove('theme-day');
-    }
+  // Layout effect so the class lands inside the toggler's flushSync, before the view transition snapshots.
+  useLayoutEffect(() => {
+    document.documentElement.classList.toggle('theme-day', theme === 'day');
+    document.documentElement.classList.toggle('theme-night', theme === 'night');
     localStorage.setItem(THEME_STORAGE_KEY, theme);
   }, [theme]);
 
   const toggleTheme = useCallback(() => {
-    setTheme((prev) => {
-      const next: Theme = prev === 'night' ? 'day' : 'night';
-      if (next === 'day') {
-        document.documentElement.classList.remove('theme-night');
-        document.documentElement.classList.add('theme-day');
-      } else {
-        document.documentElement.classList.add('theme-night');
-        document.documentElement.classList.remove('theme-day');
-      }
-      localStorage.setItem(THEME_STORAGE_KEY, next);
-      return next;
-    });
+    setTheme((prev) => (prev === 'night' ? 'day' : 'night'));
   }, []);
 
   return { theme, toggleTheme };

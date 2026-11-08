@@ -2,7 +2,7 @@ import React, { useEffect, useRef } from 'react';
 import { Icon } from '@iconify/react';
 import { motion, useScroll } from 'motion/react';
 import type { Theme } from '../types';
-import { AnimatedThemeToggler } from './AnimatedThemeToggler';
+import { AnimatedThemeToggler } from './ui/AnimatedThemeToggler';
 import { useManilaClock } from '../hooks';
 
 const NAV_LINKS = [

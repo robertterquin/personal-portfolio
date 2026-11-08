@@ -43,7 +43,7 @@ export interface CredentialItem {
   institution: string;
   year: string;
   image: string;
-  type: 'Degree' | 'Certification' | 'Award' | 'Achievement';
+  type: 'Certification' | 'Award';
 }
 
 export interface TimelineEvent {
