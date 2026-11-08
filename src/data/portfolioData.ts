@@ -12,7 +12,7 @@ export const personalData: PersonalData = {
   specialty: 'Web Platforms & Cross-Platform Mobile',
   location: 'Philippines',
   shortBio:
-    'I build cross-platform apps end to end, from Flutter mobile apps to offline-first PWAs and AI-assisted web tools, backed by Supabase and Firebase. I care about clean code and interfaces that feel effortless to use.',
+    'I build mobile and web apps end to end, from React Native, Flutter, and Swift apps to offline-first PWAs and AI-powered web tools, backed by Supabase and Firebase. I care about clean code and interfaces that feel effortless to use.',
   email: 'terquinlaqui@gmail.com',
   phone: '+63 926 029 4838',
   whatsapp: 'https://wa.me/639260294838',
