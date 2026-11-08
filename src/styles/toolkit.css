@@ -468,7 +468,8 @@ html.theme-day .cert-nav-arrow:hover {
 
 @media (max-width: 1024px) {
   .toolkit-two-col {
-    grid-template-columns: 1fr;
+    /* minmax(0, …): a plain 1fr won't shrink below its widest child and overflowed at 641–1024px */
+    grid-template-columns: minmax(0, 1fr);
     gap: 32px;
   }
 
