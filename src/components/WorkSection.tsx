@@ -9,49 +9,34 @@ import { keepInPlace } from '../hooks';
 /** Projects shown before "Show all"; the data is ordered with the featured ones first. */
 const FEATURED_COUNT = 4;
 const ARCHIVE_EASE = [0.16, 1, 0.3, 1] as const;
-const CLOSE_DURATION_MS = 220;
+const CLOSE_DURATION_MS = 240;
 
 const rowItemVariants: Variants = {
   hidden: {
     opacity: 0,
-    y: 6,
+    y: 22,
   },
   visible: {
     opacity: 1,
     y: 0,
-    transition: { duration: 0.35, ease: 'easeOut' },
-  },
-};
-
-const archiveListVariants: Variants = {
-  hidden: {},
-  visible: {
-    transition: {
-      staggerChildren: 0.045,
-    },
-  },
-  closing: {
-    transition: {
-      staggerChildren: 0.025,
-      staggerDirection: -1,
-    },
+    transition: { duration: 0.52, ease: ARCHIVE_EASE },
   },
 };
 
 const archiveRowVariants: Variants = {
   hidden: {
     opacity: 0,
-    y: 12,
+    y: 22,
   },
   visible: {
     opacity: 1,
     y: 0,
-    transition: { duration: 0.36, ease: ARCHIVE_EASE },
+    transition: { duration: 0.52, ease: ARCHIVE_EASE },
   },
   closing: {
     opacity: 0,
-    y: -10,
-    transition: { duration: 0.2, ease: ARCHIVE_EASE },
+    y: -16,
+    transition: { duration: 0.22, ease: ARCHIVE_EASE },
   },
 };
 
@@ -196,10 +181,10 @@ export const WorkSection: React.FC = () => {
       }
       featuredGroupRef.current?.animate(
         [
-          { opacity: 0.75, transform: 'translateY(-10px)' },
+          { opacity: 0.65, transform: 'translateY(-16px)' },
           { opacity: 1, transform: 'translateY(0)' },
         ],
-        { duration: 280, easing: 'cubic-bezier(0.16, 1, 0.3, 1)' },
+        { duration: 380, easing: 'cubic-bezier(0.16, 1, 0.3, 1)' },
       );
       closeTimerRef.current = null;
     }, CLOSE_DURATION_MS);
@@ -236,22 +221,21 @@ export const WorkSection: React.FC = () => {
         </div>
 
         {showAll && (
-          <motion.div
-            className="project-archive-drawer"
-            initial={isReducedMotion ? false : 'hidden'}
-            animate={isClosing ? 'closing' : 'visible'}
-            variants={isReducedMotion ? undefined : archiveListVariants}
-          >
+          <div className="project-archive-drawer">
             {archiveProjects.map((project) => (
               <motion.article
                 key={project.id}
+                initial={isReducedMotion ? false : 'hidden'}
+                whileInView={isClosing ? undefined : 'visible'}
+                animate={isClosing ? 'closing' : undefined}
+                viewport={{ once: true, amount: 0.12 }}
                 variants={isReducedMotion ? undefined : archiveRowVariants}
                 className="project-index-row"
               >
                 <ProjectRow project={project} />
               </motion.article>
             ))}
-          </motion.div>
+          </div>
         )}
       </div>
 
