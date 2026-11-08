@@ -70,6 +70,7 @@ export const projectsData: Project[] = [
     stack: 'Next.js · TypeScript · Tailwind · Supabase · OpenAI',
     image: '/projects/skillora-showcase.png',
     demoUrl: 'https://skillora-studio.vercel.app/',
+    repoUrl: 'https://github.com/robertterquin/Skillora',
   },
   {
     id: 'spendly',
