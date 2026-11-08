@@ -9,12 +9,14 @@ import { keepInPlace } from '../hooks';
 /** Projects shown before "Show all"; the data is ordered with the featured ones first. */
 const FEATURED_COUNT = 4;
 const ARCHIVE_EASE = [0.16, 1, 0.3, 1] as const;
-const CLOSE_DURATION_MS = 240;
+const STAGGER_STEP_MS = 160;
+const CLOSE_STEP_S = 0.055;
+const CLOSE_ROW_DURATION_S = 0.22;
 
 const rowItemVariants: Variants = {
   hidden: {
     opacity: 0,
-    y: 22,
+    y: 24,
   },
   visible: {
     opacity: 1,
@@ -26,18 +28,22 @@ const rowItemVariants: Variants = {
 const archiveRowVariants: Variants = {
   hidden: {
     opacity: 0,
-    y: 22,
+    y: 26,
   },
   visible: {
     opacity: 1,
     y: 0,
     transition: { duration: 0.52, ease: ARCHIVE_EASE },
   },
-  closing: {
+  closing: (revIdx: number) => ({
     opacity: 0,
     y: -16,
-    transition: { duration: 0.22, ease: ARCHIVE_EASE },
-  },
+    transition: {
+      duration: CLOSE_ROW_DURATION_S,
+      delay: revIdx * CLOSE_STEP_S,
+      ease: ARCHIVE_EASE,
+    },
+  }),
 };
 
 /** demoUrl doubles as the repo link for apps with no web build, so only count it as live when it isn't GitHub. */
@@ -130,9 +136,13 @@ export const WorkSection: React.FC = () => {
   const isReducedMotion = Boolean(useReducedMotion());
   const [showAll, setShowAll] = useState(false);
   const [isClosing, setIsClosing] = useState(false);
+  const [revealedCount, setRevealedCount] = useState(0);
   const toggleRef = useRef<HTMLButtonElement>(null);
   const featuredGroupRef = useRef<HTMLDivElement>(null);
   const closeTimerRef = useRef<number | null>(null);
+  const cooldownTimerRef = useRef<number | null>(null);
+  const inViewSetRef = useRef<Set<number>>(new Set());
+  const revealedCountRef = useRef(0);
 
   const featuredProjects = projectsData.slice(0, FEATURED_COUNT);
   const archiveProjects = projectsData.slice(FEATURED_COUNT);
@@ -140,13 +150,42 @@ export const WorkSection: React.FC = () => {
   const hiddenCount = archiveProjects.length;
   const isExpandedUI = showAll && !isClosing;
 
+  const clearQueueTimers = () => {
+    if (closeTimerRef.current !== null) {
+      window.clearTimeout(closeTimerRef.current);
+      closeTimerRef.current = null;
+    }
+    if (cooldownTimerRef.current !== null) {
+      window.clearTimeout(cooldownTimerRef.current);
+      cooldownTimerRef.current = null;
+    }
+  };
+
   useEffect(() => {
     return () => {
-      if (closeTimerRef.current !== null) {
-        window.clearTimeout(closeTimerRef.current);
-      }
+      clearQueueTimers();
     };
   }, []);
+
+  const advanceRevealQueue = () => {
+    if (cooldownTimerRef.current !== null) return;
+    const nextIdx = revealedCountRef.current;
+    if (nextIdx >= archiveProjects.length) return;
+    if (!inViewSetRef.current.has(nextIdx)) return;
+
+    revealedCountRef.current = nextIdx + 1;
+    setRevealedCount(nextIdx + 1);
+
+    cooldownTimerRef.current = window.setTimeout(() => {
+      cooldownTimerRef.current = null;
+      advanceRevealQueue();
+    }, STAGGER_STEP_MS);
+  };
+
+  const handleArchiveRowInView = (index: number) => {
+    inViewSetRef.current.add(index);
+    advanceRevealQueue();
+  };
 
   const handleToggle = () => {
     if (isClosing) return;
@@ -161,12 +200,23 @@ export const WorkSection: React.FC = () => {
     }
 
     if (!showAll) {
+      clearQueueTimers();
+      inViewSetRef.current = new Set([0]);
+      revealedCountRef.current = 0;
+      setRevealedCount(0);
       setShowAll(true);
+      // Kick off project #05 immediately, then stagger subsequent rows one-by-one as they enter view.
+      advanceRevealQueue();
       return;
     }
 
-    // Phase 1: GPU-only reverse fade/slide of archive rows (document height stays constant, zero flicker).
+    clearQueueTimers();
+    // Phase 1: GPU-only reverse one-by-one fade/slide of archive rows (document height stays constant, zero flicker).
     setIsClosing(true);
+
+    const totalCloseMs = Math.round(
+      ((archiveProjects.length - 1) * CLOSE_STEP_S + CLOSE_ROW_DURATION_S) * 1000,
+    );
 
     // Phase 2: Once exit completes, atomically unmount + anchor scroll before paint, then settle featured rows.
     closeTimerRef.current = window.setTimeout(() => {
@@ -175,6 +225,9 @@ export const WorkSection: React.FC = () => {
       flushSync(() => {
         setShowAll(false);
         setIsClosing(false);
+        setRevealedCount(0);
+        revealedCountRef.current = 0;
+        inViewSetRef.current.clear();
       });
       if (currentButton && topBefore !== undefined) {
         keepInPlace(currentButton, topBefore);
@@ -187,7 +240,7 @@ export const WorkSection: React.FC = () => {
         { duration: 380, easing: 'cubic-bezier(0.16, 1, 0.3, 1)' },
       );
       closeTimerRef.current = null;
-    }, CLOSE_DURATION_MS);
+    }, totalCloseMs);
   };
 
   return (
@@ -222,19 +275,30 @@ export const WorkSection: React.FC = () => {
 
         {showAll && (
           <div className="project-archive-drawer">
-            {archiveProjects.map((project) => (
-              <motion.article
-                key={project.id}
-                initial={isReducedMotion ? false : 'hidden'}
-                whileInView={isClosing ? undefined : 'visible'}
-                animate={isClosing ? 'closing' : undefined}
-                viewport={{ once: true, amount: 0.12 }}
-                variants={isReducedMotion ? undefined : archiveRowVariants}
-                className="project-index-row"
-              >
-                <ProjectRow project={project} />
-              </motion.article>
-            ))}
+            {archiveProjects.map((project, index) => {
+              const isRevealed = index < revealedCount;
+              const revIdx = archiveProjects.length - 1 - index;
+              const animateState = isClosing
+                ? 'closing'
+                : isRevealed
+                  ? 'visible'
+                  : 'hidden';
+
+              return (
+                <motion.article
+                  key={project.id}
+                  custom={revIdx}
+                  initial={isReducedMotion ? false : 'hidden'}
+                  animate={isReducedMotion ? undefined : animateState}
+                  onViewportEnter={() => handleArchiveRowInView(index)}
+                  viewport={{ once: true, amount: 0.08 }}
+                  variants={isReducedMotion ? undefined : archiveRowVariants}
+                  className="project-index-row"
+                >
+                  <ProjectRow project={project} />
+                </motion.article>
+              );
+            })}
           </div>
         )}
       </div>
