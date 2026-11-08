@@ -8,7 +8,6 @@ import { ToolkitSection } from './components/ToolkitSection';
 import { ExperienceSection } from './components/ExperienceSection';
 import { GithubActivity } from './components/GithubActivity';
 import { Footer } from './components/Footer';
-import { SectionNav } from './components/SectionNav';
 
 function App() {
   const { theme, toggleTheme } = useTheme();
@@ -41,9 +40,6 @@ function App() {
           </div>
         </div>
       </div>
-
-      {/* Outside the smoother: fixed positioning breaks inside its transformed content. */}
-      <SectionNav className="section-pill-dock" />
     </div>
   );
 }

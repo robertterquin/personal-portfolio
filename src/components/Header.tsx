@@ -4,7 +4,13 @@ import { motion, useScroll } from 'motion/react';
 import type { Theme } from '../types';
 import { AnimatedThemeToggler } from './ui/AnimatedThemeToggler';
 import { useManilaClock } from '../hooks';
-import { SectionNav } from './SectionNav';
+
+const NAV_LINKS = [
+  { href: '#work', label: 'Work' },
+  { href: '#toolkit', label: 'Stack' },
+  { href: '#experience', label: 'Experience' },
+  { href: '#activity', label: 'Activity' },
+];
 
 function isTypingTarget(target: EventTarget | null) {
   if (!(target instanceof HTMLElement)) return false;
@@ -43,9 +49,15 @@ export const Header: React.FC<HeaderProps> = ({
         </a>
       </div>
 
-      <SectionNav className="header-pill" />
-
       <div className="header-right">
+        <nav className="header-nav" aria-label="Sections">
+          {NAV_LINKS.map((link) => (
+            <a key={link.href} href={link.href} className="header-nav-link">
+              {link.label}
+            </a>
+          ))}
+        </nav>
+
         <AnimatedThemeToggler
           theme={theme}
           onThemeChange={onToggleTheme}

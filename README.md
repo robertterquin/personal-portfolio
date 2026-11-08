@@ -36,7 +36,7 @@ src/
   components/   One component per page section
     ui/         Shared building blocks (tilt card, theme toggle)
   data/         portfolioData.ts (all site content) and the contributions snapshot
-  hooks/        Theme, Manila clock, smooth-scroll and active-section hooks
+  hooks/        Theme, Manila clock and smooth-scroll hooks
   styles/       app.css (entry and page layout), one stylesheet per section, tokens.css (variables), base.css (global styles) and print.css
   utils/        Small pure helpers (e.g. heatmap month labels)
 lib/            Shared GitHub contributions logic (dev server, sync script, API)
