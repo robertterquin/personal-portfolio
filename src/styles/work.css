@@ -24,6 +24,12 @@
   position: relative;
 }
 
+.project-archive-drawer {
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+}
+
 .project-index-row {
   display: grid;
   grid-template-columns: minmax(0, 2fr) minmax(0, 1fr);
@@ -197,6 +203,14 @@ a.row-col-media:hover .row-media-img {
   border-radius: 2px;
 }
 
+.work-toggle-chevron {
+  transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.work-toggle-chevron.is-open {
+  transform: rotate(180deg);
+}
+
 .work-toggle-wrap:hover .work-toggle-line {
   background: var(--leather-border);
 }
@@ -211,6 +225,10 @@ a.row-col-media:hover .row-media-img {
   a.row-col-media:hover .row-media-img,
   .work-toggle:hover {
     transform: none;
+  }
+
+  .work-toggle-chevron {
+    transition: none;
   }
 }
 

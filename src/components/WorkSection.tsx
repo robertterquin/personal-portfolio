@@ -1,13 +1,14 @@
 import React, { useRef, useState } from 'react';
 import { flushSync } from 'react-dom';
 import { Icon } from '@iconify/react';
-import { motion, useReducedMotion, type Variants } from 'motion/react';
+import { AnimatePresence, motion, useReducedMotion, type Variants } from 'motion/react';
 import type { Project } from '../types';
 import { projectsData } from '../data/portfolioData';
 import { keepInPlace } from '../hooks';
 
 /** Projects shown before "Show all"; the data is ordered with the featured ones first. */
 const FEATURED_COUNT = 4;
+const ARCHIVE_EASE = [0.16, 1, 0.3, 1] as const;
 
 const rowItemVariants: Variants = {
   hidden: {
@@ -18,6 +19,42 @@ const rowItemVariants: Variants = {
     opacity: 1,
     y: 0,
     transition: { duration: 0.35, ease: 'easeOut' },
+  },
+};
+
+const archiveDrawerVariants: Variants = {
+  collapsed: {
+    height: 0,
+    opacity: 0,
+    transition: {
+      height: { duration: 0.42, ease: ARCHIVE_EASE },
+      opacity: { duration: 0.28, ease: 'easeOut' },
+      staggerChildren: 0.035,
+      staggerDirection: -1,
+    },
+  },
+  expanded: {
+    height: 'auto',
+    opacity: 1,
+    transition: {
+      height: { duration: 0.42, ease: ARCHIVE_EASE },
+      opacity: { duration: 0.32, ease: 'easeOut' },
+      staggerChildren: 0.045,
+      delayChildren: 0.02,
+    },
+  },
+};
+
+const archiveRowVariants: Variants = {
+  collapsed: {
+    opacity: 0,
+    y: -6,
+    transition: { duration: 0.24, ease: ARCHIVE_EASE },
+  },
+  expanded: {
+    opacity: 1,
+    y: 0,
+    transition: { duration: 0.34, ease: ARCHIVE_EASE },
   },
 };
 
@@ -111,16 +148,35 @@ export const WorkSection: React.FC = () => {
   const isReducedMotion = Boolean(useReducedMotion());
   const [showAll, setShowAll] = useState(false);
   const toggleRef = useRef<HTMLButtonElement>(null);
-  const visibleProjects = showAll ? projectsData : projectsData.slice(0, FEATURED_COUNT);
-  const hasMore = projectsData.length > FEATURED_COUNT;
-  const hiddenCount = projectsData.length - FEATURED_COUNT;
+  const collapseTopRef = useRef<number | null>(null);
+
+  const featuredProjects = projectsData.slice(0, FEATURED_COUNT);
+  const archiveProjects = projectsData.slice(FEATURED_COUNT);
+  const hasMore = archiveProjects.length > 0;
+  const hiddenCount = archiveProjects.length;
 
   const handleToggle = () => {
     const button = toggleRef.current;
     const topBefore = button?.getBoundingClientRect().top;
-    flushSync(() => setShowAll((prev) => !prev));
-    // Collapsing removes rows above the button; keep it under the visitor's cursor.
-    if (showAll && button && topBefore !== undefined) keepInPlace(button, topBefore);
+
+    if (isReducedMotion) {
+      flushSync(() => setShowAll((prev) => !prev));
+      if (showAll && button && topBefore !== undefined) keepInPlace(button, topBefore);
+      return;
+    }
+
+    if (showAll && topBefore !== undefined) {
+      collapseTopRef.current = topBefore;
+    } else {
+      collapseTopRef.current = null;
+    }
+    setShowAll((prev) => !prev);
+  };
+
+  const syncCollapseScroll = () => {
+    if (!showAll && collapseTopRef.current !== null && toggleRef.current) {
+      keepInPlace(toggleRef.current, collapseTopRef.current);
+    }
   };
 
   return (
@@ -138,8 +194,7 @@ export const WorkSection: React.FC = () => {
       </motion.div>
 
       <div id="project-list" className="project-index-list">
-        {visibleProjects.map((project) => (
-          // Each row animates itself, so rows added by "Show all" fade in too.
+        {featuredProjects.map((project) => (
           <motion.article
             key={project.id}
             initial={isReducedMotion ? false : 'hidden'}
@@ -151,6 +206,36 @@ export const WorkSection: React.FC = () => {
             <ProjectRow project={project} />
           </motion.article>
         ))}
+
+        <AnimatePresence
+          initial={false}
+          onExitComplete={() => {
+            syncCollapseScroll();
+            collapseTopRef.current = null;
+          }}
+        >
+          {showAll && (
+            <motion.div
+              key="project-archive-drawer"
+              className="project-archive-drawer"
+              initial={isReducedMotion ? false : 'collapsed'}
+              animate="expanded"
+              exit={isReducedMotion ? undefined : 'collapsed'}
+              variants={isReducedMotion ? undefined : archiveDrawerVariants}
+              onUpdate={syncCollapseScroll}
+            >
+              {archiveProjects.map((project) => (
+                <motion.article
+                  key={project.id}
+                  variants={isReducedMotion ? undefined : archiveRowVariants}
+                  className="project-index-row"
+                >
+                  <ProjectRow project={project} />
+                </motion.article>
+              ))}
+            </motion.div>
+          )}
+        </AnimatePresence>
       </div>
 
       {hasMore && (
@@ -167,10 +252,11 @@ export const WorkSection: React.FC = () => {
             <span>{showAll ? 'Show fewer' : 'View Full Archive'}</span>
             {!showAll && <span className="work-toggle-count">+{hiddenCount}</span>}
             <Icon
-              icon={showAll ? 'lucide:chevron-up' : 'lucide:chevron-down'}
+              icon="lucide:chevron-down"
               width={14}
               height={14}
               aria-hidden="true"
+              className={`work-toggle-chevron${showAll ? ' is-open' : ''}`}
             />
           </button>
           <span className="work-toggle-line" aria-hidden="true" />
