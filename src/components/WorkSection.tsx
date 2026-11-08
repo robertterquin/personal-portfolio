@@ -9,36 +9,36 @@ import { keepInPlace, smoothScrollBy } from '../hooks';
 /** Projects shown before "Show all"; the data is ordered with the featured ones first. */
 const FEATURED_COUNT = 4;
 const ARCHIVE_EASE = [0.16, 1, 0.3, 1] as const;
-const STAGGER_STEP_MS = 125;
-const CLOSE_STEP_S = 0.035;
-const CLOSE_ROW_DURATION_S = 0.2;
-const CLOSE_GLIDE_DURATION_S = 0.36;
+const STAGGER_STEP_MS = 150;
+const CLOSE_STEP_S = 0.065;
+const CLOSE_ROW_DURATION_S = 0.38;
+const CLOSE_GLIDE_DURATION_S = 0.68;
 
 const rowItemVariants: Variants = {
   hidden: {
     opacity: 0,
-    y: 8,
+    y: 10,
   },
   visible: {
     opacity: 1,
     y: 0,
-    transition: { duration: 0.42, ease: ARCHIVE_EASE },
+    transition: { duration: 0.58, ease: ARCHIVE_EASE },
   },
 };
 
 const archiveRowVariants: Variants = {
   hidden: {
     opacity: 0,
-    y: 8,
+    y: 10,
   },
   visible: {
     opacity: 1,
     y: 0,
-    transition: { duration: 0.42, ease: ARCHIVE_EASE },
+    transition: { duration: 0.58, ease: ARCHIVE_EASE },
   },
   closing: (revIdx: number) => ({
     opacity: 0,
-    y: -6,
+    y: -8,
     transition: {
       duration: CLOSE_ROW_DURATION_S,
       delay: revIdx * CLOSE_STEP_S,
@@ -238,10 +238,10 @@ export const WorkSection: React.FC = () => {
 
       toggleWrapRef.current?.animate(
         [
-          { opacity: 0, transform: 'translateY(4px)' },
+          { opacity: 0, transform: 'translateY(6px)' },
           { opacity: 1, transform: 'translateY(0)' },
         ],
-        { duration: 200, easing: 'cubic-bezier(0.16, 1, 0.3, 1)' },
+        { duration: 360, easing: 'cubic-bezier(0.16, 1, 0.3, 1)' },
       );
 
       closeTweenRef.current = null;
