@@ -113,6 +113,7 @@ export const WorkSection: React.FC = () => {
   const toggleRef = useRef<HTMLButtonElement>(null);
   const visibleProjects = showAll ? projectsData : projectsData.slice(0, FEATURED_COUNT);
   const hasMore = projectsData.length > FEATURED_COUNT;
+  const hiddenCount = projectsData.length - FEATURED_COUNT;
 
   const handleToggle = () => {
     const button = toggleRef.current;
@@ -153,22 +154,27 @@ export const WorkSection: React.FC = () => {
       </div>
 
       {hasMore && (
-        <button
-          ref={toggleRef}
-          type="button"
-          className="work-toggle"
-          onClick={handleToggle}
-          aria-expanded={showAll}
-          aria-controls="project-list"
-        >
-          <span>{showAll ? 'Show fewer' : `Show all ${projectsData.length} projects`}</span>
-          <Icon
-            icon={showAll ? 'lucide:chevron-up' : 'lucide:chevron-down'}
-            width={14}
-            height={14}
-            aria-hidden="true"
-          />
-        </button>
+        <div className="work-toggle-wrap">
+          <span className="work-toggle-line" aria-hidden="true" />
+          <button
+            ref={toggleRef}
+            type="button"
+            className="work-toggle"
+            onClick={handleToggle}
+            aria-expanded={showAll}
+            aria-controls="project-list"
+          >
+            <span>{showAll ? 'Show fewer' : 'View Full Archive'}</span>
+            {!showAll && <span className="work-toggle-count">+{hiddenCount}</span>}
+            <Icon
+              icon={showAll ? 'lucide:chevron-up' : 'lucide:chevron-down'}
+              width={14}
+              height={14}
+              aria-hidden="true"
+            />
+          </button>
+          <span className="work-toggle-line" aria-hidden="true" />
+        </div>
       )}
     </section>
   );
