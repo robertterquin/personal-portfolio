@@ -7,7 +7,7 @@ import { projectsData } from '../data/portfolioData';
 import { keepInPlace, smoothScrollBy } from '../hooks';
 
 /** Projects shown before "Show all"; the data is ordered with the featured ones first. */
-const FEATURED_COUNT = 4;
+const FEATURED_COUNT = 5;
 const ARCHIVE_EASE = [0.16, 1, 0.3, 1] as const;
 const STAGGER_STEP_MS = 150;
 const CLOSE_STEP_S = 0.065;
