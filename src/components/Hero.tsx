@@ -54,7 +54,8 @@ export const Hero: React.FC = () => {
             transition={{ duration: 0.65, delay: 0.32, ease }}
           >
             {personalData.role}
-            <span className="hero-role-specialty"> — {personalData.specialty}</span>
+            <span className="hero-role-dash" aria-hidden="true"> — </span>
+            <span className="hero-role-specialty">{personalData.specialty}</span>
           </motion.p>
 
           <motion.p

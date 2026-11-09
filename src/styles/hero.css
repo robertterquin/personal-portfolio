@@ -54,6 +54,7 @@
   color: var(--ink);
 }
 
+.hero-role-dash,
 .hero-role-specialty {
   font-weight: 500;
   color: var(--ink-dim);
@@ -216,21 +217,39 @@ html.theme-day .portrait-frame:hover {
 
 @media (max-width: 540px) {
   .architectural-hero {
-    padding: 42px 0 32px 0;
+    padding: 36px 0 30px 0;
   }
 
   .hero-title {
-    font-size: clamp(2.8rem, 12.5vw, 4.2rem);
-    margin-bottom: 22px;
+    font-size: clamp(2.25rem, 10.5vw, 3.25rem);
+    margin-bottom: 18px;
   }
 
   .hero-role {
-    margin-top: -6px;
-    font-size: var(--text-lg);
+    margin-top: -4px;
+    margin-bottom: 14px;
+    font-size: var(--text-md);
+    line-height: 1.4;
+  }
+
+  .hero-role-dash {
+    display: none;
+  }
+
+  .hero-role-specialty {
+    display: block;
+    margin-top: 2px;
+    font-size: var(--text-base);
+  }
+
+  .hero-bio {
+    font-size: 0.9375rem;
+    line-height: 1.62;
+    margin-bottom: 20px;
   }
 
   .hero-achievement-strip {
-    margin-top: 18px;
+    margin-top: 16px;
     padding: 12px 0;
   }
 
