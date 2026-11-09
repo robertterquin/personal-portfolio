@@ -248,6 +248,8 @@ html.theme-day .portrait-frame:hover {
     font-size: 0.9375rem;
     line-height: 1.62;
     margin-bottom: 20px;
+    text-align: left;
+    text-wrap: pretty;
   }
 
   .hero-achievement-strip {

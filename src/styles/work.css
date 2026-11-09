@@ -276,5 +276,7 @@ a.row-col-media:hover .row-media-img {
   .row-description {
     font-size: var(--text-base);
     line-height: 1.55;
+    text-align: left;
+    text-wrap: pretty;
   }
 }

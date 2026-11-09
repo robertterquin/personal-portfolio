@@ -69,4 +69,19 @@ export default defineConfig({
   server: {
     port: 3000,
   },
+  build: {
+    rolldownOptions: {
+      output: {
+        manualChunks(id) {
+          if (id.includes('node_modules/gsap')) return 'vendor-gsap';
+          if (id.includes('node_modules/motion') || id.includes('node_modules/framer-motion')) {
+            return 'vendor-motion';
+          }
+          if (id.includes('node_modules/react') || id.includes('node_modules/@iconify')) {
+            return 'vendor-ui';
+          }
+        },
+      },
+    },
+  },
 })
