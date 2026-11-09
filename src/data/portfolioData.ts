@@ -73,8 +73,18 @@ export const projectsData: Project[] = [
     repoUrl: 'https://github.com/robertterquin/Skillora',
   },
   {
-    id: 'spendly',
+    id: 'breach-os',
     number: '06',
+    title: 'breach.os',
+    description: 'After competing in HackForGov, I wanted to build my own capture-the-flag puzzle game, so I turned the retro desktop shell from my old midterm portfolio into breach.os. You investigate a wiped school lab computer, LAB-07, and recover ten flags across crypto, web, forensics, and network challenges from either the terminal or the desktop apps as the corrupted screen slowly heals. The trickiest part was keeping the answers hidden in a public repo: it only stores SHA-256 hashes of each flag, and the test suite solves the clues through the terminal itself instead of hardcoding a single flag.',
+    stack: 'React · TypeScript · Web Crypto API · Vite · CSS',
+    image: '/projects/breach-os-showcase.webp',
+    demoUrl: 'https://breach-os.vercel.app',
+    repoUrl: 'https://github.com/robertterquin/breach-os',
+  },
+  {
+    id: 'spendly',
+    number: '07',
     title: 'Spendly',
     description: 'I can\'t always control my spending when I have money, so I built Spendly to keep track of my daily expenses. Instead of filling in forms, I tell the AI assistant what I spent and it updates the right account. It taught me how to integrate AI with Groq, and how to get a chatbot to reply with actions the app can safely apply.',
     stack: 'Flutter · Dart · Riverpod · Supabase · Groq',
@@ -84,7 +94,7 @@ export const projectsData: Project[] = [
   },
   {
     id: 'hunch',
-    number: '07',
+    number: '08',
     title: 'Hunch',
     description: 'I\'m starting to look for OJT opportunities myself, so I built Hunch to help students like me check whether a listing is legit before applying. It scores a post across eight warning signs and shows the exact words behind each one. The hardest part was opening listing links safely on the server, with limits on redirects, page size, and private addresses.',
     stack: 'React · TypeScript · OpenAI · Supabase · Vercel',
@@ -94,7 +104,7 @@ export const projectsData: Project[] = [
   },
   {
     id: 'chainly',
-    number: '08',
+    number: '09',
     title: 'Chainly',
     description: 'I\'m a cyclist, and keeping track of bike maintenance from memory doesn\'t work. I built Chainly to log my rides and service history and remind me when parts are due, from chain lube every 100 km to a new chain around 2,500 km. The trickiest bit was turning ride distance into reminders and delivering them as notifications.',
     stack: 'Flutter · Dart · Riverpod · Supabase · Firebase',
@@ -104,7 +114,7 @@ export const projectsData: Project[] = [
   },
   {
     id: 'ridetrack',
-    number: '09',
+    number: '10',
     title: 'RideTrack',
     description: 'I built RideTrack for fun, because I wanted to make my own version of Strava. It records rides with live GPS, plans bike-friendly routes, and tracks weekly and monthly goals. It\'s one of my first projects and I learned a lot from it, including adding a map to an app for the first time, using OpenStreetMap.',
     stack: 'Flutter · Dart · Firebase · OpenStreetMap',
