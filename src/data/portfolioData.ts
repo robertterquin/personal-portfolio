@@ -66,7 +66,7 @@ export const projectsData: Project[] = [
     id: 'breach-os',
     number: '05',
     title: 'breach.os',
-    description: 'After competing in HackForGov, I wanted to build my own capture-the-flag puzzle game set in a retro desktop operating system. You investigate a wiped school lab computer, LAB-07, and recover ten flags across crypto, web, forensics, and network challenges from either the terminal or desktop tools as the corrupted screen slowly heals. The trickiest part was keeping the answers hidden in a public repo: it only stores SHA-256 hashes of each flag, and the test suite solves the clues through the terminal itself instead of hardcoding a single flag.',
+    description: 'After competing in HackForGov, I built breach.os as a retro desktop OS puzzle game where you investigate an abandoned lab computer. You recover ten hidden flags across cryptography, web, and network challenges while the corrupted interface slowly heals. The hardest part was keeping the answers secure in a public repo, verifying SHA-256 flag hashes instead of storing plain text.',
     stack: 'React · TypeScript · Web Crypto API · Vite · CSS',
     image: '/projects/breach-os-showcase.jpg',
     demoUrl: 'https://breach-os.vercel.app',
