@@ -40,11 +40,11 @@
 }
 
 /* Alternate sides on wider screens; phones stack image-first below. */
-.project-index-row:nth-child(even) {
+.project-index-row.is-even {
   grid-template-columns: minmax(0, 1fr) minmax(0, 2fr);
 }
 
-.project-index-row:nth-child(even) .row-col-media {
+.project-index-row.is-even .row-col-media {
   order: -1;
 }
 
@@ -253,7 +253,7 @@ a.row-col-media:hover .row-media-img {
   }
 
   .project-index-row,
-  .project-index-row:nth-child(even) {
+  .project-index-row.is-even {
     grid-template-columns: minmax(0, 1fr);
     gap: 18px;
     padding: 24px 0;

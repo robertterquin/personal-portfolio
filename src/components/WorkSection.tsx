@@ -264,14 +264,14 @@ export const WorkSection: React.FC = () => {
 
       <div id="project-list" className="project-index-list">
         <div ref={featuredGroupRef} className="project-featured-group">
-          {featuredProjects.map((project) => (
+          {featuredProjects.map((project, index) => (
             <motion.article
               key={project.id}
               initial={isReducedMotion ? false : 'hidden'}
               whileInView="visible"
               viewport={{ once: true, amount: 0.15 }}
               variants={isReducedMotion ? undefined : rowItemVariants}
-              className="project-index-row"
+              className={`project-index-row${index % 2 === 1 ? ' is-even' : ''}`}
             >
               <ProjectRow project={project} />
             </motion.article>
@@ -281,6 +281,8 @@ export const WorkSection: React.FC = () => {
         {showAll && (
           <div ref={archiveDrawerRef} className="project-archive-drawer">
             {archiveProjects.map((project, index) => {
+              const globalIndex = FEATURED_COUNT + index;
+              const isEven = globalIndex % 2 === 1;
               const isRevealed = index < revealedCount;
               const revIdx = archiveProjects.length - 1 - index;
               const animateState = isClosing
@@ -298,7 +300,7 @@ export const WorkSection: React.FC = () => {
                   onViewportEnter={() => handleArchiveRowInView(index)}
                   viewport={{ once: true, amount: 0.08 }}
                   variants={isReducedMotion ? undefined : archiveRowVariants}
-                  className="project-index-row"
+                  className={`project-index-row${isEven ? ' is-even' : ''}`}
                 >
                   <ProjectRow project={project} />
                 </motion.article>
