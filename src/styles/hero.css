@@ -221,7 +221,7 @@ html.theme-day .portrait-frame:hover {
   }
 
   .hero-title {
-    font-size: clamp(2.25rem, 10.5vw, 3.25rem);
+    font-size: clamp(2.65rem, 12vw, 4rem);
     margin-bottom: 18px;
   }
 
