@@ -107,7 +107,7 @@ export const projectsData: Project[] = [
     number: '09',
     title: 'Chainly',
     description: 'I\'m a cyclist, and keeping track of bike maintenance from memory doesn\'t work. I built Chainly to log my rides and service history and remind me when parts are due, from chain lube every 100 km to a new chain around 2,500 km. The trickiest bit was turning ride distance into reminders and delivering them as notifications.',
-    stack: 'Flutter · Dart · Riverpod · Supabase · Firebase',
+    stack: 'Flutter · Dart · Riverpod · Supabase · Firebase Cloud Messaging',
     image: '/projects/chainly-showcase.png',
     demoUrl: 'https://github.com/robertterquin/Chainly',
     repoUrl: 'https://github.com/robertterquin/Chainly',
