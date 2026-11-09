@@ -66,6 +66,8 @@
   line-height: 1.7;
   color: var(--ink-muted);
   max-width: 580px;
+  text-align: justify;
+  text-justify: inter-word;
 }
 
 .hero-achievement-strip {
@@ -73,7 +75,7 @@
   padding: 16px 0;
   border-top: 1px solid var(--line);
   border-bottom: 1px solid var(--line);
-  max-width: 560px;
+  max-width: 580px;
 }
 
 .hero-achievement-link {
