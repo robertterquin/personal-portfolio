@@ -4,15 +4,13 @@ import { Icon } from '@iconify/react';
 import { motion, useReducedMotion, type Variants } from 'motion/react';
 import type { Project } from '../types';
 import { projectsData } from '../data/portfolioData';
-import { keepInPlace, smoothScrollBy } from '../hooks';
+import { keepInPlace } from '../hooks';
 
 /** Projects shown before "Show all"; the data is ordered with the featured ones first. */
 const FEATURED_COUNT = 5;
 const ARCHIVE_EASE = [0.16, 1, 0.3, 1] as const;
 const STAGGER_STEP_MS = 150;
-const CLOSE_STEP_S = 0.065;
-const CLOSE_ROW_DURATION_S = 0.38;
-const CLOSE_GLIDE_DURATION_S = 0.68;
+const CLOSE_DURATION_MS = 260;
 
 const rowItemVariants: Variants = {
   hidden: {
@@ -36,15 +34,6 @@ const archiveRowVariants: Variants = {
     y: 0,
     transition: { duration: 0.58, ease: ARCHIVE_EASE },
   },
-  closing: (revIdx: number) => ({
-    opacity: 0,
-    y: -8,
-    transition: {
-      duration: CLOSE_ROW_DURATION_S,
-      delay: revIdx * CLOSE_STEP_S,
-      ease: ARCHIVE_EASE,
-    },
-  }),
 };
 
 /** demoUrl doubles as the repo link for apps with no web build, so only count it as live when it isn't GitHub. */
@@ -139,10 +128,7 @@ export const WorkSection: React.FC = () => {
   const [isClosing, setIsClosing] = useState(false);
   const [revealedCount, setRevealedCount] = useState(0);
   const toggleRef = useRef<HTMLButtonElement>(null);
-  const toggleWrapRef = useRef<HTMLDivElement>(null);
-  const featuredGroupRef = useRef<HTMLDivElement>(null);
-  const archiveDrawerRef = useRef<HTMLDivElement>(null);
-  const closeTweenRef = useRef<{ kill: () => void } | null>(null);
+  const closeTimerRef = useRef<number | null>(null);
   const cooldownTimerRef = useRef<number | null>(null);
   const inViewSetRef = useRef<Set<number>>(new Set());
   const revealedCountRef = useRef(0);
@@ -151,12 +137,12 @@ export const WorkSection: React.FC = () => {
   const archiveProjects = projectsData.slice(FEATURED_COUNT);
   const hasMore = archiveProjects.length > 0;
   const hiddenCount = archiveProjects.length;
-  const isExpandedUI = showAll && !isClosing;
+  const isExpandedUI = showAll;
 
   const clearQueueTimers = () => {
-    if (closeTweenRef.current !== null) {
-      closeTweenRef.current.kill();
-      closeTweenRef.current = null;
+    if (closeTimerRef.current !== null) {
+      window.clearTimeout(closeTimerRef.current);
+      closeTimerRef.current = null;
     }
     if (cooldownTimerRef.current !== null) {
       window.clearTimeout(cooldownTimerRef.current);
@@ -214,16 +200,11 @@ export const WorkSection: React.FC = () => {
     }
 
     clearQueueTimers();
-    const drawerHeight = archiveDrawerRef.current?.offsetHeight ?? 0;
-
-    // Phase 1: Smoothly glide scroll up to Row 04 while archive rows dissolve one-by-one (document height stays constant, zero flicker).
+    const topBefore = button?.getBoundingClientRect().top;
     setIsClosing(true);
 
-    closeTweenRef.current = smoothScrollBy(-drawerHeight, CLOSE_GLIDE_DURATION_S, () => {
-      const featuredEl = featuredGroupRef.current;
-      const featuredTopBefore = featuredEl?.getBoundingClientRect().top;
-
-      // Phase 2: Camera is now resting on Row 04; unmount archive rows below it with 0px shift.
+    closeTimerRef.current = window.setTimeout(() => {
+      closeTimerRef.current = null;
       flushSync(() => {
         setShowAll(false);
         setIsClosing(false);
@@ -232,20 +213,8 @@ export const WorkSection: React.FC = () => {
         inViewSetRef.current.clear();
       });
 
-      if (featuredEl && featuredTopBefore !== undefined) {
-        keepInPlace(featuredEl, featuredTopBefore);
-      }
-
-      toggleWrapRef.current?.animate(
-        [
-          { opacity: 0, transform: 'translateY(6px)' },
-          { opacity: 1, transform: 'translateY(0)' },
-        ],
-        { duration: 360, easing: 'cubic-bezier(0.16, 1, 0.3, 1)' },
-      );
-
-      closeTweenRef.current = null;
-    });
+      if (button && topBefore !== undefined) keepInPlace(button, topBefore);
+    }, CLOSE_DURATION_MS);
   };
 
   return (
@@ -263,7 +232,7 @@ export const WorkSection: React.FC = () => {
       </motion.div>
 
       <div id="project-list" className="project-index-list">
-        <div ref={featuredGroupRef} className="project-featured-group">
+        <div className="project-featured-group">
           {featuredProjects.map((project, index) => (
             <motion.article
               key={project.id}
@@ -279,24 +248,21 @@ export const WorkSection: React.FC = () => {
         </div>
 
         {showAll && (
-          <div ref={archiveDrawerRef} className="project-archive-drawer">
+          <motion.div
+            className="project-archive-drawer"
+            animate={isClosing ? { opacity: 0, y: -8 } : { opacity: 1, y: 0 }}
+            transition={{ duration: CLOSE_DURATION_MS / 1000, ease: ARCHIVE_EASE }}
+          >
             {archiveProjects.map((project, index) => {
               const globalIndex = FEATURED_COUNT + index;
               const isEven = globalIndex % 2 === 1;
               const isRevealed = index < revealedCount;
-              const revIdx = archiveProjects.length - 1 - index;
-              const animateState = isClosing
-                ? 'closing'
-                : isRevealed
-                  ? 'visible'
-                  : 'hidden';
 
               return (
                 <motion.article
                   key={project.id}
-                  custom={revIdx}
                   initial={isReducedMotion ? false : 'hidden'}
-                  animate={isReducedMotion ? undefined : animateState}
+                  animate={isReducedMotion ? undefined : isRevealed ? 'visible' : 'hidden'}
                   onViewportEnter={() => handleArchiveRowInView(index)}
                   viewport={{ once: true, amount: 0.08 }}
                   variants={isReducedMotion ? undefined : archiveRowVariants}
@@ -306,12 +272,12 @@ export const WorkSection: React.FC = () => {
                 </motion.article>
               );
             })}
-          </div>
+          </motion.div>
         )}
       </div>
 
       {hasMore && (
-        <div ref={toggleWrapRef} className="work-toggle-wrap">
+        <div className="work-toggle-wrap">
           <span className="work-toggle-line" aria-hidden="true" />
           <button
             ref={toggleRef}
@@ -320,6 +286,7 @@ export const WorkSection: React.FC = () => {
             onClick={handleToggle}
             aria-expanded={isExpandedUI}
             aria-controls="project-list"
+            aria-disabled={isClosing || undefined}
           >
             <span>{isExpandedUI ? 'Show fewer' : 'View Full Archive'}</span>
             {!isExpandedUI && <span className="work-toggle-count">+{hiddenCount}</span>}
