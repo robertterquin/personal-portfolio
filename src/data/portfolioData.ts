@@ -53,8 +53,18 @@ export const projectsData: Project[] = [
     repoUrl: 'https://github.com/robertterquin/Hapag',
   },
   {
-    id: 'bakas',
+    id: 'afterlight',
     number: '04',
+    title: 'Afterlight',
+    description: 'Afterlight is a one-tap stacking game with a new course every day: drop stones to raise a tower out of the sea, and five perfect drops in a row awaken the beacon. Everyone climbs the same daily course, so I built a leaderboard that\'s hard to cheat. The game sends only the timing of each drop, and the server replays the whole run before saving the score. Making the game play out exactly the same on every device, so those replays match, was the hardest part.',
+    stack: 'React · TypeScript · Motion · Supabase Edge Functions · Web Audio',
+    image: '/projects/afterlight-showcase.webp',
+    demoUrl: 'https://playafterlight.vercel.app/',
+    repoUrl: 'https://github.com/robertterquin/Afterlight',
+  },
+  {
+    id: 'bakas',
+    number: '05',
     title: 'Bakas',
     description: 'Road hazards like potholes and floods are easy to spot but hard to report on the go. Bakas makes it one tap with no account needed, and hazards fade from the map unless other people confirm them. Making it work offline was the real challenge: reports wait on the phone and sync once you\'re back online.',
     stack: 'React · TypeScript · Supabase · PostGIS · Leaflet',
@@ -64,7 +74,7 @@ export const projectsData: Project[] = [
   },
   {
     id: 'breach-os',
-    number: '05',
+    number: '06',
     title: 'breach.os',
     description: 'After competing in HackForGov, I built breach.os as a retro desktop OS puzzle game where you investigate an abandoned lab computer. You recover ten hidden flags across cryptography, web, and network challenges while the corrupted interface slowly heals. The hardest part was keeping the answers secure in a public repo, verifying SHA-256 flag hashes instead of storing plain text.',
     stack: 'React · TypeScript · Web Crypto API · Vite · CSS',
@@ -74,7 +84,7 @@ export const projectsData: Project[] = [
   },
   {
     id: 'skillora',
-    number: '06',
+    number: '07',
     title: 'Skillora',
     description: 'Skillora turns any skill, from guitar to Russian to knife sharpening, into short, ordered steps you can practice. You ask Archimedes the owl and it builds the plan, then helps you practice with flashcards, a technique coach, and voice grading. Along the way I learned to run several AI features, including Whisper for pronunciation, while keeping each learner within a daily limit.',
     stack: 'Next.js · TypeScript · Tailwind · Supabase · OpenAI',
@@ -84,7 +94,7 @@ export const projectsData: Project[] = [
   },
   {
     id: 'spendly',
-    number: '07',
+    number: '08',
     title: 'Spendly',
     description: 'I can\'t always control my spending when I have money, so I built Spendly to keep track of my daily expenses. Instead of filling in forms, I tell the AI assistant what I spent and it updates the right account. It taught me how to integrate AI with Groq, and how to get a chatbot to reply with actions the app can safely apply.',
     stack: 'Flutter · Dart · Riverpod · Supabase · Groq',
@@ -94,7 +104,7 @@ export const projectsData: Project[] = [
   },
   {
     id: 'hunch',
-    number: '08',
+    number: '09',
     title: 'Hunch',
     description: 'I\'m starting to look for OJT opportunities myself, so I built Hunch to help students like me check whether a listing is legit before applying. It scores a post across eight warning signs and shows the exact words behind each one. The hardest part was opening listing links safely on the server, with limits on redirects, page size, and private addresses.',
     stack: 'React · TypeScript · OpenAI · Supabase · Vercel',
@@ -104,7 +114,7 @@ export const projectsData: Project[] = [
   },
   {
     id: 'chainly',
-    number: '09',
+    number: '10',
     title: 'Chainly',
     description: 'I\'m a cyclist, and keeping track of bike maintenance from memory doesn\'t work. I built Chainly to log my rides and service history and remind me when parts are due, from chain lube every 100 km to a new chain around 2,500 km. The trickiest bit was turning ride distance into reminders and delivering them as notifications.',
     stack: 'Flutter · Dart · Riverpod · Supabase · Firebase Cloud Messaging',
@@ -114,7 +124,7 @@ export const projectsData: Project[] = [
   },
   {
     id: 'ridetrack',
-    number: '10',
+    number: '11',
     title: 'RideTrack',
     description: 'I built RideTrack for fun, because I wanted to make my own version of Strava. It records rides with live GPS, plans bike-friendly routes, and tracks weekly and monthly goals. It\'s one of my first projects and I learned a lot from it, including adding a map to an app for the first time, using OpenStreetMap.',
     stack: 'Flutter · Dart · Firebase · OpenStreetMap',
