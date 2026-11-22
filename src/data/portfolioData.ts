@@ -56,7 +56,7 @@ export const projectsData: Project[] = [
     id: 'afterlight',
     number: '04',
     title: 'Afterlight',
-    description: 'Afterlight is a one-tap stacking game with a new course every day: drop stones to raise a tower out of the sea, and five perfect drops in a row awaken the beacon. Everyone climbs the same daily course, so I built a leaderboard that\'s hard to cheat. The game sends only the timing of each drop, and the server replays the whole run before saving the score. Making the game play out exactly the same on every device, so those replays match, was the hardest part.',
+    description: 'Afterlight is the first game I\'ve ever made, and it\'s one of the projects I\'m proudest of. It\'s a one-tap stacking game with a new course every day: drop stones to raise a tower out of the sea, and five perfect drops in a row awaken the beacon. Everyone climbs the same course, so I built a leaderboard that\'s hard to cheat, where the server replays each run before saving the score. Making the game play out exactly the same on every device, so those replays match, was the hardest part.',
     stack: 'React · TypeScript · Motion · Supabase Edge Functions · Web Audio',
     image: '/projects/afterlight-showcase.webp',
     demoUrl: 'https://playafterlight.vercel.app/',
